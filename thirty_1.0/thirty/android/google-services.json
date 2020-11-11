@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "845966618911",
+    "firebase_url": "https://thirty-82b5d.firebaseio.com",
+    "project_id": "thirty-82b5d",
+    "storage_bucket": "thirty-82b5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845966618911:android:5dfea6fc8094e5dfe5c02a",
+        "android_client_info": {
+          "package_name": "com.phoenix.thirty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845966618911-s7o92i9nd0kj305rlipc4njeic0i990t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi9KFPNylud-7FfeX22AKOtXivxVPZex0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "845966618911-s7o92i9nd0kj305rlipc4njeic0i990t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

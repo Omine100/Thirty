@@ -71,37 +71,67 @@ class CloudFirestore implements BaseCloud {
   //Mechanics: Creates name data
   Future<void> createNameData(String name) async {
     var user = await _firebaseAuth.currentUser();
-    //Need to figure out how I want to organize the data
+    await db.collection(user.uid).document("name").setData({"name": name});
   }
 
   //Mechanics: Creates goal data
   Future<void> createGoalData(String goal) async {
+    String date = interfaceStandards.getCurrentDate();
     var user = await _firebaseAuth.currentUser();
-    //Need to figure out how I want to organize the data
+    //May change document indicator to "favorite" or something like that
+    await db
+        .collection(user.uid)
+        .document("goals")
+        .collection("final")
+        .document(date)
+        .setData({
+      "goal": goal,
+      "startDate": date,
+    });
   }
 
   //Mechanics: Gets name data
   Future<String> getNameData() async {
     var user = await _firebaseAuth.currentUser();
-    //Need to figure out how I want to organize the data
+    DocumentSnapshot snapshot =
+        await db.collection(user.uid).document("name").snapshots().first;
+    if (!snapshot.exists) {
+      return null;
+    } else {
+      return snapshot.data["name"].toString();
+    }
   }
 
   //Mechanics: Gets goal data stream
   Future<Stream<QuerySnapshot>> getGoalDataStream() async {
     var user = await _firebaseAuth.currentUser();
-    //Need to figure out how I want to organize the data
+    Stream<QuerySnapshot> goalDataStream = db
+        .collection(user.uid)
+        .document("goals")
+        .collection("final")
+        .snapshots();
+    return goalDataStream;
   }
 
   //Mechanics: Deletes goal data
   Future<void> deleteGoalData(DocumentSnapshot doc) async {
     var user = await _firebaseAuth.currentUser();
-    //Need to figure out how I want to organize the data
+    await db
+        .collection(user.uid)
+        .document("goals")
+        .collection("final")
+        .document(doc.documentID)
+        .delete();
   }
 
   //Mechanics: Deletes goal data stream
   Future<void> deleteGoalDataStream() async {
     var user = await _firebaseAuth.currentUser();
-    //Need to figure out how I want to organize the data
+    await db.collection(user.uid).getDocuments().then((snapshot) {
+      for (DocumentSnapshot ds in snapshot.documents) {
+        ds.reference.delete();
+      }
+    });
   }
 
   //Mechanics: Deletes current user
