@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 //Method declarations
 abstract class BaseCloud {
@@ -14,8 +16,8 @@ abstract class BaseCloud {
   //Methods: Data management
   Future<void> createNameData(String name);
   Future<void> createGoalData(String goal);
-  Future<void> getNameData();
-  Future<void> getGoalDataStream();
+  Future<String> getNameData();
+  Future<Stream<QuerySnapshot>> getGoalDataStream();
   Future<void> deleteGoalData();
   Future<void> deleteGoalDataStream();
   Future<void> deleteCurrentUser();
@@ -45,13 +47,13 @@ class CloudFirestore implements BaseCloud {
 
   //Mechanics: Returns user
   Future<FirebaseUser> getCurrentUser() async {
-    FirebaseUser user = await _firebaseAuth.currentUser();
+    var user = await _firebaseAuth.currentUser();
     return user;
   }
 
   //Mechanics: Sends user an email for verification
   Future<void> sendEmailVerification() async {
-    FirebaseUser user = await _firebaseAuth.currentUser();
+    var user = await _firebaseAuth.currentUser();
     user.sendEmailVerification();
   }
 
@@ -62,9 +64,39 @@ class CloudFirestore implements BaseCloud {
 
   //Mechanics: Returns true if email is verified
   Future<bool> isEmailVerified() async {
-    FirebaseUser user = await _firebaseAuth.currentUser();
+    var user = await _firebaseAuth.currentUser();
     return user.isEmailVerified;
   }
+
+  //Mechanics: Creates name data
+  Future<void> createNameData(String name) async {
+    var user = await _firebaseAuth.currentUser();
+    //Need to figure out how I want to organize the data
+  }
+
+  //Mechanics: Creates goal data
+  Future<void> createGoalData(String goal) async {
+    var user = await _firebaseAuth.currentUser();
+    //Need to figure out how I want to organize the data
+  }
+
+  //Mechanics: Gets name data
+  Future<String> getNameData() async {
+    var user = await _firebaseAuth.currentUser();
+    //Need to figure out how I want to organize the data
+  }
+
+  //Mechanics: Gets goal data stream
+  Future<Stream<QuerySnapshot>> getGoalDataStream() async {
+    var user = await _firebaseAuth.currentUser();
+    //Need to figure out how I want to organize the data
+  }
+
+  //Mechanics: Deletes goal data
+
+  //Mechanics: Deletes goal data stream
+
+  //Mechanics: Deletes current user
 }
 
 CloudFirestore db = CloudFirestore();
