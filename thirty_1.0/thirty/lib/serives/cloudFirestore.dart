@@ -140,5 +140,3 @@ class CloudFirestore implements BaseCloud {
     return user.delete();
   }
 }
-
-CloudFirestore db = CloudFirestore();
