@@ -18,9 +18,9 @@ abstract class BaseCloud {
   Future<void> createGoalData(String goal);
   Future<String> getNameData();
   Future<Stream<QuerySnapshot>> getGoalDataStream();
-  Future<void> deleteGoalData();
+  Future<void> deleteGoalData(DocumentSnapshot doc);
   Future<void> deleteGoalDataStream();
-  Future<void> deleteCurrentUser();
+  Future<void> deleteUser();
 }
 
 class CloudFirestore implements BaseCloud {
@@ -93,10 +93,22 @@ class CloudFirestore implements BaseCloud {
   }
 
   //Mechanics: Deletes goal data
+  Future<void> deleteGoalData(DocumentSnapshot doc) async {
+    var user = await _firebaseAuth.currentUser();
+    //Need to figure out how I want to organize the data
+  }
 
   //Mechanics: Deletes goal data stream
+  Future<void> deleteGoalDataStream() async {
+    var user = await _firebaseAuth.currentUser();
+    //Need to figure out how I want to organize the data
+  }
 
   //Mechanics: Deletes current user
+  Future<void> deleteUser() async {
+    var user = await _firebaseAuth.currentUser();
+    return user.delete();
+  }
 }
 
 CloudFirestore db = CloudFirestore();
