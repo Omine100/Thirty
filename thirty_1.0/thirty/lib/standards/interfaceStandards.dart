@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:thirty/standards/themes.dart';
+
 class InterfaceStandards {
+  //Variable initialization
+  Themes themes = new Themes();
+
   //User interface: Parent center
   Widget parentCenter(BuildContext context, Widget child) {
     return Container(
@@ -18,13 +23,11 @@ class InterfaceStandards {
       onTap: () {
         Navigator.pop(context);
       },
-      child: Icon(
-        Icons.keyboard_backspace,
-        color: Theme.of(context).colorScheme.interfaceStandardsBackButtonColor,
-        size: Theme.of(context)
-            .materialTapTargetSize
-            .interfaceStandardsBackButtonSize,
-      ),
+      child: Icon(Icons.keyboard_backspace,
+          color:
+              Theme.of(context).colorScheme.interfaceStandardsBackButtonColor,
+          size: themes.getDimension(
+              context, true, "interfaceStandardsBackButtonIconDimension")),
     );
   }
 

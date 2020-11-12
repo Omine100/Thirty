@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:thirty/serives/themes.dart';
+import 'package:thirty/standards/themes.dart';
 
 void main() {
   runApp(new Thirty());
