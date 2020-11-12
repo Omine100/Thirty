@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'package:thirty/standards/methodStandards.dart';
+
 //Method declarations
 abstract class BaseCloud {
   //Methods: Account management
@@ -27,6 +29,7 @@ class CloudFirestore implements BaseCloud {
   //Variable initialization
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final db = Firestore.instance;
+  MethodStandards methodStandards = new MethodStandards();
 
   //Mechanics: Signs in user
   Future<void> signIn(String email, String password) async {
@@ -76,7 +79,7 @@ class CloudFirestore implements BaseCloud {
 
   //Mechanics: Creates goal data
   Future<void> createGoalData(String goal) async {
-    String date = interfaceStandards.getCurrentDate();
+    String date = methodStandards.getCurrentDate();
     var user = await _firebaseAuth.currentUser();
     //May change document indicator to "favorite" or something like that
     await db
