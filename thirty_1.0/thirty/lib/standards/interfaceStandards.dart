@@ -44,4 +44,13 @@ class InterfaceStandards {
           ),
         ));
   }
+
+  //User interface: Show progress
+  Widget showProgress(BuildContext context) {
+    return new CircularProgressIndicator(
+      backgroundColor: Theme.of(context)
+          .colorScheme
+          .interfaceStandardsProgressIndicatorColor,
+    );
+  }
 }

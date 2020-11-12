@@ -4,6 +4,7 @@ extension CustomColorScheme on ColorScheme {
   //Color get 'name' => const Color(0x'hexValue');
   Color get interfaceStandardsBackButtonColor => const Color(0xFFFFFFFF);
   Color get interfaceStandardsHeaderTextColor => const Color(0xFFFFFFFF);
+  Color get interfaceStandardsProgressIndicatorColor => const Color(0xFFFFFFFF);
 
   Color get loginTitleColor => const Color(0xFFFFFFFF);
   Color get loginProgressBackgroundColor => const Color(0xFFFFFFFF);
