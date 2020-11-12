@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:thirty/standards/themes.dart';
-
 class InterfaceStandards {
-  //Variable initialization
-  Themes themes = new Themes();
-
   //User interface: Parent center
   Widget parentCenter(BuildContext context, Widget child) {
     return Container(
