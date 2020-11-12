@@ -65,7 +65,7 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? 0.0 : 0.0;
         break;
       case "loginSignInSignUpButtonDimension":
-        return isHeight ? null : 0.375;
+        return isHeight ? 0.1 : 0.375;
         break;
       case "loginErrorMessageDimension":
         return isHeight ? 0.1 : 0.1;
