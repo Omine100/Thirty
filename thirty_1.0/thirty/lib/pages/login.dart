@@ -209,4 +209,12 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
+  //User interface: Login screen
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      body: Container(),
+    );
+  }
 }
