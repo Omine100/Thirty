@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 extension CustomColorScheme on ColorScheme {
   //Color get 'name' => const Color(0x'hexValue');
+  Color get backgroundGradientTopLeftColor => const Color(0xFF0280EE);
+  Color get backgroundGradientBottomRightColot => const Color(0xFFFE9C07);
+
   Color get interfaceStandardsBackButtonColor => const Color(0xFFFFFFFF);
   Color get interfaceStandardsHeaderTextColor => const Color(0xFFFFFFFF);
   Color get interfaceStandardsProgressIndicatorColor => const Color(0xFFFFFFFF);
