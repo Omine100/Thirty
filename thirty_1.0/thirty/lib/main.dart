@@ -18,7 +18,7 @@ class Thirty extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       routes: {
-        '/RootScreen': (context) => RootScreen(),
+        // '/RootScreen': (context) => RootScreen(),
       },
       initialRoute: '/RootScreen',
       theme: themes.lightTheme(),
