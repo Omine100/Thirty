@@ -5,9 +5,6 @@ import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
 
-import '../standards/themesGradients.dart';
-import '../standards/themesGradients.dart';
-
 class ForgotPasswordScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _ForgotPasswordScreenState();
