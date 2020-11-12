@@ -7,7 +7,7 @@ void main() {
 }
 
 class Thirty extends StatelessWidget {
-  //Variable initialiazation
+  //Class initialiazation
   Themes themes = new Themes();
 
   //User interfac: Half app

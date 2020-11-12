@@ -26,10 +26,12 @@ abstract class BaseCloud {
 }
 
 class CloudFirestore implements BaseCloud {
+  //Class initialization
+  MethodStandards methodStandards = new MethodStandards();
+
   //Variable initialization
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final db = Firestore.instance;
-  MethodStandards methodStandards = new MethodStandards();
 
   //Mechanics: Signs in user
   Future<void> signIn(String email, String password) async {

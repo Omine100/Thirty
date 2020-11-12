@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:thirty/standards/themes.dart';
 
 class ThemesGradients {
-  //Variable initilization
+  //Class initilization
   Themes themes = new Themes();
 
   //User interface: Text linear gradient

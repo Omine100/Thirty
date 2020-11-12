@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:thirty/standards/themes.dart';
 
 class InterfaceStandards {
-  //Variable initialization
+  //Class initialization
   Themes themes = new Themes();
 
   //User interface: Parent center

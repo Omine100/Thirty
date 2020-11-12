@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:thirty/serives/cloudFirestore.dart';
+import 'package:thirty/services/cloudFirestore.dart';
 
 //Status declaration
 enum AuthStatus {
@@ -17,8 +17,10 @@ class RootScreen extends StatefulWidget {
 }
 
 class _RootScreenState extends State<RootScreen> {
-  //Variable initialization
+  //Class initialization
   CloudFirestore cloudFirestore = new CloudFirestore();
+
+  //Variable initialization
   final db = Firestore.instance;
   AuthStatus _authStatus = AuthStatus.NOT_DETERMINED;
   String _userId = "";
