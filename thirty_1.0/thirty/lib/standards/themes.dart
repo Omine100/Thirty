@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 extension CustomColorScheme on ColorScheme {
   //Color get 'name' => const Color(0x'hexValue');
   Color get backgroundGradientTopLeftColor => const Color(0xFF0280EE);
-  Color get backgroundGradientBottomRightColot => const Color(0xFFFE9C07);
+  Color get backgroundGradientBottomRightColor => const Color(0xFFFE9C07);
 
   Color get interfaceStandardsBackButtonColor => const Color(0xFFFFFFFF);
   Color get interfaceStandardsHeaderTextColor => const Color(0xFFFFFFFF);
@@ -19,8 +19,6 @@ extension CustomColorScheme on ColorScheme {
 
   Color get forgotPasswordTitleColor => const Color(0xFFFFFFFF);
   Color get forgotPasswordTextInputColor => const Color(0xFFEEEEEE);
-  Color get forgotPasswordGradientTopLeftColor => const Color(0xFFFF9359);
-  Color get forgotPasswordGradientBottomRightColor => const Color(0xFFed2b7a);
   Color get forgotPasswordResetColor => const Color(0xFFFFFFFF);
 }
 

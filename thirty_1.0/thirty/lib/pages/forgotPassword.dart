@@ -13,7 +13,7 @@ class ForgotPasswordScreen extends StatefulWidget {
   State<StatefulWidget> createState() => _ForgotPasswordScreenState();
 }
 
-class _ForgtoPasswordScreenState extends State<ForgotPasswordScreen> {
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   //Class initialization
   CloudFirestore cloudFirestore = new CloudFirestore();
   Themes themes = new Themes();
@@ -69,7 +69,7 @@ class _ForgtoPasswordScreenState extends State<ForgotPasswordScreen> {
       body: Container(
         height: themes.getDimension(context, true, "forgotPasswordContainerDimension"),
         decoration: BoxDecoration(
-          gradient: interfaceStandards.bodyLinearGradient(context, false, false),
+          gradient: themesGradients.bodyLinearGradient(context, Theme.of(context).colorScheme.backgroundGradientTopLeftColor, Theme.of(context).colorScheme.backgroundGradientBottomRightColor, false),
         ),
         child: Stack(
           children: <Widget>[

@@ -221,7 +221,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Container(
         height: themes.getDimension(context, true, "loginContainerDimension"),
         decoration: BoxDecoration(
-          gradient: themesGradients.bodyLinearGradient(context, Theme.of(context).colorScheme.backgroundGradientTopLeftColor, Theme.of(context).colorScheme.backgroundGradientBottomRightColot, false)
+          gradient: themesGradients.bodyLinearGradient(context, Theme.of(context).colorScheme.backgroundGradientTopLeftColor, Theme.of(context).colorScheme.backgroundGradientBottomRightColor, false)
         ),
         child: Stack(
           children: <Widget>[
@@ -287,7 +287,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           onTap: () {
                             validateAndSubmit(_isSignIn);
                           },
-                          child: showSignInSignUpButton(_isSignIn, interfaceStandards.textLinearGradient(context)),
+                          child: showSignInSignUpButton(_isSignIn, themesGradients.textLinearGradient(context, Theme.of(context).colorScheme.backgroundGradientTopLeftColor, Theme.of(context).colorScheme.backgroundGradientBottomRightColor)),
                         ),)
                     ),
                   ],
