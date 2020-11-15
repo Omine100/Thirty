@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:thirty/services/root.dart';
 import 'package:thirty/standards/themes.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class Thirty extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       routes: {
-        // '/RootScreen': (context) => RootScreen(),
+        '/RootScreen': (context) => RootScreen(),
       },
       initialRoute: '/RootScreen',
       theme: themes.lightTheme(),

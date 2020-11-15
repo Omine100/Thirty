@@ -24,7 +24,7 @@ extension CustomColorScheme on ColorScheme {
 
 extension CustomFontSizes on TextTheme {
   //double get 'name' => 'fontSizeValue';
-  double get loginTitleIsSignInFontSize => 65.0;
+  double get loginTitleIsSignInFontSize => 30.0;
   double get loginTitleIsSignInFalseFontSize => 40.0;
   double get loginTextInputFontSize => 22.0;
   double get loginSignInSignUpButtonText => 22.5;
