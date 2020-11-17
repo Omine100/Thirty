@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
-import 'package:thirty/pages/login.dart';
+import 'package:thirty/pages/welcome.dart';
 
 //Status declaration
 enum AuthStatus {
@@ -76,7 +76,7 @@ class _RootScreenState extends State<RootScreen> {
         return buildWaitingScrreen();
         break;
       case AuthStatus.NOT_SIGNED_IN:
-        return LoginScreen();
+        return WelcomeScreen();
       case AuthStatus.SIGNED_IN:
         if (_userId != null) {
           // return HomeScreen();

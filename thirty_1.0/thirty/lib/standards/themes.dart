@@ -24,8 +24,7 @@ extension CustomColorScheme on ColorScheme {
 
 extension CustomFontSizes on TextTheme {
   //double get 'name' => 'fontSizeValue';
-  double get loginTitleIsSignInFontSize => 30.0;
-  double get loginTitleIsSignInFalseFontSize => 40.0;
+  double get loginTitleFontSize => 30.0;
   double get loginTextInputFontSize => 22.0;
   double get loginSignInSignUpButtonText => 22.5;
   double get loginSignInSignUpAlternateTextFontSize => 15.0;
@@ -66,7 +65,7 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? 0.0 : 0.0;
         break;
       case "loginSignInSignUpButtonDimension":
-        return isHeight ? 0.1 : 0.375;
+        return isHeight ? 0.08 : 0.65;
         break;
       case "loginErrorMessageDimension":
         return isHeight ? 0.1 : 0.1;
@@ -86,6 +85,8 @@ extension CustomPositions on MaterialTapTargetSize {
   double position({String selection, bool isTop}) {
     switch (selection) {
       //case 'name': return isTop? 'top' : 'left'; break;
+      case "loginTitlePosition":
+        return isTop ? 0.0875 : null;
       case "loginSignInSignUpAlternateTextIsSignInPosition":
         return isTop ? 0.495 : 0.8;
         break;

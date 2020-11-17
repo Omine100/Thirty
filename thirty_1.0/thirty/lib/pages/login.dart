@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:thirty/services/root.dart';
 import 'package:thirty/services/cloudFirestore.dart';
+import 'package:thirty/services/root.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
-import 'package:thirty/pages/forgotPassword.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({this.signInCallback});
@@ -27,17 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   //Variable initialization
   final _formKey = GlobalKey<FormState>();
   String _name, _email, _password, _errorMessage;
-  bool _isLoading, _isSignIn, _isVisible;
-
-  //Initial state
-  @override
-  void initState() {
-    super.initState();
-    _errorMessage = "";
-    _isSignIn = true;
-    _isLoading = false;
-    _isVisible = false;
-  }
+  bool _isLoading, _isSignIn, _isVisible = false;
 
   //Mechanics: Reset the form
   void resetForm() {
@@ -143,64 +132,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  //User interface: Show sign in or sign up button
-  Widget showSignInSignUpButton(bool isSignIn, Shader linearGradient) {
-    return new Container(
-      height: themes.getDimension(
-          context, true, "loginSignInSignUpButtonDimension"),
-      width: themes.getDimension(
-          context, false, "loginSignInSignUpButtonDimension"),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30.0),
-        color: Theme.of(context).colorScheme.loginSignInSignUpButtonColor,
-      ),
-      child: Center(
-        child: Text(
-          isSignIn ? "LOGIN" : "SIGN UP",
-          style: TextStyle(
-            foreground: Paint()..shader = linearGradient,
-            fontSize: Theme.of(context).textTheme.loginSignInSignUpButtonText,
-            fontWeight:
-                Theme.of(context).typography.loginSignInSignUpButtonFontWeight,
-          ),
-        ),
-      ),
-    );
-  }
-
-  //User interface: Show sign in or sign up alternate text
-  Widget showSignInSignUpAlternateText(bool isSignIn) {
-    return RichText(
-      text: TextSpan(
-        text:
-            !isSignIn ? "Already have an account? " : "Don't have an account? ",
-        style: TextStyle(
-          color:
-              Theme.of(context).colorScheme.loginSignInSignUpAlternateTextColor,
-          fontSize: Theme.of(context)
-              .textTheme
-              .loginSignInSignUpAlternateTextFontSize,
-        ),
-        children: <TextSpan>[
-          TextSpan(
-            text: !isSignIn ? "Sign In" : "Sign Up",
-            style: TextStyle(
-              color: Theme.of(context)
-                  .colorScheme
-                  .loginSignInSignUpAlternateTextColor,
-              fontSize: Theme.of(context)
-                  .textTheme
-                  .loginSignInSignUpAlternateTextFontSize,
-              fontWeight: Theme.of(context)
-                  .typography
-                  .loginSignInSignUpAlternateTextFontWeight,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   //User interface: Show forgot password button
   Widget showForgotPasswordButton() {
     return new Text(
@@ -217,150 +148,6 @@ class _LoginScreenState extends State<LoginScreen> {
   //User interface: Login screen
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: Container(
-        height: themes.getDimension(context, true, "loginContainerDimension"),
-        decoration: BoxDecoration(
-            gradient: themesGradients.bodyLinearGradient(
-                context,
-                Theme.of(context).colorScheme.backgroundGradientTopLeftColor,
-                Theme.of(context)
-                    .colorScheme
-                    .backgroundGradientBottomRightColor,
-                false)),
-        child: Stack(
-          children: <Widget>[
-            SingleChildScrollView(
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                        padding: EdgeInsets.only(
-                          top: _isSignIn
-                              ? MediaQuery.of(context).size.height * 0.0875
-                              : MediaQuery.of(context).size.height * 0.2725,
-                        ),
-                        child: interfaceStandards.parentCenter(
-                          context,
-                          Text(
-                            _isSignIn ? "WELCOME TO THIRTY" : "Create Account",
-                            style: TextStyle(
-                              color:
-                                  Theme.of(context).colorScheme.loginTitleColor,
-                              fontSize: _isSignIn
-                                  ? Theme.of(context)
-                                      .textTheme
-                                      .loginTitleIsSignInFontSize
-                                  : Theme.of(context)
-                                      .textTheme
-                                      .loginTitleIsSignInFalseFontSize,
-                              fontWeight: Theme.of(context)
-                                  .typography
-                                  .loginTitleFontWeight,
-                            ),
-                          ),
-                        )),
-                    _isSignIn
-                        ? Container(
-                            height: 0.0,
-                            child: null,
-                          )
-                        : Padding(
-                            padding: EdgeInsets.only(
-                                left: 50.0, right: 50.0, top: 34.0),
-                            child: showInput(context, "Name"),
-                          ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: 50.0,
-                          right: 50.0,
-                          top: _isSignIn ? 100.0 : 20.0),
-                      child: showInput(context, "Email"),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsets.only(left: 50.0, right: 50.0, top: 20.0),
-                      child: showInput(context, "Password"),
-                    ),
-                    _isSignIn
-                        ? Padding(
-                            padding: EdgeInsets.only(
-                                left: MediaQuery.of(context).size.width * 0.48,
-                                top: 30.0),
-                            child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              ForgotPasswordScreen()));
-                                },
-                                child: showForgotPasswordButton()),
-                          )
-                        : Container(
-                            height: 0.0,
-                            child: null,
-                          ),
-                    Padding(
-                        padding: EdgeInsets.only(top: _isSignIn ? 30.0 : 48.0),
-                        child: interfaceStandards.parentCenter(
-                          context,
-                          GestureDetector(
-                            onTap: () {
-                              validateAndSubmit(_isSignIn);
-                            },
-                            child: showSignInSignUpButton(
-                                _isSignIn,
-                                themesGradients.textLinearGradient(
-                                    context,
-                                    Theme.of(context)
-                                        .colorScheme
-                                        .backgroundGradientTopLeftColor,
-                                    Theme.of(context)
-                                        .colorScheme
-                                        .backgroundGradientBottomRightColor)),
-                          ),
-                        )),
-                  ],
-                ),
-              ),
-            ),
-            Positioned(
-                top: MediaQuery.of(context).size.height * 0.91,
-                child: interfaceStandards.parentCenter(
-                  context,
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _errorMessage = "";
-                        _isLoading = false;
-                        _isSignIn = !_isSignIn;
-                      });
-                    },
-                    child: showSignInSignUpAlternateText(_isSignIn),
-                  ),
-                )),
-            Positioned(
-              top: _isSignIn
-                  ? themes.getPosition(context, true,
-                      "loginSignInSignUpAlternateTextIsSignInPosition")
-                  : themes.getPosition(context, true,
-                      "loginSignInSignUpAlternateTextIsSignInFalsePosition"),
-              left: themes.getPosition(context, false,
-                  "loginSignInSignUpAlternateTextIsSignInPosition"),
-              child: showVisibleButton(),
-            ),
-            Positioned(
-              top: themes.getPosition(context, true, "loginProgressPosition"),
-              child: _isLoading
-                  ? interfaceStandards.parentCenter(
-                      context, interfaceStandards.showProgress(context))
-                  : Container(),
-            ),
-          ],
-        ),
-      ),
-    );
+    return Scaffold();
   }
 }
