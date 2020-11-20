@@ -9,13 +9,13 @@ extension CustomColorScheme on ColorScheme {
   Color get interfaceStandardsHeaderTextColor => const Color(0xFFFFFFFF);
   Color get interfaceStandardsProgressIndicatorColor => const Color(0xFFFFFFFF);
 
+  Color get welcomeTitleColor => const Color(0xFFFFFFFF);
+  Color get welcomeSignInSignUpButtonColor => const Color(0xFFFFFFFF);
+
   Color get loginTitleColor => const Color(0xFFFFFFFF);
-  Color get loginProgressBackgroundColor => const Color(0xFFFFFFFF);
   Color get loginTextInputColor => const Color(0xFFEEEEEE);
-  Color get loginSignInSignUpButtonColor => const Color(0xFFFFFFFF);
-  Color get loginSignInSignUpAlternateTextColor => const Color(0xFFFFFFFF);
-  Color get loginForgotPasswordButtonColor => const Color(0xFFFFFFFF);
   Color get loginErrorMessageColor => const Color(0xFFF44336);
+  Color get loginForgotPasswordButtonTextColor => const Color(0xFFFFFFFF);
 
   Color get forgotPasswordTitleColor => const Color(0xFFFFFFFF);
   Color get forgotPasswordTextInputColor => const Color(0xFFEEEEEE);
@@ -23,13 +23,14 @@ extension CustomColorScheme on ColorScheme {
 }
 
 extension CustomFontSizes on TextTheme {
-  //double get 'name' => 'fontSizeValue';
+  //double get 'name' => 'fontSizeValue'
+  double get welcomeTitleFontSize => 30.0;
+  double get welcomeSignInSignUpButtonTextFontSize => 22.5;
+
   double get loginTitleFontSize => 30.0;
   double get loginTextInputFontSize => 22.0;
-  double get loginSignInSignUpButtonText => 22.5;
-  double get loginSignInSignUpAlternateTextFontSize => 15.0;
-  double get loginForgotPasswordButtonFontSize => 15.0;
   double get loginErrorMessageFontSize => 13.0;
+  double get loginForgotPasswordButtonTextFontSize => 15.0;
 
   double get forgotPaswordTitleFontSize => 37.0;
   double get forgotPasswordTextInputFontSize => 22.0;
@@ -38,11 +39,13 @@ extension CustomFontSizes on TextTheme {
 
 extension CustomFontWeights on Typography {
   //FontWeight get 'name' => 'fontWeightValue';
+  FontWeight get welcomeTitleFontWeight => FontWeight.w600;
+  FontWeight get welcomeSignInSignUpButtonTextFontWeight => FontWeight.w600;
+
   FontWeight get loginTitleFontWeight => FontWeight.w600;
-  FontWeight get loginSignInSignUpButtonFontWeight => FontWeight.w600;
-  FontWeight get loginSignInSignUpAlternateTextFontWeight => FontWeight.w600;
-  FontWeight get loginForgotPasswordButtonFontWeight => FontWeight.w400;
+  FontWeight get loginTextInputFontWeight => FontWeight.w300;
   FontWeight get loginErrorMessageFontWeight => FontWeight.w300;
+  FontWeight get loginForgotPasswordButtonTextFontWeight => FontWeight.w400;
 
   FontWeight get forgotPasswordTitleFontWeight => FontWeight.w600;
 }
@@ -58,17 +61,21 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? 0.1 : 0.1;
         break;
 
-      case "loginContainerDimension":
+      case "welcomeContainerDimension":
         return isHeight ? 1.0 : null;
         break;
-      case "loginProgressContainerDimension":
+      case "welcomeProgressContainerDimension":
         return isHeight ? 0.0 : 0.0;
         break;
-      case "loginSignInSignUpButtonDimension":
+      case "welcomeSignInSignUpButtonDimension":
         return isHeight ? 0.08 : 0.65;
         break;
-      case "loginErrorMessageDimension":
+      case "welcomeErrorMessageDimension":
         return isHeight ? 0.1 : 0.1;
+        break;
+
+      case "loginContainerDimension":
+        return isHeight ? 1.0 : null;
         break;
 
       case "forgotPasswordContainerDimension":
@@ -85,16 +92,21 @@ extension CustomPositions on MaterialTapTargetSize {
   double position({String selection, bool isTop}) {
     switch (selection) {
       //case 'name': return isTop? 'top' : 'left'; break;
-      case "loginTitlePosition":
+      case "welcomeTitlePosition":
         return isTop ? 0.0875 : null;
-      case "loginSignInSignUpAlternateTextIsSignInPosition":
-        return isTop ? 0.495 : 0.8;
         break;
-      case "loginSignInSignUpAlternateTextIsSignInFalsePosition":
-        return isTop ? 0.525 : 0.8;
+      case "welcomeSignInPosition":
+        return isTop ? 0.5 : null;
         break;
-      case "loginProgressPosition":
+      case "welcomeSignUpPosition":
+        return isTop ? 0.6 : null;
+        break;
+      case "welcomeProgressPosition":
         return isTop ? 0.8 : null;
+        break;
+
+      case "loginTitlePosition":
+        return isTop ? 0.0876 : null;
         break;
 
       case "forgotPasswordTitlePosition":

@@ -40,21 +40,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget showSignInSignUpButton(bool isSignIn, Shader linearGradient) {
     return new Container(
       height: themes.getDimension(
-          context, true, "loginSignInSignUpButtonDimension"),
+          context, true, "welcomeSignInSignUpButtonDimension"),
       width: themes.getDimension(
-          context, false, "loginSignInSignUpButtonDimension"),
+          context, false, "welcomeSignInSignUpButtonDimension"),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(90.0),
-        color: Theme.of(context).colorScheme.loginSignInSignUpButtonColor,
+        color: Theme.of(context).colorScheme.welcomeSignInSignUpButtonColor,
       ),
       child: Center(
         child: Text(
           isSignIn ? "LOGIN" : "SIGN UP",
           style: TextStyle(
             foreground: Paint()..shader = linearGradient,
-            fontSize: Theme.of(context).textTheme.loginSignInSignUpButtonText,
-            fontWeight:
-                Theme.of(context).typography.loginSignInSignUpButtonFontWeight,
+            fontSize: Theme.of(context).textTheme.welcomeSignInSignUpButtonText,
+            fontWeight: Theme.of(context)
+                .typography
+                .welcomeSignInSignUpButtonFontWeight,
           ),
         ),
       ),
@@ -62,12 +63,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   }
 
   //User interface: Welcome screen
-  //I need to remove all of the stuff that is no longer needed and make it to where you can go to the other page
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       body: Container(
-        height: themes.getDimension(context, true, "loginContainerDimension"),
+        height: themes.getDimension(context, true, "welcomeContainerDimension"),
         decoration: BoxDecoration(
             gradient: themesGradients.bodyLinearGradient(
                 context,
@@ -76,88 +76,74 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     .colorScheme
                     .backgroundGradientBottomRightColor,
                 false)),
-          child: Stack(
-            children: <Widget>[
-              Positioned(
-                top: themes.getDimension(context, true, "loginTitlePosition"),
-                child: interfaceStandards.parentCenter(context, 
-                  Text(
-                    "WELCOME TO THIRTY",
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.loginTitleColor,
-                      fontSize: Theme.of(context).textTheme.loginTitleFontSize,
-                      fontWeight: Theme.of(context).typography.loginTitleFontWeight
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                top: themes.getPosition(context, true, "loginSignInButtonPosition"),
-                child: interfaceStandards.parentCenter(context, 
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => LoginScreen())
-                      );
-                    },
-                    child: showSignInSignUpButton(true, themesGradients.textLinearGradient(
-                      context,
-                      Theme.of(context)
-                        .colorScheme
-                        .backgroundGradientTopLeftColor,
-                      Theme.of(context)
-                        .colorScheme
-                        .backgroundGradientBottomRightColor)),
-                  ),
-                )
-              ),
-              Positioned(
-                top: themes.getPosition(context, true, "loginSignUpButtonPosition"),
-              ),
-                            child: showSignInSignUpButton(
-                                _isSignIn,
-                                themesGradients.textLinearGradient(
-                                    context,
-                                    Theme.of(context)
-                                        .colorScheme
-                                        .backgroundGradientTopLeftColor,
-                                    Theme.of(context)
-                                        .colorScheme
-                                        .backgroundGradientBottomRightColor)),
-                          ),
-                        )),
-                    Padding(
-                      padding: EdgeInsets.only(top: 36.0),
-                      child: interfaceStandards.parentCenter(
-                          context,
-                          GestureDetector(
-                            onTap: () {
-                              validateAndSubmit(_isSignIn);
-                            },
-                            child: showSignInSignUpButton(
-                                false,
-                                themesGradients.textLinearGradient(
-                                    context,
-                                    Theme.of(context)
-                                        .colorScheme
-                                        .backgroundGradientTopLeftColor,
-                                    Theme.of(context)
-                                        .colorScheme
-                                        .backgroundGradientBottomRightColor)),
-                          )),
-                    ),
-                  ],
+        child: Stack(
+          children: <Widget>[
+            Positioned(
+              top: themes.getDimension(context, true, "welcomeTitlePosition"),
+              child: interfaceStandards.parentCenter(
+                context,
+                Text(
+                  "WELCOME TO THIRTY",
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.welcomeTitleColor,
+                      fontSize:
+                          Theme.of(context).textTheme.welcomeTitleFontSize,
+                      fontWeight:
+                          Theme.of(context).typography.welcomeTitleFontWeight),
                 ),
               ),
             ),
             Positioned(
-              top: themes.getPosition(context, true, "loginProgressPosition"),
-              child: _isLoading
-                  ? interfaceStandards.parentCenter(
-                      context, interfaceStandards.showProgress(context))
-                  : Container(),
-            ),
+                top: themes.getPosition(
+                    context, true, "welcomeSignInButtonPosition"),
+                child: interfaceStandards.parentCenter(
+                  context,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
+                    },
+                    child: showSignInSignUpButton(
+                        true,
+                        themesGradients.textLinearGradient(
+                            context,
+                            Theme.of(context)
+                                .colorScheme
+                                .backgroundGradientTopLeftColor,
+                            Theme.of(context)
+                                .colorScheme
+                                .backgroundGradientBottomRightColor)),
+                  ),
+                )),
+            Positioned(
+                top: themes.getPosition(
+                    context, true, "welcomeSignUpButtonPosition"),
+                child: interfaceStandards.parentCenter(
+                  context,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
+                    },
+                    child: showSignInSignUpButton(
+                        false,
+                        themesGradients.textLinearGradient(
+                            context,
+                            Theme.of(context)
+                                .colorScheme
+                                .backgroundGradientTopLeftColor,
+                            Theme.of(context)
+                                .colorScheme
+                                .backgroundGradientBottomRightColor)),
+                  ),
+                )),
           ],
+        ),
+      ),
     );
   }
 }
