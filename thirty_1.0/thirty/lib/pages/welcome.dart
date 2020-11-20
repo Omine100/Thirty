@@ -52,10 +52,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           isSignIn ? "LOGIN" : "SIGN UP",
           style: TextStyle(
             foreground: Paint()..shader = linearGradient,
-            fontSize: Theme.of(context).textTheme.welcomeSignInSignUpButtonText,
+            fontSize: Theme.of(context)
+                .textTheme
+                .welcomeSignInSignUpButtonTextFontSize,
             fontWeight: Theme.of(context)
                 .typography
-                .welcomeSignInSignUpButtonFontWeight,
+                .welcomeSignInSignUpButtonTextFontWeight,
           ),
         ),
       ),
@@ -79,7 +81,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         child: Stack(
           children: <Widget>[
             Positioned(
-              top: themes.getDimension(context, true, "welcomeTitlePosition"),
+              top: themes.getPosition(context, true, "welcomeTitlePosition"),
               child: interfaceStandards.parentCenter(
                 context,
                 Text(

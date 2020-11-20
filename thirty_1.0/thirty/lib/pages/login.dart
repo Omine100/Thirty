@@ -137,10 +137,12 @@ class _LoginScreenState extends State<LoginScreen> {
     return new Text(
       "Forgot Password?",
       style: TextStyle(
-        color: Theme.of(context).colorScheme.loginForgotPasswordButtonColor,
-        fontSize: Theme.of(context).textTheme.loginForgotPasswordButtonFontSize,
-        fontWeight:
-            Theme.of(context).typography.loginForgotPasswordButtonFontWeight,
+        color: Theme.of(context).colorScheme.loginForgotPasswordButtonTextColor,
+        fontSize:
+            Theme.of(context).textTheme.loginForgotPasswordButtonTextFontSize,
+        fontWeight: Theme.of(context)
+            .typography
+            .loginForgotPasswordButtonTextFontWeight,
       ),
     );
   }

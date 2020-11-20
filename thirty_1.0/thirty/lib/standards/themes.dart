@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 extension CustomColorScheme on ColorScheme {
   //Color get 'name' => const Color(0x'hexValue');
   Color get backgroundGradientTopLeftColor => const Color(0xFF0280EE);
-  Color get backgroundGradientBottomRightColor => const Color(0xFFFE9C07);
+  Color get backgroundGradientBottomRightColor => const Color(0xFF000D0);
 
   Color get interfaceStandardsBackButtonColor => const Color(0xFFFFFFFF);
   Color get interfaceStandardsHeaderTextColor => const Color(0xFFFFFFFF);
@@ -95,11 +95,11 @@ extension CustomPositions on MaterialTapTargetSize {
       case "welcomeTitlePosition":
         return isTop ? 0.0875 : null;
         break;
-      case "welcomeSignInPosition":
-        return isTop ? 0.5 : null;
+      case "welcomeSignInButtonPosition":
+        return isTop ? 0.7 : null;
         break;
-      case "welcomeSignUpPosition":
-        return isTop ? 0.6 : null;
+      case "welcomeSignUpButtonPosition":
+        return isTop ? 0.825 : null;
         break;
       case "welcomeProgressPosition":
         return isTop ? 0.8 : null;
