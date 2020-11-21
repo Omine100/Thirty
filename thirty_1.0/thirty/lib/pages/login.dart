@@ -155,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Theme.of(context).colorScheme.loginErrorMessageColor,
       body: Container(
           height: themes.getDimension(context, true, "loginContainerDimension"),
-          child: widget.isSignIn
+          child: widget.isSignIn // Remove this and make the name thing optional
               ? Stack(
                   children: [
                     Positioned(
@@ -163,12 +163,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text("Testing"),
                     ),
                     Positioned(
-                      top: 100,
-                      child: showInput(context, "Email"),
-                    ),
+                        top: 100,
+                        left: 50,
+                        right: 50,
+                        child: interfaceStandards.parentCenter(
+                            context, showInput(context, "Email"))),
                     Positioned(
-                      top: 0.8,
-                      child: showInput(context, "Password"),
+                      top: 250,
+                      left: 50,
+                      right: 50,
+                      child: interfaceStandards.parentCenter(
+                          context, showInput(context, "Password")),
                     ),
                   ],
                 )
