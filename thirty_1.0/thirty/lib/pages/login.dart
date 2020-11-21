@@ -180,6 +180,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       .backgroundGradientBottomRightColor,
                   false)),
           child: Stack(
+            //Need to throw a singleChildScrollView in this
             children: [
               Positioned(
                   top: 50,
