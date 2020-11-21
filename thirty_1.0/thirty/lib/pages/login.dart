@@ -148,6 +148,22 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  //User interface: Show progression button
+  Widget showProgressionButton() {
+    return new Container(
+      height: 50.0,
+      width: 50.0,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(360.0),
+        color: Theme.of(context).colorScheme.loginProgressionButtonColor,
+      ),
+      child: Icon(
+        Icons.arrow_forward_ios,
+        color: Theme.of(context).colorScheme.loginProgressionButtonIconColor,
+      ),
+    );
+  }
+
   //User interface: Login screen
   @override
   Widget build(BuildContext context) {
@@ -187,9 +203,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: interfaceStandards.parentCenter(
                           context, showInput(context, "Name")),
                     )
-                  : Container(
-                      height: 0.0,
-                    ),
+                  : Container(),
               Positioned(
                   top: 200,
                   left: 50,
@@ -202,6 +216,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 right: 50,
                 child: interfaceStandards.parentCenter(
                     context, showInput(context, "Password")),
+              ),
+              Positioned(
+                top: 500,
+                child: interfaceStandards.parentCenter(
+                    context,
+                    GestureDetector(
+                      onTap: () {
+                        validateAndSubmit(widget.isSignIn);
+                      },
+                      child: showProgressionButton(),
+                    )),
               ),
               Positioned(
                 bottom: 50,
