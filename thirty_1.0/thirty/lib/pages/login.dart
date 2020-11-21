@@ -43,6 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _errorMessage = "";
       _isLoading = true;
+      interfaceStandards.showProgress(context);
     });
     if (form.validate()) {
       form.save();
@@ -195,6 +196,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               .loginTitleFontWeight),
                     ),
                   )),
+              Form(
+                key: _formKey,
+              ),
               !widget.isSignIn
                   ? Positioned(
                       top: 100,
