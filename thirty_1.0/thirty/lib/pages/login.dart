@@ -203,6 +203,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: interfaceStandards.parentCenter(
                     context, showInput(context, "Password")),
               ),
+              Positioned(
+                bottom: 50,
+                child: interfaceStandards.parentCenter(context,
+                    widget.isSignIn ? showForgotPasswordButton() : Container()),
+              ),
             ],
           )),
     );

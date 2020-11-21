@@ -17,7 +17,7 @@ extension CustomColorScheme on ColorScheme {
   Color get loginTitleColor => const Color(0xFFFFFFFF);
   Color get loginTextInputColor => const Color(0xFFEEEEEE);
   Color get loginErrorMessageColor => const Color(0xFFF44336);
-  Color get loginForgotPasswordButtonTextColor => const Color(0xFFFFFFFF);
+  Color get loginForgotPasswordButtonTextColor => const Color(0xFFAD8AF9);
 
   Color get forgotPasswordTitleColor => const Color(0xFFFFFFFF);
   Color get forgotPasswordTextInputColor => const Color(0xFFEEEEEE);
