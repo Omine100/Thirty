@@ -31,7 +31,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   void initState() {
     super.initState();
-    _isSignIn = true;
     _isLoading = false;
     _isVisible = false;
   }
@@ -45,13 +44,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           context, false, "welcomeSignInSignUpButtonDimension"),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(90.0),
-        color: Theme.of(context).colorScheme.welcomeSignInSignUpButtonColor,
+        color: isSignIn
+            ? Theme.of(context).colorScheme.welcomeSignInButtonColor
+            : Theme.of(context).colorScheme.welcomeSignUpButtonColor,
       ),
       child: Center(
         child: Text(
           isSignIn ? "LOGIN" : "SIGN UP",
           style: TextStyle(
-            foreground: Paint()..shader = linearGradient,
+            foreground: isSignIn
+                ? (Paint()
+                  ..color = Theme.of(context)
+                      .colorScheme
+                      .welcomeSignInButtonTextColor)
+                : (Paint()..shader = linearGradient),
             fontSize: Theme.of(context)
                 .textTheme
                 .welcomeSignInSignUpButtonTextFontSize,
@@ -102,10 +108,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   context,
                   GestureDetector(
                     onTap: () {
+                      _isSignIn = true;
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
+                              builder: (context) => LoginScreen(
+                                    signInCallback: widget.signInCallback,
+                                    isSignIn: _isSignIn,
+                                  )));
                     },
                     child: showSignInSignUpButton(
                         true,
@@ -126,10 +136,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   context,
                   GestureDetector(
                     onTap: () {
+                      _isSignIn = false;
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
+                              builder: (context) => LoginScreen(
+                                    signInCallback: widget.signInCallback,
+                                    isSignIn: _isSignIn,
+                                  )));
                     },
                     child: showSignInSignUpButton(
                         false,

@@ -7,10 +7,11 @@ import 'package:thirty/standards/themesGradients.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({this.signInCallback});
+  LoginScreen({this.signInCallback, this.isSignIn});
 
   //Variable reference
   final VoidCallback signInCallback;
+  final bool isSignIn;
 
   @override
   State<StatefulWidget> createState() => _LoginScreenState();
@@ -26,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
   //Variable initialization
   final _formKey = GlobalKey<FormState>();
   String _name, _email, _password, _errorMessage;
-  bool _isLoading, _isSignIn, _isVisible = false;
+  bool _isLoading, _isVisible = false;
 
   //Mechanics: Reset the form
   void resetForm() {
@@ -150,6 +151,28 @@ class _LoginScreenState extends State<LoginScreen> {
   //User interface: Login screen
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.loginErrorMessageColor,
+      body: Container(
+          height: themes.getDimension(context, true, "loginContainerDimension"),
+          child: widget.isSignIn
+              ? Stack(
+                  children: [
+                    Positioned(
+                      top: 500,
+                      child: Text("Testing"),
+                    ),
+                    Positioned(
+                      top: 100,
+                      child: showInput(context, "Email"),
+                    ),
+                    Positioned(
+                      top: 0.8,
+                      child: showInput(context, "Password"),
+                    ),
+                  ],
+                )
+              : Stack()),
+    );
   }
 }
