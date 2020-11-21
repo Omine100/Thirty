@@ -155,29 +155,38 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Theme.of(context).colorScheme.loginErrorMessageColor,
       body: Container(
           height: themes.getDimension(context, true, "loginContainerDimension"),
-          child: widget.isSignIn // Remove this and make the name thing optional
-              ? Stack(
-                  children: [
-                    Positioned(
-                      top: 500,
-                      child: Text("Testing"),
-                    ),
-                    Positioned(
-                        top: 100,
-                        left: 50,
-                        right: 50,
-                        child: interfaceStandards.parentCenter(
-                            context, showInput(context, "Email"))),
-                    Positioned(
-                      top: 250,
+          child: Stack(
+            children: [
+              Positioned(
+                top: 500,
+                child: Text("Testing"),
+              ),
+              !widget.isSignIn
+                  ? Positioned(
+                      top: 50,
                       left: 50,
                       right: 50,
                       child: interfaceStandards.parentCenter(
-                          context, showInput(context, "Password")),
+                          context, showInput(context, "Name")),
+                    )
+                  : Container(
+                      height: 0.0,
                     ),
-                  ],
-                )
-              : Stack()),
+              Positioned(
+                  top: 100,
+                  left: 50,
+                  right: 50,
+                  child: interfaceStandards.parentCenter(
+                      context, showInput(context, "Email"))),
+              Positioned(
+                top: 250,
+                left: 50,
+                right: 50,
+                child: interfaceStandards.parentCenter(
+                    context, showInput(context, "Password")),
+              ),
+            ],
+          )),
     );
   }
 }
