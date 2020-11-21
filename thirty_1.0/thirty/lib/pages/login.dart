@@ -152,18 +152,36 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.loginErrorMessageColor,
       body: Container(
           height: themes.getDimension(context, true, "loginContainerDimension"),
+          decoration: BoxDecoration(
+              gradient: themesGradients.bodyLinearGradient(
+                  context,
+                  Theme.of(context).colorScheme.backgroundGradientTopLeftColor,
+                  Theme.of(context)
+                      .colorScheme
+                      .backgroundGradientBottomRightColor,
+                  false)),
           child: Stack(
             children: [
               Positioned(
-                top: 500,
-                child: Text("Testing"),
-              ),
+                  top: 50,
+                  child: interfaceStandards.parentCenter(
+                    context,
+                    Text(
+                      widget.isSignIn ? "LOGIN" : "SIGN UP",
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.loginTitleColor,
+                          fontSize:
+                              Theme.of(context).textTheme.loginTitleFontSize,
+                          fontWeight: Theme.of(context)
+                              .typography
+                              .loginTitleFontWeight),
+                    ),
+                  )),
               !widget.isSignIn
                   ? Positioned(
-                      top: 50,
+                      top: 100,
                       left: 50,
                       right: 50,
                       child: interfaceStandards.parentCenter(
@@ -173,13 +191,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 0.0,
                     ),
               Positioned(
-                  top: 100,
+                  top: 200,
                   left: 50,
                   right: 50,
                   child: interfaceStandards.parentCenter(
                       context, showInput(context, "Email"))),
               Positioned(
-                top: 250,
+                top: 300,
                 left: 50,
                 right: 50,
                 child: interfaceStandards.parentCenter(
