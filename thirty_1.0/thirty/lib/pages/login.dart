@@ -179,6 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       .colorScheme
                       .backgroundGradientBottomRightColor,
                   false)),
+          child: SingleChildScrollView( 
           child: Stack(
             //Need to throw a singleChildScrollView in this
             children: [
@@ -240,6 +241,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ],
           )),
+      ),
     );
   }
 }
