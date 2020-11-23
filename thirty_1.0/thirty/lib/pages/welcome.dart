@@ -8,11 +8,6 @@ import 'package:thirty/standards/interfaceStandards.dart';
 import 'package:thirty/pages/login.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  WelcomeScreen({this.signInCallback});
-
-  //Variable reference
-  final VoidCallback signInCallback;
-
   @override
   State<StatefulWidget> createState() => _WelcomeScreenState();
 }
@@ -113,7 +108,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => LoginScreen(
-                                    signInCallback: widget.signInCallback,
                                     isSignIn: _isSignIn,
                                   )));
                     },
@@ -141,7 +135,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => LoginScreen(
-                                    signInCallback: widget.signInCallback,
                                     isSignIn: _isSignIn,
                                   )));
                     },

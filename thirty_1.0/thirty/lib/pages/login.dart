@@ -7,10 +7,9 @@ import 'package:thirty/standards/themesGradients.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({this.signInCallback, this.isSignIn});
+  LoginScreen({this.isSignIn});
 
   //Variable reference
-  final VoidCallback signInCallback;
   final bool isSignIn;
 
   @override
@@ -52,8 +51,9 @@ class _LoginScreenState extends State<LoginScreen> {
           await cloudFirestore.signIn(_email, _password);
           setState(() {
             _isLoading = false;
-          }); //Need to pop the whole stack but this works
-          Navigator.popAndPushNamed(context, "/RootScreen");
+          });
+          Navigator.pop(context);
+          Navigator.pushReplacementNamed(context, "/RootScreen");
         } else {
           await cloudFirestore.signUp(_email, _password);
           await cloudFirestore.createNameData(_name);

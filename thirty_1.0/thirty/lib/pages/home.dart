@@ -7,11 +7,9 @@ import 'package:thirty/standards/themesGradients.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key key, this.signInCallback, this.signOutCallback, this.userId});
+  HomeScreen({Key key, this.userId});
 
   //Variable reference
-  final VoidCallback signInCallback;
-  final VoidCallback signOutCallback;
   final String userId;
 
   @override
