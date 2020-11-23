@@ -52,8 +52,8 @@ class _LoginScreenState extends State<LoginScreen> {
           await cloudFirestore.signIn(_email, _password);
           setState(() {
             _isLoading = false;
-          });
-          widget.signInCallback();
+          }); //Need to pop the whole stack but this works
+          Navigator.popAndPushNamed(context, "/RootScreen");
         } else {
           await cloudFirestore.signUp(_email, _password);
           await cloudFirestore.createNameData(_name);
