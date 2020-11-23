@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/pages/welcome.dart';
+import 'package:thirty/pages/home.dart';
 
 //Status declaration
 enum AuthStatus {
@@ -45,8 +46,10 @@ class _RootScreenState extends State<RootScreen> {
   //Mechanics: Sets status to logged in with current user
   void signInCallback() {
     cloudFirestore.getCurrentUser().then((user) {
-      _userId = user.uid;
-      _authStatus = AuthStatus.SIGNED_IN;
+      setState(() {
+        _userId = user.uid;
+        _authStatus = AuthStatus.SIGNED_IN;
+      });
     });
   }
 
@@ -76,10 +79,16 @@ class _RootScreenState extends State<RootScreen> {
         return buildWaitingScrreen();
         break;
       case AuthStatus.NOT_SIGNED_IN:
-        return WelcomeScreen();
+        return new WelcomeScreen(
+          signInCallback: signInCallback,
+        );
       case AuthStatus.SIGNED_IN:
         if (_userId != null) {
-          // return HomeScreen();
+          return new HomeScreen(
+            signInCallback: signInCallback,
+            signOutCallback: signOutCallback,
+            userId: _userId,
+          );
         } else {
           return buildWaitingScrreen();
         }

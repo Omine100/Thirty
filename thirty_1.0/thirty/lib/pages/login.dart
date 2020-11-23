@@ -179,9 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       .colorScheme
                       .backgroundGradientBottomRightColor,
                   false)),
-          child: SingleChildScrollView( 
           child: Stack(
-            //Need to throw a singleChildScrollView in this
             children: [
               Positioned(
                   top: 50,
@@ -198,30 +196,36 @@ class _LoginScreenState extends State<LoginScreen> {
                               .loginTitleFontWeight),
                     ),
                   )),
-              Form(
-                key: _formKey,
-              ),
-              !widget.isSignIn
-                  ? Positioned(
-                      top: 100,
-                      left: 50,
-                      right: 50,
-                      child: interfaceStandards.parentCenter(
-                          context, showInput(context, "Name")),
-                    )
-                  : Container(),
-              Positioned(
-                  top: 200,
-                  left: 50,
-                  right: 50,
-                  child: interfaceStandards.parentCenter(
-                      context, showInput(context, "Email"))),
-              Positioned(
-                top: 300,
-                left: 50,
-                right: 50,
-                child: interfaceStandards.parentCenter(
-                    context, showInput(context, "Password")),
+              SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      !widget.isSignIn
+                          ? Padding(
+                              padding: EdgeInsets.only(
+                                  left: 50, right: 50, top: 150),
+                              child: interfaceStandards.parentCenter(
+                                  context, showInput(context, "Name")),
+                            )
+                          : Container(),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: 50,
+                            right: 50,
+                            top: widget.isSignIn ? 150 : 50),
+                        child: interfaceStandards.parentCenter(
+                            context, showInput(context, "Email")),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 50, right: 50, top: 50),
+                        child: interfaceStandards.parentCenter(
+                            context, showInput(context, "Password")),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               Positioned(
                 top: 500,
@@ -241,7 +245,6 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ],
           )),
-      ),
     );
   }
 }
