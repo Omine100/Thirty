@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thirty/pages/forgotPassword.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/services/root.dart';
@@ -240,8 +241,19 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Positioned(
                 bottom: 50,
-                child: interfaceStandards.parentCenter(context,
-                    widget.isSignIn ? showForgotPasswordButton() : Container()),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ForgotPasswordScreen()));
+                  },
+                  child: interfaceStandards.parentCenter(
+                      context,
+                      widget.isSignIn
+                          ? showForgotPasswordButton()
+                          : Container()),
+                ),
               ),
             ],
           )),
