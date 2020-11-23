@@ -79,14 +79,10 @@ class _RootScreenState extends State<RootScreen> {
         return buildWaitingScrreen();
         break;
       case AuthStatus.NOT_SIGNED_IN:
-        return new WelcomeScreen(
-          signInCallback: signInCallback,
-        );
+        return new WelcomeScreen();
       case AuthStatus.SIGNED_IN:
         if (_userId != null) {
           return new HomeScreen(
-            signInCallback: signInCallback,
-            signOutCallback: signOutCallback,
             userId: _userId,
           );
         } else {

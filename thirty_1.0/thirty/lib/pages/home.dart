@@ -36,8 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
             Text("Testing"),
             GestureDetector(
               onTap: () {
-                widget.signOutCallback;
                 cloudFirestore.signOut();
+                Navigator.pushReplacementNamed(context, "/RootScreen");
               },
               child: Text("Sign Out"),
             ),
