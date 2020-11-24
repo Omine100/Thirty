@@ -62,7 +62,7 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? null : 1.0;
         break;
       case "interfaceStandardsBackButtonIconDimension":
-        return isHeight ? 0.1 : 0.1;
+        return isHeight ? 0.055 : 0.055;
         break;
 
       case "welcomeContainerDimension":
@@ -114,10 +114,13 @@ extension CustomPositions on MaterialTapTargetSize {
         break;
 
       case "forgotPasswordTitlePosition":
-        return isTop ? 0.35 : 0.15;
+        return isTop ? 0.325 : 0.15;
         break;
       case "forgotPasswordBackButtonPosition":
         return isTop ? 0.06 : 0.06;
+        break;
+      case "forgotPasswordInputPosition":
+        return isTop ? 0.475 : 0.125;
         break;
       case "forgotPasswordSendButtonPosition":
         return isTop ? 0.675 : null;

@@ -20,7 +20,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   //Variable initialization
   final _formKey = GlobalKey<FormState>();
   String _email;
-  
+
   //User interface: Show email input
   Widget showEmailInput() {
     return new TextFormField(
@@ -52,52 +52,73 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           ),
         ),
       ),
-      validator: (value) => value.isEmpty ?"Email can\'t be empty" : null,
+      validator: (value) => value.isEmpty ? "Email can\'t be empty" : null,
       onSaved: (value) => _email = value.trim(),
       obscureText: false,
       maxLines: 1,
     );
   }
-  
+
   //User interface: Forgot password screen
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       body: Container(
-        height: themes.getDimension(context, true, "forgotPasswordContainerDimension"),
+        height: themes.getDimension(
+            context, true, "forgotPasswordContainerDimension"),
         decoration: BoxDecoration(
-          gradient: themesGradients.bodyLinearGradient(context, Theme.of(context).colorScheme.backgroundGradientTopLeftColor, Theme.of(context).colorScheme.backgroundGradientBottomRightColor, false),
+          gradient: themesGradients.bodyLinearGradient(
+              context,
+              Theme.of(context).colorScheme.backgroundGradientTopLeftColor,
+              Theme.of(context).colorScheme.backgroundGradientBottomRightColor,
+              false),
         ),
         child: Stack(
           children: <Widget>[
             Positioned(
-              top: themes.getPosition(context, true, "forgotPasswordBackButtonPosition"),
-              left: themes.getPosition(context, false, "forgotPasswordBackButtonPosition"),
+              top: themes.getPosition(
+                  context, true, "forgotPasswordBackButtonPosition"),
+              left: themes.getPosition(
+                  context, false, "forgotPasswordBackButtonPosition"),
               child: interfaceStandards.backButton(context),
             ),
             Positioned(
-              top: themes.getPosition(context, true, "forgotPasswordTitlePosition"),
-              left: themes.getPosition(context, false, "forgotPasswordTitlePosition"),
+              top: themes.getPosition(
+                  context, true, "forgotPasswordTitlePosition"),
+              left: themes.getPosition(
+                  context, false, "forgotPasswordTitlePosition"),
               child: Text(
                 "Forgot Password",
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.forgotPasswordTitleColor,
-                  fontSize: Theme.of(context).textTheme.forgotPaswordTitleFontSize,
-                  fontWeight: Theme.of(context).typography.forgotPasswordTitleFontWeight,
+                  fontSize:
+                      Theme.of(context).textTheme.forgotPaswordTitleFontSize,
+                  fontWeight: Theme.of(context)
+                      .typography
+                      .forgotPasswordTitleFontWeight,
                 ),
               ),
             ),
-            Form(
-              key: _formKey,
-              child: Padding(
-                padding: EdgeInsets.only(left: 50.0, right: 50.0, top: 400.0),
-                child: showEmailInput(),
-              ),
+            Positioned(
+              top: themes.getPosition(
+                  context, true, "forgotPasswordInputPosition"),
+              left: themes.getPosition(
+                  context, false, "forgotPasswordInputPosition"),
+              right: themes.getPosition(
+                  context, false, "forgotPasswordInputPosition"),
+              child: Form(
+                  key: _formKey,
+                  child: interfaceStandards.parentCenter(
+                    context,
+                    showEmailInput(),
+                  )),
             ),
             Positioned(
-              top: themes.getPosition(context, true, "forgotPasswordSendButtonPosition"),
+              top: themes.getPosition(
+                  context, true, "forgotPasswordSendButtonPosition"),
               child: Container(
-                width: themes.getDimension(context, false, "forgotPasswordSendButtonDimension"),
+                width: themes.getDimension(
+                    context, false, "forgotPasswordSendButtonDimension"),
                 child: Center(
                   child: GestureDetector(
                     onTap: () {
@@ -107,8 +128,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     child: Text(
                       "Reset Password",
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.forgotPasswordResetColor,
-                        fontSize: Theme.of(context).textTheme.forgotPasswordResetFontSize,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .forgotPasswordResetColor,
+                        fontSize: Theme.of(context)
+                            .textTheme
+                            .forgotPasswordResetFontSize,
                       ),
                     ),
                   ),
