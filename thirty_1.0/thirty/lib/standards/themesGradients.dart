@@ -19,8 +19,8 @@ class ThemesGradients {
   LinearGradient bodyLinearGradient(BuildContext context, Color topLeftColor,
       Color bottomRightColor, bool isSmall) {
     final LinearGradient linearGradient = LinearGradient(
-      begin: isSmall ? Alignment.centerLeft : Alignment.topLeft,
-      end: Alignment.bottomRight,
+      begin: isSmall ? Alignment.centerRight : Alignment.topRight,
+      end: Alignment.bottomLeft,
       tileMode: TileMode.mirror,
       colors: <Color>[topLeftColor, bottomRightColor],
     );

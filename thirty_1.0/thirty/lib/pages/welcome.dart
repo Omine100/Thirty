@@ -74,10 +74,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         decoration: BoxDecoration(
             gradient: themesGradients.bodyLinearGradient(
                 context,
-                Theme.of(context).colorScheme.backgroundGradientTopLeftColor,
-                Theme.of(context)
-                    .colorScheme
-                    .backgroundGradientBottomRightColor,
+                Theme.of(context).colorScheme.backgroundGradientTopRightColor,
+                Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
                 false)),
         child: Stack(
           children: <Widget>[
@@ -117,10 +115,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             context,
                             Theme.of(context)
                                 .colorScheme
-                                .backgroundGradientTopLeftColor,
+                                .backgroundGradientTopRightColor,
                             Theme.of(context)
                                 .colorScheme
-                                .backgroundGradientBottomRightColor)),
+                                .backgroundGradientBottomLeftColor)),
                   ),
                 )),
             Positioned(
@@ -144,10 +142,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             context,
                             Theme.of(context)
                                 .colorScheme
-                                .backgroundGradientTopLeftColor,
+                                .backgroundGradientTopRightColor,
                             Theme.of(context)
                                 .colorScheme
-                                .backgroundGradientBottomRightColor)),
+                                .backgroundGradientBottomLeftColor)),
                   ),
                 )),
           ],

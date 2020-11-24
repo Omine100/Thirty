@@ -175,10 +175,10 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: BoxDecoration(
               gradient: themesGradients.bodyLinearGradient(
                   context,
-                  Theme.of(context).colorScheme.backgroundGradientTopLeftColor,
+                  Theme.of(context).colorScheme.backgroundGradientTopRightColor,
                   Theme.of(context)
                       .colorScheme
-                      .backgroundGradientBottomRightColor,
+                      .backgroundGradientBottomLeftColor,
                   false)),
           child: Stack(
             children: [

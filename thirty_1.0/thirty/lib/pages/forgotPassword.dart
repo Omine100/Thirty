@@ -69,8 +69,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         decoration: BoxDecoration(
           gradient: themesGradients.bodyLinearGradient(
               context,
-              Theme.of(context).colorScheme.backgroundGradientTopLeftColor,
-              Theme.of(context).colorScheme.backgroundGradientBottomRightColor,
+              Theme.of(context).colorScheme.backgroundGradientTopRightColor,
+              Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
               false),
         ),
         child: Stack(
