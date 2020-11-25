@@ -27,7 +27,13 @@ class _LoginScreenState extends State<LoginScreen> {
   //Variable initialization
   final _formKey = GlobalKey<FormState>();
   String _name, _email, _password, _errorMessage;
-  bool _isLoading, _isVisible = false;
+  bool _isLoading, _isVisible = false, _isSignIn;
+
+  //Mechanics: Initial state
+  void initState() {
+    super.initState();
+    _isSignIn = widget.isSignIn;
+  }
 
   //Mechanics: Reset the form
   void resetForm() {
@@ -131,6 +137,22 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Icon(
         _isVisible ? Icons.visibility : Icons.visibility_off,
         color: Theme.of(context).colorScheme.loginTitleColor,
+      ),
+    );
+  }
+
+  //User interface: Show alternative button
+  Widget showAlternativeButton() {
+    return new Text(
+      _isSignIn
+          ? "Don't have an account? SIGN UP!"
+          : "Already have an account? SIGN IN!",
+      style: TextStyle(
+        color: Theme.of(context).colorScheme.loginAlternativeButtonTextColor,
+        fontSize:
+            Theme.of(context).textTheme.loginAlternativeButtonTextFontSize,
+        fontWeight:
+            Theme.of(context).typography.loginAlternativeButtonTextFontWeight,
       ),
     );
   }
@@ -239,6 +261,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: showProgressionButton(),
                     )),
+              ),
+              Positioned(
+                top: themes.getPosition(
+                    context, true, "loginAlternativeButtonPosition"),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _isSignIn = !_isSignIn;
+                    });
+                  },
+                  child: showAlternativeButton(),
+                ),
               ),
               Positioned(
                 top: themes.getPosition(

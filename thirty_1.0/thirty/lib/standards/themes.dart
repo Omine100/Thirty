@@ -18,8 +18,9 @@ extension CustomColorScheme on ColorScheme {
   Color get loginTextInputColor => const Color(0xFFFFFFFF);
   Color get loginProgressionButtonColor => const Color(0xFFFB81D1);
   Color get loginProgressionButtonIconColor => const Color(0xFFFFFFFF);
-  Color get loginErrorMessageColor => const Color(0xFFF44336);
+  Color get loginAlternativeButtonTextColor => const Color(0xFFFFFFFF);
   Color get loginForgotPasswordButtonTextColor => const Color(0xFFFFFFFF);
+  Color get loginErrorMessageColor => const Color(0xFFF44336);
 
   Color get forgotPasswordTitleColor => const Color(0xFFFFFFFF);
   Color get forgotPasswordTextInputColor => const Color(0xFFFFFFFF);
@@ -33,8 +34,9 @@ extension CustomFontSizes on TextTheme {
 
   double get loginTitleFontSize => 30.0;
   double get loginTextInputFontSize => 22.0;
-  double get loginErrorMessageFontSize => 13.0;
+  double get loginAlternativeButtonTextFontSize => 15.0;
   double get loginForgotPasswordButtonTextFontSize => 15.0;
+  double get loginErrorMessageFontSize => 13.0;
 
   double get forgotPaswordTitleFontSize => 30.0;
   double get forgotPasswordTextInputFontSize => 22.0;
@@ -48,8 +50,9 @@ extension CustomFontWeights on Typography {
 
   FontWeight get loginTitleFontWeight => FontWeight.w600;
   FontWeight get loginTextInputFontWeight => FontWeight.w300;
-  FontWeight get loginErrorMessageFontWeight => FontWeight.w300;
+  FontWeight get loginAlternativeButtonTextFontWeight => FontWeight.w400;
   FontWeight get loginForgotPasswordButtonTextFontWeight => FontWeight.w400;
+  FontWeight get loginErrorMessageFontWeight => FontWeight.w300;
 
   FontWeight get forgotPasswordTitleFontWeight => FontWeight.w600;
 }
@@ -117,6 +120,9 @@ extension CustomPositions on MaterialTapTargetSize {
         break;
       case "loginProgressionButtonPosition":
         return isTop ? 0.7 : null;
+        break;
+      case "loginAlternativeButtonPosition":
+        return isTop ? 0.85 : null;
         break;
       case "loginForgotPasswordButtonPosition":
         return isTop ? 0.9 : null;
