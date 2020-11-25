@@ -209,7 +209,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: interfaceStandards.parentCenter(
                     context,
                     Text(
-                      widget.isSignIn ? "LOGIN" : "SIGN UP",
+                      _isSignIn ? "LOGIN" : "SIGN UP",
                       style: TextStyle(
                           color: Theme.of(context).colorScheme.loginTitleColor,
                           fontSize:
@@ -225,7 +225,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   key: _formKey,
                   child: Column(
                     children: [
-                      !widget.isSignIn
+                      !_isSignIn
                           ? Padding(
                               padding: EdgeInsets.only(
                                   left: 50, right: 50, top: 175),
@@ -271,7 +271,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       _isSignIn = !_isSignIn;
                     });
                   },
-                  child: showAlternativeButton(),
+                  child: interfaceStandards.parentCenter(
+                      context, showAlternativeButton()),
                 ),
               ),
               Positioned(
