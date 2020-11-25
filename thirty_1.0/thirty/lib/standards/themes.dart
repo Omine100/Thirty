@@ -10,7 +10,7 @@ extension CustomColorScheme on ColorScheme {
   Color get interfaceStandardsProgressIndicatorColor => const Color(0xFFFFFFFF);
 
   Color get welcomeTitleColor => const Color(0xFFFFFFFF);
-  Color get welcomeSignInButtonColor => const Color(0xFFAD8AF9);
+  Color get welcomeSignInButtonColor => const Color(0xFFFB81D1);
   Color get welcomeSignInButtonTextColor => const Color(0xFFFFFFFF);
   Color get welcomeSignUpButtonColor => const Color(0xFFFFFFFF);
 
@@ -96,6 +96,9 @@ extension CustomPositions on MaterialTapTargetSize {
   double position({String selection, bool isTop}) {
     switch (selection) {
       //case 'name': return isTop? 'top' : 'left'; break;
+      case "welcomeBackgroundImagePosition":
+        return isTop ? 0.15 : null;
+        break;
       case "welcomeTitlePosition":
         return isTop ? 0.0875 : null;
         break;

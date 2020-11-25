@@ -80,10 +80,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         child: Stack(
           children: <Widget>[
             Positioned(
+              top: themes.getPosition(
+                  context, true, "welcomeBackgroundImagePosition"),
               child: interfaceStandards.parentCenter(
                 context,
                 Image(
-                  image: AssetImage("/lib/assets/welcomeBackgroundImage.png"),
+                  image: AssetImage('lib/assets/welcomeBackgroundImage.png'),
                 ),
               ),
             ),
