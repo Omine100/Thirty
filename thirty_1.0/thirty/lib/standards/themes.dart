@@ -22,7 +22,7 @@ extension CustomColorScheme on ColorScheme {
   Color get loginForgotPasswordButtonTextColor => const Color(0xFFFFFFFF);
 
   Color get forgotPasswordTitleColor => const Color(0xFFFFFFFF);
-  Color get forgotPasswordTextInputColor => const Color(0xFFEEEEEE);
+  Color get forgotPasswordTextInputColor => const Color(0xFFFFFFFF);
   Color get forgotPasswordResetColor => const Color(0xFFFFFFFF);
 }
 
@@ -36,7 +36,7 @@ extension CustomFontSizes on TextTheme {
   double get loginErrorMessageFontSize => 13.0;
   double get loginForgotPasswordButtonTextFontSize => 15.0;
 
-  double get forgotPaswordTitleFontSize => 37.0;
+  double get forgotPaswordTitleFontSize => 30.0;
   double get forgotPasswordTextInputFontSize => 22.0;
   double get forgotPasswordResetFontSize => 24.0;
 }
@@ -114,6 +114,12 @@ extension CustomPositions on MaterialTapTargetSize {
 
       case "loginTitlePosition":
         return isTop ? 0.0876 : null;
+        break;
+      case "loginProgressionButtonPosition":
+        return isTop ? 0.7 : null;
+        break;
+      case "loginForgotPasswordButtonPosition":
+        return isTop ? 0.9 : null;
         break;
 
       case "forgotPasswordTitlePosition":

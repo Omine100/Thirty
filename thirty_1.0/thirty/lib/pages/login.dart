@@ -183,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Stack(
             children: [
               Positioned(
-                  top: 50,
+                  top: themes.getPosition(context, true, "loginTitlePosition"),
                   child: interfaceStandards.parentCenter(
                     context,
                     Text(
@@ -206,7 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       !widget.isSignIn
                           ? Padding(
                               padding: EdgeInsets.only(
-                                  left: 50, right: 50, top: 150),
+                                  left: 50, right: 50, top: 175),
                               child: interfaceStandards.parentCenter(
                                   context, showInput(context, "Name")),
                             )
@@ -215,12 +215,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding: EdgeInsets.only(
                             left: 50,
                             right: 50,
-                            top: widget.isSignIn ? 150 : 50),
+                            top: widget.isSignIn ? 175 : 35),
                         child: interfaceStandards.parentCenter(
                             context, showInput(context, "Email")),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 50, right: 50, top: 50),
+                        padding: EdgeInsets.only(left: 50, right: 50, top: 35),
                         child: interfaceStandards.parentCenter(
                             context, showInput(context, "Password")),
                       ),
@@ -229,7 +229,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Positioned(
-                top: 500,
+                top: themes.getPosition(
+                    context, true, "loginProgressionButtonPosition"),
                 child: interfaceStandards.parentCenter(
                     context,
                     GestureDetector(
@@ -240,7 +241,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     )),
               ),
               Positioned(
-                bottom: 50,
+                top: themes.getPosition(
+                    context, true, "loginForgotPasswordButtonPosition"),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(
