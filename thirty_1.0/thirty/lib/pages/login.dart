@@ -127,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   //User interface: Show visible button
-  Widget showVisibleButton() {
+  Widget showVisiblityButton() {
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -235,9 +235,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           : Container(),
                       Padding(
                         padding: EdgeInsets.only(
-                            left: 50,
-                            right: 50,
-                            top: widget.isSignIn ? 175 : 35),
+                            left: 50, right: 50, top: _isSignIn ? 175 : 35),
                         child: interfaceStandards.parentCenter(
                             context, showInput(context, "Email")),
                       ),
@@ -257,7 +255,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     context,
                     GestureDetector(
                       onTap: () {
-                        validateAndSubmit(widget.isSignIn);
+                        validateAndSubmit(_isSignIn);
                       },
                       child: showProgressionButton(),
                     )),
@@ -278,6 +276,8 @@ class _LoginScreenState extends State<LoginScreen> {
               Positioned(
                 top: themes.getPosition(
                     context, true, "loginForgotPasswordButtonPosition"),
+                left: themes.getPosition(
+                    context, false, "loginForgotPasswordButtonPosition"),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -285,11 +285,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         MaterialPageRoute(
                             builder: (context) => ForgotPasswordScreen()));
                   },
-                  child: interfaceStandards.parentCenter(
-                      context,
-                      widget.isSignIn
-                          ? showForgotPasswordButton()
-                          : Container()),
+                  child: interfaceStandards.parentCenter(context,
+                      _isSignIn ? showForgotPasswordButton() : Container()),
                 ),
               ),
             ],

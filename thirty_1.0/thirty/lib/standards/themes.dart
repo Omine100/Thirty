@@ -119,13 +119,13 @@ extension CustomPositions on MaterialTapTargetSize {
         return isTop ? 0.0876 : null;
         break;
       case "loginProgressionButtonPosition":
-        return isTop ? 0.7 : null;
+        return isTop ? 0.75 : null;
         break;
       case "loginAlternativeButtonPosition":
-        return isTop ? 0.85 : null;
+        return isTop ? 0.9 : null;
         break;
       case "loginForgotPasswordButtonPosition":
-        return isTop ? 0.9 : null;
+        return isTop ? 0.48 : -0.23;
         break;
 
       case "forgotPasswordTitlePosition":

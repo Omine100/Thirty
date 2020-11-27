@@ -17,6 +17,7 @@ dependencies:
   cloud_firestore: ^0.12.7
   firebase_auth: ^0.14.0+5
   intl: ^0.16.1
+  lottie: ^0.7.0+1
 
 dev_dependencies:
   flutter_test:
@@ -27,3 +28,6 @@ flutter:
 
   assets:
       - lib/assets/welcomeBackgroundImage.png
+      - lib/assets/introCalendarAnimation.json
+      - lib/assets/introExerciseAnimation.json
+      - lib/assets/introMedalAnimation.json
