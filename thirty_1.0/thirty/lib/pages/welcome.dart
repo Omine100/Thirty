@@ -22,7 +22,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   //Variable initialization
   bool _isLoading, _isSignIn, _isVisible;
 
-  //Initial state
+  //Mechanics: Initial state
   @override
   void initState() {
     super.initState();
