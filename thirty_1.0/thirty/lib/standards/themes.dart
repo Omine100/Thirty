@@ -25,6 +25,11 @@ extension CustomColorScheme on ColorScheme {
   Color get forgotPasswordTitleColor => const Color(0xFFFFFFFF);
   Color get forgotPasswordTextInputColor => const Color(0xFFFFFFFF);
   Color get forgotPasswordResetColor => const Color(0xFFFFFFFF);
+
+  Color get introTitleColor => const Color(0xFFFFFFFF);
+  Color get introDotColor => const Color(0xFFFEA312);
+  Color get introDescriptionColor => const Color(0xFFFFFFFF);
+  Color get introInterfaceButtonColor => const Color(0xFFFFFFFF);
 }
 
 extension CustomFontSizes on TextTheme {
@@ -41,6 +46,9 @@ extension CustomFontSizes on TextTheme {
   double get forgotPaswordTitleFontSize => 30.0;
   double get forgotPasswordTextInputFontSize => 22.0;
   double get forgotPasswordResetFontSize => 24.0;
+
+  double get introTitleFontSize => 30.0;
+  double get introDescriptionFontSize => 20.0;
 }
 
 extension CustomFontWeights on Typography {
@@ -55,6 +63,9 @@ extension CustomFontWeights on Typography {
   FontWeight get loginErrorMessageFontWeight => FontWeight.w300;
 
   FontWeight get forgotPasswordTitleFontWeight => FontWeight.w600;
+
+  FontWeight get introTitleFontWeight => FontWeight.w600;
+  FontWeight get introDescriptionFontWeight => FontWeight.w300;
 }
 
 extension CustomDimensions on MaterialTapTargetSize {
@@ -90,6 +101,16 @@ extension CustomDimensions on MaterialTapTargetSize {
         break;
       case "forgotPasswordSendButtonDimension":
         return isHeight ? null : 1.0;
+        break;
+
+      case "introDotDimension":
+        return isHeight ? 0.03 : null;
+        break;
+      case "introInterfaceButtonDimension":
+        return isHeight ? 0.05 : 0.1;
+        break;
+      case "introInterfaceButtonIconDimension":
+        return isHeight ? 0.055 : null;
         break;
     }
   }
