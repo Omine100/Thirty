@@ -24,17 +24,6 @@ class _IntroScreenState extends State<IntroScreen> {
   List<Slide> slides = new List();
   Function goToTab;
 
-  //Mechanics: Switching to the next slide
-  void onTabChangeCompleted(index) {
-    //Index of current slide is focused
-  }
-
-  //Mechanics: Route to home screen
-  void onDonePress() async {
-    Navigator.pop(context);
-    Navigator.pushReplacementNamed(context, "/RootScreen");
-  }
-
   //Mechanics: Initial state
   @override
   void initState() {
@@ -86,48 +75,29 @@ class _IntroScreenState extends State<IntroScreen> {
     );
   }
 
-  //User interface: Show next button
-  Widget showNextButton() {
+  //Mechanics: Switching to the next slide
+  void onTabChangeCompleted(index) {
+    //Index of current slide is focused
+  }
+
+  //Mechanics: Route to home screen
+  void onDonePress() async {
+    Navigator.pop(context);
+    Navigator.pushReplacementNamed(context, "/RootScreen");
+  }
+
+  //User interface: Show interface button
+  Widget showInterfaceButton(String type) {
     return Container(
       height:
           themes.getDimension(context, true, "introInterfaceButtonDimension"),
       width:
           themes.getDimension(context, false, "introInterfaceButtonDimension"),
       child: Icon(
-        Icons.navigate_next,
+        type == "navigate_next"
+            ? Icons.navigate_next
+            : (type == "done" ? Icons.done : Icons.skip_next),
         color: Colors.grey.shade700,
-        size: themes.getDimension(
-            context, true, "introInterfaceButtonIconDimension"),
-      ),
-    );
-  }
-
-  //User interface: Show done button
-  Widget showDoneButton() {
-    return Container(
-      height:
-          themes.getDimension(context, true, "introInterfaceButtonDimension"),
-      width:
-          themes.getDimension(context, false, "introInterfaceButtonDimension"),
-      child: Icon(
-        Icons.done,
-        color: Theme.of(context).colorScheme.introInterfaceButtonColor,
-        size: themes.getDimension(
-            context, true, "introInterfaceButtonIconDimension"),
-      ),
-    );
-  }
-
-  //User interface: Show skip button
-  Widget showSkipButton() {
-    return Container(
-      height:
-          themes.getDimension(context, true, "introInterfaceButtonDimension"),
-      width:
-          themes.getDimension(context, false, "introInterfaceButtonDimension"),
-      child: Icon(
-        Icons.skip_next,
-        color: Theme.of(context).colorScheme.introInterfaceButtonColor,
         size: themes.getDimension(
             context, true, "introInterfaceButtonIconDimension"),
       ),
@@ -177,9 +147,9 @@ class _IntroScreenState extends State<IntroScreen> {
   Widget build(BuildContext context) {
     return new IntroSlider(
       slides: this.slides,
-      renderSkipBtn: this.showSkipButton(),
-      renderNextBtn: this.showNextButton(),
-      renderDoneBtn: this.showDoneButton(),
+      renderSkipBtn: this.showInterfaceButton("skip_next"),
+      renderNextBtn: this.showInterfaceButton("navigate_next"),
+      renderDoneBtn: this.showInterfaceButton("done"),
       onDonePress: this.onDonePress,
       colorDot: Theme.of(context).colorScheme.introDotColor,
       sizeDot: themes.getDimension(context, true, "introDotDimension"),
