@@ -4,12 +4,16 @@ import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
 import 'package:intro_slider/dot_animation_enum.dart';
 
-import 'package:thirty/services/root.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
 
 class IntroScreen extends StatefulWidget {
+  IntroScreen({this.slides});
+
+  //Variable reference
+  final List<Slide> slides;
+
   @override
   State<StatefulWidget> createState() => _IntroScreenState();
 }
@@ -21,80 +25,7 @@ class _IntroScreenState extends State<IntroScreen> {
   InterfaceStandards interfaceStandards = new InterfaceStandards();
 
   //Varaible initialization
-  List<Slide> slides = new List();
   Function goToTab;
-
-  //Mechanics: Initial state
-  @override
-  void initState() {
-    super.initState();
-    slides.add(
-      new Slide(
-        title: "GOALS",
-        styleTitle: TextStyle(
-            color: Theme.of(context).colorScheme.introTitleColor,
-            fontSize: Theme.of(context).textTheme.introTitleFontSize,
-            fontWeight: Theme.of(context).typography.introTitleFontWeight),
-        description: "Testing testing",
-        colorBegin:
-            Theme.of(context).colorScheme.backgroundGradientTopRightColor,
-        colorEnd:
-            Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
-        directionColorBegin: Alignment.topRight,
-        directionColorEnd: Alignment.bottomLeft,
-        centerWidget: Lottie.asset("introExerciseAnimation.json"),
-        styleDescription: TextStyle(
-          color: Theme.of(context).colorScheme.introDescriptionColor,
-          fontSize: Theme.of(context).textTheme.introDescriptionFontSize,
-          fontWeight: Theme.of(context).typography.introDescriptionFontWeight,
-        ),
-      ),
-    );
-    slides.add(
-      new Slide(
-        title: "CALENDAR",
-        styleTitle: TextStyle(
-            color: Theme.of(context).colorScheme.introTitleColor,
-            fontSize: Theme.of(context).textTheme.introTitleFontSize,
-            fontWeight: Theme.of(context).typography.introTitleFontWeight),
-        description: "Testing testing",
-        colorBegin:
-            Theme.of(context).colorScheme.backgroundGradientTopRightColor,
-        colorEnd:
-            Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
-        directionColorBegin: Alignment.topRight,
-        directionColorEnd: Alignment.bottomLeft,
-        centerWidget: Lottie.asset("introExerciseAnimation.json"),
-        styleDescription: TextStyle(
-          color: Theme.of(context).colorScheme.introDescriptionColor,
-          fontSize: Theme.of(context).textTheme.introDescriptionFontSize,
-          fontWeight: Theme.of(context).typography.introDescriptionFontWeight,
-        ),
-      ),
-    );
-    slides.add(
-      new Slide(
-        title: "COMPLETION",
-        styleTitle: TextStyle(
-            color: Theme.of(context).colorScheme.introTitleColor,
-            fontSize: Theme.of(context).textTheme.introTitleFontSize,
-            fontWeight: Theme.of(context).typography.introTitleFontWeight),
-        description: "Testing testing",
-        colorBegin:
-            Theme.of(context).colorScheme.backgroundGradientTopRightColor,
-        colorEnd:
-            Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
-        directionColorBegin: Alignment.topRight,
-        directionColorEnd: Alignment.bottomLeft,
-        centerWidget: Lottie.asset("introExerciseAnimation.json"),
-        styleDescription: TextStyle(
-          color: Theme.of(context).colorScheme.introDescriptionColor,
-          fontSize: Theme.of(context).textTheme.introDescriptionFontSize,
-          fontWeight: Theme.of(context).typography.introDescriptionFontWeight,
-        ),
-      ),
-    );
-  }
 
   //Mechanics: Switching to the next slide
   void onTabChangeCompleted(index) {
@@ -115,9 +46,7 @@ class _IntroScreenState extends State<IntroScreen> {
       width:
           themes.getDimension(context, false, "introInterfaceButtonDimension"),
       child: Icon(
-        type == "navigate_next"
-            ? Icons.navigate_next
-            : (type == "done" ? Icons.done : Icons.skip_next),
+        type == "navigate_next" ? Icons.navigate_next : Icons.done,
         color: Colors.grey.shade700,
         size: themes.getDimension(
             context, true, "introInterfaceButtonIconDimension"),
@@ -128,8 +57,8 @@ class _IntroScreenState extends State<IntroScreen> {
   //USER INTERFACE: SHOW LIST AND TABS
   List<Widget> renderListCustomTabs() {
     List<Widget> tabs = new List();
-    for (int i = 0; i < slides.length; i++) {
-      Slide currentSlide = slides[i];
+    for (int i = 0; i < widget.slides.length; i++) {
+      Slide currentSlide = widget.slides[i];
       tabs.add(Container(
         width: double.infinity,
         height: double.infinity,
@@ -144,7 +73,18 @@ class _IntroScreenState extends State<IntroScreen> {
                   textAlign: TextAlign.center,
                 ),
                 margin: EdgeInsets.only(top: 20.0),
-              ), //I may have to put the animation here
+              ),
+              Container(
+                  child: i == 0
+                      ? Lottie.asset('lib/assets/introExerciseAnimation.json',
+                          repeat: true)
+                      : (i == 1
+                          ? Lottie.asset(
+                              'lib/assets/introCalendarAnimation.json',
+                              repeat: true,
+                            )
+                          : Lottie.asset('lib/assets/introMedalAnimation.json',
+                              repeat: true))),
               Container(
                 child: Text(
                   currentSlide.description,
@@ -167,8 +107,8 @@ class _IntroScreenState extends State<IntroScreen> {
   @override
   Widget build(BuildContext context) {
     return new IntroSlider(
-      slides: this.slides,
-      renderSkipBtn: this.showInterfaceButton("skip_next"),
+      slides: this.widget.slides,
+      isShowSkipBtn: false,
       renderNextBtn: this.showInterfaceButton("navigate_next"),
       renderDoneBtn: this.showInterfaceButton("done"),
       onDonePress: this.onDonePress,

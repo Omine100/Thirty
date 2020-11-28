@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:thirty/pages/forgotPassword.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
-import 'package:thirty/services/root.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
@@ -68,7 +67,11 @@ class _LoginScreenState extends State<LoginScreen> {
           cloudFirestore.sendEmailVerification();
           Navigator.pop(context);
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => IntroScreen()));
+              context,
+              MaterialPageRoute(
+                  builder: (context) => IntroScreen(
+                        slides: interfaceStandards.slideCreation(context),
+                      )));
         }
       } catch (e) {
         print("Error: $e");

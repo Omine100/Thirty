@@ -29,7 +29,7 @@ extension CustomColorScheme on ColorScheme {
   Color get introTitleColor => const Color(0xFFFFFFFF);
   Color get introDotColor => const Color(0xFFFEA312);
   Color get introDescriptionColor => const Color(0xFFFFFFFF);
-  Color get introInterfaceButtonColor => const Color(0xFFFFFFFF);
+  Color get introInterfaceButtonColor => const Color(0xFFFEA312);
 }
 
 extension CustomFontSizes on TextTheme {
@@ -104,7 +104,7 @@ extension CustomDimensions on MaterialTapTargetSize {
         break;
 
       case "introDotDimension":
-        return isHeight ? 0.03 : null;
+        return isHeight ? 0.0175 : null;
         break;
       case "introInterfaceButtonDimension":
         return isHeight ? 0.05 : 0.1;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intro_slider/slide_object.dart';
 
 import 'package:thirty/standards/themes.dart';
 
@@ -52,5 +53,74 @@ class InterfaceStandards {
           .colorScheme
           .interfaceStandardsProgressIndicatorColor,
     );
+  }
+
+  //User interface: Slide creation
+  List<Slide> slideCreation(BuildContext context) {
+    List<Slide> slides = new List<Slide>();
+    slides.add(
+      new Slide(
+        title: "GOALS",
+        styleTitle: TextStyle(
+            color: Theme.of(context).colorScheme.introTitleColor,
+            fontSize: Theme.of(context).textTheme.introTitleFontSize,
+            fontWeight: Theme.of(context).typography.introTitleFontWeight),
+        description: "Testing testing",
+        colorBegin:
+            Theme.of(context).colorScheme.backgroundGradientTopRightColor,
+        colorEnd:
+            Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
+        directionColorBegin: Alignment.topRight,
+        directionColorEnd: Alignment.bottomLeft,
+        styleDescription: TextStyle(
+          color: Theme.of(context).colorScheme.introDescriptionColor,
+          fontSize: Theme.of(context).textTheme.introDescriptionFontSize,
+          fontWeight: Theme.of(context).typography.introDescriptionFontWeight,
+        ),
+      ),
+    );
+    slides.add(
+      new Slide(
+        title: "CALENDAR",
+        styleTitle: TextStyle(
+            color: Theme.of(context).colorScheme.introTitleColor,
+            fontSize: Theme.of(context).textTheme.introTitleFontSize,
+            fontWeight: Theme.of(context).typography.introTitleFontWeight),
+        description: "Testing testing",
+        colorBegin:
+            Theme.of(context).colorScheme.backgroundGradientTopRightColor,
+        colorEnd:
+            Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
+        directionColorBegin: Alignment.topRight,
+        directionColorEnd: Alignment.bottomLeft,
+        styleDescription: TextStyle(
+          color: Theme.of(context).colorScheme.introDescriptionColor,
+          fontSize: Theme.of(context).textTheme.introDescriptionFontSize,
+          fontWeight: Theme.of(context).typography.introDescriptionFontWeight,
+        ),
+      ),
+    );
+    slides.add(
+      new Slide(
+        title: "COMPLETION",
+        styleTitle: TextStyle(
+            color: Theme.of(context).colorScheme.introTitleColor,
+            fontSize: Theme.of(context).textTheme.introTitleFontSize,
+            fontWeight: Theme.of(context).typography.introTitleFontWeight),
+        description: "Testing testing",
+        colorBegin:
+            Theme.of(context).colorScheme.backgroundGradientTopRightColor,
+        colorEnd:
+            Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
+        directionColorBegin: Alignment.topRight,
+        directionColorEnd: Alignment.bottomLeft,
+        styleDescription: TextStyle(
+          color: Theme.of(context).colorScheme.introDescriptionColor,
+          fontSize: Theme.of(context).textTheme.introDescriptionFontSize,
+          fontWeight: Theme.of(context).typography.introDescriptionFontWeight,
+        ),
+      ),
+    );
+    return slides;
   }
 }
