@@ -144,7 +144,7 @@ class _IntroScreenState extends State<IntroScreen> {
                   textAlign: TextAlign.center,
                 ),
                 margin: EdgeInsets.only(top: 20.0),
-              ),
+              ), //I may have to put the animation here
               Container(
                 child: Text(
                   currentSlide.description,

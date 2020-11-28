@@ -6,6 +6,7 @@ import 'package:thirty/services/root.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
+import 'package:thirty/pages/intro.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({this.isSignIn});
@@ -65,7 +66,9 @@ class _LoginScreenState extends State<LoginScreen> {
           await cloudFirestore.signUp(_email, _password);
           await cloudFirestore.createNameData(_name);
           cloudFirestore.sendEmailVerification();
-          validateAndSubmit(true);
+          Navigator.pop(context);
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => IntroScreen()));
         }
       } catch (e) {
         print("Error: $e");

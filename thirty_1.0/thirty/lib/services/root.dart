@@ -43,6 +43,8 @@ class _RootScreenState extends State<RootScreen> {
     });
   }
 
+  //Mechanics: Checks for if the user has viewed the intro screen
+
   //Mechanics: Sets status to logged in with current user
   void signInCallback() {
     cloudFirestore.getCurrentUser().then((user) {
