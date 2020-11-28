@@ -36,6 +36,13 @@ class _IntroScreenState extends State<IntroScreen> {
             fontSize: Theme.of(context).textTheme.introTitleFontSize,
             fontWeight: Theme.of(context).typography.introTitleFontWeight),
         description: "Testing testing",
+        colorBegin:
+            Theme.of(context).colorScheme.backgroundGradientTopRightColor,
+        colorEnd:
+            Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
+        directionColorBegin: Alignment.topRight,
+        directionColorEnd: Alignment.bottomLeft,
+        centerWidget: Lottie.asset("introExerciseAnimation.json"),
         styleDescription: TextStyle(
           color: Theme.of(context).colorScheme.introDescriptionColor,
           fontSize: Theme.of(context).textTheme.introDescriptionFontSize,
@@ -51,6 +58,13 @@ class _IntroScreenState extends State<IntroScreen> {
             fontSize: Theme.of(context).textTheme.introTitleFontSize,
             fontWeight: Theme.of(context).typography.introTitleFontWeight),
         description: "Testing testing",
+        colorBegin:
+            Theme.of(context).colorScheme.backgroundGradientTopRightColor,
+        colorEnd:
+            Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
+        directionColorBegin: Alignment.topRight,
+        directionColorEnd: Alignment.bottomLeft,
+        centerWidget: Lottie.asset("introExerciseAnimation.json"),
         styleDescription: TextStyle(
           color: Theme.of(context).colorScheme.introDescriptionColor,
           fontSize: Theme.of(context).textTheme.introDescriptionFontSize,
@@ -66,6 +80,13 @@ class _IntroScreenState extends State<IntroScreen> {
             fontSize: Theme.of(context).textTheme.introTitleFontSize,
             fontWeight: Theme.of(context).typography.introTitleFontWeight),
         description: "Testing testing",
+        colorBegin:
+            Theme.of(context).colorScheme.backgroundGradientTopRightColor,
+        colorEnd:
+            Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
+        directionColorBegin: Alignment.topRight,
+        directionColorEnd: Alignment.bottomLeft,
+        centerWidget: Lottie.asset("introExerciseAnimation.json"),
         styleDescription: TextStyle(
           color: Theme.of(context).colorScheme.introDescriptionColor,
           fontSize: Theme.of(context).textTheme.introDescriptionFontSize,
@@ -155,7 +176,6 @@ class _IntroScreenState extends State<IntroScreen> {
       sizeDot: themes.getDimension(context, true, "introDotDimension"),
       typeDotAnimation: dotSliderAnimation.SIZE_TRANSITION,
       listCustomTabs: this.renderListCustomTabs(),
-      backgroundColorAllSlides: Theme.of(context).backgroundColor, //This one
       refFuncGoToTab: (refFunc) {
         this.goToTab = refFunc;
       },
