@@ -32,3 +32,6 @@ flutter:
       - lib/assets/introCalendarAnimation.json
       - lib/assets/introExerciseAnimation.json
       - lib/assets/introMedalAnimation.json
+      - lib/languages/en.json
+      - lib/languages/es.json
+      - lib/languages/fr.json
