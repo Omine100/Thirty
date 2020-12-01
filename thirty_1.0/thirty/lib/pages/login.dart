@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thirty/pages/forgotPassword.dart';
 
+import 'package:thirty/services/appLocalizations.dart';
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
@@ -215,7 +216,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: interfaceStandards.parentCenter(
                     context,
                     Text(
-                      _isSignIn ? "LOGIN" : "SIGN UP",
+                      _isSignIn
+                          ? AppLocalizations.of(context)
+                              .translate('loginSignInTitle')
+                          : AppLocalizations.of(context)
+                              .translate('loginSignUpTitle'),
                       style: TextStyle(
                           color: Theme.of(context).colorScheme.loginTitleColor,
                           fontSize:
@@ -236,19 +241,31 @@ class _LoginScreenState extends State<LoginScreen> {
                               padding: EdgeInsets.only(
                                   left: 50, right: 50, top: 175),
                               child: interfaceStandards.parentCenter(
-                                  context, showInput(context, "Name")),
+                                  context,
+                                  showInput(
+                                      context,
+                                      AppLocalizations.of(context)
+                                          .translate('inputName'))),
                             )
                           : Container(),
                       Padding(
                         padding: EdgeInsets.only(
                             left: 50, right: 50, top: _isSignIn ? 175 : 35),
                         child: interfaceStandards.parentCenter(
-                            context, showInput(context, "Email")),
+                            context,
+                            showInput(
+                                context,
+                                AppLocalizations.of(context)
+                                    .translate('inputEmail'))),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 50, right: 50, top: 35),
                         child: interfaceStandards.parentCenter(
-                            context, showInput(context, "Password")),
+                            context,
+                            showInput(
+                                context,
+                                AppLocalizations.of(context)
+                                    .translate('inputPassword'))),
                       ),
                     ],
                   ),

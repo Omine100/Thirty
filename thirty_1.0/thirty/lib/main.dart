@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'package:thirty/services/appLocalizations.dart';
 import 'package:thirty/services/root.dart';
 import 'package:thirty/standards/themes.dart';
 
@@ -24,6 +26,25 @@ class Thirty extends StatelessWidget {
       initialRoute: '/RootScreen',
       theme: themes.lightTheme(),
       darkTheme: themes.darkTheme(),
+      supportedLocales: [
+        Locale('en', 'US'),
+        Locale('es', 'ES'),
+        Locale('fr', "FR")
+      ],
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      localeListResolutionCallback: (locale, supportedLocales) {
+        for (var supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale.languageCode &&
+              supportedLocale.countryCode == locale.countryCode) {
+            return supportedLocale;
+          }
+        }
+        return supportedLocales.first;
+      },
     );
   }
 }

@@ -1,0 +1,12 @@
+{
+    "inputName": "Name",
+    "inputEmail": "Email",
+    "inputPassword": "Password",
+    "welcomeTitle": "THIRTY",
+    "loginSignInTitle": "Login",
+    "loginSignUpTitle": "Sign Up",
+    "loginForgotPassword": "Forgot Password",
+    "loginAlternativeSignIn": "Already have an account? Sign In!",
+    "loginAlternativeSignUp": "Don't have an account? Sign Up!",
+    "forgotPasswordTitle": "Forgot Password"
+}
