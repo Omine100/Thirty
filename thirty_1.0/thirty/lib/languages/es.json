@@ -1,12 +1,17 @@
 {
-    "inputName": "Test",
-    "inputEmail": "Test",
-    "inputPassword": "Test",
-    "welcomeTitle": "THIRTY",
-    "loginSignInTitle": "Test",
-    "loginSignUpTitle": "Test",
+    "inputName": "Name",
+    "inputEmail": "Email",
+    "inputPassword": "Password",
+
+    "welcomeTitle": "WELCOME TO THIRTY",
+    "welcomeSignInButton": "LOGIN",
+    "welcomeSignUpButton": "SIGN UP",
+
+    "loginSignInTitle": "LOGIN",
+    "loginSignUpTitle": "SIGN UP",
     "loginForgotPassword": "Forgot Password",
-    "loginAlternativeSignIn": "Already have an account? Sign In!",
-    "loginAlternativeSignUp": "Don't have an account? Sign Up!",
+    "loginAlternativeSignIn": "Already have an account? LOGIN!",
+    "loginAlternativeSignUp": "Don't have an account? SIGN UP!",
+    
     "forgotPasswordTitle": "Forgot Password"
 }

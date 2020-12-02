@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:thirty/services/appLocalizations.dart';
 
-import 'package:thirty/services/root.dart';
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
@@ -45,7 +45,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       ),
       child: Center(
         child: Text(
-          isSignIn ? "LOGIN" : "SIGN UP",
+          isSignIn
+              ? AppLocalizations.of(context).translate("welcomeSignInButton")
+              : AppLocalizations.of(context).translate("welcomeSignUpButton"),
           style: TextStyle(
             foreground: isSignIn
                 ? (Paint()
@@ -94,7 +96,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               child: interfaceStandards.parentCenter(
                 context,
                 Text(
-                  "WELCOME TO THIRTY",
+                  AppLocalizations.of(context).translate('welcomeTitle'),
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.welcomeTitleColor,
                       fontSize:

@@ -46,6 +46,19 @@ class InterfaceStandards {
         ));
   }
 
+  //User interface: Show title
+  Widget showTitle(BuildContext context, String title) {
+    return parentCenter(
+      context,
+      Text(
+        style: TextStyle(
+            color: Theme.of(context).colorScheme.loginTitleColor,
+            fontSize: Theme.of(context).textTheme.loginTitleFontSize,
+            fontWeight: Theme.of(context).typography.loginTitleFontWeight),
+      ),
+    );
+  }
+
   //User interface: Show progress
   Widget showProgress(BuildContext context) {
     return new CircularProgressIndicator(

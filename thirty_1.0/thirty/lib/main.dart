@@ -28,7 +28,7 @@ class Thirty extends StatelessWidget {
       darkTheme: themes.darkTheme(),
       supportedLocales: [
         Locale('en', 'US'),
-        Locale('es', 'ES'),
+        Locale('es', "\*"),
         Locale('fr', "FR")
       ],
       localizationsDelegates: [

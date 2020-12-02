@@ -91,6 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   //User interface: Show sign in or sign up input fields
+  //Language support
   Widget showInput(BuildContext context, String text) {
     return new TextFormField(
       keyboardType:
@@ -152,8 +153,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget showAlternativeButton() {
     return new Text(
       _isSignIn
-          ? "Don't have an account? SIGN UP!"
-          : "Already have an account? SIGN IN!",
+          ? AppLocalizations.of(context).translate("loginAlternativeSignUp")
+          : AppLocalizations.of(context).translate("loginAlternativeSignIn"),
       style: TextStyle(
         color: Theme.of(context).colorScheme.loginAlternativeButtonTextColor,
         fontSize:
@@ -167,7 +168,7 @@ class _LoginScreenState extends State<LoginScreen> {
   //User interface: Show forgot password button
   Widget showForgotPasswordButton() {
     return new Text(
-      "Forgot Password?",
+      AppLocalizations.of(context).translate("loginForgotPassword"),
       style: TextStyle(
         color: Theme.of(context).colorScheme.loginForgotPasswordButtonTextColor,
         fontSize:
@@ -221,13 +222,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               .translate('loginSignInTitle')
                           : AppLocalizations.of(context)
                               .translate('loginSignUpTitle'),
-                      style: TextStyle(
-                          color: Theme.of(context).colorScheme.loginTitleColor,
-                          fontSize:
-                              Theme.of(context).textTheme.loginTitleFontSize,
-                          fontWeight: Theme.of(context)
-                              .typography
-                              .loginTitleFontWeight),
                     ),
                   )),
               SingleChildScrollView(
