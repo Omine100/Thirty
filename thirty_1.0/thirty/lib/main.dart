@@ -26,11 +26,7 @@ class Thirty extends StatelessWidget {
       initialRoute: '/RootScreen',
       theme: themes.lightTheme(),
       darkTheme: themes.darkTheme(),
-      supportedLocales: [
-        Locale('en', 'US'),
-        Locale('es', "\*"),
-        Locale('fr', "FR")
-      ],
+      supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -38,8 +34,7 @@ class Thirty extends StatelessWidget {
       ],
       localeResolutionCallback: (locale, supportedLocales) {
         for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode &&
-              supportedLocale.countryCode == locale.countryCode) {
+          if (supportedLocale.languageCode == locale.languageCode) {
             return supportedLocale;
           }
         }
