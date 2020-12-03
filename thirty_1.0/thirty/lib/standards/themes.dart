@@ -25,9 +25,9 @@ extension CustomColorScheme on ColorScheme {
   Color get forgotPasswordResetColor => const Color(0xFFFFFFFF);
 
   Color get introTitleColor => const Color(0xFFFFFFFF);
-  Color get introDotColor => const Color(0xFFFEA312);
+  Color get introDotColor => const Color(0xFFFFFFFF);
   Color get introDescriptionColor => const Color(0xFFFFFFFF);
-  Color get introInterfaceButtonColor => const Color(0xFFFEA312);
+  Color get introInterfaceButtonColor => const Color(0xFFFFFFFF);
 }
 
 extension CustomFontSizes on TextTheme {

@@ -69,7 +69,7 @@ class InterfaceStandards {
     slides.add(newSlide(
         context,
         AppLocalizations.of(context).translate("introCalendarTitle"),
-        AppLocalizations.of(context).translate("introCalenderDescription")));
+        AppLocalizations.of(context).translate("introCalendarDescription")));
     slides.add(newSlide(
         context,
         AppLocalizations.of(context).translate("introMedalTitle"),

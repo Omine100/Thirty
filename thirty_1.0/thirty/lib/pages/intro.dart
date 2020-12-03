@@ -47,7 +47,7 @@ class _IntroScreenState extends State<IntroScreen> {
           themes.getDimension(context, false, "introInterfaceButtonDimension"),
       child: Icon(
         type == "navigate_next" ? Icons.navigate_next : Icons.done,
-        color: Colors.grey.shade700,
+        color: Theme.of(context).colorScheme.introInterfaceButtonColor,
         size: themes.getDimension(
             context, true, "introInterfaceButtonIconDimension"),
       ),
