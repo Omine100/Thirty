@@ -1,18 +1,18 @@
 {
-    "inputName": "Name",
+    "inputName": "Nom",
     "inputEmail": "Email",
-    "inputPassword": "Password",
-    "inputValidator": "can't be empty",
+    "inputPassword": "Mot de passe",
+    "inputValidator": "ne peut pas être vide",
 
-    "welcomeTitle": "WELCOME TO THIRTY",
-    "welcomeSignInButton": "LOGIN",
-    "welcomeSignUpButton": "SIGN UP",
+    "welcomeTitle": "BIENVENUE À TRENTE",
+    "welcomeSignInButton": "S'IDENTIFIER",
+    "welcomeSignUpButton": "S'INSCRIRE",
 
-    "loginSignInTitle": "LOGIN",
-    "loginSignUpTitle": "SIGN UP",
-    "loginForgotPassword": "Forgot Password?",
-    "loginAlternativeSignIn": "Already have an account? LOGIN!",
-    "loginAlternativeSignUp": "Don't have an account? SIGN UP!",
+    "loginSignInTitle": "S'IDENTIFIER",
+    "loginSignUpTitle": "S'INSCRIRE",
+    "loginForgotPassword": "Mot de passe oublié?",
+    "loginAlternativeSignIn": "Avoir un compte? S'IDENTIFIER!",
+    "loginAlternativeSignUp": "Pas de compte? S'INSCRIRE!",
 
-    "forgotPasswordTitle": "Forgot Password"
+    "forgotPasswordTitle": "MOT DE PASSE OUBLIÉ"
 }
