@@ -6,23 +6,21 @@ extension CustomColorScheme on ColorScheme {
   Color get backgroundGradientBottomLeftColor => const Color(0xFFFFAB58);
 
   Color get interfaceStandardsBackButtonColor => const Color(0xFFFFFFFF);
-  Color get interfaceStandardsHeaderTextColor => const Color(0xFFFFFFFF);
+  Color get interfaceStandardsTitleTextColor => const Color(0xFFFFFFFF);
   Color get interfaceStandardsProgressIndicatorColor => const Color(0xFFFFFFFF);
 
-  Color get welcomeTitleColor => const Color(0xFFFFFFFF);
   Color get welcomeSignInButtonColor => const Color(0xFFFB81D1);
   Color get welcomeSignInButtonTextColor => const Color(0xFFFFFFFF);
   Color get welcomeSignUpButtonColor => const Color(0xFFFFFFFF);
 
-  Color get loginTitleColor => const Color(0xFFFFFFFF);
   Color get loginTextInputColor => const Color(0xFFFFFFFF);
   Color get loginProgressionButtonColor => const Color(0xFFFB81D1);
   Color get loginProgressionButtonIconColor => const Color(0xFFFFFFFF);
   Color get loginAlternativeButtonTextColor => const Color(0xFFFFFFFF);
+  Color get loginVisibilityButtonColor => const Color(0xFFFFFFFF);
   Color get loginForgotPasswordButtonTextColor => const Color(0xFFFFFFFF);
   Color get loginErrorMessageColor => const Color(0xFFF44336);
 
-  Color get forgotPasswordTitleColor => const Color(0xFFFFFFFF);
   Color get forgotPasswordTextInputColor => const Color(0xFFFFFFFF);
   Color get forgotPasswordResetColor => const Color(0xFFFFFFFF);
 
@@ -34,16 +32,15 @@ extension CustomColorScheme on ColorScheme {
 
 extension CustomFontSizes on TextTheme {
   //double get 'name' => 'fontSizeValue'
-  double get welcomeTitleFontSize => 30.0;
+  double get interfaceStandardsTitleFontSize => 30.0;
+
   double get welcomeSignInSignUpButtonTextFontSize => 22.5;
 
-  double get loginTitleFontSize => 30.0;
   double get loginTextInputFontSize => 22.0;
   double get loginAlternativeButtonTextFontSize => 15.0;
   double get loginForgotPasswordButtonTextFontSize => 15.0;
   double get loginErrorMessageFontSize => 13.0;
 
-  double get forgotPaswordTitleFontSize => 30.0;
   double get forgotPasswordTextInputFontSize => 22.0;
   double get forgotPasswordResetFontSize => 24.0;
 
@@ -53,16 +50,14 @@ extension CustomFontSizes on TextTheme {
 
 extension CustomFontWeights on Typography {
   //FontWeight get 'name' => 'fontWeightValue';
-  FontWeight get welcomeTitleFontWeight => FontWeight.w600;
+  FontWeight get interfaceStandardsTitleFontWeight => FontWeight.w600;
+
   FontWeight get welcomeSignInSignUpButtonTextFontWeight => FontWeight.w600;
 
-  FontWeight get loginTitleFontWeight => FontWeight.w600;
   FontWeight get loginTextInputFontWeight => FontWeight.w300;
   FontWeight get loginAlternativeButtonTextFontWeight => FontWeight.w400;
   FontWeight get loginForgotPasswordButtonTextFontWeight => FontWeight.w400;
   FontWeight get loginErrorMessageFontWeight => FontWeight.w300;
-
-  FontWeight get forgotPasswordTitleFontWeight => FontWeight.w600;
 
   FontWeight get introTitleFontWeight => FontWeight.w600;
   FontWeight get introDescriptionFontWeight => FontWeight.w300;

@@ -2,11 +2,17 @@
     "inputName": "Name",
     "inputEmail": "Email",
     "inputPassword": "Password",
-    "welcomeTitle": "THIRTY",
-    "loginSignInTitle": "Login",
-    "loginSignUpTitle": "Sign Up",
+    "inputValidator": "can't be empty",
+
+    "welcomeTitle": "WELCOME TO THIRTY",
+    "welcomeSignInButton": "LOGIN",
+    "welcomeSignUpButton": "SIGN UP",
+
+    "loginSignInTitle": "LOGIN",
+    "loginSignUpTitle": "SIGN UP",
     "loginForgotPassword": "Forgot Password",
-    "loginAlternativeSignIn": "Already have an account? Sign In!",
-    "loginAlternativeSignUp": "Don't have an account? Sign Up!",
-    "forgotPasswordTitle": "Forgot Password"
+    "loginAlternativeSignIn": "Already have an account? LOGIN!",
+    "loginAlternativeSignUp": "Don't have an account? SIGN UP!",
+
+    "forgotPasswordTitle": "Forgot Password?"
 }

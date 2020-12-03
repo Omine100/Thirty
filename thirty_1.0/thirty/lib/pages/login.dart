@@ -91,23 +91,25 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   //User interface: Show sign in or sign up input fields
-  //Language support
-  Widget showInput(BuildContext context, String text) {
+  Widget showInput(BuildContext context, String key) {
     return new TextFormField(
-      keyboardType:
-          text == "Email" ? TextInputType.emailAddress : TextInputType.text,
+      keyboardType: key == AppLocalizations.of(context).translate("inputEmail")
+          ? TextInputType.emailAddress
+          : TextInputType.text,
       style: TextStyle(
         color: Theme.of(context).colorScheme.loginTextInputColor,
         fontSize: Theme.of(context).textTheme.loginTextInputFontSize,
       ),
       decoration: InputDecoration(
         prefixIcon: Icon(
-          text != "Email"
-              ? text == "Password" ? Icons.lock : Icons.person
+          key != AppLocalizations.of(context).translate("inputEmail")
+              ? key == AppLocalizations.of(context).translate("inputPassword")
+                  ? Icons.lock
+                  : Icons.person
               : Icons.email,
           color: Theme.of(context).colorScheme.loginTextInputColor,
         ),
-        hintText: text,
+        hintText: key,
         hintStyle: TextStyle(
           color: Theme.of(context).colorScheme.loginTextInputColor,
         ),
@@ -125,11 +127,19 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
       ),
-      validator: (value) => value.isEmpty ? "$text can\'t be empty" : null,
-      onSaved: (value) => text != "Email"
-          ? text == "Password" ? _password = value.trim() : _name = value.trim()
-          : _email = value.trim(),
-      obscureText: text == "Password" ? (_isVisible ? false : true) : false,
+      validator: (value) => value.isEmpty
+          ? "$key " + AppLocalizations.of(context).translate("inputValidator")
+          : null,
+      onSaved: (value) =>
+          key != AppLocalizations.of(context).translate("inputEmail")
+              ? key == AppLocalizations.of(context).translate("inputPassword")
+                  ? _password = value.trim()
+                  : _name = value.trim()
+              : _email = value.trim(),
+      obscureText:
+          key == AppLocalizations.of(context).translate("inputPassword")
+              ? (_isVisible ? false : true)
+              : false,
       maxLines: 1,
     );
   }
@@ -144,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       child: Icon(
         _isVisible ? Icons.visibility : Icons.visibility_off,
-        color: Theme.of(context).colorScheme.loginTitleColor,
+        color: Theme.of(context).colorScheme.loginVisibilityButtonColor,
       ),
     );
   }
@@ -215,15 +225,12 @@ class _LoginScreenState extends State<LoginScreen> {
               Positioned(
                   top: themes.getPosition(context, true, "loginTitlePosition"),
                   child: interfaceStandards.parentCenter(
-                    context,
-                    Text(
+                      context,
                       _isSignIn
-                          ? AppLocalizations.of(context)
-                              .translate('loginSignInTitle')
-                          : AppLocalizations.of(context)
-                              .translate('loginSignUpTitle'),
-                    ),
-                  )),
+                          ? interfaceStandards.showTitle(
+                              context, "loginSignInTitle")
+                          : interfaceStandards.showTitle(
+                              context, "loginSignUpTitle"))),
               SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Form(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intro_slider/slide_object.dart';
 
+import 'package:thirty/services/appLocalizations.dart';
 import 'package:thirty/standards/themes.dart';
 
 class InterfaceStandards {
@@ -32,29 +34,19 @@ class InterfaceStandards {
     );
   }
 
-  //User interface: Header text
-  Widget headerText(BuildContext context, String header) {
-    return parentCenter(
-        context,
-        Text(
-          header,
-          style: TextStyle(
-            color:
-                Theme.of(context).colorScheme.interfaceStandardsHeaderTextColor,
-            fontSize: 45.0,
-          ),
-        ));
-  }
-
   //User interface: Show title
-  Widget showTitle(BuildContext context, String title) {
+  Widget showTitle(BuildContext context, String key) {
     return parentCenter(
       context,
       Text(
+        AppLocalizations.of(context).translate(key),
         style: TextStyle(
-            color: Theme.of(context).colorScheme.loginTitleColor,
-            fontSize: Theme.of(context).textTheme.loginTitleFontSize,
-            fontWeight: Theme.of(context).typography.loginTitleFontWeight),
+            color:
+                Theme.of(context).colorScheme.interfaceStandardsTitleTextColor,
+            fontSize:
+                Theme.of(context).textTheme.interfaceStandardsTitleFontSize,
+            fontWeight:
+                Theme.of(context).typography.interfaceStandardsTitleFontWeight),
       ),
     );
   }

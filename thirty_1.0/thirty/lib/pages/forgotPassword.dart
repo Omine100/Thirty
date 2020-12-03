@@ -85,21 +85,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Positioned(
               top: themes.getPosition(
                   context, true, "forgotPasswordTitlePosition"),
-              child: interfaceStandards.parentCenter(
-                context,
-                Text(
-                  "Forgot Password",
-                  style: TextStyle(
-                    color:
-                        Theme.of(context).colorScheme.forgotPasswordTitleColor,
-                    fontSize:
-                        Theme.of(context).textTheme.forgotPaswordTitleFontSize,
-                    fontWeight: Theme.of(context)
-                        .typography
-                        .forgotPasswordTitleFontWeight,
-                  ),
-                ),
-              ),
+              child: interfaceStandards.parentCenter(context,
+                  interfaceStandards.showTitle(context, "forgotPasswordTitle")),
             ),
             Positioned(
               top: themes.getPosition(

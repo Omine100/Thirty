@@ -95,15 +95,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               top: themes.getPosition(context, true, "welcomeTitlePosition"),
               child: interfaceStandards.parentCenter(
                 context,
-                Text(
-                  AppLocalizations.of(context).translate('welcomeTitle'),
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.welcomeTitleColor,
-                      fontSize:
-                          Theme.of(context).textTheme.welcomeTitleFontSize,
-                      fontWeight:
-                          Theme.of(context).typography.welcomeTitleFontWeight),
-                ),
+                interfaceStandards.showTitle(context, "welcomeTitle"),
               ),
             ),
             Positioned(
