@@ -5,6 +5,7 @@ import 'package:thirty/services/root.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
+import 'package:thirty/pages/intro.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key, this.userId});
