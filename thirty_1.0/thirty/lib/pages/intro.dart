@@ -60,6 +60,12 @@ class _IntroScreenState extends State<IntroScreen> {
     for (int i = 0; i < widget.slides.length; i++) {
       Slide currentSlide = widget.slides[i];
       tabs.add(Container(
+        decoration: BoxDecoration(
+            gradient: themesGradients.bodyLinearGradient(
+                context,
+                Theme.of(context).colorScheme.backgroundGradientTopRightColor,
+                Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
+                false)),
         width: double.infinity,
         height: double.infinity,
         child: Container(

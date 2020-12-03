@@ -63,69 +63,36 @@ class InterfaceStandards {
   //User interface: Slide creation
   List<Slide> slideCreation(BuildContext context) {
     List<Slide> slides = new List<Slide>();
-    slides.add(
-      new Slide(
-        title: "GOALS",
-        styleTitle: TextStyle(
-            color: Theme.of(context).colorScheme.introTitleColor,
-            fontSize: Theme.of(context).textTheme.introTitleFontSize,
-            fontWeight: Theme.of(context).typography.introTitleFontWeight),
-        description: "Testing testing",
-        colorBegin:
-            Theme.of(context).colorScheme.backgroundGradientTopRightColor,
-        colorEnd:
-            Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
-        directionColorBegin: Alignment.topRight,
-        directionColorEnd: Alignment.bottomLeft,
-        styleDescription: TextStyle(
-          color: Theme.of(context).colorScheme.introDescriptionColor,
-          fontSize: Theme.of(context).textTheme.introDescriptionFontSize,
-          fontWeight: Theme.of(context).typography.introDescriptionFontWeight,
-        ),
-      ),
-    );
-    slides.add(
-      new Slide(
-        title: "CALENDAR",
-        styleTitle: TextStyle(
-            color: Theme.of(context).colorScheme.introTitleColor,
-            fontSize: Theme.of(context).textTheme.introTitleFontSize,
-            fontWeight: Theme.of(context).typography.introTitleFontWeight),
-        description: "Testing testing",
-        colorBegin:
-            Theme.of(context).colorScheme.backgroundGradientTopRightColor,
-        colorEnd:
-            Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
-        directionColorBegin: Alignment.topRight,
-        directionColorEnd: Alignment.bottomLeft,
-        styleDescription: TextStyle(
-          color: Theme.of(context).colorScheme.introDescriptionColor,
-          fontSize: Theme.of(context).textTheme.introDescriptionFontSize,
-          fontWeight: Theme.of(context).typography.introDescriptionFontWeight,
-        ),
-      ),
-    );
-    slides.add(
-      new Slide(
-        title: "COMPLETION",
-        styleTitle: TextStyle(
-            color: Theme.of(context).colorScheme.introTitleColor,
-            fontSize: Theme.of(context).textTheme.introTitleFontSize,
-            fontWeight: Theme.of(context).typography.introTitleFontWeight),
-        description: "Testing testing",
-        colorBegin:
-            Theme.of(context).colorScheme.backgroundGradientTopRightColor,
-        colorEnd:
-            Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
-        directionColorBegin: Alignment.topRight,
-        directionColorEnd: Alignment.bottomLeft,
-        styleDescription: TextStyle(
-          color: Theme.of(context).colorScheme.introDescriptionColor,
-          fontSize: Theme.of(context).textTheme.introDescriptionFontSize,
-          fontWeight: Theme.of(context).typography.introDescriptionFontWeight,
-        ),
-      ),
-    );
+    slides.add(newSlide(
+        context,
+        AppLocalizations.of(context).translate("introExerciseTitle"),
+        AppLocalizations.of(context).translate("introExerciseDescription")));
+    slides.add(newSlide(
+        context,
+        AppLocalizations.of(context).translate("introCalendarTitle"),
+        AppLocalizations.of(context).translate("introCalenderDescription")));
+    slides.add(newSlide(
+        context,
+        AppLocalizations.of(context).translate("introMedalTitle"),
+        AppLocalizations.of(context).translate("introMedalDescription")));
     return slides;
+  }
+
+  //User interface: New slide
+  Slide newSlide(BuildContext context, String title, String description) {
+    Slide slide = new Slide(
+      title: title,
+      styleTitle: TextStyle(
+          color: Theme.of(context).colorScheme.introTitleColor,
+          fontSize: Theme.of(context).textTheme.introTitleFontSize,
+          fontWeight: Theme.of(context).typography.introTitleFontWeight),
+      description: description,
+      styleDescription: TextStyle(
+        color: Theme.of(context).colorScheme.introDescriptionColor,
+        fontSize: Theme.of(context).textTheme.introDescriptionFontSize,
+        fontWeight: Theme.of(context).typography.introDescriptionFontWeight,
+      ),
+    );
+    return slide;
   }
 }

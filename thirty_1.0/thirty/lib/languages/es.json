@@ -14,5 +14,12 @@
     "loginAlternativeSignIn": "¿Tener una cuenta? ¡INICIAR SESIÓN!",
     "loginAlternativeSignUp": "¿No tienes cuenta? ¡REGÍSTRATE!",
 
-    "forgotPasswordTitle": "RESTABLECER LA CONTRASEÑA"
+    "forgotPasswordTitle": "RESTABLECER LA CONTRASEÑA",
+
+    "introExerciseTitle": "GOAL",
+    "introCalendarTitle": "TRACKING",
+    "introMedalTitle": "COMPLETION",
+    "introExerciseDescription": "asocdao",
+    "introCalendarDescription": "asdfcawoj",
+    "introMedalDescription": "ascojwocao" 
 }

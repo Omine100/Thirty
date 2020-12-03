@@ -14,5 +14,12 @@
     "loginAlternativeSignIn": "Avoir un compte? S'IDENTIFIER!",
     "loginAlternativeSignUp": "Pas de compte? S'INSCRIRE!",
 
-    "forgotPasswordTitle": "MOT DE PASSE OUBLIÉ"
+    "forgotPasswordTitle": "MOT DE PASSE OUBLIÉ",
+
+    "introExerciseTitle": "GOAL",
+    "introCalendarTitle": "TRACKING",
+    "introMedalTitle": "COMPLETION",
+    "introExerciseDescription": "asocdao",
+    "introCalendarDescription": "asdfcawoj",
+    "introMedalDescription": "ascojwocao" 
 }
