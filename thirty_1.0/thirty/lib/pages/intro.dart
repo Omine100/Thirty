@@ -69,7 +69,8 @@ class _IntroScreenState extends State<IntroScreen> {
         width: double.infinity,
         height: double.infinity,
         child: Container(
-          margin: EdgeInsets.only(bottom: 60.0, top: 60.0),
+          margin:
+              EdgeInsets.only(bottom: 60.0, top: 35.0, left: 50.0, right: 50.0),
           child: ListView(
             children: <Widget>[
               Container(

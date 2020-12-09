@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thirty/services/appLocalizations.dart';
 
+import 'package:thirty/languages/language.dart';
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
@@ -88,6 +89,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 context,
                 Image(
                   image: AssetImage('lib/assets/welcomeBackgroundImage.png'),
+                  height: themes.getDimension(
+                      context, true, "welcomeBackgroundImageDimension"),
+                  width: themes.getDimension(
+                      context, false, "welcomeBackgroundImageDimension"),
                 ),
               ),
             ),
@@ -152,6 +157,26 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                 .backgroundGradientBottomLeftColor)),
                   ),
                 )),
+            Positioned(
+              bottom: themes.getPosition(
+                  context, true, "welcomeLanguageSelectorButtonPosition"),
+              left: themes.getPosition(
+                  context, false, "welcomeLanguageSelectorButtonPosition"),
+              child: Container(
+                height: themes.getDimension(
+                    context, true, "welcomeLanguageSelectorButtonDimension"),
+                width: themes.getDimension(
+                    context, true, "welcomeLanguageSelectorButtonDimension"),
+                child: Icon(
+                  Icons.language,
+                  color: Theme.of(context)
+                      .colorScheme
+                      .welcomeLanguageSelectorButtonColor,
+                  size: themes.getDimension(
+                      context, true, "welcomeLanguageSelectorButtonDimension"),
+                ),
+              ),
+            ),
           ],
         ),
       ),

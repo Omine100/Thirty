@@ -26,16 +26,4 @@ class ThemesGradients {
     );
     return linearGradient;
   }
-
-  //User interface: Card linear gradient
-  //I may make these a bit blurred
-  LinearGradient cardLinearGradient(
-      BuildContext context, Color topLeftColor, Color bottomRightColor) {
-    final LinearGradient linearGradient = LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-      tileMode: TileMode.mirror,
-      colors: <Color>[topLeftColor, bottomRightColor],
-    );
-  }
 }

@@ -12,6 +12,7 @@ extension CustomColorScheme on ColorScheme {
   Color get welcomeSignInButtonColor => const Color(0xFFFB81D1);
   Color get welcomeSignInButtonTextColor => const Color(0xFFFFFFFF);
   Color get welcomeSignUpButtonColor => const Color(0xFFFFFFFF);
+  Color get welcomeLanguageSelectorButtonColor => const Color(0xFFFFFFFF);
 
   Color get loginTextInputColor => const Color(0xFFFFFFFF);
   Color get loginProgressionButtonColor => const Color(0xFFFB81D1);
@@ -77,11 +78,16 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "welcomeContainerDimension":
         return isHeight ? 1.0 : null;
         break;
+      case "welcomeBackgroundImageDimension":
+        return isHeight ? 1.0 : 1.0;
       case "welcomeProgressContainerDimension":
         return isHeight ? 0.0 : 0.0;
         break;
       case "welcomeSignInSignUpButtonDimension":
-        return isHeight ? 0.08 : 0.65;
+        return isHeight ? 0.08 : 0.6;
+        break;
+      case "welcomeLanguageSelectorButtonDimension":
+        return isHeight ? 0.05 : null;
         break;
       case "welcomeErrorMessageDimension":
         return isHeight ? 0.1 : 0.1;
@@ -122,11 +128,13 @@ extension CustomPositions on MaterialTapTargetSize {
         return isTop ? 0.0875 : null;
         break;
       case "welcomeSignInButtonPosition":
-        return isTop ? 0.7 : null;
+        return isTop ? 0.67 : null;
         break;
       case "welcomeSignUpButtonPosition":
-        return isTop ? 0.825 : null;
+        return isTop ? 0.795 : null;
         break;
+      case "welcomeLanguageSelectorButtonPosition":
+        return isTop ? 0.05 : 0.07;
       case "welcomeProgressPosition":
         return isTop ? 0.8 : null;
         break;
