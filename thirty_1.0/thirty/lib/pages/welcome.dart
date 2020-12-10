@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:thirty/services/appLocalizations.dart';
 
-import 'package:thirty/languages/language.dart';
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
+import 'package:thirty/standards/animationStandards.dart';
 import 'package:thirty/pages/login.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -19,6 +19,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Themes themes = new Themes();
   ThemesGradients themesGradients = new ThemesGradients();
   InterfaceStandards interfaceStandards = new InterfaceStandards();
+  AnimationStandards animationStandards = new AnimationStandards();
 
   //Variable initialization
   bool _isLoading, _isSignIn, _isVisible;
@@ -114,9 +115,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LoginScreen(
-                                    isSignIn: _isSignIn,
-                                  )));
+                              builder: (context) => animationStandards
+                                  .welcomeSharedAxisAnimation(_isSignIn)));
                     },
                     child: showSignInSignUpButton(
                         true,
