@@ -20,7 +20,7 @@ dependencies:
   firebase_auth: ^0.14.0+5
   intl: ^0.16.0
   lottie: ^0.7.0+1
-  animations: ^1.1.2
+  page_transition: ^1.1.7+3
   intro_slider: ^2.3.3
 
 dev_dependencies:

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:thirty/services/appLocalizations.dart';
+import 'package:page_transition/page_transition.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
-import 'package:thirty/standards/animationStandards.dart';
 import 'package:thirty/pages/login.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -19,7 +19,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Themes themes = new Themes();
   ThemesGradients themesGradients = new ThemesGradients();
   InterfaceStandards interfaceStandards = new InterfaceStandards();
-  AnimationStandards animationStandards = new AnimationStandards();
 
   //Variable initialization
   bool _isLoading, _isSignIn, _isVisible;
@@ -113,11 +112,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     onTap: () {
                       _isSignIn = true;
                       Navigator.push(
-                          context,
-                          MaterialPageRoute<void>(
-                              builder: (BuildContext context) =>
-                                  animationStandards
-                                      .welcomeSharedAxisAnimation(_isSignIn)));
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.leftToRight,
+                          child: LoginScreen(
+                            isSignIn: _isSignIn,
+                          ),
+                        ),
+                      );
                     },
                     child: showSignInSignUpButton(
                         true,
@@ -140,10 +142,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     onTap: () {
                       _isSignIn = false;
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => animationStandards
-                                  .welcomeSharedAxisAnimation(_isSignIn)));
+                        context,
+                        PageTransition(
+                          curve: Curves.bounceOut,
+                          type: PageTransitionType.scale,
+                          alignment: Alignment.bottomCenter,
+                          child: LoginScreen(
+                            isSignIn: _isSignIn,
+                          ),
+                        ),
+                      );
                     },
                     child: showSignInSignUpButton(
                         false,
