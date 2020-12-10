@@ -114,9 +114,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       _isSignIn = true;
                       Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => animationStandards
-                                  .welcomeSharedAxisAnimation(_isSignIn)));
+                          MaterialPageRoute<void>(
+                              builder: (BuildContext context) =>
+                                  animationStandards
+                                      .welcomeSharedAxisAnimation(_isSignIn)));
                     },
                     child: showSignInSignUpButton(
                         true,
@@ -141,9 +142,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LoginScreen(
-                                    isSignIn: _isSignIn,
-                                  )));
+                              builder: (context) => animationStandards
+                                  .welcomeSharedAxisAnimation(_isSignIn)));
                     },
                     child: showSignInSignUpButton(
                         false,

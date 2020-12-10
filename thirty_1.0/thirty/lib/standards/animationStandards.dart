@@ -6,13 +6,18 @@ import 'package:thirty/pages/login.dart';
 class AnimationStandards {
   //User interface: Welcome shared axis transformation animation
   PageTransitionSwitcher welcomeSharedAxisAnimation(bool _isSignIn) {
-    PageTransitionSwitcher pageTransitionSwitcher = new PageTransitionSwitcher(
-      duration: const Duration(milliseconds: 200),
+    return PageTransitionSwitcher(
+      duration: const Duration(milliseconds: 20000),
       reverse: false,
-      transitionBuilder: (Widget child, Animation<double> animation,
-          Animation<double> secondaryAnimation) {
+      transitionBuilder: (
+        Widget child,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+      ) {
         return SharedAxisTransition(
-          child: child,
+          child: LoginScreen(
+            isSignIn: _isSignIn,
+          ),
           animation: animation,
           secondaryAnimation: secondaryAnimation,
           transitionType: SharedAxisTransitionType.horizontal,
@@ -22,6 +27,5 @@ class AnimationStandards {
         isSignIn: _isSignIn,
       ),
     );
-    return pageTransitionSwitcher;
   }
 }
