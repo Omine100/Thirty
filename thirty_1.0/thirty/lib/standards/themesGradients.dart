@@ -21,7 +21,6 @@ class ThemesGradients {
     final LinearGradient linearGradient = LinearGradient(
       begin: isSmall ? Alignment.centerRight : Alignment.topRight,
       end: Alignment.bottomLeft,
-      tile: TileMode.mirror,
       colors: <Color>[topLeftColor, bottomRightColor],
     );
     return linearGradient;
