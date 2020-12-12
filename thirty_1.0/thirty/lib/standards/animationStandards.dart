@@ -7,7 +7,7 @@ class AnimationStandards {
   //User interface: Welcome page transition
   PageTransition welcomePageTransition(bool _isSignIn) {
     return PageTransition(
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 750),
       curve: Curves.easeInOutCirc,
       type: PageTransitionType.scale,
       alignment: Alignment.bottomCenter,
