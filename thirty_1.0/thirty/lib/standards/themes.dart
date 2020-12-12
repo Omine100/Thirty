@@ -222,12 +222,16 @@ extension CustomPositions on MaterialTapTargetSize {
 class Themes {
   //Theme: Light theme
   ThemeData lightTheme() {
-    return ThemeData();
+    return ThemeData(
+      brightness: Brightness.light,
+    );
   }
 
   //Theme: Dark theme
   ThemeData darkTheme() {
-    return ThemeData();
+    return ThemeData(
+      brightness: Brightness.dark,
+    );
   }
 
   //Mechanics: Check dark theme
