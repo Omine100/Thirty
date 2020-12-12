@@ -5,10 +5,10 @@ extension CustomColorScheme on ColorScheme {
     switch (selection) {
       //case 'name': return isDark ? 'dark' : 'light'; break;
       case "backgroundGradientTopRightColor":
-        return isDark ? Color(0xFFFF99D1) : Color(0xFFFF99D1);
+        return isDark ? Color(0xFF000000) : Color(0xFFFF99D1);
         break;
       case "backgroundGradientBottomLeftColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFAB58);
+        return isDark ? Color(0xFF000000) : Color(0xFFFFAB58);
         break;
 
       case "interfaceStandardsBackButtonColor":

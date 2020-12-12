@@ -11,7 +11,7 @@ class ThemesGradients {
       BuildContext context, Color topLeftColor, Color bottomRightColor) {
     final Shader linearGradient =
         LinearGradient(colors: <Color>[topLeftColor, bottomRightColor])
-            .createShader(Rect.fromLTWH(110.0, 110.0, 200.0, 70.0));
+            .createShader(Rect.fromLTWH(110.0, 110.0, 0.0, 0.0));
     return linearGradient;
   }
 

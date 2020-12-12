@@ -41,9 +41,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           context, false, "welcomeSignInSignUpButtonDimension"),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(90.0),
-        color: isSignIn
-            ? themes.getColor(context, "welcomeSignInButtonColor")
-            : themes.getColor(context, "welcomeSignInButtonColor"),
+        color: themes.getColor(context, "welcomeSignInButtonColor"),
       ),
       child: Center(
         child: Text(
@@ -87,13 +85,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   context, true, "welcomeBackgroundImagePosition"),
               child: interfaceStandards.parentCenter(
                 context,
-                Image(
-                  image: AssetImage('lib/assets/welcomeBackgroundImage.png'),
-                  height: themes.getDimension(
-                      context, true, "welcomeBackgroundImageDimension"),
-                  width: themes.getDimension(
-                      context, false, "welcomeBackgroundImageDimension"),
-                ),
+                themes.checkDarkTheme(context)
+                    ? Container()
+                    : Image(
+                        image:
+                            AssetImage('lib/assets/welcomeBackgroundImage.png'),
+                        height: themes.getDimension(
+                            context, true, "welcomeBackgroundImageDimension"),
+                        width: themes.getDimension(
+                            context, false, "welcomeBackgroundImageDimension"),
+                      ),
               ),
             ),
             Positioned(
@@ -116,15 +117,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             animationStandards
                                 .welcomePageTransition(_isSignIn));
                       },
-                      child: showSignInSignUpButton(
-                          true,
-                          themesGradients.textLinearGradient(
-                            context,
-                            themes.getColor(
-                                context, "backgroundGradientTopRightColor"),
-                            themes.getColor(
-                                context, "backgroundGradientBottomLeftColor"),
-                          ))),
+                      child: showSignInSignUpButton(true, null)),
                 )),
             Positioned(
                 top: themes.getPosition(
