@@ -47,7 +47,7 @@ class _IntroScreenState extends State<IntroScreen> {
           themes.getDimension(context, false, "introInterfaceButtonDimension"),
       child: Icon(
         type == "navigate_next" ? Icons.navigate_next : Icons.done,
-        color: Theme.of(context).colorScheme.introInterfaceButtonColor,
+        color: themes.getColor(context, "introInterfaceButtonColor"),
         size: themes.getDimension(
             context, true, "introInterfaceButtonIconDimension"),
       ),
@@ -63,8 +63,8 @@ class _IntroScreenState extends State<IntroScreen> {
         decoration: BoxDecoration(
             gradient: themesGradients.bodyLinearGradient(
                 context,
-                Theme.of(context).colorScheme.backgroundGradientTopRightColor,
-                Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
+                themes.getColor(context, "backgroundGradientTopRightColor"),
+                themes.getColor(context, "backgroundGradientBottomLeftColor"),
                 false)),
         width: double.infinity,
         height: double.infinity,
@@ -119,7 +119,7 @@ class _IntroScreenState extends State<IntroScreen> {
       renderNextBtn: this.showInterfaceButton("navigate_next"),
       renderDoneBtn: this.showInterfaceButton("done"),
       onDonePress: this.onDonePress,
-      colorDot: Theme.of(context).colorScheme.introDotColor,
+      colorDot: themes.getColor(context, "introDotcolor"),
       sizeDot: themes.getDimension(context, true, "introDotDimension"),
       typeDotAnimation: dotSliderAnimation.SIZE_TRANSITION,
       listCustomTabs: this.renderListCustomTabs(),

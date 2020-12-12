@@ -26,8 +26,7 @@ class InterfaceStandards {
         Navigator.pop(context);
       },
       child: Icon(Icons.keyboard_backspace,
-          color:
-              Theme.of(context).colorScheme.interfaceStandardsBackButtonColor,
+          color: themes.getColor(context, "interfaceStandardsBackButtonColor"),
           size: themes.getDimension(
               context, true, "interfaceStandardsBackButtonIconDimension")),
     );
@@ -40,8 +39,7 @@ class InterfaceStandards {
       Text(
         AppLocalizations.of(context).translate(key),
         style: TextStyle(
-            color:
-                Theme.of(context).colorScheme.interfaceStandardsTitleTextColor,
+            color: themes.getColor(context, "interfaceStandardsTitleTextColor"),
             fontSize:
                 Theme.of(context).textTheme.interfaceStandardsTitleFontSize,
             fontWeight:
@@ -53,9 +51,8 @@ class InterfaceStandards {
   //User interface: Show progress
   Widget showProgress(BuildContext context) {
     return new CircularProgressIndicator(
-      backgroundColor: Theme.of(context)
-          .colorScheme
-          .interfaceStandardsProgressIndicatorColor,
+      backgroundColor:
+          themes.getColor(context, "interfaceStandardsProgressIndicatorColor"),
     );
   }
 
@@ -82,12 +79,12 @@ class InterfaceStandards {
     Slide slide = new Slide(
       title: title,
       styleTitle: TextStyle(
-          color: Theme.of(context).colorScheme.introTitleColor,
+          color: themes.getColor(context, "introTitleColor"),
           fontSize: Theme.of(context).textTheme.introTitleFontSize,
           fontWeight: Theme.of(context).typography.introTitleFontWeight),
       description: description,
       styleDescription: TextStyle(
-        color: Theme.of(context).colorScheme.introDescriptionColor,
+        color: themes.getColor(context, "introDescriptionColor"),
         fontSize: Theme.of(context).textTheme.introDescriptionFontSize,
         fontWeight: Theme.of(context).typography.introDescriptionFontWeight,
       ),

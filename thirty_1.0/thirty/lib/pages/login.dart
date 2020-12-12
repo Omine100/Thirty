@@ -97,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ? TextInputType.emailAddress
           : TextInputType.text,
       style: TextStyle(
-        color: Theme.of(context).colorScheme.loginTextInputColor,
+        color: themes.getColor(context, "loginTextInputColor"),
         fontSize: Theme.of(context).textTheme.loginTextInputFontSize,
       ),
       decoration: InputDecoration(
@@ -107,23 +107,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   ? Icons.lock
                   : Icons.person
               : Icons.email,
-          color: Theme.of(context).colorScheme.loginTextInputColor,
+          color: themes.getColor(context, "loginTextInputColor"),
         ),
         hintText: key,
         hintStyle: TextStyle(
-          color: Theme.of(context).colorScheme.loginTextInputColor,
+          color: themes.getColor(context, "loginTextInputColor"),
         ),
         labelStyle: TextStyle(
-          color: Theme.of(context).colorScheme.loginTextInputColor,
+          color: themes.getColor(context, "loginTextInputColor"),
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.loginTextInputColor,
+            color: themes.getColor(context, "loginTextInputColor"),
           ),
         ),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.loginTextInputColor,
+            color: themes.getColor(context, "loginTextInputColor"),
           ),
         ),
       ),
@@ -154,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       child: Icon(
         _isVisible ? Icons.visibility : Icons.visibility_off,
-        color: Theme.of(context).colorScheme.loginVisibilityButtonColor,
+        color: themes.getColor(context, "loginVisibilityButtonColor"),
       ),
     );
   }
@@ -166,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ? AppLocalizations.of(context).translate("loginAlternativeSignUp")
           : AppLocalizations.of(context).translate("loginAlternativeSignIn"),
       style: TextStyle(
-        color: Theme.of(context).colorScheme.loginAlternativeButtonTextColor,
+        color: themes.getColor(context, "loginAlternativeButtonTextColor"),
         fontSize:
             Theme.of(context).textTheme.loginAlternativeButtonTextFontSize,
         fontWeight:
@@ -180,7 +180,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return new Text(
       AppLocalizations.of(context).translate("loginForgotPassword"),
       style: TextStyle(
-        color: Theme.of(context).colorScheme.loginForgotPasswordButtonTextColor,
+        color: themes.getColor(context, "loginForgotPasswordButtonTextColor"),
         fontSize:
             Theme.of(context).textTheme.loginForgotPasswordButtonTextFontSize,
         fontWeight: Theme.of(context)
@@ -197,11 +197,11 @@ class _LoginScreenState extends State<LoginScreen> {
       width: 50.0,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(360.0),
-        color: Theme.of(context).colorScheme.loginProgressionButtonColor,
+        color: themes.getColor(context, "loginProgressionButtonColor"),
       ),
       child: Icon(
         Icons.arrow_forward_ios,
-        color: Theme.of(context).colorScheme.loginProgressionButtonIconColor,
+        color: themes.getColor(context, "loginProgressionButtonIconColor"),
       ),
     );
   }
@@ -215,10 +215,8 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: BoxDecoration(
               gradient: themesGradients.bodyLinearGradient(
                   context,
-                  Theme.of(context).colorScheme.backgroundGradientTopRightColor,
-                  Theme.of(context)
-                      .colorScheme
-                      .backgroundGradientBottomLeftColor,
+                  themes.getColor(context, "backgroundGradientTopRightColor"),
+                  themes.getColor(context, "backgroundGradientBottomLeftColor"),
                   false)),
           child: Stack(
             children: [

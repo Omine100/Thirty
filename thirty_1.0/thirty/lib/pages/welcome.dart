@@ -42,8 +42,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(90.0),
         color: isSignIn
-            ? Theme.of(context).colorScheme.welcomeSignInButtonColor
-            : Theme.of(context).colorScheme.welcomeSignUpButtonColor,
+            ? themes.getColor(context, "welcomeSignInButtonColor")
+            : themes.getColor(context, "welcomeSignInButtonColor"),
       ),
       child: Center(
         child: Text(
@@ -53,9 +53,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           style: TextStyle(
             foreground: isSignIn
                 ? (Paint()
-                  ..color = Theme.of(context)
-                      .colorScheme
-                      .welcomeSignInButtonTextColor)
+                  ..color =
+                      themes.getColor(context, "welcomeSignInButtonTextColor"))
                 : (Paint()..shader = linearGradient),
             fontSize: Theme.of(context)
                 .textTheme
@@ -78,8 +77,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         decoration: BoxDecoration(
             gradient: themesGradients.bodyLinearGradient(
                 context,
-                Theme.of(context).colorScheme.backgroundGradientTopRightColor,
-                Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
+                themes.getColor(context, "backgroundGradientTopRightColor"),
+                themes.getColor(context, "backgroundGradientBottomLeftColor"),
                 false)),
         child: Stack(
           children: <Widget>[
@@ -110,22 +109,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 child: interfaceStandards.parentCenter(
                   context,
                   GestureDetector(
-                    onTap: () {
-                      _isSignIn = true;
-                      Navigator.push(context,
-                          animationStandards.welcomePageTransition(_isSignIn));
-                    },
-                    child: showSignInSignUpButton(
-                        true,
-                        themesGradients.textLinearGradient(
+                      onTap: () {
+                        _isSignIn = true;
+                        Navigator.push(
                             context,
-                            Theme.of(context)
-                                .colorScheme
-                                .backgroundGradientTopRightColor,
-                            Theme.of(context)
-                                .colorScheme
-                                .backgroundGradientBottomLeftColor)),
-                  ),
+                            animationStandards
+                                .welcomePageTransition(_isSignIn));
+                      },
+                      child: showSignInSignUpButton(
+                          true,
+                          themesGradients.textLinearGradient(
+                            context,
+                            themes.getColor(
+                                context, "backgroundGradientTopRightColor"),
+                            themes.getColor(
+                                context, "backgroundGradientBottomLeftColor"),
+                          ))),
                 )),
             Positioned(
                 top: themes.getPosition(
@@ -133,22 +132,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 child: interfaceStandards.parentCenter(
                   context,
                   GestureDetector(
-                    onTap: () {
-                      _isSignIn = false;
-                      Navigator.push(context,
-                          animationStandards.welcomePageTransition(_isSignIn));
-                    },
-                    child: showSignInSignUpButton(
-                        false,
-                        themesGradients.textLinearGradient(
+                      onTap: () {
+                        _isSignIn = false;
+                        Navigator.push(
                             context,
-                            Theme.of(context)
-                                .colorScheme
-                                .backgroundGradientTopRightColor,
-                            Theme.of(context)
-                                .colorScheme
-                                .backgroundGradientBottomLeftColor)),
-                  ),
+                            animationStandards
+                                .welcomePageTransition(_isSignIn));
+                      },
+                      child: showSignInSignUpButton(
+                          false,
+                          themesGradients.textLinearGradient(
+                            context,
+                            themes.getColor(
+                                context, "backgroundGradientTopRightColor"),
+                            themes.getColor(
+                                context, "backgroundGradientBottomLeftColor"),
+                          ))),
                 )),
             Positioned(
               bottom: themes.getPosition(
@@ -162,9 +161,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     context, true, "welcomeLanguageSelectorButtonDimension"),
                 child: Icon(
                   Icons.language,
-                  color: Theme.of(context)
-                      .colorScheme
-                      .welcomeLanguageSelectorButtonColor,
+                  color: themes.getColor(
+                      context, "welcomeLanguageSelectorButtonColor"),
                   size: themes.getDimension(
                       context, true, "welcomeLanguageSelectorButtonDimension"),
                 ),

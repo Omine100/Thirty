@@ -1,34 +1,85 @@
 import 'package:flutter/material.dart';
 
 extension CustomColorScheme on ColorScheme {
-  //Color get 'name' => const Color(0x'hexValue');
-  Color get backgroundGradientTopRightColor => const Color(0xFFFF99D1);
-  Color get backgroundGradientBottomLeftColor => const Color(0xFFFFAB58);
+  Color color({String selection, bool isDark}) {
+    switch (selection) {
+      //case 'name': return isDark ? 'dark' : 'light'; break;
+      case "backgroundGradientTopRightColor":
+        return isDark ? Color(0xFFFF99D1) : Color(0xFFFF99D1);
+        break;
+      case "backgroundGradientBottomLeftColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFAB58);
+        break;
 
-  Color get interfaceStandardsBackButtonColor => const Color(0xFFFFFFFF);
-  Color get interfaceStandardsTitleTextColor => const Color(0xFFFFFFFF);
-  Color get interfaceStandardsProgressIndicatorColor => const Color(0xFFFFFFFF);
+      case "interfaceStandardsBackButtonColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
+      case "interfaceStandardsTitleTextColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
+      case "interfaceStandardsProgressIndicatorColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
 
-  Color get welcomeSignInButtonColor => const Color(0xFFFB81D1);
-  Color get welcomeSignInButtonTextColor => const Color(0xFFFFFFFF);
-  Color get welcomeSignUpButtonColor => const Color(0xFFFFFFFF);
-  Color get welcomeLanguageSelectorButtonColor => const Color(0xFFFFFFFF);
+      case "welcomeSignInButtonColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFB81D1);
+        break;
+      case "welcomeSignInButtonTextColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
+      case "welcomeSignUpButtonColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
+      case "welcomeLanguageSelectorButtonColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
 
-  Color get loginTextInputColor => const Color(0xFFFFFFFF);
-  Color get loginProgressionButtonColor => const Color(0xFFFB81D1);
-  Color get loginProgressionButtonIconColor => const Color(0xFFFFFFFF);
-  Color get loginAlternativeButtonTextColor => const Color(0xFFFFFFFF);
-  Color get loginVisibilityButtonColor => const Color(0xFFFFFFFF);
-  Color get loginForgotPasswordButtonTextColor => const Color(0xFFFFFFFF);
-  Color get loginErrorMessageColor => const Color(0xFFF44336);
+      case "loginTextInputColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
+      case "loginProgressionButtonColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFB81D1);
+        break;
+      case "loginProgressionButtonIconColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
+      case "loginAlternativeButtonTextColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
+      case "loginVisibilityButtonColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
+      case "loginForgotPasswordButtonTextColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
+      case "loginErrorMessageColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFF44336);
+        break;
 
-  Color get forgotPasswordTextInputColor => const Color(0xFFFFFFFF);
-  Color get forgotPasswordResetColor => const Color(0xFFFFFFFF);
+      case "forgotPasswordTextInputColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFF44336);
+        break;
+      case "forgotPasswordResetColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFF44336);
+        break;
 
-  Color get introTitleColor => const Color(0xFFFFFFFF);
-  Color get introDotColor => const Color(0xFFFFFFFF);
-  Color get introDescriptionColor => const Color(0xFFFFFFFF);
-  Color get introInterfaceButtonColor => const Color(0xFFFFFFFF);
+      case "introTitleColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFF44336);
+        break;
+      case "introDotColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFF44336);
+        break;
+      case "introDescriptionColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFF44336);
+        break;
+      case "introInterfaceButtonColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFF44336);
+        break;
+      default:
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+        break;
+    }
+  }
 }
 
 extension CustomFontSizes on TextTheme {
@@ -186,6 +237,14 @@ class Themes {
       return true;
     }
     return false;
+  }
+
+  //Mechanics: Get color value
+  Color getColor(BuildContext context, String _selection) {
+    Color value = Theme.of(context)
+        .colorScheme
+        .color(selection: _selection, isDark: checkDarkTheme(context));
+    return value;
   }
 
   //Mechanics: Get dimension value

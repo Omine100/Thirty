@@ -26,29 +26,29 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     return new TextFormField(
       keyboardType: TextInputType.emailAddress,
       style: TextStyle(
-        color: Theme.of(context).colorScheme.forgotPasswordTextInputColor,
+        color: themes.getColor(context, "forgotPasswordTextInputColor"),
         fontSize: Theme.of(context).textTheme.forgotPasswordTextInputFontSize,
       ),
       decoration: InputDecoration(
         prefixIcon: Icon(
           Icons.email,
-          color: Theme.of(context).colorScheme.forgotPasswordTextInputColor,
+          color: themes.getColor(context, "forgotPasswordTextInputColor"),
         ),
         hintText: "Email",
         hintStyle: TextStyle(
-          color: Theme.of(context).colorScheme.forgotPasswordTextInputColor,
+          color: themes.getColor(context, "forgotPasswordTextInputColor"),
         ),
         labelStyle: TextStyle(
-          color: Theme.of(context).colorScheme.forgotPasswordTextInputColor,
+          color: themes.getColor(context, "forgotPasswordTextInputColor"),
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.forgotPasswordTextInputColor,
+            color: themes.getColor(context, "forgotPasswordTextInputColor"),
           ),
         ),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.forgotPasswordTextInputColor,
+            color: themes.getColor(context, "forgotPasswordTextInputColor"),
           ),
         ),
       ),
@@ -69,8 +69,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         decoration: BoxDecoration(
           gradient: themesGradients.bodyLinearGradient(
               context,
-              Theme.of(context).colorScheme.backgroundGradientTopRightColor,
-              Theme.of(context).colorScheme.backgroundGradientBottomLeftColor,
+              themes.getColor(context, "backgroundGradientTopRightColor"),
+              themes.getColor(context, "backgroundGradientBottomLeftColor"),
               false),
         ),
         child: Stack(
@@ -117,9 +117,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     child: Text(
                       "Reset Password",
                       style: TextStyle(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .forgotPasswordResetColor,
+                        color: themes.getColor(
+                            context, "forgotPasswordResetColor"),
                         fontSize: Theme.of(context)
                             .textTheme
                             .forgotPasswordResetFontSize,
