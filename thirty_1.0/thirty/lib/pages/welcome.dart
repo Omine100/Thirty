@@ -91,12 +91,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 width: 100,
                 child: Consumer<ThemeNotifier>(
                   builder: (context, notifier, child) => SwitchListTile(
-                    activeColor: Theme.of(context).primaryColor,
-                    inactiveThumbColor: Theme.of(context).primaryColor,
                     onChanged: (val) {
                       notifier.toggleTheme();
-                      print(val);
-                      print(MediaQuery.of(context).platformBrightness);
+                      print(Theme.of(context).primaryColor.value);
                     },
                     value: notifier.darkTheme,
                   ),

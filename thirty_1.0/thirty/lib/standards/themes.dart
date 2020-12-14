@@ -3,11 +3,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 //Theme: Light theme
 ThemeData light = new ThemeData(
+  primaryColor: Colors.red,
   brightness: Brightness.dark,
 );
 
 //Theme: Dark theme
 ThemeData dark = new ThemeData(
+  primaryColor: Colors.blue,
   brightness: Brightness.dark,
 );
 
@@ -240,9 +242,10 @@ class Themes {
 
   //Mechanics: Get color value
   Color getColor(BuildContext context, String _selection) {
-    Color value = Theme.of(context)
-        .colorScheme
-        .color(selection: _selection, isDark: checkDarkTheme(context));
+    Color value = Theme.of(context).colorScheme.color(
+        selection: _selection,
+        isDark:
+            Theme.of(context).primaryColor.value == 4280391411 ? false : true);
     return value;
   }
 
