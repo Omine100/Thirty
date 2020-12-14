@@ -154,7 +154,7 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? 0.05 : null;
         break;
       case "welcomeThemeSelectorButtonDimension":
-        return isHeight ? 0.4 : null;
+        return isHeight ? 0.6 : null;
         break;
       case "welcomeErrorMessageDimension":
         return isHeight ? 0.1 : 0.1;
@@ -204,7 +204,7 @@ extension CustomPositions on MaterialTapTargetSize {
         return isTop ? 0.05 : 0.07;
         break;
       case "welcomeThemeSelectorButtonPosition":
-        return isTop ? 0.06 : 0.175;
+        return isTop ? 0.05 : 0.07;
         break;
       case "welcomeProgressPosition":
         return isTop ? 0.8 : null;
