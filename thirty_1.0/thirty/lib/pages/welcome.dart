@@ -88,16 +88,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   context, true, "welcomeBackgroundImagePosition"),
               child: interfaceStandards.parentCenter(
                 context,
-                themes.checkDarkTheme(context)
-                    ? Container()
-                    : Image(
-                        image:
-                            AssetImage('lib/assets/welcomeBackgroundImage.png'),
-                        height: themes.getDimension(
-                            context, true, "welcomeBackgroundImageDimension"),
-                        width: themes.getDimension(
-                            context, false, "welcomeBackgroundImageDimension"),
-                      ),
+                Image(
+                  image: themes.checkDarkTheme(context)
+                      ? AssetImage(
+                          'lib/assets/welcomeBackgroundDarkThemeImage.png')
+                      : AssetImage(
+                          'lib/assets/welcomeBackgroundLightThemeImage.png'),
+                  height: themes.getDimension(
+                      context, true, "welcomeBackgroundImageDimension"),
+                  width: themes.getDimension(
+                      context, false, "welcomeBackgroundImageDimension"),
+                ),
               ),
             ),
             Positioned(

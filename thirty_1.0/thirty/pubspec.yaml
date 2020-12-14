@@ -33,7 +33,8 @@ flutter:
   uses-material-design: true
 
   assets:
-      - lib/assets/welcomeBackgroundImage.png
+      - lib/assets/welcomeBackgroundLightThemeImage.png
+      - lib/assets/welcomeBackgroundDarkThemeImage.png
       - lib/assets/interfaceStandardsThemeSelectorMoonImage.png
       - lib/assets/interfaceStandardsThemeSelectorSunImage.png
       - lib/assets/introCalendarAnimation.json
