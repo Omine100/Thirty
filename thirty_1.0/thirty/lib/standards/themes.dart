@@ -18,10 +18,10 @@ extension CustomColorScheme on ColorScheme {
     switch (selection) {
       //case 'name': return isDark ? 'dark' : 'light'; break;
       case "backgroundGradientTopRightColor":
-        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFF99D1);
+        return isDark ? Color(0xFF162447) : Color(0xFFFF99D1);
         break;
       case "backgroundGradientBottomLeftColor":
-        return isDark ? Color(0xFF000000) : Color(0xFFFFAB58);
+        return isDark ? Color(0xFF1B1B2F) : Color(0xFFFFAB58);
         break;
 
       case "interfaceStandardsBackButtonColor":
@@ -35,7 +35,7 @@ extension CustomColorScheme on ColorScheme {
         break;
 
       case "welcomeSignInButtonColor":
-        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFB81D1);
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFB81D1);
         break;
       case "welcomeSignInButtonTextColor":
         return isDark ? Color(0xFF000000) : Color(0xFFFFFFFF);
@@ -235,17 +235,14 @@ extension CustomPositions on MaterialTapTargetSize {
 class Themes {
   //Mechanics: Check dark theme
   bool checkDarkTheme(BuildContext context) {
-    return MediaQuery.of(context).platformBrightness == Brightness.dark
-        ? true
-        : false;
+    return Theme.of(context).primaryColor.value == 4280391411 ? false : true;
   }
 
   //Mechanics: Get color value
   Color getColor(BuildContext context, String _selection) {
-    Color value = Theme.of(context).colorScheme.color(
-        selection: _selection,
-        isDark:
-            Theme.of(context).primaryColor.value == 4280391411 ? false : true);
+    Color value = Theme.of(context)
+        .colorScheme
+        .color(selection: _selection, isDark: checkDarkTheme(context));
     return value;
   }
 

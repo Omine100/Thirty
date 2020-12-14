@@ -44,7 +44,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           context, false, "welcomeSignInSignUpButtonDimension"),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(90.0),
-        color: themes.getColor(context, "welcomeSignInButtonColor"),
+        color: themes.getColor(context,
+            isSignIn ? "welcomeSignInButtonColor" : "welcomeSignUpButtonColor"),
       ),
       child: Center(
         child: Text(
