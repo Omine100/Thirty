@@ -48,13 +48,19 @@ extension CustomColorScheme on ColorScheme {
         break;
 
       case "loginTextInputColor":
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+        break;
+      case "loginTextInputIconColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
+      case "loginTextInputLineColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
       case "loginProgressionButtonColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFB81D1);
         break;
       case "loginProgressionButtonIconColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
         break;
       case "loginAlternativeButtonTextColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
@@ -283,6 +289,7 @@ class Themes {
 }
 
 class ThemeNotifier extends ChangeNotifier {
+  //Variable initialization
   final String key = "theme";
   SharedPreferences prefs;
   bool _isDark;

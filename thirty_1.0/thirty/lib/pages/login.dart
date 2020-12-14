@@ -107,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ? Icons.lock
                   : Icons.person
               : Icons.email,
-          color: themes.getColor(context, "loginTextInputColor"),
+          color: themes.getColor(context, "loginTextInputIconColor"),
         ),
         hintText: key,
         hintStyle: TextStyle(
@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: themes.getColor(context, "loginTextInputColor"),
+            color: themes.getColor(context, "loginTextInputLineColor"),
           ),
         ),
         focusedBorder: UnderlineInputBorder(
