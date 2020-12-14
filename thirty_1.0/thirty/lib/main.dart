@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:dynamic_theme/dynamic_theme.dart';
 
 import 'package:thirty/services/appLocalizations.dart';
 import 'package:thirty/services/root.dart';
@@ -16,30 +17,31 @@ class Thirty extends StatelessWidget {
   //User interfac: Half app
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Thirty",
-      debugShowCheckedModeBanner: false,
-      debugShowMaterialGrid: false,
-      routes: {
-        '/RootScreen': (context) => RootScreen(),
-      },
-      initialRoute: '/RootScreen',
-      theme: themes.lightTheme(),
-      darkTheme: themes.darkTheme(),
-      supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],
-      localizationsDelegates: [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      localeResolutionCallback: (locale, supportedLocales) {
-        for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode) {
-            return supportedLocale;
-          }
-        }
-        return supportedLocales.first;
-      },
-    );
+    return DynamicTheme(
+        defaultBrightness: Brightness.light,
+        data: (brightness) => ThemeData(brightness: brightness),
+        themedWidgetBuilder: (context, theme) {
+          return MaterialApp(
+            title: "Thirty",
+            debugShowCheckedModeBanner: false,
+            debugShowMaterialGrid: false,
+            home: RootScreen(),
+            theme: Theme.of,
+            supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],
+            localizationsDelegates: [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
+            localeResolutionCallback: (locale, supportedLocales) {
+              for (var supportedLocale in supportedLocales) {
+                if (supportedLocale.languageCode == locale.languageCode) {
+                  return supportedLocale;
+                }
+              }
+              return supportedLocales.first;
+            },
+          );
+        });
   }
 }

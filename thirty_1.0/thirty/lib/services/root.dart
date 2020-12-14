@@ -14,6 +14,11 @@ enum AuthStatus {
 }
 
 class RootScreen extends StatefulWidget {
+  RootScreen({this.isLight});
+
+  //Variable reference
+  final bool isLight;
+
   @override
   State<StatefulWidget> createState() => _RootScreenState();
 }
@@ -81,7 +86,9 @@ class _RootScreenState extends State<RootScreen> {
         return buildWaitingScrreen();
         break;
       case AuthStatus.NOT_SIGNED_IN:
-        return new WelcomeScreen();
+        return new WelcomeScreen(
+          isLight: widget.isLight,
+        );
       case AuthStatus.SIGNED_IN:
         if (_userId != null) {
           return new HomeScreen(

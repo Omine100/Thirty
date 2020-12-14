@@ -22,16 +22,16 @@ extension CustomColorScheme on ColorScheme {
         break;
 
       case "welcomeSignInButtonColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFB81D1);
+        return isDark ? Color(0xFF000000) : Color(0xFFFB81D1);
         break;
       case "welcomeSignInButtonTextColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        return isDark ? Color(0xFF000000) : Color(0xFFFFFFFF);
         break;
       case "welcomeSignUpButtonColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        return isDark ? Color(0xFF000000) : Color(0xFFFFFFFF);
         break;
       case "welcomeLanguageSelectorButtonColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        return isDark ? Color(0xFF000000) : Color(0xFFFFFFFF);
         break;
 
       case "loginTextInputColor":
