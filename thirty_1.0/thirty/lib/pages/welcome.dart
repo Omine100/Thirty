@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:thirty/services/appLocalizations.dart';
-import 'package:provider/provider.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/standards/themes.dart';
@@ -85,23 +84,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         child: Stack(
           children: <Widget>[
             Positioned(
-              top: 70,
-              left: 0.4,
-              child: Container(
-                height: 100,
-                width: 100,
-                child: Consumer<ThemeNotifier>(
-                  builder: (context, notifier, child) => SwitchListTile(
-                    onChanged: (val) {
-                      notifier.toggleTheme();
-                      print(Theme.of(context).primaryColor.value);
-                    },
-                    value: notifier.darkTheme,
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
               top: themes.getPosition(
                   context, true, "welcomeBackgroundImagePosition"),
               child: interfaceStandards.parentCenter(
@@ -181,6 +163,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       context, true, "welcomeLanguageSelectorButtonDimension"),
                 ),
               ),
+            ),
+            Positioned(
+              bottom: themes.getPosition(
+                  context, true, "welcomeThemeSelectorButtonPosition"),
+              right: themes.getPosition(
+                  context, false, "welcomeThemeSelectorButtonPosition"),
+              child: Container(
+                  height: themes.getDimension(
+                      context, true, "welcomeThemeSelectorButtonDimension"),
+                  width: themes.getDimension(
+                      context, true, "welcomeThemeSelectorButtonDimension"),
+                  child: interfaceStandards.themeSelector(context)),
             ),
           ],
         ),

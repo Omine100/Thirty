@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:intro_slider/slide_object.dart';
 
 import 'package:thirty/services/appLocalizations.dart';
@@ -29,6 +30,24 @@ class InterfaceStandards {
           color: themes.getColor(context, "interfaceStandardsBackButtonColor"),
           size: themes.getDimension(
               context, true, "interfaceStandardsBackButtonIconDimension")),
+    );
+  }
+
+  //User interface: Theme selector
+  Widget themeSelector(BuildContext context) {
+    return Consumer<ThemeNotifier>(
+      builder: (context, notifier, child) => SwitchListTile(
+        inactiveThumbImage: AssetImage(
+            'lib/assets/interfaceStandardsThemeSelectorMoonImage.png'),
+        activeThumbImage: AssetImage(
+            'lib/assets/interfaceStandardsThemeSelectorSunImage.png'),
+        activeColor: Colors.white,
+        inactiveThumbColor: Colors.blue,
+        onChanged: (val) {
+          notifier.toggleTheme();
+        },
+        value: notifier.darkTheme,
+      ),
     );
   }
 

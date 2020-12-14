@@ -34,6 +34,8 @@ flutter:
 
   assets:
       - lib/assets/welcomeBackgroundImage.png
+      - lib/assets/interfaceStandardsThemeSelectorMoonImage.png
+      - lib/assets/interfaceStandardsThemeSelectorSunImage.png
       - lib/assets/introCalendarAnimation.json
       - lib/assets/introExerciseAnimation.json
       - lib/assets/introMedalAnimation.json
