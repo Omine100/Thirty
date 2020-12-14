@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thirty/services/appLocalizations.dart';
+import 'package:provider/provider.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/standards/themes.dart';
@@ -9,11 +10,6 @@ import 'package:thirty/standards/interfaceStandards.dart';
 import 'package:thirty/standards/animationStandards.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  WelcomeScreen({this.isLight});
-
-  //Variable reference
-  final bool isLight;
-
   @override
   State<StatefulWidget> createState() => _WelcomeScreenState();
 }
@@ -22,6 +18,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   //Class initialization
   CloudFirestore cloudFirestore = new CloudFirestore();
   Themes themes = new Themes();
+  ThemeNotifier themeNotifier = new ThemeNotifier();
   ThemesGradients themesGradients = new ThemesGradients();
   MethodStandards methodStandards = new MethodStandards();
   InterfaceStandards interfaceStandards = new InterfaceStandards();
@@ -87,21 +84,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         child: Stack(
           children: <Widget>[
             Positioned(
-              top: 0.1,
-              left: 0.1,
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    methodStandards.themeSwitch(context);
-                  });
-                  print(Theme.of(context).brightness == Brightness.dark
-                      ? "Dark"
-                      : "Light");
-                },
-                child: Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.black,
+              top: 70,
+              left: 0.4,
+              child: Container(
+                height: 100,
+                width: 100,
+                child: Consumer<ThemeNotifier>(
+                  builder: (context, notifier, child) => SwitchListTile(
+                    activeColor: Theme.of(context).primaryColor,
+                    inactiveThumbColor: Theme.of(context).primaryColor,
+                    onChanged: (val) {
+                      notifier.toggleTheme();
+                      print(val);
+                      print(MediaQuery.of(context).platformBrightness);
+                    },
+                    value: notifier.darkTheme,
+                  ),
                 ),
               ),
             ),

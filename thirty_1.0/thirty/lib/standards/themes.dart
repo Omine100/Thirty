@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+//Theme: Light theme
+ThemeData light = new ThemeData(
+  brightness: Brightness.dark,
+);
+
+//Theme: Dark theme
+ThemeData dark = new ThemeData(
+  brightness: Brightness.dark,
+);
 
 extension CustomColorScheme on ColorScheme {
   Color color({String selection, bool isDark}) {
     switch (selection) {
       //case 'name': return isDark ? 'dark' : 'light'; break;
       case "backgroundGradientTopRightColor":
-        return isDark ? Color(0xFF000000) : Color(0xFFFF99D1);
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFF99D1);
         break;
       case "backgroundGradientBottomLeftColor":
         return isDark ? Color(0xFF000000) : Color(0xFFFFAB58);
@@ -22,16 +33,16 @@ extension CustomColorScheme on ColorScheme {
         break;
 
       case "welcomeSignInButtonColor":
-        return isDark ? Color(0xFF000000) : Color(0xFFFB81D1);
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFB81D1);
         break;
       case "welcomeSignInButtonTextColor":
         return isDark ? Color(0xFF000000) : Color(0xFFFFFFFF);
         break;
       case "welcomeSignUpButtonColor":
-        return isDark ? Color(0xFF000000) : Color(0xFFFFFFFF);
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
         break;
       case "welcomeLanguageSelectorButtonColor":
-        return isDark ? Color(0xFF000000) : Color(0xFFFFFFFF);
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
         break;
 
       case "loginTextInputColor":
@@ -220,27 +231,11 @@ extension CustomPositions on MaterialTapTargetSize {
 }
 
 class Themes {
-  //Theme: Light theme
-  ThemeData lightTheme() {
-    return ThemeData(
-      brightness: Brightness.light,
-    );
-  }
-
-  //Theme: Dark theme
-  ThemeData darkTheme() {
-    return ThemeData(
-      brightness: Brightness.dark,
-    );
-  }
-
   //Mechanics: Check dark theme
   bool checkDarkTheme(BuildContext context) {
-    var brightness = MediaQuery.of(context).platformBrightness;
-    if (brightness == Brightness.dark) {
-      return true;
-    }
-    return false;
+    return MediaQuery.of(context).platformBrightness == Brightness.dark
+        ? true
+        : false;
   }
 
   //Mechanics: Get color value
@@ -277,5 +272,47 @@ class Themes {
                 .materialTapTargetSize
                 .position(selection: _selection, isTop: _isTop);
     return value;
+  }
+}
+
+class ThemeNotifier extends ChangeNotifier {
+  final String key = "theme";
+  SharedPreferences prefs;
+  bool _isDark;
+
+  //Mechanics: Getter for brightness value
+  bool get darkTheme => _isDark;
+
+  //Mechanics: Theme notifier
+  ThemeNotifier() {
+    _isDark = true;
+    _loadFromPrefs();
+  }
+
+  //Mechanics: Theme toggler
+  toggleTheme() {
+    _isDark = !_isDark;
+    _saveToPrefs();
+    notifyListeners();
+  }
+
+  //Mechanics: Initial preference initialization
+  _initPrefs() async {
+    if (prefs == null) {
+      prefs = await SharedPreferences.getInstance();
+    }
+  }
+
+  //Mechanics: Loading preferences
+  _loadFromPrefs() async {
+    await _initPrefs();
+    _isDark = prefs.getBool(key) ?? true;
+    notifyListeners();
+  }
+
+  //Mechanics: Saving preferences
+  _saveToPrefs() async {
+    await _initPrefs();
+    prefs.setBool(key, _isDark);
   }
 }

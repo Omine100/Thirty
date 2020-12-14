@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:dynamic_theme/dynamic_theme.dart';
+import 'package:provider/provider.dart';
 
 import 'package:thirty/services/appLocalizations.dart';
 import 'package:thirty/services/root.dart';
@@ -17,16 +17,16 @@ class Thirty extends StatelessWidget {
   //User interfac: Half app
   @override
   Widget build(BuildContext context) {
-    return DynamicTheme(
-        defaultBrightness: Brightness.light,
-        data: (brightness) => ThemeData(brightness: brightness),
-        themedWidgetBuilder: (context, theme) {
+    return ChangeNotifierProvider(
+      create: (_) => ThemeNotifier(),
+      child: Consumer<ThemeNotifier>(
+        builder: (context, ThemeNotifier notifier, child) {
           return MaterialApp(
             title: "Thirty",
             debugShowCheckedModeBanner: false,
             debugShowMaterialGrid: false,
             home: RootScreen(),
-            theme: Theme.of,
+            theme: notifier.darkTheme ? dark : light,
             supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],
             localizationsDelegates: [
               AppLocalizations.delegate,
@@ -42,6 +42,8 @@ class Thirty extends StatelessWidget {
               return supportedLocales.first;
             },
           );
-        });
+        },
+      ),
+    );
   }
 }
