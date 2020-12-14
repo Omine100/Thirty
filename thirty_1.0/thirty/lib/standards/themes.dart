@@ -18,7 +18,7 @@ extension CustomColorScheme on ColorScheme {
     switch (selection) {
       //case 'name': return isDark ? 'dark' : 'light'; break;
       case "backgroundGradientTopRightColor":
-        return isDark ? Color(0xFF162447) : Color(0xFFFF99D1);
+        return isDark ? Color(0xFF102447) : Color(0xFFFF99D1);
         break;
       case "backgroundGradientBottomLeftColor":
         return isDark ? Color(0xFF1B1B2F) : Color(0xFFFFAB58);
