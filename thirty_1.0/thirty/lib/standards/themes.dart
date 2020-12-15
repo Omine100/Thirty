@@ -76,7 +76,13 @@ extension CustomColorScheme on ColorScheme {
         break;
 
       case "forgotPasswordTextInputColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFF44336);
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFF44336);
+        break;
+      case "forgotPasswordTextInputIconColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
+      case "forgotPasswordTextInputLineColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
       case "forgotPasswordResetColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFF44336);

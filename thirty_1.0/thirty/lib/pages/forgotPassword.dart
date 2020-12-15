@@ -32,7 +32,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       decoration: InputDecoration(
         prefixIcon: Icon(
           Icons.email,
-          color: themes.getColor(context, "forgotPasswordTextInputColor"),
+          color: themes.getColor(context, "forgotPasswordTextInputIconColor"),
         ),
         hintText: "Email",
         hintStyle: TextStyle(
@@ -43,7 +43,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: themes.getColor(context, "forgotPasswordTextInputColor"),
+            color: themes.getColor(context, "forgotPasswordTextInputLineColor"),
           ),
         ),
         focusedBorder: UnderlineInputBorder(
