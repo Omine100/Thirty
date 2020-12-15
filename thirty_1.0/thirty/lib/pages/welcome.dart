@@ -84,10 +84,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         child: Stack(
           children: <Widget>[
             Positioned(
-              top: themes.getPosition(
-                  context, true, "welcomeBackgroundImagePosition"),
-              left: themes.getPosition(
-                  context, false, "welcomeBackgroundImagePosition"),
+              top: themes.checkDarkTheme(context)
+                  ? themes.getPosition(
+                      context, true, "welcomeBackgroundDarkThemeImagePosition")
+                  : themes.getPosition(context, true,
+                      "welcomeBackgroundLightThemeImagePosition"),
+              left: themes.checkDarkTheme(context)
+                  ? themes.getPosition(
+                      context, false, "welcomeBackgroundDarkThemeImagePosition")
+                  : themes.getPosition(context, false,
+                      "welcomeBackgroundLightThemeImagePosition"),
               child: interfaceStandards.parentCenter(
                 context,
                 Image(

@@ -191,8 +191,11 @@ extension CustomPositions on MaterialTapTargetSize {
   double position({String selection, bool isTop}) {
     switch (selection) {
       //case 'name': return isTop? 'top' : 'left'; break;
-      case "welcomeBackgroundImagePosition":
-        return isTop ? -0.125 : -0.2;
+      case "welcomeBackgroundLightThemeImagePosition":
+        return isTop ? -0.1325 : -0.2;
+        break;
+      case "welcomeBackgroundDarkThemeImagePosition":
+        return isTop ? -0.095 : 0.3;
         break;
       case "welcomeTitlePosition":
         return isTop ? 0.0875 : null;
