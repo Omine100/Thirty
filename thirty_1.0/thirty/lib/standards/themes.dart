@@ -33,6 +33,12 @@ extension CustomColorScheme on ColorScheme {
       case "interfaceStandardsProgressIndicatorColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
+      case "interfaceStandardsThemeSelectorColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
+      case "interfaceStandardsLanguageSelectorColor":
+        return Color(0xFFFFFFFF);
+        break;
 
       case "welcomeSignInButtonColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFB81D1);
@@ -163,7 +169,7 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? 0.08 : 0.6;
         break;
       case "welcomeLanguageSelectorButtonDimension":
-        return isHeight ? 0.05 : null;
+        return isHeight ? 0.05 : 0.3;
         break;
       case "welcomeErrorMessageDimension":
         return isHeight ? 0.1 : 0.1;
@@ -213,7 +219,7 @@ extension CustomPositions on MaterialTapTargetSize {
         return isTop ? 0.795 : null;
         break;
       case "welcomeLanguageSelectorButtonPosition":
-        return isTop ? 0.05 : 0.07;
+        return isTop ? 0.05 : -0.15;
         break;
       case "welcomeThemeSelectorButtonPosition":
         return isTop ? 0.59 : 0.38;

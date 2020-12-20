@@ -3,7 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:intro_slider/slide_object.dart';
 
 import 'package:thirty/services/appLocalizations.dart';
+import 'package:thirty/languages/language.dart';
 import 'package:thirty/standards/themes.dart';
+import 'package:thirty/standards/methodStandards.dart';
 
 class InterfaceStandards {
   //Class initialization
@@ -41,13 +43,45 @@ class InterfaceStandards {
             'lib/assets/interfaceStandardsThemeSelectorMoonImage.png'),
         activeThumbImage: AssetImage(
             'lib/assets/interfaceStandardsThemeSelectorSunImage.png'),
-        activeColor: Colors.white,
-        inactiveThumbColor: Colors.blue,
+        activeColor:
+            themes.getColor(context, "interfaceStandardsThemeSelectorColor"),
+        inactiveThumbColor:
+            themes.getColor(context, "interfaceStandardsThemeSelectorColor"),
         onChanged: (val) {
           notifier.toggleTheme();
         },
         value: notifier.darkTheme,
       ),
+    );
+  }
+
+  //User interface: Language selector
+  Widget languageSelector(BuildContext context) {
+    return DropdownButton(
+      dropdownColor:
+          themes.getColor(context, "interfaceStandardsLanguageSelectorColor"),
+      onChanged: (Language language) {
+        MethodStandards().changeLanguage(language);
+      },
+      icon: Icon(
+        Icons.language,
+        color: themes.getColor(context, "welcomeLanguageSelectorButtonColor"),
+        size: themes.getDimension(
+            context, true, "welcomeLanguageSelectorButtonDimension"),
+      ),
+      items: Language.languageList()
+          .map<DropdownMenuItem<Language>>((lang) => DropdownMenuItem(
+              value: lang,
+              child: Row(
+                children: <Widget>[
+                  Text(lang.flag, style: TextStyle(color: Colors.black)),
+                  Text(
+                    lang.name,
+                    style: TextStyle(color: Colors.black),
+                  )
+                ],
+              )))
+          .toList(),
     );
   }
 
