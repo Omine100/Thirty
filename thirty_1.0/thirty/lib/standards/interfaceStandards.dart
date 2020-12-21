@@ -57,41 +57,43 @@ class InterfaceStandards {
 
   //User interface: Language selector
   Widget languageSelector(BuildContext context) {
-    return DropdownButton(
-      dropdownColor:
-          themes.getColor(context, "interfaceStandardsLanguageSelectorColor"),
-      onChanged: (Language language) {
-        MethodStandards().changeLanguage(language);
-      },
-      icon: Icon(
-        Icons.language,
-        color: themes.getColor(
-            context, "interfaceStandardsLanguageSelectorButtonColor"),
-        size: themes.getDimension(
-            context, true, "interfaceStandardsLanguageSelectorButtonDimension"),
-      ),
-      items: Language.languageList()
-          .map<DropdownMenuItem<Language>>((lang) => DropdownMenuItem(
-              value: lang,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Text(
-                    lang.name,
-                    style: TextStyle(
-                      color: themes.getColor(context,
-                          "interfaceStandardsLanguageSelectorTextColor"),
-                    ),
-                  ),
-                  Text(
-                    lang.flag,
-                    style: TextStyle(
+    return DropdownButtonHideUnderline(
+      child: DropdownButton(
+        dropdownColor:
+            themes.getColor(context, "interfaceStandardsLanguageSelectorColor"),
+        onChanged: (Language language) {
+          MethodStandards().changeLanguage(language);
+        },
+        icon: Icon(
+          Icons.language,
+          color: themes.getColor(
+              context, "interfaceStandardsLanguageSelectorButtonColor"),
+          size: themes.getDimension(context, true,
+              "interfaceStandardsLanguageSelectorButtonDimension"),
+        ),
+        items: Language.languageList()
+            .map<DropdownMenuItem<Language>>((lang) => DropdownMenuItem(
+                value: lang,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Text(
+                      lang.name,
+                      style: TextStyle(
                         color: themes.getColor(context,
-                            "interfaceStandardsLanguageSelectorTextColor")),
-                  ),
-                ],
-              )))
-          .toList(),
+                            "interfaceStandardsLanguageSelectorTextColor"),
+                      ),
+                    ),
+                    Text(
+                      lang.flag,
+                      style: TextStyle(
+                          color: themes.getColor(context,
+                              "interfaceStandardsLanguageSelectorTextColor")),
+                    ),
+                  ],
+                )))
+            .toList(),
+      ),
     );
   }
 
