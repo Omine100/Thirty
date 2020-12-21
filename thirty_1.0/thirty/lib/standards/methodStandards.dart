@@ -14,7 +14,7 @@ class MethodStandards {
   }
 
   //Mechanics: Changes language
-  String changeLanguage(BuildContext context, LanguageList language) {
+  void changeLanguage(BuildContext context, LanguageList language) {
     Locale _temp;
     switch (language.languageCode) {
       case "en":
