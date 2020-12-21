@@ -49,8 +49,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       child: Center(
         child: Text(
           isSignIn
-              ? AppLocalizations.of(context).translate("welcomeSignInButton")
-              : AppLocalizations.of(context).translate("welcomeSignUpButton"),
+              ? getTranslated(context, "welcomeSignInButton")
+              : getTranslated(context, "welcomeSignUpButton"),
           style: TextStyle(
             foreground: isSignIn
                 ? (Paint()

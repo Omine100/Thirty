@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
+import 'package:thirty/standards/methodStandards.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -34,7 +35,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           Icons.email,
           color: themes.getColor(context, "forgotPasswordTextInputIconColor"),
         ),
-        hintText: "Email",
+        hintText: getTranslated(context, "inputEmail"),
         hintStyle: TextStyle(
           color: themes.getColor(context, "forgotPasswordTextInputColor"),
         ),
@@ -85,8 +86,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Positioned(
               top: themes.getPosition(
                   context, true, "forgotPasswordTitlePosition"),
-              child: interfaceStandards.parentCenter(context,
-                  interfaceStandards.showTitle(context, "forgotPasswordTitle")),
+              child:
+                  interfaceStandards.showTitle(context, "forgotPasswordTitle"),
             ),
             Positioned(
               top: themes.getPosition(
@@ -115,7 +116,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      "Reset Password",
+                      getTranslated(context, "forgotPasswordReset"),
                       style: TextStyle(
                         color: themes.getColor(
                             context, "forgotPasswordResetColor"),

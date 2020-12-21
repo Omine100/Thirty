@@ -33,3 +33,7 @@ class MethodStandards {
     Thirty.setLocale(context, _temp);
   }
 }
+
+String getTranslated(BuildContext context, String key) {
+  return AppLocalizations.of(context).translate(key);
+}

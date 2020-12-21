@@ -5,6 +5,7 @@ import 'package:thirty/services/appLocalizations.dart';
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
+import 'package:thirty/standards/methodStandards.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
 import 'package:thirty/pages/intro.dart';
 
@@ -93,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
   //User interface: Show sign in or sign up input fields
   Widget showInput(BuildContext context, String key) {
     return new TextFormField(
-      keyboardType: key == AppLocalizations.of(context).translate("inputEmail")
+      keyboardType: key == getTranslated(context, "inputEmail")
           ? TextInputType.emailAddress
           : TextInputType.text,
       style: TextStyle(
@@ -102,8 +103,8 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       decoration: InputDecoration(
         prefixIcon: Icon(
-          key != AppLocalizations.of(context).translate("inputEmail")
-              ? key == AppLocalizations.of(context).translate("inputPassword")
+          key != getTranslated(context, "inputEmail")
+              ? key == getTranslated(context, "inputPassword")
                   ? Icons.lock
                   : Icons.person
               : Icons.email,
@@ -128,18 +129,16 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
       validator: (value) => value.isEmpty
-          ? "$key " + AppLocalizations.of(context).translate("inputValidator")
+          ? "$key " + getTranslated(context, "inputValidator")
           : null,
-      onSaved: (value) =>
-          key != AppLocalizations.of(context).translate("inputEmail")
-              ? key == AppLocalizations.of(context).translate("inputPassword")
-                  ? _password = value.trim()
-                  : _name = value.trim()
-              : _email = value.trim(),
-      obscureText:
-          key == AppLocalizations.of(context).translate("inputPassword")
-              ? (_isVisible ? false : true)
-              : false,
+      onSaved: (value) => key != getTranslated(context, "inputEmail")
+          ? key == getTranslated(context, "inputPassword")
+              ? _password = value.trim()
+              : _name = value.trim()
+          : _email = value.trim(),
+      obscureText: key == getTranslated(context, "inputPassword")
+          ? (_isVisible ? false : true)
+          : false,
       maxLines: 1,
     );
   }
@@ -163,8 +162,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget showAlternativeButton() {
     return new Text(
       _isSignIn
-          ? AppLocalizations.of(context).translate("loginAlternativeSignUp")
-          : AppLocalizations.of(context).translate("loginAlternativeSignIn"),
+          ? getTranslated(context, "loginAlternativeSignUp")
+          : getTranslated(context, "loginAlternativeSignIn"),
       style: TextStyle(
         color: themes.getColor(context, "loginAlternativeButtonTextColor"),
         fontSize:
@@ -178,7 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
   //User interface: Show forgot password button
   Widget showForgotPasswordButton() {
     return new Text(
-      AppLocalizations.of(context).translate("loginForgotPassword"),
+      getTranslated(context, "loginForgotPassword"),
       style: TextStyle(
         color: themes.getColor(context, "loginForgotPasswordButtonTextColor"),
         fontSize:
@@ -241,10 +240,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   left: 50, right: 50, top: 175),
                               child: interfaceStandards.parentCenter(
                                   context,
-                                  showInput(
-                                      context,
-                                      AppLocalizations.of(context)
-                                          .translate('inputName'))),
+                                  showInput(context,
+                                      getTranslated(context, 'inputName'))),
                             )
                           : Container(),
                       Padding(
@@ -253,18 +250,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: interfaceStandards.parentCenter(
                             context,
                             showInput(
-                                context,
-                                AppLocalizations.of(context)
-                                    .translate('inputEmail'))),
+                                context, getTranslated(context, 'inputEmail'))),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 50, right: 50, top: 35),
                         child: interfaceStandards.parentCenter(
                             context,
-                            showInput(
-                                context,
-                                AppLocalizations.of(context)
-                                    .translate('inputPassword'))),
+                            showInput(context,
+                                getTranslated(context, 'inputPassword'))),
                       ),
                     ],
                   ),

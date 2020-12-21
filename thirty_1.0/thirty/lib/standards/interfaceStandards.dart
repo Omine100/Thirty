@@ -102,7 +102,7 @@ class InterfaceStandards {
     return parentCenter(
       context,
       Text(
-        AppLocalizations.of(context).translate(key),
+        getTranslated(context, key),
         style: TextStyle(
             color: themes.getColor(context, "interfaceStandardsTitleTextColor"),
             fontSize:
@@ -124,18 +124,12 @@ class InterfaceStandards {
   //User interface: Slide creation
   List<Slide> slideCreation(BuildContext context) {
     List<Slide> slides = new List<Slide>();
-    slides.add(newSlide(
-        context,
-        AppLocalizations.of(context).translate("introExerciseTitle"),
-        AppLocalizations.of(context).translate("introExerciseDescription")));
-    slides.add(newSlide(
-        context,
-        AppLocalizations.of(context).translate("introCalendarTitle"),
-        AppLocalizations.of(context).translate("introCalendarDescription")));
-    slides.add(newSlide(
-        context,
-        AppLocalizations.of(context).translate("introMedalTitle"),
-        AppLocalizations.of(context).translate("introMedalDescription")));
+    slides.add(newSlide(context, getTranslated(context, "introExerciseTitle"),
+        getTranslated(context, "introExerciseDescription")));
+    slides.add(newSlide(context, getTranslated(context, "introCalendarTitle"),
+        getTranslated(context, "introCalendarDescription")));
+    slides.add(newSlide(context, getTranslated(context, "introMedalTitle"),
+        getTranslated(context, "introMedalDescription")));
     return slides;
   }
 

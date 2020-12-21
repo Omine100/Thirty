@@ -10,11 +10,12 @@
 
     "loginSignInTitle": "INICIAR SESIÓN",
     "loginSignUpTitle": "REGÍSTRATE",
-    "loginForgotPassword": "¿Restablecer la contraseñ?",
+    "loginForgotPassword": "¿Restablecer contraseñ?",
     "loginAlternativeSignIn": "¿Tener una cuenta? ¡INICIAR SESIÓN!",
     "loginAlternativeSignUp": "¿No tienes cuenta? ¡REGÍSTRATE!",
 
-    "forgotPasswordTitle": "RESTABLECER LA CONTRASEÑA",
+    "forgotPasswordTitle": "RESTABLECER",
+    "forgotPasswordReset": "Restablecer Contraseña",
 
     "introExerciseTitle": "GOAL",
     "introCalendarTitle": "TRACKING",
