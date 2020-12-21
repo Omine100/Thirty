@@ -216,7 +216,7 @@ extension CustomPositions on MaterialTapTargetSize {
         break;
 
       case "welcomeBackgroundLightThemeImagePosition":
-        return isTop ? -0.1375 : -0.2;
+        return isTop ? -0.1325 : -0.2;
         break;
       case "welcomeBackgroundDarkThemeImagePosition":
         return isTop ? -0.085 : 0.3;
