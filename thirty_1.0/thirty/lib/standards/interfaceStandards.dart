@@ -65,20 +65,30 @@ class InterfaceStandards {
       },
       icon: Icon(
         Icons.language,
-        color: themes.getColor(context, "welcomeLanguageSelectorButtonColor"),
+        color: themes.getColor(
+            context, "interfaceStandardsLanguageSelectorButtonColor"),
         size: themes.getDimension(
-            context, true, "welcomeLanguageSelectorButtonDimension"),
+            context, true, "interfaceStandardsLanguageSelectorButtonDimension"),
       ),
       items: Language.languageList()
           .map<DropdownMenuItem<Language>>((lang) => DropdownMenuItem(
               value: lang,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  Text(lang.flag, style: TextStyle(color: Colors.black)),
                   Text(
                     lang.name,
-                    style: TextStyle(color: Colors.black),
-                  )
+                    style: TextStyle(
+                      color: themes.getColor(context,
+                          "interfaceStandardsLanguageSelectorTextColor"),
+                    ),
+                  ),
+                  Text(
+                    lang.flag,
+                    style: TextStyle(
+                        color: themes.getColor(context,
+                            "interfaceStandardsLanguageSelectorTextColor")),
+                  ),
                 ],
               )))
           .toList(),

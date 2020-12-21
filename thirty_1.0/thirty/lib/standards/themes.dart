@@ -37,7 +37,9 @@ extension CustomColorScheme on ColorScheme {
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
       case "interfaceStandardsLanguageSelectorColor":
-        return Color(0xFFFFFFFF);
+        return isDark ? Color(0xFF102457) : Color(0xFFFFFFFF);
+      case "interfaceStandardsLanguageSelectorTextColor":
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFF000000);
         break;
 
       case "welcomeSignInButtonColor":
@@ -156,6 +158,12 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "interfaceStandardsBackButtonIconDimension":
         return isHeight ? 0.055 : 0.055;
         break;
+      case "interfaceStandardsLanguageSelectorButtonDimension":
+        return isHeight ? 0.05 : 0.3;
+        break;
+      case "interfaceStandardsLanguageSelectorButtonDimension":
+        return isHeight ? 0.05 : null;
+        break;
 
       case "welcomeContainerDimension":
         return isHeight ? 1.0 : null;
@@ -167,9 +175,6 @@ extension CustomDimensions on MaterialTapTargetSize {
         break;
       case "welcomeSignInSignUpButtonDimension":
         return isHeight ? 0.08 : 0.6;
-        break;
-      case "welcomeLanguageSelectorButtonDimension":
-        return isHeight ? 0.05 : 0.3;
         break;
       case "welcomeErrorMessageDimension":
         return isHeight ? 0.1 : 0.1;
@@ -203,6 +208,13 @@ extension CustomPositions on MaterialTapTargetSize {
   double position({String selection, bool isTop}) {
     switch (selection) {
       //case 'name': return isTop? 'top' : 'left'; break;
+      case "interfaceStandardsThemeSelectorButtonPosition":
+        return isTop ? 0.59 : 0.38;
+        break;
+      case "interfaceStandardsLanguageSelectorButtonPosition":
+        return isTop ? 0.02 : -0.15;
+        break;
+
       case "welcomeBackgroundLightThemeImagePosition":
         return isTop ? -0.1325 : -0.2;
         break;
@@ -217,12 +229,6 @@ extension CustomPositions on MaterialTapTargetSize {
         break;
       case "welcomeSignUpButtonPosition":
         return isTop ? 0.795 : null;
-        break;
-      case "welcomeLanguageSelectorButtonPosition":
-        return isTop ? 0.05 : -0.15;
-        break;
-      case "welcomeThemeSelectorButtonPosition":
-        return isTop ? 0.59 : 0.38;
         break;
       case "welcomeProgressPosition":
         return isTop ? 0.8 : null;

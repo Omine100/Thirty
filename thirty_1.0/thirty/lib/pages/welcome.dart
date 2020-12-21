@@ -156,24 +156,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           ))),
                 )),
             Positioned(
-              bottom: themes.getPosition(
-                  context, true, "welcomeLanguageSelectorButtonPosition"),
-              left: themes.getPosition(
-                  context, false, "welcomeLanguageSelectorButtonPosition"),
-              child: Container(
-                  height: themes.getDimension(
-                      context, true, "welcomeLanguageSelectorButtonDimension"),
-                  width: themes.getDimension(
-                      context, false, "welcomeLanguageSelectorButtonDimension"),
-                  child: interfaceStandards.languageSelector(context)),
-            ),
-            Positioned(
-                top: themes.getPosition(
-                    context, true, "welcomeThemeSelectorButtonPosition"),
-                right: themes.getPosition(
-                    context, false, "welcomeThemeSelectorButtonPosition"),
+                top: themes.getPosition(context, true,
+                    "interfaceStandardsThemeSelectorButtonPosition"),
+                right: themes.getPosition(context, false,
+                    "interfaceStandardsThemeSelectorButtonPosition"),
                 child: interfaceStandards.parentCenter(
-                    context, interfaceStandards.themeSelector(context)))
+                    context, interfaceStandards.themeSelector(context))),
+            Positioned(
+                bottom: themes.getPosition(context, true,
+                    "interfaceStandardsLanguageSelectorButtonPosition"),
+                left: themes.getPosition(context, false,
+                    "interfaceStandardsLanguageSelectorButtonPosition"),
+                child: interfaceStandards.languageSelector(context)),
           ],
         ),
       ),
