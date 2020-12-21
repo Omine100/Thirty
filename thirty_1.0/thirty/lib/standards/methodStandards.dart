@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:thirty/main.dart';
 
-import 'package:thirty/languages/language.dart';
+import 'package:thirty/services/appLocalizations.dart';
+import 'package:thirty/languages/languageList.dart';
 
 class MethodStandards {
   //Mechanics: Returns current time
@@ -12,7 +14,22 @@ class MethodStandards {
   }
 
   //Mechanics: Changes language
-  void changeLanguage(Language language) {
-    print(language.languageCode);
+  String changeLanguage(BuildContext context, LanguageList language) {
+    Locale _temp;
+    switch (language.languageCode) {
+      case "en":
+        _temp = Locale(language.languageCode, "en");
+        break;
+      case "es":
+        _temp = Locale(language.languageCode, "es");
+        break;
+      case "fr":
+        _temp = Locale(language.languageCode, "fr");
+        break;
+      default:
+        _temp = Locale(language.languageCode, "en");
+        break;
+    }
+    Thirty.setLocale(context, _temp);
   }
 }

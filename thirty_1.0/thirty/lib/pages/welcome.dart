@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:thirty/services/appLocalizations.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
-import 'package:thirty/languages/language.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
 import 'package:thirty/standards/methodStandards.dart';

@@ -10,11 +10,32 @@ void main() {
   runApp(new Thirty());
 }
 
-class Thirty extends StatelessWidget {
+class Thirty extends StatefulWidget {
+  //Mechanics: Sets Locale
+  static void setLocale(BuildContext context, Locale locale) {
+    _ThirtyState state = context.findAncestorStateOfType<_ThirtyState>();
+    state.setLocale(locale);
+  }
+
+  @override
+  _ThirtyState createState() => _ThirtyState();
+}
+
+class _ThirtyState extends State<Thirty> {
   //Class initialiazation
   Themes themes = new Themes();
 
-  //User interfac: Half app
+  //Variable initialization
+  Locale _locale;
+
+  //Mechanics: Sets locale
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
+  //User interface: Half app
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -27,6 +48,7 @@ class Thirty extends StatelessWidget {
             debugShowMaterialGrid: false,
             home: RootScreen(),
             theme: notifier.darkTheme ? dark : light,
+            locale: _locale,
             supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],
             localizationsDelegates: [
               AppLocalizations.delegate,

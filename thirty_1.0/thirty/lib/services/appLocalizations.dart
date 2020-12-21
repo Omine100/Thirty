@@ -19,15 +19,13 @@ class AppLocalizations {
   Map<String, String> _localizedStrings;
 
   //Mechanics: Load strings
-  Future<bool> load() async {
+  Future load() async {
     String jsonString = await rootBundle
         .loadString('lib/languages/${locale.languageCode}.json');
     Map<String, dynamic> jsonMap = json.decode(jsonString);
 
-    _localizedStrings = jsonMap.map((key, value) {
-      return MapEntry(key, value.toString());
-    });
-    return true;
+    _localizedStrings =
+        jsonMap.map((key, value) => MapEntry(key, value.toString()));
   }
 
   //Mechanics: Translate strings
