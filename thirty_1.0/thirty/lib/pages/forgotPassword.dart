@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
+import 'package:thirty/languages/languages.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
-import 'package:thirty/standards/methodStandards.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {

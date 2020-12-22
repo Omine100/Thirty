@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intro_slider/slide_object.dart';
 
-import 'package:thirty/services/appLocalizations.dart';
-import 'package:thirty/languages/languageList.dart';
+import 'package:thirty/languages/languages.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/methodStandards.dart';
 
@@ -61,8 +60,8 @@ class InterfaceStandards {
       child: DropdownButton(
         dropdownColor:
             themes.getColor(context, "interfaceStandardsLanguageSelectorColor"),
-        onChanged: (LanguageList language) {
-          MethodStandards().changeLanguage(context, language);
+        onChanged: (Languages languages) {
+          languages.changeLanguage(context, languages);
         },
         icon: Icon(
           Icons.language,
@@ -71,8 +70,8 @@ class InterfaceStandards {
           size: themes.getDimension(context, true,
               "interfaceStandardsLanguageSelectorButtonDimension"),
         ),
-        items: LanguageList.getLanguageList()
-            .map<DropdownMenuItem<LanguageList>>((lang) => DropdownMenuItem(
+        items: Languages.getLanguageList()
+            .map<DropdownMenuItem<Languages>>((lang) => DropdownMenuItem(
                 value: lang,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

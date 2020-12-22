@@ -18,10 +18,10 @@ extension CustomColorScheme on ColorScheme {
     switch (selection) {
       //case 'name': return isDark ? 'dark' : 'light'; break;
       case "backgroundGradientTopRightColor":
-        return isDark ? Color(0xFF102447) : Color(0xFFFF99D1);
+        return isDark ? Color(0xFF102449) : Color(0xFFFF99D1);
         break;
       case "backgroundGradientBottomLeftColor":
-        return isDark ? Color(0xFF1B1B2F) : Color(0xFFFFAB58);
+        return isDark ? Color(0xFF1B1B2D) : Color(0xFFFFAB5F);
         break;
 
       case "interfaceStandardsBackButtonColor":
@@ -216,10 +216,10 @@ extension CustomPositions on MaterialTapTargetSize {
         break;
 
       case "welcomeBackgroundLightThemeImagePosition":
-        return isTop ? -0.1325 : -0.2;
+        return isTop ? -0.13 : -0.2;
         break;
       case "welcomeBackgroundDarkThemeImagePosition":
-        return isTop ? -0.085 : 0.3;
+        return isTop ? -0.085 : 0.325;
         break;
       case "welcomeTitlePosition":
         return isTop ? 0.0875 : null;
@@ -308,7 +308,6 @@ class Themes {
 
 class ThemeNotifier extends ChangeNotifier {
   //Variable initialization
-  final String key = "theme";
   SharedPreferences prefs;
   bool _isDark;
 
@@ -338,13 +337,13 @@ class ThemeNotifier extends ChangeNotifier {
   //Mechanics: Loading preferences
   _loadFromPrefs() async {
     await _initPrefs();
-    _isDark = prefs.getBool(key) ?? true;
+    _isDark = prefs.getBool("Theme") ?? true;
     notifyListeners();
   }
 
   //Mechanics: Saving preferences
   _saveToPrefs() async {
     await _initPrefs();
-    prefs.setBool(key, _isDark);
+    prefs.setBool("Theme", _isDark);
   }
 }
