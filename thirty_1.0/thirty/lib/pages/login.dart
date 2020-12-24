@@ -45,7 +45,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   //Mechanics: Validate and submit user information
-  void validateAndSubmit(bool isSignIn) async {
+  void validateAndSubmit(
+      GlobalKey<ScaffoldState> scaffoldKey, bool isSignIn) async {
     final form = _formKey.currentState;
     setState(() {
       _errorMessage = "";
@@ -272,7 +273,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     context,
                     GestureDetector(
                       onTap: () {
-                        validateAndSubmit(_isSignIn);
+                        validateAndSubmit(scaffoldKey, _isSignIn);
                       },
                       child: showProgressionButton(),
                     )),
@@ -282,8 +283,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     context, true, "loginAlternativeButtonPosition"),
                 child: GestureDetector(
                   onTap: () {
-                    interfaceStandards.showToast(
-                        context, scaffoldKey, "Testing");
+                    setState(() {
+                      _isSignIn = !_isSignIn;
+                    });
                   },
                   child: interfaceStandards.parentCenter(
                       context, showAlternativeButton()),

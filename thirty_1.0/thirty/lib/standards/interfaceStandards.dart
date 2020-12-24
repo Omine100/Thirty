@@ -101,7 +101,7 @@ class InterfaceStandards {
       String message) {
     scaffoldKey.currentState.showSnackBar(SnackBar(
         content: Text(
-          'Assign a GlobalKey to the Scaffold',
+          message,
           style: TextStyle(
               color:
                   themes.getColor(context, "interfaceStandardsToastTextColor")),
