@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 
 import 'package:thirty/standards/methodStandards.dart';
 
@@ -40,9 +41,21 @@ class CloudFirestore implements BaseCloud {
   }
 
   //Mechanics: Signs up user
-  Future<void> signUp(String email, String password) async {
-    AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email, password: password);
+  Future<String> signUp(String email, String password) async {
+    try {
+      AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(
+          email: email, password: password);
+    } catch (signUpError) {
+      if (signUpError is PlatformException) {
+        if (signUpError.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
+          return "Email Already Used.";
+        } else if (signUpError.code == 'ERROR_INVALID_EMAIL') {
+          return "Invalid Email Type.";
+        } else if (signUpError.code == 'ERROR_WEAK_PASSWORD') {
+          return "Password Too Weak.";
+        }
+      }
+    }
   }
 
   //Mechanics: Signs out user
