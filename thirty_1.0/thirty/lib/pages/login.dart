@@ -75,6 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       )));
         }
       } catch (e) {
+        //Can I just put a toast here with the error and remove what I just did?
         print("Error: $e");
         setState(() {
           _isLoading = false;
@@ -207,7 +208,9 @@ class _LoginScreenState extends State<LoginScreen> {
   //User interface: Login screen
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
     return Scaffold(
+      key: scaffoldKey,
       body: Container(
           height: themes.getDimension(context, true, "loginContainerDimension"),
           decoration: BoxDecoration(
@@ -279,9 +282,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     context, true, "loginAlternativeButtonPosition"),
                 child: GestureDetector(
                   onTap: () {
-                    setState(() {
-                      _isSignIn = !_isSignIn;
-                    });
+                    interfaceStandards.showToast(
+                        context, scaffoldKey, "Testing");
                   },
                   child: interfaceStandards.parentCenter(
                       context, showAlternativeButton()),

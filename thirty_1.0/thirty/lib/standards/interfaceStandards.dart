@@ -96,6 +96,21 @@ class InterfaceStandards {
     );
   }
 
+  //User interface: Show toast message
+  void showToast(BuildContext context, GlobalKey<ScaffoldState> scaffoldKey,
+      String message) {
+    scaffoldKey.currentState.showSnackBar(SnackBar(
+        content: Text(
+          'Assign a GlobalKey to the Scaffold',
+          style: TextStyle(
+              color:
+                  themes.getColor(context, "interfaceStandardsToastTextColor")),
+        ),
+        duration: Duration(seconds: 3),
+        backgroundColor: themes.getColor(
+            context, "interfaceStandardsToastBackgroundColor")));
+  }
+
   //User interface: Show title
   Widget showTitle(BuildContext context, String key) {
     return parentCenter(

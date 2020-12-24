@@ -27,6 +27,12 @@ extension CustomColorScheme on ColorScheme {
       case "interfaceStandardsBackButtonColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
+      case "interfaceStandardsToastBackgroundColor":
+        return isDark ? Color(0xFF102449) : Color(0xFFFFFFFF);
+        break;
+      case "interfaceStandardsToastTextColor":
+        return isDark ? Color(0xFFFFAB5F) : Color(0xFF000000);
+        break;
       case "interfaceStandardsTitleTextColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
