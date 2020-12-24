@@ -3,13 +3,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 
+import 'package:thirty/standards/interfaceStandards.dart';
 import 'package:thirty/standards/methodStandards.dart';
 
 //Method declarations
 abstract class BaseCloud {
   //Methods: Account management
   Future<void> signIn(String email, String password);
-  Future<void> signUp(String email, String password);
+  Future<void> signUp(GlobalKey<ScaffoldState> scaffoldKey, context,
+      String email, String password);
   Future<void> signOut();
   Future<FirebaseUser> getCurrentUser();
   Future<void> sendEmailVerification();
@@ -28,6 +30,7 @@ abstract class BaseCloud {
 
 class CloudFirestore implements BaseCloud {
   //Class initialization
+  InterfaceStandards interfaceStandards = new InterfaceStandards();
   MethodStandards methodStandards = new MethodStandards();
 
   //Variable initialization
@@ -41,18 +44,22 @@ class CloudFirestore implements BaseCloud {
   }
 
   //Mechanics: Signs up user
-  Future<String> signUp(String email, String password) async {
+  Future<void> signUp(GlobalKey<ScaffoldState> scaffoldKey, context,
+      String email, String password) async {
     try {
       AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
     } catch (signUpError) {
       if (signUpError is PlatformException) {
         if (signUpError.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
-          return "Email Already Used.";
+          interfaceStandards.showToast(
+              context, scaffoldKey, "Email Already Used.");
         } else if (signUpError.code == 'ERROR_INVALID_EMAIL') {
-          return "Invalid Email Type.";
+          interfaceStandards.showToast(
+              context, scaffoldKey, "Invalid Email Type..");
         } else if (signUpError.code == 'ERROR_WEAK_PASSWORD') {
-          return "Password Too Weak.";
+          interfaceStandards.showToast(
+              context, scaffoldKey, "Password is too Weak.");
         }
       }
     }

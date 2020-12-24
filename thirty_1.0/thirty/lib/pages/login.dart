@@ -76,7 +76,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       )));
         }
       } catch (e) {
-        //Can I just put a toast here with the error and remove what I just did?
         print("Error: $e");
         setState(() {
           _isLoading = false;
