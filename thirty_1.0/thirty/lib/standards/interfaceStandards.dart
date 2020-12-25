@@ -135,6 +135,16 @@ class InterfaceStandards {
     );
   }
 
+  //User interface: Show waiting screen
+  Widget showWaitingScreen() {
+    return Scaffold(
+      body: Container(
+        alignment: Alignment.center,
+        child: CircularProgressIndicator(),
+      ),
+    );
+  }
+
   //User interface: Slide creation
   List<Slide> slideCreation(BuildContext context) {
     List<Slide> slides = new List<Slide>();
