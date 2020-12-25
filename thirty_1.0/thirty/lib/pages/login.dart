@@ -66,15 +66,15 @@ class _LoginScreenState extends State<LoginScreen> {
         } else {
           await cloudFirestore.signUp(context, scaffoldKey, _email, _password);
           await cloudFirestore.createNameData(_name);
-          await cloudFirestore.signIn(_email, _password);
           cloudFirestore.sendEmailVerification();
           Navigator.pop(context);
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => IntroScreen(
-                        slides: interfaceStandards.slideCreation(context),
-                      )));
+                      slides: interfaceStandards.slideCreation(context),
+                      email: _email,
+                      password: _password)));
         }
       } catch (e) {
         print("Error: $e");

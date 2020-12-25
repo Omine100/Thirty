@@ -4,15 +4,18 @@ import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
 import 'package:intro_slider/dot_animation_enum.dart';
 
+import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
 
 class IntroScreen extends StatefulWidget {
-  IntroScreen({this.slides});
+  IntroScreen({this.slides, this.email, this.password});
 
   //Variable reference
   final List<Slide> slides;
+  final String email;
+  final String password;
 
   @override
   State<StatefulWidget> createState() => _IntroScreenState();
@@ -20,6 +23,7 @@ class IntroScreen extends StatefulWidget {
 
 class _IntroScreenState extends State<IntroScreen> {
   //Class initialization
+  CloudFirestore cloudFirestore = new CloudFirestore();
   Themes themes = new Themes();
   ThemesGradients themesGradients = new ThemesGradients();
   InterfaceStandards interfaceStandards = new InterfaceStandards();
@@ -35,6 +39,7 @@ class _IntroScreenState extends State<IntroScreen> {
   //Mechanics: Route to home screen
   void onDonePress() async {
     Navigator.pop(context);
+    cloudFirestore.signIn(widget.email, widget.password);
     Navigator.pushReplacementNamed(context, "/RootScreen");
   }
 
