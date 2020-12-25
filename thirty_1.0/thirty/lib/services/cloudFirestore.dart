@@ -14,6 +14,7 @@ abstract class BaseCloud {
       GlobalKey<ScaffoldState> scaffoldKey, String email, String password);
   Future<void> signOut();
   Future<FirebaseUser> getCurrentUser();
+  Future<bool> getSignedInStatus();
   Future<void> sendEmailVerification();
   Future<void> sendPasswordReset(String email);
   Future<bool> isEmailVerified();
@@ -77,6 +78,12 @@ class CloudFirestore implements BaseCloud {
   Future<FirebaseUser> getCurrentUser() async {
     var user = await _firebaseAuth.currentUser();
     return user;
+  }
+
+  //Mechanics: Returns true if someone is signed in
+  Future<bool> getSignedInStatus() async {
+    var user = await _firebaseAuth.currentUser();
+    return user.uid != null ? true : false;
   }
 
   //Mechanics: Sends user an email for verification
