@@ -10,8 +10,8 @@ import 'package:thirty/standards/methodStandards.dart';
 abstract class BaseCloud {
   //Methods: Account management
   Future<void> signIn(String email, String password);
-  Future<void> signUp(GlobalKey<ScaffoldState> scaffoldKey, context,
-      String email, String password);
+  Future<void> signUp(BuildContext context,
+      GlobalKey<ScaffoldState> scaffoldKey, String email, String password);
   Future<void> signOut();
   Future<FirebaseUser> getCurrentUser();
   Future<void> sendEmailVerification();
@@ -44,8 +44,11 @@ class CloudFirestore implements BaseCloud {
   }
 
   //Mechanics: Signs up user
-  Future<void> signUp(GlobalKey<ScaffoldState> scaffoldKey, context,
-      String email, String password) async {
+  Future<void> signUp(
+      BuildContext context,
+      GlobalKey<ScaffoldState> scaffoldKey,
+      String email,
+      String password) async {
     try {
       AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);

@@ -64,8 +64,9 @@ class _LoginScreenState extends State<LoginScreen> {
           Navigator.pop(context);
           Navigator.pushReplacementNamed(context, "/RootScreen");
         } else {
-          await cloudFirestore.signUp(_email, _password);
+          await cloudFirestore.signUp(context, scaffoldKey, _email, _password);
           await cloudFirestore.createNameData(_name);
+          await cloudFirestore.signIn(_email, _password);
           cloudFirestore.sendEmailVerification();
           Navigator.pop(context);
           Navigator.push(
