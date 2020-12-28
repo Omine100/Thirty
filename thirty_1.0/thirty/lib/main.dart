@@ -3,7 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
 import 'package:thirty/services/appLocalizations.dart';
-import 'package:thirty/services/root.dart';
+import 'package:thirty/services/routeNavigation.dart';
 import 'package:thirty/languages/languages.dart';
 import 'package:thirty/standards/themes.dart';
 
@@ -65,7 +65,7 @@ class _ThirtyState extends State<Thirty> {
               title: "Thirty",
               debugShowCheckedModeBanner: false,
               debugShowMaterialGrid: false,
-              home: RootScreen(),
+              home: RouteNavigation(),
               theme: notifier.darkTheme ? dark : light,
               locale: _locale,
               supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],

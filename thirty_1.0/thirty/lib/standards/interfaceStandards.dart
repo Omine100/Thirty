@@ -3,12 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:intro_slider/slide_object.dart';
 
 import 'package:thirty/languages/languages.dart';
+import 'package:thirty/services/routeNavigation.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/methodStandards.dart';
 
 class InterfaceStandards {
   //Class initialization
   Themes themes = new Themes();
+  Routes routes = new Routes();
 
   //User interface: Parent center
   Widget parentCenter(BuildContext context, Widget child) {
@@ -25,7 +27,7 @@ class InterfaceStandards {
   Widget backButton(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pop(context);
+        routes.routePop(context);
       },
       child: Icon(Icons.keyboard_backspace,
           color: themes.getColor(context, "interfaceStandardsBackButtonColor"),

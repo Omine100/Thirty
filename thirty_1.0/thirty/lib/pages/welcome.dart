@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:thirty/services/appLocalizations.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
+import 'package:thirty/services/routeNavigation.dart';
 import 'package:thirty/languages/languages.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
@@ -17,6 +18,7 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen> {
   //Class initialization
   CloudFirestore cloudFirestore = new CloudFirestore();
+  Routes routes = new Routes();
   Themes themes = new Themes();
   ThemeNotifier themeNotifier = new ThemeNotifier();
   ThemesGradients themesGradients = new ThemesGradients();
@@ -125,10 +127,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   GestureDetector(
                       onTap: () {
                         _isSignIn = true;
-                        Navigator.push(
-                            context,
-                            animationStandards
-                                .welcomePageTransition(_isSignIn));
+                        routes.routeLoginScreen(context, _isSignIn);
                       },
                       child: showSignInSignUpButton(true, null)),
                 )),
@@ -140,10 +139,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   GestureDetector(
                       onTap: () {
                         _isSignIn = false;
-                        Navigator.push(
-                            context,
-                            animationStandards
-                                .welcomePageTransition(_isSignIn));
+                        routes.routeLoginScreen(context, _isSignIn);
                       },
                       child: showSignInSignUpButton(
                           false,

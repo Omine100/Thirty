@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
-import 'package:thirty/services/root.dart';
+import 'package:thirty/services/routeNavigation.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
@@ -20,6 +20,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   //Class initialization
   CloudFirestore cloudFirestore = new CloudFirestore();
+  Routes routes = new Routes();
   Themes themes = new Themes();
   ThemesGradients themesGradients = new ThemesGradients();
   InterfaceStandards interfaceStandards = new InterfaceStandards();
@@ -38,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
             GestureDetector(
               onTap: () {
                 cloudFirestore.signOut();
-                Navigator.pushReplacementNamed(context, "/RootScreen");
+                routes.routeWelcomeScreen(context);
               },
               child: Text("Sign Out"),
             ),

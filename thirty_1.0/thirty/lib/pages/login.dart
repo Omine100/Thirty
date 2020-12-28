@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:thirty/pages/forgotPassword.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
+import 'package:thirty/services/routeNavigation.dart';
 import 'package:thirty/languages/languages.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/themesGradients.dart';
@@ -21,6 +22,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   //Class initialization
   CloudFirestore cloudFirestore = new CloudFirestore();
+  Routes routes = new Routes();
   Themes themes = new Themes();
   ThemesGradients themesGradients = new ThemesGradients();
   InterfaceStandards interfaceStandards = new InterfaceStandards();
@@ -61,20 +63,12 @@ class _LoginScreenState extends State<LoginScreen> {
           setState(() {
             _isLoading = false;
           });
-          Navigator.pop(context);
-          Navigator.pushReplacementNamed(context, "/RootScreen");
+          routes.routeHomeScreen(context);
         } else {
           await cloudFirestore.signUp(context, scaffoldKey, _email, _password);
           await cloudFirestore.createNameData(_name);
           cloudFirestore.sendEmailVerification();
-          Navigator.pop(context);
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => IntroScreen(
-                      slides: interfaceStandards.slideCreation(context),
-                      email: _email,
-                      password: _password)));
+          routes.routeIntroScreen(context, _email, _password);
         }
       } catch (e) {
         print("Error: $e");
@@ -298,10 +292,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     context, false, "loginForgotPasswordButtonPosition"),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ForgotPasswordScreen()));
+                    routes.routeForgotPasswordScreen(context);
                   },
                   child: interfaceStandards.parentCenter(context,
                       _isSignIn ? showForgotPasswordButton() : Container()),
