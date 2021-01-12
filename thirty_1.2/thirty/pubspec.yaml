@@ -21,3 +21,15 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  
+  assets:
+      - lib/assets/welcomeBackgroundLightThemeImage.png
+      - lib/assets/welcomeBackgroundDarkThemeImage.png
+      - lib/assets/interfaceStandardsThemeSelectorMoonImage.png
+      - lib/assets/interfaceStandardsThemeSelectorSunImage.png
+      - lib/assets/introCalendarAnimation.json
+      - lib/assets/introExerciseAnimation.json
+      - lib/assets/introMedalAnimation.json
+      - lib/languages/en.json
+      - lib/languages/es.json
+      - lib/languages/fr.json

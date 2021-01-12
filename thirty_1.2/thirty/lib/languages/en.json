@@ -1,0 +1,26 @@
+{
+    "inputName": "Name",
+    "inputEmail": "Email",
+    "inputPassword": "Password",
+    "inputValidator": "can't be empty",
+
+    "welcomeTitle": "WELCOME TO THIRTY",
+    "welcomeSignInButton": "LOGIN",
+    "welcomeSignUpButton": "SIGN UP",
+
+    "loginSignInTitle": "LOGIN",
+    "loginSignUpTitle": "SIGN UP",
+    "loginForgotPassword": "Forgot Password?",
+    "loginAlternativeSignIn": "Already have an account? LOGIN!",
+    "loginAlternativeSignUp": "Don't have an account? SIGN UP!",
+
+    "forgotPasswordTitle": "FORGOT PASSWORD",
+    "forgotPasswordReset": "Reset Password",
+
+    "introExerciseTitle": "GOAL",
+    "introCalendarTitle": "TRACKING",
+    "introMedalTitle": "COMPLETION",
+    "introExerciseDescription": "Maintaining goals is hard, so we are trying to make it easier.",
+    "introCalendarDescription": "Going cold turkey is never easy, so small increments work best!",
+    "introMedalDescription": "Plus you get cool medals for sticking with your goals!!!" 
+}

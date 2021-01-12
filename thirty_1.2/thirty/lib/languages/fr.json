@@ -1,0 +1,26 @@
+{
+    "inputName": "Nom",
+    "inputEmail": "Email",
+    "inputPassword": "Mot de passe",
+    "inputValidator": "ne peut pas être vide",
+
+    "welcomeTitle": "BIENVENUE À TRENTE",
+    "welcomeSignInButton": "S'IDENTIFIER",
+    "welcomeSignUpButton": "S'INSCRIRE",
+
+    "loginSignInTitle": "S'IDENTIFIER",
+    "loginSignUpTitle": "S'INSCRIRE",
+    "loginForgotPassword": "Mot de passe oublié?",
+    "loginAlternativeSignIn": "Avoir un compte? S'IDENTIFIER!",
+    "loginAlternativeSignUp": "Pas de compte? S'INSCRIRE!",
+
+    "forgotPasswordTitle": "MOT DE PASSE OUBLIÉ",
+    "forgotPasswordReset": "Mot de Passe Oublié",
+
+    "introExerciseTitle": "GOAL",
+    "introCalendarTitle": "TRACKING",
+    "introMedalTitle": "COMPLETION",
+    "introExerciseDescription": "asocdao",
+    "introCalendarDescription": "asdfcawoj",
+    "introMedalDescription": "ascojwocao" 
+}
