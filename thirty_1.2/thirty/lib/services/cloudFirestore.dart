@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 //Method declarations
 abstract class BaseCloud {
@@ -28,10 +31,19 @@ class CloudFirestore implements BaseCloud {
   //Class initialization
 
   //Variable initialization
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final db = Firestore.instance;
 
   //Mechanics: Signs in user
+  Future<void> signIn(String email, String password) async {
+    AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(
+        email: email, password: password);
+  }
 
   //Mechanics: Signs up user
+  Future<void> signUp(String email, String password) async {
+    AuthResult result = await _firebaseAuth.
+  }
 
   //Mechanics: Signs out user
 
