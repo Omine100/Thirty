@@ -6,6 +6,7 @@ import 'package:thirty/pages/home.dart';
 //Method declarations
 abstract class BaseRoutes {
   //Methods: Routes
+  void RoutePop(BuildContext context);
   void RouteLogin(BuildContext context);
   void RouteHome(BuildContext context);
 
@@ -14,6 +15,11 @@ abstract class BaseRoutes {
 }
 
 class RouteNavigation implements BaseRoutes {
+  //Mechanics: Route pop
+  void RoutePop(BuildContext context) {
+    Navigator.pop(context);
+  }
+
   //Mechanics: Routes to login screen
   void RouteLogin(BuildContext context) {
     Navigator.push(
