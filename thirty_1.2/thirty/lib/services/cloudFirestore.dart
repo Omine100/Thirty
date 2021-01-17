@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'package:thirty/standards/methodStandards.dart';
+
 //Method declarations
 abstract class BaseCloud {
   //Methods: Account management
@@ -11,10 +13,10 @@ abstract class BaseCloud {
   Future<void> signOut();
   Future<FirebaseUser> getCurrentUser();
   Future<String> getCurrentUserId();
-  Future<bool> isSignedInStatus();
+  Future<bool> getSignedInStatus();
   Future<void> sendEmailVerification();
   Future<void> sendPasswordReset(String email);
-  Future<bool> isEmailVerified();
+  Future<bool> getEmailVerified();
 
   //Methods: Data management
   Future<void> createNameData(String name);
@@ -28,6 +30,7 @@ abstract class BaseCloud {
 
 class CloudFirestore implements BaseCloud {
   //Class initialization
+  MethodStandards methodStandards = new MethodStandards();
 
   //Variable initialization
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -42,7 +45,7 @@ class CloudFirestore implements BaseCloud {
   //Mechanics: Signs up user
   Future<void> signUp(String email, String password) async {
     AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
+        email: email, password: password);
   }
 
   //Mechanics: Signs out user
@@ -80,7 +83,7 @@ class CloudFirestore implements BaseCloud {
   }
 
   //Mechanics: Returns if email is verified
-  Future<bool> isEmailVerified() async {
+  Future<bool> getEmailVerified() async {
     var user = await _firebaseAuth.currentUser();
     return user.isEmailVerified;
   }
