@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:thirty/pages/login.dart';
 
 import 'package:thirty/services/appLocalizations.dart';
+import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/services/routeNavigation.dart';
 import 'package:thirty/standards/languageStandards.dart';
 
@@ -21,8 +21,21 @@ class Thirty extends StatefulWidget {
 }
 
 class _ThirtyState extends State<Thirty> {
+  //Class initialization
+  CloudFirestore cloudFirestore = new CloudFirestore();
+  RouteNavigation routeNavigation = new RouteNavigation();
+
   //Variable initialization
   Locale _locale;
+  bool isSignedIn = false;
+
+  //Initial state
+  void initState() {
+    super.initState();
+    cloudFirestore.getSignedInStatus().then((_isSignedIn) {
+      isSignedIn = _isSignedIn;
+    });
+  }
 
   //Mechanics: Sets locale
   void setLocale(Locale locale) {
@@ -49,7 +62,7 @@ class _ThirtyState extends State<Thirty> {
       title: "Thirty",
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
-      home: LoginScreen(),
+      home: routeNavigation.NavigateLogin(context, isSignedIn),
     );
   }
 }

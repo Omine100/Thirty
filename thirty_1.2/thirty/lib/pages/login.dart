@@ -11,7 +11,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   //Class initialization
-  Routes routes = new Routes();
+  RouteNavigation routeNavigation = new RouteNavigation();
 
   //User interface: Login screen
   @override
@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
         color: Colors.blue,
         child: GestureDetector(
           onTap: () {
-            routes.RouteHome(context);
+            routeNavigation.RouteHome(context);
           },
           child: Container(
             height: 100,

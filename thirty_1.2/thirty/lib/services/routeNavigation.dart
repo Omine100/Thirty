@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/pages/login.dart';
 import 'package:thirty/pages/home.dart';
 
@@ -10,11 +9,11 @@ abstract class BaseRoutes {
   void RouteLogin(BuildContext context);
   void RouteHome(BuildContext context);
 
-  //Methods: Route navigation
-  void NavigateLogin(BuildContext context);
+  //Methods: Route managements
+  Widget NavigateLogin(BuildContext context, bool isSignedIn);
 }
 
-class Routes implements BaseRoutes {
+class RouteNavigation implements BaseRoutes {
   //Mechanics: Routes to login screen
   void RouteLogin(BuildContext context) {
     Navigator.push(
@@ -25,5 +24,16 @@ class Routes implements BaseRoutes {
   void RouteHome(BuildContext context) {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => HomeScreen()));
+  }
+
+  //Mechanics: Navigates to first screen
+  Widget NavigateLogin(BuildContext context, bool isSignedIn) {
+    if (!isSignedIn) {
+      return LoginScreen();
+    } else if (isSignedIn) {
+      return HomeScreen();
+    } else {
+      //Return waiting screen
+    }
   }
 }
