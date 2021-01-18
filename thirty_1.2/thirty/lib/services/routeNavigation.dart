@@ -22,27 +22,27 @@ class RouteNavigation implements BaseRoutes {
 
   //Mechanics: Routes to login screen
   Widget RouteLogin(BuildContext context, bool isWidget, bool isSignIn) {
-    if (isWidget) {
-      return LoginScreen(
-        isSignIn: isSignIn,
-      );
-    } else {
+    if (!isWidget) {
       Navigator.push(
           context,
           MaterialPageRoute(
               builder: (context) => LoginScreen(
                     isSignIn: isSignIn,
                   )));
+    } else {
+      return LoginScreen(
+        isSignIn: isSignIn,
+      );
     }
   }
 
   //Mechanics: Routes to home screen
   Widget RouteHome(BuildContext context, bool isWidget) {
-    if (isWidget) {
-      return HomeScreen();
-    } else {
+    if (!isWidget) {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    } else {
+      return HomeScreen();
     }
   }
 
