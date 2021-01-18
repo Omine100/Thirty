@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:thirty/services/appLocalizations.dart';
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/services/routeNavigation.dart';
 import 'package:thirty/standards/languageStandards.dart';

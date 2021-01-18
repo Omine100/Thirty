@@ -161,7 +161,7 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "interfaceStandardsParentCenterContainerDimension":
         return isHeight ? null : 1.0;
         break;
-      case "interfaceStandardsBackButtonIconDimension":
+      case "interfaceStandardsBackButtonDimension":
         return isHeight ? 0.055 : 0.055;
         break;
       case "interfaceStandardsLanguageSelectorButtonDimension":
