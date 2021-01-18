@@ -7,8 +7,8 @@ import 'package:thirty/pages/home.dart';
 abstract class BaseRoutes {
   //Methods: Routes
   void RoutePop(BuildContext context);
-  void RouteLogin(BuildContext context);
-  void RouteHome(BuildContext context);
+  Widget RouteLogin(BuildContext context, bool isWidget, bool isSignIn);
+  Widget RouteHome(BuildContext context, bool isWidget);
 
   //Methods: Route managements
   Widget NavigateLogin(BuildContext context, bool isSignedIn);
@@ -21,15 +21,29 @@ class RouteNavigation implements BaseRoutes {
   }
 
   //Mechanics: Routes to login screen
-  void RouteLogin(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => LoginScreen()));
+  Widget RouteLogin(BuildContext context, bool isWidget, bool isSignIn) {
+    if (isWidget) {
+      return LoginScreen(
+        isSignIn: isSignIn,
+      );
+    } else {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => LoginScreen(
+                    isSignIn: isSignIn,
+                  )));
+    }
   }
 
   //Mechanics: Routes to home screen
-  void RouteHome(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomeScreen()));
+  Widget RouteHome(BuildContext context, bool isWidget) {
+    if (isWidget) {
+      return HomeScreen();
+    } else {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    }
   }
 
   //Mechanics: Navigates to first screen

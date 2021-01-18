@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:thirty/services/routeNavigation.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen();
+  LoginScreen({this.isSignIn});
+
+  //Variable references
+  final bool isSignIn;
 
   @override
   State<StatefulWidget> createState() => new _LoginScreenState();
@@ -21,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
         color: Colors.blue,
         child: GestureDetector(
           onTap: () {
-            routeNavigation.RouteHome(context);
+            routeNavigation.RouteHome(context, false);
           },
           child: Container(
             height: 100,
