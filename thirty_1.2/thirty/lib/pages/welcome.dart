@@ -74,7 +74,41 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 themes.getColor(context, "backgroundGradientBottomLeftColor"),
                 false)),
         child: Stack(
-          children: <Widget>[],
+          children: <Widget>[
+            Positioned(
+              top: themes.checkDarkTheme(context)
+                  ? themes.getPosition(
+                      context, true, "welcomeBackgroundDarkThemeImagePosition")
+                  : themes.getPosition(context, true,
+                      "welcomeBackgroundLightThemeImagePosition"),
+              left: themes.checkDarkTheme(context)
+                  ? themes.getPosition(
+                      context, false, "welcomeBackgroundDarkThemeImagePosition")
+                  : themes.getPosition(context, false,
+                      "welcomeBackgroundLightThemeImagePosition"),
+              child: interfaceStandards.parentCenter(
+                  context,
+                  Image(
+                    image: themes.checkDarkTheme(context)
+                        ? AssetImage(
+                            'lib/assets/welcomeBackgroundDarkThemeImage.png')
+                        : AssetImage(
+                            'lib/assets/welcomeBackgroundLightThemeImage.png'),
+                    height: themes.getDimension(
+                        context, true, "welcomeBackgroundImageDimension"),
+                    width: themes.getDimension(
+                        context, false, "welcomeBackgroundImageDimension"),
+                  )),
+            ),
+            Positioned(
+              top: themes.getPosition(context, true, "welcomeTitlePosition"),
+              child: interfaceStandards.parentCenter(
+                  context,
+                  interfaceStandards.showTitle(
+                      context, getTranslated(context, "welcomeTitle"))),
+            ),
+            Positioned(),
+          ],
         ),
       ),
     );

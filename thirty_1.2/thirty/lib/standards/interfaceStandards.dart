@@ -117,11 +117,11 @@ class InterfaceStandards {
   }
 
   //User interface: Show title
-  Widget showTitle(BuildContext context, String key) {
+  Widget showTitle(BuildContext context, String title) {
     return parentCenter(
       context,
       Text(
-        getTranslated(context, key),
+        title,
         style: TextStyle(
             color: themes.getColor(context, "interfaceStandardsTitleTextColor"),
             fontSize:
