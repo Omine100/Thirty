@@ -18,7 +18,6 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen> {
   //Class initialization
   CloudFirestore cloudFirestore = new CloudFirestore();
-  RouteNavigation routeNavigation = new RouteNavigation();
   Themes themes = new Themes();
   ThemeNotifier themeNotifier = new ThemeNotifier();
   GradientStandards gradientStandards = new GradientStandards();
@@ -107,7 +106,50 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   interfaceStandards.showTitle(
                       context, getTranslated(context, "welcomeTitle"))),
             ),
-            Positioned(),
+            Positioned(
+              top: themes.getPosition(
+                  context, true, "welcomeSignInButtonPosition"),
+              child: interfaceStandards.parentCenter(
+                  context,
+                  GestureDetector(
+                    onTap: () {
+                      animationStandards.welcomePageTransition(context, true);
+                    },
+                    child: showSignInSignUpButton(true, null),
+                  )),
+            ),
+            Positioned(
+              top: themes.getPosition(
+                  context, true, "welcomeSignUpButtonPosition"),
+              child: interfaceStandards.parentCenter(
+                  context,
+                  GestureDetector(
+                    onTap: () {
+                      animationStandards.welcomePageTransition(context, false);
+                    },
+                    child: showSignInSignUpButton(
+                        false,
+                        gradientStandards.textLinearGradient(
+                            context,
+                            themes.getColor(
+                                context, "backgroundGradientTopRightColor"),
+                            themes.getColor(
+                                context, "backgroundGradientBottomLeftColor"))),
+                  )),
+            ),
+            Positioned(
+                top: themes.getPosition(context, true,
+                    "interfaceStandardsThemeSelectorButtonPosition"),
+                right: themes.getPosition(context, false,
+                    "interfaceStandardsThemeSelectorButtonPosition"),
+                child: interfaceStandards.parentCenter(
+                    context, interfaceStandards.themeSelector(context))),
+            Positioned(
+                bottom: themes.getPosition(context, true,
+                    "interfaceStandardsLanguageSelectorButtonPosition"),
+                left: themes.getPosition(context, false,
+                    "interfaceStandardsLanguageSelectorButtonPosition"),
+                child: interfaceStandards.languageSelector(context)),
           ],
         ),
       ),
