@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
-import 'package:thirty/services/routeNavigation.dart';
 import 'package:thirty/standards/languageStandards.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/gradientStandards.dart';
 import 'package:thirty/standards/animationStandards.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
-// import 'package:thirty/standards/languageStandards.dart'; maybe don't need this?
 import 'package:thirty/standards/methodStandards.dart';
 
 class WelcomeScreen extends StatefulWidget {
