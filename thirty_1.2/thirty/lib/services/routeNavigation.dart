@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:thirty/standards/interfaceStandards.dart';
+import 'package:thirty/pages/welcome.dart';
 import 'package:thirty/pages/login.dart';
 import 'package:thirty/pages/forgotPassword.dart';
 import 'package:thirty/pages/intro.dart';
@@ -75,12 +77,12 @@ class RouteNavigation implements BaseRoutes {
 
   //Mechanics: Navigates to first screen
   Widget NavigateLogin(BuildContext context, bool isSignedIn) {
-    if (1 == 1) {
-      return LoginScreen();
+    if (!isSignedIn) {
+      return WelcomeScreen();
     } else if (isSignedIn) {
       return HomeScreen();
     } else {
-      //Return waiting screen
+      return InterfaceStandards().showWaitingScreen();
     }
   }
 }
