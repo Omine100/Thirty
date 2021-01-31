@@ -68,7 +68,8 @@ class CloudFirestore implements BaseCloud {
   //Mechanics: Returns signed in status
   Future<bool> getSignedInStatus() async {
     var user = await _firebaseAuth.currentUser();
-    return user.uid != null ? true : false;
+    print("TEST TEST TEST TEST");
+    return false;
   }
 
   //Mechanics: Sends an email verification email

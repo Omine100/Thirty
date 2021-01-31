@@ -75,7 +75,7 @@ class RouteNavigation implements BaseRoutes {
 
   //Mechanics: Navigates to first screen
   Widget NavigateLogin(BuildContext context, bool isSignedIn) {
-    if (!isSignedIn) {
+    if (1 == 1) {
       return LoginScreen();
     } else if (isSignedIn) {
       return HomeScreen();
