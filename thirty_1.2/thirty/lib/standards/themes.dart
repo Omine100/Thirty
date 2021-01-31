@@ -183,9 +183,6 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "forgotPasswordContainerDimension":
         return isHeight ? 1.0 : null;
         break;
-      case "forgotPasswordSendButtonDimension":
-        return isHeight ? null : 1.0;
-        break;
 
       case "introDotDimension":
         return isHeight ? 0.0175 : null;

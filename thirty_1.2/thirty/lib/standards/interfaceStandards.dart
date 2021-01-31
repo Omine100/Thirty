@@ -10,32 +10,6 @@ class InterfaceStandards {
   Themes themes = new Themes();
   RouteNavigation routeNavigation = new RouteNavigation();
 
-  //User interface: Parent center
-  Widget parentCenter(BuildContext context, Widget widget) {
-    return Container(
-      width: themes.getDimension(
-          context, false, "interfaceStandardsParentCenterContainerDimension"),
-      child: Center(
-        child: widget,
-      ),
-    );
-  }
-
-  //User interface: Back button
-  Widget backButton(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        routeNavigation.RoutePop(context);
-      },
-      child: Icon(
-        Icons.keyboard_backspace,
-        color: themes.getColor(context, "interfaceStandardsBackButtonColor"),
-        size: themes.getDimension(
-            context, true, "interfaceStandardsBackButtonDimension"),
-      ),
-    );
-  }
-
   //User interface: Theme selector
   Widget themeSelector(BuildContext context) {
     return Consumer<ThemeNotifier>(
@@ -112,6 +86,32 @@ class InterfaceStandards {
       body: Container(
         alignment: Alignment.center,
         child: CircularProgressIndicator(),
+      ),
+    );
+  }
+
+  //User interface: Parent center
+  Widget parentCenter(BuildContext context, Widget widget) {
+    return Container(
+      width: themes.getDimension(
+          context, false, "interfaceStandardsParentCenterContainerDimension"),
+      child: Center(
+        child: widget,
+      ),
+    );
+  }
+
+  //User interface: Back button
+  Widget backButton(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        routeNavigation.RoutePop(context);
+      },
+      child: Icon(
+        Icons.keyboard_backspace,
+        color: themes.getColor(context, "interfaceStandardsBackButtonColor"),
+        size: themes.getDimension(
+            context, true, "interfaceStandardsBackButtonDimension"),
       ),
     );
   }
