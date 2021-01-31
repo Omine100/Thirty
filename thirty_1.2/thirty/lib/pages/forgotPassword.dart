@@ -32,8 +32,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Positioned(
               top: 100,
               left: 100,
-              child: interfaceStandards.showTextField(
-                  context, 0, true, "inputEmail", (value) => _email = value),
+              child: Form(
+                key: _formKey,
+                child: interfaceStandards.showTextField(
+                    context, 0, true, "inputEmail", (value) => _email = value),
+              ),
             ),
           ],
         ),
