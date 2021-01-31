@@ -131,4 +131,55 @@ class InterfaceStandards {
       ),
     );
   }
+
+  //User interface: Show text field
+  Widget showTextField(BuildContext context, String key, int keyboardType,
+      var variable, Function onSaved) {
+    return TextFormField(
+      keyboardType:
+          keyboardType == 0 ? TextInputType.emailAddress : TextInputType.text,
+      style: TextStyle(
+        color: themes.getColor(context, "interfaceStandardsTextInputColor"),
+        fontSize:
+            Theme.of(context).textTheme.interfaceStandardsTextInputFontSize,
+      ),
+      decoration: InputDecoration(
+        prefixIcon: Icon(
+          key != getTranslated(context, "inputEmail")
+              ? key == getTranslated(context, "inputPassword")
+                  ? Icons.lock
+                  : Icons.person
+              : Icons.email,
+          color:
+              themes.getColor(context, "interfaceStandardsTextInputIconColor"),
+        ),
+        hintText: key,
+        hintStyle: TextStyle(
+          color: themes.getColor(context, "interfaceStandardsTextInputColor"),
+        ),
+        labelStyle: TextStyle(
+          color: themes.getColor(context, "interfaceStandardsTextInputColor"),
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: themes.getColor(
+                context, "interfaceStandardsTextInputLineColor"),
+          ),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: themes.getColor(context, "interfaceStandardsTextInputColor"),
+          ),
+        ),
+      ),
+      onSaved: onSaved,
+      validator: (value) {
+        if (value.isEmpty) {
+          return '$label cannot be empty';
+        } else {
+          return null;
+        }
+      },
+    );
+  }
 }

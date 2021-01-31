@@ -47,6 +47,15 @@ extension CustomColorScheme on ColorScheme {
       case "interfaceStandardsLanguageSelectorTextColor":
         return isDark ? Color(0xFFFFFFFF) : Color(0xFF000000);
         break;
+      case "interfaceStandardsTextInputColor":
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+        break;
+      case "interfaceStandardsTextInputIconColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
+      case "interfaceStandardsTextInputLineColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
 
       case "welcomeSignInButtonColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFB81D1);
@@ -61,15 +70,6 @@ extension CustomColorScheme on ColorScheme {
         return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
         break;
 
-      case "loginTextInputColor":
-        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
-        break;
-      case "loginTextInputIconColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
-        break;
-      case "loginTextInputLineColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
-        break;
       case "loginProgressionButtonColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFB81D1);
         break;
@@ -89,15 +89,6 @@ extension CustomColorScheme on ColorScheme {
         return isDark ? Color(0xFFFFAB58) : Color(0xFFF44336);
         break;
 
-      case "forgotPasswordTextInputColor":
-        return isDark ? Color(0xFFFFFFFF) : Color(0xFFF44336);
-        break;
-      case "forgotPasswordTextInputIconColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
-        break;
-      case "forgotPasswordTextInputLineColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
-        break;
       case "forgotPasswordResetColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFF44336);
         break;
@@ -124,15 +115,14 @@ extension CustomColorScheme on ColorScheme {
 extension CustomFontSizes on TextTheme {
   //double get 'name' => 'fontSizeValue'
   double get interfaceStandardsTitleFontSize => 30.0;
+  double get interfaceStandardsTextInputFontSize => 22.0;
 
   double get welcomeSignInSignUpButtonTextFontSize => 22.5;
 
-  double get loginTextInputFontSize => 22.0;
   double get loginAlternativeButtonTextFontSize => 15.0;
   double get loginForgotPasswordButtonTextFontSize => 15.0;
   double get loginErrorMessageFontSize => 13.0;
 
-  double get forgotPasswordTextInputFontSize => 22.0;
   double get forgotPasswordResetFontSize => 24.0;
 
   double get introTitleFontSize => 30.0;
@@ -142,10 +132,10 @@ extension CustomFontSizes on TextTheme {
 extension CustomFontWeights on Typography {
   //FontWeight get 'name' => 'fontWeightValue';
   FontWeight get interfaceStandardsTitleFontWeight => FontWeight.w600;
+  FontWeight get interfaceStandardsTextInputFontWeight => FontWeight.w300;
 
   FontWeight get welcomeSignInSignUpButtonTextFontWeight => FontWeight.w600;
 
-  FontWeight get loginTextInputFontWeight => FontWeight.w300;
   FontWeight get loginAlternativeButtonTextFontWeight => FontWeight.w400;
   FontWeight get loginForgotPasswordButtonTextFontWeight => FontWeight.w400;
   FontWeight get loginErrorMessageFontWeight => FontWeight.w300;
