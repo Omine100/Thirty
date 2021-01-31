@@ -21,12 +21,23 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   //Variable initialization
   final _formKey = GlobalKey<FormState>();
   String _email;
-  final inputController = TextEditingController();
 
-  //User interface: Show email input
-  Widget showEmailInput() {
-    return new TextFormField(
-      controller: inputController,
+  //User interface: Forgot password screen
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      body: Container(
+        child: Stack(
+          children: [
+            Positioned(
+              top: 100,
+              left: 100,
+              child: interfaceStandards.showTextField(
+                  context, 0, true, "inputEmail", (value) => _email = value),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

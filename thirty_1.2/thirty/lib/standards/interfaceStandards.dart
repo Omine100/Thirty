@@ -133,8 +133,8 @@ class InterfaceStandards {
   }
 
   //User interface: Show text field
-  Widget showTextField(BuildContext context, String key, int keyboardType,
-      var variable, Function onSaved) {
+  Widget showTextField(BuildContext context, int keyboardType, bool isVisible,
+      String key, Function onSaved) {
     return TextFormField(
       keyboardType:
           keyboardType == 0 ? TextInputType.emailAddress : TextInputType.text,
@@ -172,14 +172,12 @@ class InterfaceStandards {
           ),
         ),
       ),
+      obscureText: isVisible,
+      maxLines: 1,
+      validator: (value) => value.isEmpty
+          ? "$key " + getTranslated(context, "inputValidator")
+          : null,
       onSaved: onSaved,
-      validator: (value) {
-        if (value.isEmpty) {
-          return '$label cannot be empty';
-        } else {
-          return null;
-        }
-      },
     );
   }
 }
