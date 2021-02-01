@@ -145,10 +145,8 @@ class InterfaceStandards {
       ),
       decoration: InputDecoration(
         prefixIcon: Icon(
-          key != getTranslated(context, "inputEmail")
-              ? key == getTranslated(context, "inputPassword")
-                  ? Icons.lock
-                  : Icons.person
+          key != "inputEmail"
+              ? (key == "inputPassword" ? Icons.lock : Icons.person)
               : Icons.email,
           color:
               themes.getColor(context, "interfaceStandardsTextInputIconColor"),
