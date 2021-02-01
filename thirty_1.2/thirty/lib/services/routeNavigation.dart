@@ -11,11 +11,11 @@ import 'package:thirty/pages/home.dart';
 abstract class BaseRoutes {
   //Methods: Routes
   void RoutePop(BuildContext context);
-  Widget RouteLogin(BuildContext context, bool isWidget, bool isSignIn);
-  Widget RouteForgotPassword(BuildContext context, bool isWidget);
+  Widget RouteLogin(BuildContext context, bool isSignIn);
+  Widget RouteForgotPassword(BuildContext context);
   Widget RouteIntro(
-      BuildContext context, bool isWidget, String email, String password);
-  Widget RouteHome(BuildContext context, bool isWidget);
+      BuildContext context, String email, String password);
+  Widget RouteHome(BuildContext context);
 
   //Methods: Route managements
   Widget NavigateLogin(BuildContext context, bool isSignedIn);
@@ -28,52 +28,35 @@ class RouteNavigation implements BaseRoutes {
   }
 
   //Mechanics: Routes to login screen
-  //Maybe we can get rid of the isWidget stuff. This one does not need it and I can test the other ones later
-  Widget RouteLogin(BuildContext context, bool isWidget, bool isSignIn) {
-    if (!isWidget) {
-      Navigator.push(
+  Widget RouteLogin(BuildContext context, bool isSignIn) {
+    Navigator.push(
           context,
           MaterialPageRoute(
               builder: (context) => LoginScreen(
                     isSignIn: isSignIn,
                   )));
-    } else {
-      return LoginScreen(
-        isSignIn: isSignIn,
-      );
-    }
   }
 
   //Mechanics: Routes to forgot password screen
-  Widget RouteForgotPassword(BuildContext context, bool isWidget) {
-    if (!isWidget) {
-      Navigator.push(context,
+  Widget RouteForgotPassword(BuildContext context) {
+    Navigator.push(context,
           MaterialPageRoute(builder: (context) => ForgotPasswordScreen()));
-    } else {
-      return ForgotPasswordScreen();
-    }
   }
 
   //Mechanics: Routes to intro screen
   Widget RouteIntro(
-      BuildContext context, bool isWidget, String email, String password) {
-    if (!isWidget) {
-      if (Navigator.canPop(context)) {
+      BuildContext context, String email, String password) {
+    if (Navigator.canPop(context)) {
         RoutePop(context);
       }
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => IntroScreen()));
-    }
   }
 
   //Mechanics: Routes to home screen
-  Widget RouteHome(BuildContext context, bool isWidget) {
-    if (!isWidget) {
-      Navigator.push(
+  Widget RouteHome(BuildContext context) {
+    Navigator.push(
           context, MaterialPageRoute(builder: (context) => HomeScreen()));
-    } else {
-      return HomeScreen();
-    }
   }
 
   //Mechanics: Navigates to first screen

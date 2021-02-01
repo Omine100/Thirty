@@ -15,6 +15,6 @@ class AnimationStandards {
         curve: Curves.easeInOutCirc,
         type: PageTransitionType.scale,
         alignment: Alignment.bottomCenter,
-        child: routeNavigation.RouteLogin(context, false, _isSignIn));
+        child: routeNavigation.RouteLogin(context, _isSignIn));
   }
 }

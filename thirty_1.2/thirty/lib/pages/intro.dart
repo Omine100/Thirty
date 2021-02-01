@@ -70,7 +70,7 @@ class _IntroScreenState extends State<IntroScreen> {
   //Mechanics: Route to home screen
   void onDonePress() async {
     cloudFirestore.signIn(widget.email, widget.password);
-    routeNavigation.RouteHome(context, false);
+    routeNavigation.RouteHome(context);
   }
 
   //User interface: Show interface button

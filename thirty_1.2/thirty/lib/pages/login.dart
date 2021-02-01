@@ -47,12 +47,12 @@ class _LoginScreenState extends State<LoginScreen> {
       try {
         if (_isSignIn) {
           await cloudFirestore.signIn(_email, _password);
-          routeNavigation.RouteHome(context, false);
+          routeNavigation.RouteHome(context);
         } else {
           await cloudFirestore.signUp(_email, _password);
           await cloudFirestore.createNameData(_name);
           cloudFirestore.sendEmailVerification();
-          routeNavigation.RouteIntro(context, false, _email, _password);
+          routeNavigation.RouteIntro(context, _email, _password);
         }
       } catch (e) {
         print("Error: $e");
@@ -222,7 +222,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   context, false, "loginForgotPasswordButtonPosition"),
               child: GestureDetector(
                 onTap: () {
-                  routeNavigation.RouteForgotPassword(context, false);
+                  routeNavigation.RouteForgotPassword(context);
                 },
                 child: interfaceStandards.parentCenter(context,
                     _isSignIn ? showForgotPasswordButton() : Container()),
