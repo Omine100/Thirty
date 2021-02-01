@@ -32,12 +32,6 @@ class _IntroScreenState extends State<IntroScreen> {
   //Variable initialization
   List<Slide> slides = new List<Slide>();
 
-  //Mechanics: Initial state
-  void initState() {
-    super.initState();
-    slideCreation();
-  }
-
   //Mechanics: Slide creation
   List<Slide> slideCreation() {
     slides.add(newSlide(getTranslated(context, "introExerciseTitle"),
@@ -140,7 +134,7 @@ class _IntroScreenState extends State<IntroScreen> {
   @override
   Widget build(BuildContext context) {
     return new IntroSlider(
-      slides: this.slides,
+      slides: slideCreation(),
       isShowSkipBtn: false,
       renderNextBtn: this.showInterfaceButton("navigate_next"),
       renderDoneBtn: this.showInterfaceButton("done"),
