@@ -99,10 +99,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
             Positioned(
               top: themes.getPosition(context, true, "welcomeTitlePosition"),
-              child: interfaceStandards.parentCenter(
-                  context,
-                  interfaceStandards.showTitle(
-                      context, getTranslated(context, "welcomeTitle"))),
+              child: interfaceStandards.parentCenter(context,
+                  interfaceStandards.showTitle(context, "welcomeTitle")),
             ),
             Positioned(
               top: themes.getPosition(
