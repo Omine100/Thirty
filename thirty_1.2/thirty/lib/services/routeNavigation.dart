@@ -28,6 +28,7 @@ class RouteNavigation implements BaseRoutes {
   }
 
   //Mechanics: Routes to login screen
+  //Maybe we can get rid of the isWidget stuff. This one does not need it and I can test the other ones later
   Widget RouteLogin(BuildContext context, bool isWidget, bool isSignIn) {
     if (!isWidget) {
       Navigator.push(
