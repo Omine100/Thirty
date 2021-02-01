@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 
+import 'package:thirty/services/appLocalizations.dart';
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/services/routeNavigation.dart';
 import 'package:thirty/standards/languageStandards.dart';
+import 'package:thirty/standards/themes.dart';
 
 void main() {
   runApp(new Thirty());
@@ -57,11 +61,42 @@ class _ThirtyState extends State<Thirty> {
   //User interface: Thirty app
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Thirty",
-      debugShowCheckedModeBanner: false,
-      debugShowMaterialGrid: false,
-      home: routeNavigation.NavigateLogin(context, isSignedIn),
-    );
+    if (_locale == null) {
+      return Container(
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    } else {
+      return ChangeNotifierProvider(
+        create: (_) => ThemeNotifier(),
+        child: Consumer<ThemeNotifier>(
+          builder: (context, ThemeNotifier notifier, child) {
+            return MaterialApp(
+              title: "Thirty",
+              debugShowCheckedModeBanner: false,
+              debugShowMaterialGrid: false,
+              home: routeNavigation.NavigateLogin(context, isSignedIn),
+              theme: notifier.darkTheme ? dark : light,
+              locale: _locale,
+              supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],
+              localizationsDelegates: [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+              ],
+              localeResolutionCallback: (locale, supportedLocales) {
+                for (var supportedLocale in supportedLocales) {
+                  if (supportedLocale.languageCode == locale.languageCode) {
+                    return supportedLocale;
+                  }
+                }
+                return supportedLocales.first;
+              },
+            );
+          },
+        ),
+      );
+    }
   }
 }
