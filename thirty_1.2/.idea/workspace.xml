@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b1ad142d-b777-4144-8ae6-799b4eb033f4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/thirty/lib/pages/intro.dart" beforeDir="false" afterPath="$PROJECT_DIR$/thirty/lib/pages/intro.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thirty/lib/standards/animationStandards.dart" beforeDir="false" afterPath="$PROJECT_DIR$/thirty/lib/standards/animationStandards.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thirty/lib/standards/themes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/thirty/lib/standards/themes.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1pis8Jkw77Ct6LV7Cd8RLNbS4fk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../thirty_1.3" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Flutter Log" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b1ad142d-b777-4144-8ae6-799b4eb033f4" name="Default Changelist" comment="" />
+      <created>1615677084803</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615677084803</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2665" y="305" key="FileChooserDialogImpl" timestamp="1615677255550">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2665" y="305" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1615677255550" />
+  </component>
+</project>

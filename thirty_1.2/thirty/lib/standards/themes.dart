@@ -94,16 +94,16 @@ extension CustomColorScheme on ColorScheme {
         break;
 
       case "introTitleColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFF44336);
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
       case "introDotColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFF44336);
         break;
       case "introDescriptionColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFF44336);
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
       case "introInterfaceButtonColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFF44336);
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
       default:
         return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
