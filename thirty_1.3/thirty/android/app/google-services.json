@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "926196011837",
+    "project_id": "thirty-40721",
+    "storage_bucket": "thirty-40721.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926196011837:android:b427bc6fbd58eca7e2ab54",
+        "android_client_info": {
+          "package_name": "com.phoenix.thirty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926196011837-8dkbaktca6udv2so1v2c2s2rolhashrt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.phoenix.thirty",
+            "certificate_hash": "c8e88a15281079017a5a109dd996e8bd159e1d18"
+          }
+        },
+        {
+          "client_id": "926196011837-9tp766lp43md5hd9aaqa90fcqb9q1fdv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANNs4l9gNqjES8mF8hTjodnACCtBH5EKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926196011837-9tp766lp43md5hd9aaqa90fcqb9q1fdv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
