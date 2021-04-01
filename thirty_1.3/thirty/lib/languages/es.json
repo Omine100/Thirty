@@ -1,0 +1,26 @@
+{
+    "inputName": "Nombre",
+    "inputEmail": "Correo electrónico",
+    "inputPassword": "Contraseña",
+    "inputValidator": "no puede estar vacía",
+
+    "welcomeTitle": "BIENVENIDA A TREINTA",
+    "welcomeSignInButton": "INICIAR SESIÓN",
+    "welcomeSignUpButton": "REGÍSTRATE",
+
+    "loginSignInTitle": "INICIAR SESIÓN",
+    "loginSignUpTitle": "REGÍSTRATE",
+    "loginForgotPassword": "¿Restablecer contraseñ?",
+    "loginAlternativeSignIn": "¿Tener una cuenta? ¡INICIAR SESIÓN!",
+    "loginAlternativeSignUp": "¿No tienes cuenta? ¡REGÍSTRATE!",
+
+    "forgotPasswordTitle": "RESTABLECER",
+    "forgotPasswordReset": "Restablecer Contraseña",
+
+    "introExerciseTitle": "GOAL",
+    "introCalendarTitle": "TRACKING",
+    "introMedalTitle": "COMPLETION",
+    "introExerciseDescription": "asocdao",
+    "introCalendarDescription": "asdfcawoj",
+    "introMedalDescription": "ascojwocao" 
+}
