@@ -13,12 +13,13 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  intl: ^0.17.0
 
   #Data management
   shared_preferences: ^0.5.6
-  firebase_core: ^0.4.4+3
-  cloud_firestore: ^0.12.7
-  firebase_auth: ^0.13.0+5
+  firebase_core: ^1.0.2
+  cloud_firestore: ^1.0.3
+  firebase_auth: ^1.0.1
   provider: ^3.2.0
 
   #User interface
