@@ -68,7 +68,7 @@ class _ThirtyState extends State<Thirty> {
   @override
   Widget build(BuildContext context) {
     if (locale == null) {
-      interfaceStandards.showWaitingScreen();
+      interfaceStandards.showWaitingScreen(context);
     } else {
       return ChangeNotifierProvider(
         create: (_) => ThemeNotifier(),
