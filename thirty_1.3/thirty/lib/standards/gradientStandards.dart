@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:thirty/standards/themes.dart';
 
 class GradientStandards {
-  //Class initialization
+  //CLASS INITIALIZATION
   Themes themes = new Themes();
 
-  //User interface: Text linear gradient
+  //USER INTERFACE:: Text linear gradient
+  //DESCRIPTION: Simple linear gradient that I think looks nice for text
+  //COLOR INPUTS: 'topLeftColor', 'bottomRightColor'
+  //OUTPUT: Linear gradient
   Shader textLinearGradient(
       BuildContext context, Color topLeftColor, Color bottomRightColor) {
     final Shader linearGradient =
@@ -15,7 +18,12 @@ class GradientStandards {
     return linearGradient;
   }
 
-  //User interface: Body linear gradient
+  //USER INTERFACE: Body linear gradient
+  //DESCRIPTION: More complex linear gradient for backgrounds
+  //COLOR INPUTS: 'topLeftColor', 'bottomRightColor'
+  //BOOLEAN INPUT: 'isSmall' can be used to change the alignment from a center
+  //              diagonal to a full diagonal
+  //OUTPUT: Linear gradient
   LinearGradient bodyLinearGradient(BuildContext context, Color topLeftColor,
       Color bottomRightColor, bool isSmall) {
     final LinearGradient linearGradient = LinearGradient(
