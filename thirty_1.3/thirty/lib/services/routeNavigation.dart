@@ -7,36 +7,39 @@ import 'package:thirty/pages/forgotPassword.dart';
 import 'package:thirty/pages/intro.dart';
 import 'package:thirty/pages/home.dart';
 
-//Method declarations
+//METHOD DECLARATIONS
 abstract class BaseRoutes {
-  //Methods: Routes
+  //METHODS: Routes
   void RoutePop(BuildContext context);
   Widget RouteLogin(BuildContext context, bool isSignIn);
   Widget RouteForgotPassword(BuildContext context);
   Widget RouteIntro(BuildContext context); //Don't pass email, call Firestore?
   Widget RouteHome(BuildContext context);
 
-  //Methods: Route managements
+  //METHODS: Route managements
   Widget NavigateLogin(BuildContext context, bool isSignedIn);
 }
 
 class RouteNavigation implements BaseRoutes {
-  //Mechanics: Route app
+  //MECHANICS: Route pop
+  //DESCRIPTION: Takes the navigator stack and pops the top one off
   void RoutePop(BuildContext context) {
     Navigator.pop(context);
   }
 
-  //Mechanics: Routes to login screen
+  //MECHANICS: Routes to login screen
+  //BOOLEAN INPUT: 'isSignIn' allows for setting up the screen for either signIn
+  //            or SignUp
   Widget RouteLogin(BuildContext context, bool isSignIn) {
     Navigator.push(context, LoginScreen(isSignIn: isSignIn));
   }
 
-  //Mechanics: Routes to forgot password screen
+  //MECHANICS: Routes to forgot password screen
   Widget RouteForgotPassword(BuildContext context) {
     Navigator.push(context, ForgotPasswordScreen());
   }
 
-  //Mechanics: Routes to intro screen
+  //MECHANICS: Routes to intro screen
   Widget RouteIntro(BuildContext context) {
     while (Navigator.canPop(context)) {
       RoutePop(context);
@@ -44,20 +47,21 @@ class RouteNavigation implements BaseRoutes {
     Navigator.push(context, IntroScreen());
   }
 
-  //Mechanics: Routes to home screen
+  //MECHANICS: Routes to home screen
   Widget RouteHome(BuildContext context) {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => HomeScreen()));
   }
 
-  //Mechanics: Navigates to first screen
+  //MECHANICS: Navigates to first screen
+  //BOOLEAN INPUT: 'isSignedIn' for deciding which screen to display where true
+  //            shows HomeScreen and false shows WelcomeScreen
+  //OUTPUT: Returns a specific screen depending on the value of 'isSignedIn'
   Widget NavigateLogin(BuildContext context, bool isSignedIn) {
     if (!isSignedIn) {
       return WelcomeScreen();
     } else if (isSignedIn) {
       return HomeScreen();
-    } else {
-      return InterfaceStandards().showWaitingScreen();
     }
   }
 }

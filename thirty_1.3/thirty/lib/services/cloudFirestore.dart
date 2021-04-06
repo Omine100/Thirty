@@ -9,9 +9,9 @@ import 'dart:async';
 
 import 'package:thirty/standards/methodStandards.dart';
 
-//Method declarations
+//METHOD DECLARATIONS
 abstract class BaseCloud {
-  //Methods: Account management
+  //METHODS: Account management
   Future<void> signInEmailAndPassword(String email, String password);
   Future<void> signUpEmailAndPassword(String email, String password);
   Future<void> signInGoogle();
@@ -22,7 +22,7 @@ abstract class BaseCloud {
   Future<void> sendPasswordReset(String email);
   Future<bool> getEmailVerified();
 
-  //Methods: Data management
+  //METHODS: Data management
   Future<void> createNameData(String name);
   Future<void> createGoalData(String goal);
   Future<String> getNameData();
@@ -33,22 +33,25 @@ abstract class BaseCloud {
 }
 
 class CloudFirestore implements BaseCloud {
-  //Class initialization
+  //CLASS INITIALIZATION
   MethodStandards methodStandards = new MethodStandards();
 
-  //Variable initialization
+  //VARIABLE INITIALIZATION
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  //Mechanics: Signs in user with an email and password
+  //MECHANICS: Signs in user with an email and password
   Future<void> signInEmailAndPassword(String email, String password) async {
     try {
-      UserCredential userCredential = await auth.signInWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+          email: email, password: password);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email.'); //Maybe make a call to a widget for a toast view
+        print(
+            'No user found for that email.'); //Maybe make a call to a widget for a toast view
       } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.'); //Maybe make a call to a widget for a toast view
+        print(
+            'Wrong password provided for that user.'); //Maybe make a call to a widget for a toast view
       }
     }
   }
@@ -62,8 +65,10 @@ class CloudFirestore implements BaseCloud {
   //Mechanics: Signs in user with Google
   Future<void> signInGoogle() async {
     final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
-    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-    final GoogleAuthCredential credential = GoogleAuthProvider.credential(accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
+    final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
   }
 
   //Mechanics: Signs out user
