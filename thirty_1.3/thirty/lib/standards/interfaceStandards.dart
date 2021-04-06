@@ -34,7 +34,6 @@ class InterfaceStandards {
   }
 
   //USER INTERFACE: Language selector
-  //DESCRIPTION: Allows for the user to select a language
   //OUTPUT: Dropdown widget selector
   //ON-CHANGED: Calls a method in languageStandards to change the language
   Widget languageSelector(BuildContext context) {
@@ -100,7 +99,6 @@ class InterfaceStandards {
   }
 
   //USER INTERFACE: Parent center
-  //DESCRIPTION: Completely centers a widget
   //WIDGET INPUT: Any widget that you want centered
   //OUTPUT: Widget centered in next parent in the tree
   Widget parentCenter(BuildContext context, Widget widget) {
@@ -114,7 +112,6 @@ class InterfaceStandards {
   }
 
   //USER INTERFACE: Back button
-  //DESCRIPTION: Displays a back button
   //OUTPUT: Calls a function in routeNavigation to pop the route stack once
   Widget backButton(BuildContext context) {
     return GestureDetector(
@@ -131,7 +128,7 @@ class InterfaceStandards {
   }
 
   //USER INTERFACE: Show title
-  //DESCRIPTIONS: Shows a standard title for the application
+  //DESCRIPTION: Shows a standard title for the application
   //STRING INPUT: 'key' used to get the text and its correct translation
   //OUTPUT: Text displayed in a general way for the application
   Widget showTitle(BuildContext context, String key) {

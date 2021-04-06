@@ -34,7 +34,7 @@ class Languages {
 }
 
 //MECHANICS: Locale cases
-//DESCRIPTION: Based on the languageCode provided, return a locale
+//DESCRIPTION: Based on the languageCode provided, returns a locale
 //OUTPUT: Returns appropriate locale, this is used in startup
 Locale _locale(String languageCode) {
   Locale _temp;
@@ -56,21 +56,29 @@ Locale _locale(String languageCode) {
 }
 
 //MECHANICS: Sets locale
-//DESCRIPTION:
+//DESCRIPTION: Changes the current locale to a new one based on languageCode
+//STRING INPUT: 'languageCode' where it is either like "en", "es", "fr", etc.
+//OUTPUT: Returns a function call to _locale with the supplied languageCode
 Future<Locale> setLocale(String languageCode) async {
   SharedPreferences _prefs = await SharedPreferences.getInstance();
   await _prefs.setString("LanguageCode", languageCode);
   return _locale(languageCode);
 }
 
-//Mechanics: Gets locale
+//MECHANICS: Gets locale
+//DESCRIPTION: Gets the locale value saved in the shared preferences
+//OUTPUT: Returns a function call to _locale with the languageCode from
+//      shared preferences
 Future<Locale> getLocale() async {
   SharedPreferences _prefs = await SharedPreferences.getInstance();
   String languageCode = _prefs.getString("LanguageCode") ?? "en";
   return _locale(languageCode);
 }
 
-//Mechanics: Gets translated string
+//MECHANICS: Gets translated string
+//STRING INPUT: 'key' where this corresponds to a string in the language files
+//OUTPUT: Returns correctly translated string from appropriate language file
+//      based on value in AppLocalizations
 String getTranslated(BuildContext context, String key) {
   return AppLocalizations.of(context).translate(key);
 }

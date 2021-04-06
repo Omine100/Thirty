@@ -7,7 +7,6 @@ class GradientStandards {
   Themes themes = new Themes();
 
   //USER INTERFACE:: Text linear gradient
-  //DESCRIPTION: Simple linear gradient that I think looks nice for text
   //COLOR INPUTS: 'topLeftColor', 'bottomRightColor'
   //OUTPUT: Linear gradient
   Shader textLinearGradient(
@@ -19,7 +18,6 @@ class GradientStandards {
   }
 
   //USER INTERFACE: Body linear gradient
-  //DESCRIPTION: More complex linear gradient for backgrounds
   //COLOR INPUTS: 'topLeftColor', 'bottomRightColor'
   //BOOLEAN INPUT: 'isSmall' can be used to change the alignment from a center
   //              diagonal to a full diagonal

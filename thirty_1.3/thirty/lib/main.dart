@@ -14,7 +14,8 @@ void main() {
 }
 
 class Thirty extends StatefulWidget {
-  //Mechanics: Sets locale
+  //MECHANICS: Sets locale
+  //LOCALE INPUT: 'locale' referenced for setting the locale state
   static void setLocale(BuildContext context, Locale locale) {
     _ThirtyState state = context.findAncestorStateOfType<_ThirtyState>();
     state.setLocale(locale);
@@ -25,16 +26,17 @@ class Thirty extends StatefulWidget {
 }
 
 class _ThirtyState extends State<Thirty> {
-  //Class initialization
+  //CLASS INITILIZATION
   CloudFirestore cloudFirestore = new CloudFirestore();
   RouteNavigation routeNavigation = new RouteNavigation();
   InterfaceStandards interfaceStandards = new InterfaceStandards();
 
-  //Variable initialization
+  //VARIABLE INITIALIZATION
   Locale locale;
   bool isSignedIn = false;
 
-  //Initial state
+  //INITIAL STATE
+  //DESCRIPTION: Gets signed in status prior to the application loading
   void initState() {
     super.initState();
     cloudFirestore
@@ -42,14 +44,16 @@ class _ThirtyState extends State<Thirty> {
         .then((_isSignedIn) => {isSignedIn = _isSignedIn});
   }
 
-  //Mechanics: Set locale
+  //MECHANICS: Set locale
+  //LOCALE INPUT: '_locale' referenced for setting the locale in state setting
   void setLocale(Locale _locale) {
     setState(() {
       locale = _locale;
     });
   }
 
-  //Mechanics: Changing dependencies
+  //MECHANICS: Changing dependencies
+  //DESCRIPTION: Gets the locale and then sets the locale in the state
   @override
   void didChangeDependencies() {
     getLocale().then((_locale) => {
@@ -60,7 +64,7 @@ class _ThirtyState extends State<Thirty> {
     super.didChangeDependencies();
   }
 
-  //User interface: Thirty app
+  //USER INTERFACE: THIRTY APP
   @override
   Widget build(BuildContext context) {
     if (locale == null) {
