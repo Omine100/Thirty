@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-//Theme: Light theme
+//THEME: Light theme
 ThemeData light = new ThemeData(
   primaryColor: Colors.red,
   brightness: Brightness.dark,
 );
 
-//Theme: Dark theme
+//THEME: Dark theme
 ThemeData dark = new ThemeData(
   primaryColor: Colors.blue,
   brightness: Brightness.dark,
@@ -257,12 +257,16 @@ extension CustomPositions on MaterialTapTargetSize {
 }
 
 class Themes {
-  //Mechanics: Check dark theme
+  //MECHANICS: Check dark theme
+  //OUTPUT: Returns true if the theme is 'dark', false otherwise
   bool checkDarkTheme(BuildContext context) {
     return Theme.of(context).primaryColor.value == 4280391411 ? false : true;
   }
 
-  //Mechanics: Get color value
+  //MECHANICS: Get color value
+  //STRING INPUT: '_selection' for referencing color case
+  //OUTPUT: Returns the theme specific Color value associated with the
+  //      '_selection'
   Color getColor(BuildContext context, String _selection) {
     Color value = Theme.of(context)
         .colorScheme
@@ -270,7 +274,10 @@ class Themes {
     return value;
   }
 
-  //Mechanics: Get dimension value
+  //MECHANICS: Get dimension value
+  //BOOLEAN VALUE: '_isHeight' for returning width vs height
+  //STRING VALUE: '_selection' for referencing dimension case
+  //OUTPUT: Returns side specific double value associated with the 'selection'
   double getDimension(BuildContext context, bool _isHeight, String _selection) {
     double value = _isHeight
         ? MediaQuery.of(context).size.height *
@@ -284,7 +291,10 @@ class Themes {
     return value;
   }
 
-  //Mechanics: Get position value
+  //MECHANICS: Get position value
+  //BOOLEAN VALUE: '_isTop' for returning top vs left
+  //STRING VALUE: '_selection' for referencing position case
+  //OUTPUT: Returns side specific double value associated with the 'selection'
   double getPosition(BuildContext context, bool _isTop, String _selection) {
     double value = _isTop
         ? MediaQuery.of(context).size.height *
@@ -300,41 +310,43 @@ class Themes {
 }
 
 class ThemeNotifier extends ChangeNotifier {
-  //Variable initialization
+  //VARIABLE INITIALIZATION
   SharedPreferences prefs;
   bool _isDark;
 
-  //Mechanics: Getter for brightness value
+  //MECHANICS: Getter for theme value
   bool get darkTheme => _isDark;
 
-  //Mechanics: Theme notifier
+  //MECHANICS: Theme notifier
+  //DESCRIPTION: Calls _loadFromPrefs to get theme value
   ThemeNotifier() {
     _isDark = true;
     _loadFromPrefs();
   }
 
-  //Mechanics: Theme toggler
+  //MECHANICS: Theme toggler
+  //DESCRIPTION: Toggles theme and then calls _loadFromPrefs and notifies
   toggleTheme() {
     _isDark = !_isDark;
     _saveToPrefs();
     notifyListeners();
   }
 
-  //Mechanics: Initial preference initialization
+  //MECHANICS: Preference initialization
   _initPrefs() async {
     if (prefs == null) {
       prefs = await SharedPreferences.getInstance();
     }
   }
 
-  //Mechanics: Loading preferences
+  //MECHANICS: Loading theme preference
   _loadFromPrefs() async {
     await _initPrefs();
     _isDark = prefs.getBool("Theme") ?? true;
     notifyListeners();
   }
 
-  //Mechanics: Saving preferences
+  //MECHANICS: Saving theme preference
   _saveToPrefs() async {
     await _initPrefs();
     prefs.setBool("Theme", _isDark);
