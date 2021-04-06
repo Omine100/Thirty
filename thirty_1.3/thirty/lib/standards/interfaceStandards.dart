@@ -6,11 +6,14 @@ import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/languageStandards.dart';
 
 class InterfaceStandards {
-  //Class initialization
+  //CLASS INITIALIZATION
   Themes themes = new Themes();
   RouteNavigation routeNavigation = new RouteNavigation();
 
-  //User interface: Theme selector
+  //USER INTERFACE: Theme selector
+  //DESCRIPTION: Allows the user to switch between 'light' and 'dark' modes
+  //OUTPUT: Slider widget selector
+  //ON-CHANGED: Notifies ThemeNotifier about the change to the theme
   Widget themeSelector(BuildContext context) {
     return Consumer<ThemeNotifier>(
       builder: (context, notifier, child) => SwitchListTile(
@@ -30,7 +33,10 @@ class InterfaceStandards {
     );
   }
 
-  //User interface: Language selector
+  //USER INTERFACE: Language selector
+  //DESCRIPTION: Allows for the user to select a language
+  //OUTPUT: Dropdown widget selector
+  //ON-CHANGED: Calls a method in languageStandards to change the language
   Widget languageSelector(BuildContext context) {
     return DropdownButtonHideUnderline(
       child: DropdownButton(
@@ -72,25 +78,31 @@ class InterfaceStandards {
     );
   }
 
-  //User interface: Show progress
+  //USER INTERFACE: Show progress
+  //DESCRIPTION: Shows a typical progress wheel
+  //OUTPUT: A progress wheel centered
   Widget showProgress(BuildContext context) {
-    return new CircularProgressIndicator(
-      backgroundColor:
-          themes.getColor(context, "interfaceStandardsProgressIndicatorColor"),
-    );
-  }
-
-  //User interface: Show waiting screen
-  Widget showWaitingScreen() {
-    return Scaffold(
-      body: Container(
-        alignment: Alignment.center,
-        child: CircularProgressIndicator(),
+    return parentCenter(
+      context,
+      CircularProgressIndicator(
+        backgroundColor: themes.getColor(
+            context, "interfaceStandardsProgressIndicatorColor"),
       ),
     );
   }
 
-  //User interface: Parent center
+  //USER INTERFACE: Show waiting screen
+  //DESCRIPTION: Shows a whole screen with a centered progress wheel
+  //OUTPUT: A screen with a progress wheel centered
+  //USES: Before the application is loaded
+  Widget showWaitingScreen(BuildContext context) {
+    return Scaffold(body: parentCenter(context, CircularProgressIndicator()));
+  }
+
+  //USER INTERFACE: Parent center
+  //DESCRIPTION: Completely centers a widget
+  //WIDGET INPUT: Any widget that you want centered
+  //OUTPUT: Widget centered in next parent in the tree
   Widget parentCenter(BuildContext context, Widget widget) {
     return Container(
       width: themes.getDimension(
@@ -101,7 +113,9 @@ class InterfaceStandards {
     );
   }
 
-  //User interface: Back button
+  //USER INTERFACE: Back button
+  //DESCRIPTION: Displays a back button
+  //OUTPUT: Calls a function in routeNavigation to pop the route stack once
   Widget backButton(BuildContext context) {
     return GestureDetector(
       onTap: () {
@@ -116,7 +130,10 @@ class InterfaceStandards {
     );
   }
 
-  //User interface: Show title
+  //USER INTERFACE: Show title
+  //DESCRIPTIONS: Shows a standard title for the application
+  //STRING INPUT: 'key' used to get the text and its correct translation
+  //OUTPUT: Text displayed in a general way for the application
   Widget showTitle(BuildContext context, String key) {
     return parentCenter(
       context,
@@ -132,7 +149,13 @@ class InterfaceStandards {
     );
   }
 
-  //User interface: Show text field
+  //USER INTERFACE: Show text field
+  //DESCRIPTION: Takes input for various forms in a general way
+  //INT INPUT: 'keyboardType' where '0' is email and '!0' is text
+  //BOOLEAN INPUT: 'isVisible' where true makes the input visible to the user
+  //STRING INPUT: 'key' used to get the text and its correct translation
+  //FUNCTION INPUT: 'onSaved' function for saving the input
+  //OUTPUT: Text form field widget customized to inputs
   Widget showTextField(BuildContext context, int keyboardType, bool isVisible,
       String key, Function onSaved) {
     return TextFormField(

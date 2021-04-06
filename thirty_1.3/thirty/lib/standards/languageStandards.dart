@@ -7,13 +7,15 @@ import 'package:thirty/main.dart';
 class Languages {
   Languages(this.id, this.name, this.flag, this.languageCode);
 
-  //Variable reference
+  //VARIABLE REFERENCE
   final int id;
   final String name;
   final String flag;
   final String languageCode;
 
-  //Mechanics: Returns language list
+  //MECHANICS: Returns language list
+  //DESCRIPTION: Static list of languages in the application
+  //OUTPUT: Returns a list of type language containing the languages supported
   static List<Languages> getLanguageList() {
     return <Languages>[
       Languages(1, "🇺🇸", "English", "en"),
@@ -22,14 +24,18 @@ class Languages {
     ];
   }
 
-  //Mechancics: Changes language
+  //MECHANICS: Changes language
+  //DESCRIPTION: Actual function to call locale change for language between
+  //            interfaceStandards and main
   void changeLanguage(BuildContext context, Languages language) async {
     Locale _temp = await setLocale(language.languageCode);
     Thirty.setLocale(context, _temp);
   }
 }
 
-//Mechanics: Locale cases
+//MECHANICS: Locale cases
+//DESCRIPTION: Based on the languageCode provided, return a locale
+//OUTPUT: Returns appropriate locale, this is used in startup
 Locale _locale(String languageCode) {
   Locale _temp;
   switch (languageCode) {
@@ -49,7 +55,8 @@ Locale _locale(String languageCode) {
   return _temp;
 }
 
-//Mechanics: Sets locale
+//MECHANICS: Sets locale
+//DESCRIPTION:
 Future<Locale> setLocale(String languageCode) async {
   SharedPreferences _prefs = await SharedPreferences.getInstance();
   await _prefs.setString("LanguageCode", languageCode);

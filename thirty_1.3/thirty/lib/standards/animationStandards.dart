@@ -9,7 +9,7 @@ class AnimationStandards {
 
   //USER INTERFACE: Welcome page transition
   //DESCRIPTION: Simple animation between the welcome screen and the login screen
-  //BOOLEAN INPUT: '_isSignIn': Used to forward to the new screen
+  //BOOLEAN INPUT: '_isSignIn' used to forward to the new screen
   //OUTPUT: New page
   PageTransition welcomePageTransition(BuildContext context, bool isSignIn) {
     return PageTransition(

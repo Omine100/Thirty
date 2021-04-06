@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class MethodStandards {
-  //Mechanics: Returns current time
+  //MECHANICS: Get current time
+  //DESCRIPTION: Returns a formatted time stamp for database consistency
+  //OUTPUT: Returns formatted time stamp
   String getCurrentDate() {
     String formattedDate =
         DateFormat('yyyy-MM-dd-HH:mm:ss').format(DateTime.now());
