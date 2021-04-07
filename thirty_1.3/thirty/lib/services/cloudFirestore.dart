@@ -117,13 +117,18 @@ class CloudFirestore implements BaseCloud {
     return user.emailVerified;
   }
 
-  //Mechanics: Creates name data
+  //MECHANICS: Creates name data
+  //STRING INPUT: 'name' for having a value to save
+  //DATA PATH: userId -> name['name']
   Future<void> createNameData(String name) async {
     var userId = await auth.currentUser.uid;
     await firestore.collection(userId).doc("name").set({"name": name});
   }
 
-  //Mechanics: Creates goal data
+  //MECHANICS: Creates goal data
+  //DESCRIPTION: Create goal but save it under a timeStamp from getCurrentDate()
+  //STRING INPUT: 'goal' for having a value to save
+  //DATA PATH: userId -> goals -> final -> date['goal', 'date']
   Future<void> createGoalData(String goal) async {
     String date = methodStandards.getCurrentDate();
     var userId = await auth.currentUser.uid;
@@ -139,7 +144,8 @@ class CloudFirestore implements BaseCloud {
     });
   }
 
-  //Mechanics: Returns name data
+  //MECHANICS: Returns name data
+  //OUTPUT: Reads from firestore and returns string from snapshot or null
   Future<String> getNameData() async {
     var userId = await auth.currentUser.uid;
     QueryDocumentSnapshot snapshot =
@@ -151,7 +157,8 @@ class CloudFirestore implements BaseCloud {
     }
   }
 
-  //Mechanics: Returns goal data stream
+  //MECHANICS: Returns goal data stream
+  //OUTPUT: Reads from firestore and returns snapshots
   Future<Stream<QuerySnapshot>> getGoalDataStream() async {
     var userId = await auth.currentUser.uid;
     Stream<QuerySnapshot> goalDataStream = firestore
@@ -162,7 +169,10 @@ class CloudFirestore implements BaseCloud {
     return goalDataStream;
   }
 
-  //Mechanics: Deletes one goal
+  //MECHANICS: Deletes one goal
+  //DOCUMENT SNAPSHOT INPUT: 'doc' for referencing which document to delete
+  //DESCRIPTION: Goes to the specific collection, takes the documentId and use
+  //          an authentication created function to delete that specific one
   Future<void> deleteGoalData(DocumentSnapshot doc) async {
     var userId = await auth.currentUser.uid;
     await firestore
@@ -173,7 +183,9 @@ class CloudFirestore implements BaseCloud {
         .delete();
   }
 
-  //Mechanics: Deletes all user data
+  //MECHANICS: Deletes all user data
+  //DESCRIPTION: Goes to the specific user data collection and uses an authentication
+  //          created function to delete all of the documents
   Future<void> deleteUserData() async {
     var userId = await auth.currentUser.uid;
     await firestore.collection(userId).get().then((snapshot) {
@@ -183,7 +195,8 @@ class CloudFirestore implements BaseCloud {
     });
   }
 
-  //Mechanics: Deletes the user
+  //MECHANICS: Deletes the user
+  //DESCRIPTION: Uses an authentication created function to delete the user
   Future<void> deleteUser() async {
     auth.currentUser.delete();
     deleteUserData();
