@@ -41,6 +41,7 @@ class CloudFirestore implements BaseCloud {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   //MECHANICS: Signs in user with an email and password
+  //STRING INPUTS: 'email' and 'password' for user verification
   Future<void> signInEmailAndPassword(String email, String password) async {
     try {
       UserCredential userCredential = await auth.signInWithEmailAndPassword(
@@ -56,13 +57,14 @@ class CloudFirestore implements BaseCloud {
     }
   }
 
-  //Mechanics: Signs up user with an email and password
+  //MECHANICS: Signs up user with an email and password
+  //STRING INPUTS: 'email' and 'password' for user creation
   Future<void> signUpEmailAndPassword(String email, String password) async {
     UserCredential result = await auth.createUserWithEmailAndPassword(
         email: email, password: password);
   }
 
-  //Mechanics: Signs in user with Google
+  //MECHANICS: Signs in user with Google
   Future<void> signInGoogle() async {
     final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
     final GoogleSignInAuthentication googleAuth =
@@ -71,35 +73,45 @@ class CloudFirestore implements BaseCloud {
         accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
   }
 
-  //Mechanics: Signs out user
+  //MECHANICS: Signs out user
+  //OUTPUT: Calls authentication sign out function
   Future<void> signOut() async {
     return auth.signOut();
   }
 
-  //Mechanics: Returns current user Id
+  //MECHANICS: Returns current user Id
   Future<String> getCurrentUserId() async {
     var userId = await auth.currentUser.uid;
     return userId;
   }
 
-  //Mechanics: Returns signed in status
+  //MECHANICS: Returns signed in status
+  //DESCRIPTION: If there is someone signed in, then there should always be an
+  //          userId to call, so if there is not, no one is signed in
+  //OUTPUT: Returns false if the the userId is null, true otherwise
   Future<bool> getSignedInStatus() async {
     var userId = await auth.currentUser.uid;
     return userId != null ? true : false;
   }
 
-  //Mechanics: Sends an email verification email
+  //MECHANICS: Sends an email verification email
+  //DESCRIPTION: Uses authentication created function for sending email
+  //          verification to the user
   Future<void> sendEmailVerification() async {
     var user = await auth.currentUser;
     user.sendEmailVerification();
   }
 
-  //Mecahnics: Sends a password reset email
+  //MECHANICS: Sends a password reset email
+  //DESCRIPTION: Uses authentication created function for sending password reset
+  //          email to the user
   Future<void> sendPasswordReset(String email) async {
     auth.sendPasswordResetEmail(email: email);
   }
 
-  //Mechanics: Returns if email is verified
+  //MECHANICS: Returns if email is verified
+  //DESCRIPTION: Uses authentication created function to check if email is verified
+  //OUTPUT: If the email is verified, it returns true, false otherwise
   Future<bool> getEmailVerified() async {
     var user = await auth.currentUser;
     return user.emailVerified;
