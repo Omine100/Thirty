@@ -85,7 +85,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         width: themes.getDimension(context, false, "welcomeContainerDimension"),
         decoration:
             BoxDecoration(gradient: gradients.welcomeScreenGradient(context)),
-        child: Stack(),
+        child: Stack(
+          children: <Widget>[
+            Positioned(),
+            Positioned(),
+            Positioned(),
+            Positioned(),
+            Positioned(),
+            Positioned(),
+          ],
+        ),
       ),
     );
   }
