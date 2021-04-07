@@ -24,6 +24,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   InterfaceStandards interfaceStandards = new InterfaceStandards();
   MethodStandards methodStandards = new MethodStandards();
 
+  //VARIABLE INITIALIZATION
+  bool isDark;
+
+  //INITIAL STATE
+  //DESCRIPTION: Gets isDark status prior to the application loading
+  void initState() {
+    super.initState();
+    isDark = themes.checkDarkTheme(context);
+  }
+
   //USER INTERFACE: Show sign in or sign up button
   //DESCRIPTION: Basic widget method, but I think that this makes the file smaller
   //          because we aren't having to have all of these lines of code for two
