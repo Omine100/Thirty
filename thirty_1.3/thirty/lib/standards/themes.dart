@@ -162,7 +162,7 @@ extension CustomDimensions on MaterialTapTargetSize {
         break;
 
       case "welcomeContainerDimension":
-        return isHeight ? 1.0 : null;
+        return isHeight ? 1.0 : 1.0;
         break;
       case "welcomeBackgroundImageDimension":
         return isHeight ? 1.0 : 1.0;

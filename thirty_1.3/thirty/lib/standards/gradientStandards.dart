@@ -32,3 +32,28 @@ class GradientStandards {
     return linearGradient;
   }
 }
+
+class Gradients {
+  //CLASS INITIALIZATION
+  GradientStandards gradientStandards = new GradientStandards();
+  Themes themes = new Themes();
+
+  //USER INTERFACE: Sign up button gradient
+  Shader signUpButtonGradient(BuildContext context) {
+    Shader shader = gradientStandards.textLinearGradient(
+        context,
+        themes.getColor(context, "backgroundGradientTopRightColor"),
+        themes.getColor(context, "backgroundGradientBottomLeftColor"));
+    return shader;
+  }
+
+  //USER INTERFACE: Welcome screen gradient
+  LinearGradient welcomeScreenGradient(BuildContext context) {
+    LinearGradient linearGradient = gradientStandards.bodyLinearGradient(
+        context,
+        themes.getColor(context, "backgroundGradientTopRightColor"),
+        themes.getColor(context, "backgroundGradientBottomLeftColor"),
+        false);
+    return linearGradient;
+  }
+}
