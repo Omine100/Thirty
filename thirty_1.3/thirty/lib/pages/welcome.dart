@@ -87,12 +87,73 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             BoxDecoration(gradient: gradients.welcomeScreenGradient(context)),
         child: Stack(
           children: <Widget>[
-            Positioned(),
-            Positioned(),
-            Positioned(),
-            Positioned(),
-            Positioned(),
-            Positioned(),
+            Positioned(
+              top: isDark
+                  ? themes.getPosition(
+                      context, true, "welcomeBackgroundDarkThemeImagePosition")
+                  : themes.getPosition(context, true,
+                      "welcomeBackgroundLightThemeImagePosition"),
+              left: isDark
+                  ? themes.getPosition(
+                      context, false, "welcomeBackgroundDarkThemeImagePosition")
+                  : themes.getPosition(context, false,
+                      "welcomeBackgroundLightThemeImagePosition"),
+              child: interfaceStandards.parentCenter(
+                  context,
+                  Image(
+                    image: isDark
+                        ? AssetImage(
+                            'lib/assets/welcomeBackgroundDarkThemeImage.png')
+                        : AssetImage(
+                            'lib/assets/welcomeBackgroundLightThemeImage.png'),
+                    height: themes.getDimension(
+                        context, true, "welcomeBackgroundImageDimension"),
+                    width: themes.getDimension(
+                        context, false, "welcomeBackgroundImageDimension"),
+                  )),
+            ),
+            Positioned(
+              top: themes.getPosition(context, true, "welcomeTitlePosition"),
+              child: interfaceStandards.parentCenter(context,
+                  interfaceStandards.showTitle(context, "welcomeTitle")),
+            ),
+            Positioned(
+              top: themes.getPosition(
+                  context, true, "welcomeSignInButtonPosition"),
+              child: interfaceStandards.parentCenter(
+                  context,
+                  GestureDetector(
+                    onTap: () {
+                      animationStandards.welcomePageTransition(context, true);
+                    },
+                    child: showSignInSignUpButton(true),
+                  )),
+            ),
+            Positioned(
+              top: themes.getPosition(
+                  context, true, "welcomeSignUpButtonPosition"),
+              child: interfaceStandards.parentCenter(
+                  context,
+                  GestureDetector(
+                    onTap: () {
+                      animationStandards.welcomePageTransition(context, false);
+                    },
+                    child: showSignInSignUpButton(false),
+                  )),
+            ),
+            Positioned(
+                top: themes.getPosition(context, true,
+                    "interfaceStandardsThemeSelectorButtonPosition"),
+                right: themes.getPosition(context, false,
+                    "interfaceStandardsThemeSelectorButtonPosition"),
+                child: interfaceStandards.parentCenter(
+                    context, interfaceStandards.themeSelector(context))),
+            Positioned(
+                bottom: themes.getPosition(context, true,
+                    "interfaceStandardsLanguageSelectorButtonPosition"),
+                left: themes.getPosition(context, false,
+                    "interfaceStandardsLanguageSelectorButtonPosition"),
+                child: interfaceStandards.languageSelector(context)),
           ],
         ),
       ),
