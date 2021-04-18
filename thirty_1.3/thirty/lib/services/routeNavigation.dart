@@ -11,9 +11,9 @@ import 'package:thirty/pages/home.dart';
 abstract class BaseRoutes {
   //METHODS: Routes
   void RoutePop(BuildContext context);
-  Widget RouteLogin(BuildContext context, bool isSignIn);
-  Widget RouteForgotPassword(BuildContext context);
-  Widget RouteIntro(BuildContext context); //Don't pass email, call Firestore?
+  // Widget RouteLogin(BuildContext context, bool isSignIn);
+  // Widget RouteForgotPassword(BuildContext context);
+  // Widget RouteIntro(BuildContext context); //Don't pass email, call Firestore?
   Widget RouteHome(BuildContext context);
 
   //METHODS: Route managements
@@ -30,22 +30,22 @@ class RouteNavigation implements BaseRoutes {
   //MECHANICS: Routes to login screen
   //BOOLEAN INPUT: 'isSignIn' allows for setting up the screen for either signIn
   //            or SignUp
-  Widget RouteLogin(BuildContext context, bool isSignIn) {
-    Navigator.push(context, LoginScreen(isSignIn: isSignIn));
-  }
+  // Widget RouteLogin(BuildContext context, bool isSignIn) {
+  //   Navigator.push(context, LoginScreen(isSignIn: isSignIn));
+  // }
 
   //MECHANICS: Routes to forgot password screen
-  Widget RouteForgotPassword(BuildContext context) {
-    Navigator.push(context, ForgotPasswordScreen());
-  }
+  // Widget RouteForgotPassword(BuildContext context) {
+  //   Navigator.push(context, ForgotPasswordScreen());
+  // }
 
   //MECHANICS: Routes to intro screen
-  Widget RouteIntro(BuildContext context) {
-    while (Navigator.canPop(context)) {
-      RoutePop(context);
-    }
-    Navigator.push(context, IntroScreen());
-  }
+  // Widget RouteIntro(BuildContext context) {
+  //   while (Navigator.canPop(context)) {
+  //     RoutePop(context);
+  //   }
+  //   Navigator.push(context, IntroScreen());
+  // }
 
   //MECHANICS: Routes to home screen
   Widget RouteHome(BuildContext context) {

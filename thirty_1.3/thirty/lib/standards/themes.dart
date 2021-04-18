@@ -194,6 +194,7 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? 0.055 : null;
         break;
     }
+    return null;
   }
 }
 
@@ -253,6 +254,7 @@ extension CustomPositions on MaterialTapTargetSize {
         return isTop ? 0.675 : null;
         break;
     }
+    return null;
   }
 }
 

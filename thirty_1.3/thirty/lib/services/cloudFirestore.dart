@@ -1,7 +1,3 @@
-import 'dart:developer';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -44,7 +40,7 @@ class CloudFirestore implements BaseCloud {
   //STRING INPUTS: 'email' and 'password' for user verification
   Future<void> signInEmailAndPassword(String email, String password) async {
     try {
-      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+      await auth.signInWithEmailAndPassword(
           email: email, password: password);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -60,7 +56,7 @@ class CloudFirestore implements BaseCloud {
   //MECHANICS: Signs up user with an email and password
   //STRING INPUTS: 'email' and 'password' for user creation
   Future<void> signUpEmailAndPassword(String email, String password) async {
-    UserCredential result = await auth.createUserWithEmailAndPassword(
+    await auth.createUserWithEmailAndPassword(
         email: email, password: password);
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -9,7 +10,9 @@ import 'package:thirty/standards/interfaceStandards.dart';
 import 'package:thirty/standards/languageStandards.dart';
 import 'package:thirty/standards/themes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(new Thirty());
 }
 
@@ -39,9 +42,9 @@ class _ThirtyState extends State<Thirty> {
   //DESCRIPTION: Gets signed in status prior to the application loading
   void initState() {
     super.initState();
-    cloudFirestore
-        .getSignedInStatus()
-        .then((_isSignedIn) => {isSignedIn = _isSignedIn});
+    cloudFirestore.getSignedInStatus().then((_isSignedIn) {
+      isSignedIn = _isSignedIn;
+    });
   }
 
   //MECHANICS: Set locale
@@ -56,10 +59,10 @@ class _ThirtyState extends State<Thirty> {
   //DESCRIPTION: Gets the locale and then sets the locale in the state
   @override
   void didChangeDependencies() {
-    getLocale().then((_locale) => {
+    getLocale().then((_locale) {
           setState(() {
             this.locale = _locale;
-          })
+          });
         });
     super.didChangeDependencies();
   }
@@ -100,5 +103,6 @@ class _ThirtyState extends State<Thirty> {
         ),
       );
     }
+    return null;
   }
 }

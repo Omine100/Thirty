@@ -24,15 +24,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   InterfaceStandards interfaceStandards = new InterfaceStandards();
   MethodStandards methodStandards = new MethodStandards();
 
-  //VARIABLE INITIALIZATION
+  //VARIABLE DECLARATION
   bool isDark;
-
-  //INITIAL STATE
-  //DESCRIPTION: Gets isDark status prior to the application loading
-  void initState() {
-    super.initState();
-    isDark = themes.checkDarkTheme(context);
-  }
 
   //USER INTERFACE: Show sign in or sign up button
   //DESCRIPTION: Basic widget method, but I think that this makes the file smaller
@@ -79,6 +72,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   //USER INTERFACE: WELCOME SCREEN
   Widget build(BuildContext context) {
+    //VARIABLE INITIALIZATION
+    isDark = themes.checkDarkTheme(context);
+
+    //USER INTERFACE: WELCOME SCREEN
     return new Scaffold(
       body: Container(
         height: themes.getDimension(context, true, "welcomeContainerDimension"),
