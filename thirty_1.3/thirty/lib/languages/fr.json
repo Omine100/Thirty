@@ -5,7 +5,7 @@
     "inputValidator": "ne peut pas être vide",
 
     "welcomeTitle": "BIENVENUE À TRENTE",
-    "welcomeSignInButton": "S'IDENTIFIER",
+    "welcomeSignInButton": "Vous avez déjà un compte? S'identifier!",
     "welcomeSignUpButton": "S'INSCRIRE",
 
     "loginSignInTitle": "S'IDENTIFIER",

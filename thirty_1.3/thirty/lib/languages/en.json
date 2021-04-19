@@ -5,7 +5,7 @@
     "inputValidator": "can't be empty",
 
     "welcomeTitle": "WELCOME TO THIRTY",
-    "welcomeSignInButton": "LOGIN",
+    "welcomeSignInButton": "Already have an account? Sign in!",
     "welcomeSignUpButton": "SIGN UP",
 
     "loginSignInTitle": "LOGIN",

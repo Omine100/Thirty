@@ -27,46 +27,62 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   //VARIABLE DECLARATION
   bool isDark;
 
-  //USER INTERFACE: Show sign in or sign up button
-  //DESCRIPTION: Basic widget method, but I think that this makes the file smaller
-  //          because we aren't having to have all of these lines of code for two
-  //          widgets that are the same minus a couple lines of code. I thought
-  //          about putting this in interfaceStandards, but we only have this
-  //          right here. I want the signUp button to just be text I think, then
-  //          have the other one look like an actual button
-  //BOOLEAN INPUT: 'isSignIn' for deciding what to format the button as
-  //OUTPUT: A button formatted properly for either signing in or signing up
-  Widget showSignInSignUpButton(bool isSignIn) {
+  //USER INTERFACE: Show sign in button
+  //DESCRIPTION: Basic widget method for the sign in text button
+  //OUTPUT: A text widget with a gesture detector
+  Widget showSignInButton() {
+    return new Container(
+      height: themes.getDimension(context, true, "welcomeSignInButtonDimension"),
+      width: themes.getDimension(context, false, "welcomeSignInButtonDimension"),
+      child: GestureDetector(
+        onTap: () {
+           animationStandards.welcomePageTransition(context, true);
+        },
+        child: interfaceStandards.parentCenter(context,
+          Text(
+            getTranslated(context, "welcomeSignInButton"),
+            style: TextStyle(
+              color: themes.getColor(context, "welcomeSignInButtonTextColor"),
+              fontSize: Theme.of(context).textTheme.welcomeSignInButtonTextFontSize,
+              fontWeight: Theme.of(context).typography.welcomeSignUpButtonTextFontWeight,
+            ),
+          ),
+        ),
+      )
+    );
+  }
+
+  //USER INTERFACE: Show sign up button
+  //DESCRIPTION: Basic widget method for the sign up button
+  //OUTPUT: A button formatted properly for signing up
+  Widget showSignUpButton() {
     return new Container(
       height: themes.getDimension(
-          context, true, "welcomeSignInSignUpButtonDimension"),
+          context, true, "welcomeSignUpButtonDimension"),
       width: themes.getDimension(
-          context, false, "welcomeSignInSignUpButtonDimension"),
+          context, false, "welcomeSignUpButtonDimension"),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(90.0),
-        color: themes.getColor(context,
-            isSignIn ? "welcomeSignInButtonColor" : "welcomeSignUpButtonColor"),
+        color: themes.getColor(context, "welcomeSignUpButtonColor"),
       ),
-      child: interfaceStandards.parentCenter(
-          context,
-          Text(
-            isSignIn
-                ? getTranslated(context, "welcomeSignInButton")
-                : getTranslated(context, "welcomeSignUpButton"),
-            style: TextStyle(
-              foreground: isSignIn
-                  ? (Paint()
-                    ..color = themes.getColor(
-                        context, "welcomeSignInButtonTextColor"))
-                  : (Paint()..shader = gradients.signUpButtonGradient(context)),
-              fontSize: Theme.of(context)
-                  .textTheme
-                  .welcomeSignInSignUpButtonTextFontSize,
-              fontWeight: Theme.of(context)
-                  .typography
-                  .welcomeSignInSignUpButtonTextFontWeight,
-            ),
-          )),
+      child: GestureDetector(
+        onTap: () {
+           animationStandards.welcomePageTransition(context, false);
+        },
+        child: interfaceStandards.parentCenter(
+            context,
+            Text(getTranslated(context, "welcomeSignUpButton"),
+              style: TextStyle(
+                foreground:(Paint()..shader = gradients.signUpButtonGradient(context)),
+                fontSize: Theme.of(context)
+                    .textTheme
+                    .welcomeSignUpButtonTextFontSize,
+                fontWeight: Theme.of(context)
+                    .typography
+                    .welcomeSignUpButtonTextFontWeight,
+              ),
+            )),
+      ),
     );
   }
 
@@ -116,40 +132,30 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
             Positioned(
               top: themes.getPosition(
-                  context, true, "welcomeSignInButtonPosition"),
-              child: interfaceStandards.parentCenter(
-                  context,
-                  GestureDetector(
-                    onTap: () {
-                      animationStandards.welcomePageTransition(context, true);
-                    },
-                    child: showSignInSignUpButton(true),
-                  )),
-            ),
-            Positioned(
-              top: themes.getPosition(
                   context, true, "welcomeSignUpButtonPosition"),
               child: interfaceStandards.parentCenter(
                   context,
-                  GestureDetector(
-                    onTap: () {
-                      animationStandards.welcomePageTransition(context, false);
-                    },
-                    child: showSignInSignUpButton(false),
-                  )),
+                  showSignUpButton())
+            ),
+            Positioned(
+              top: themes.getPosition(
+                  context, true, "welcomeSignInButtonPosition"),
+              child: interfaceStandards.parentCenter(
+                  context,
+                  showSignInButton())
             ),
             Positioned(
                 top: themes.getPosition(context, true,
-                    "interfaceStandardsThemeSelectorButtonPosition"),
+                    "welcomeThemeSelectorButtonPosition"),
                 right: themes.getPosition(context, false,
-                    "interfaceStandardsThemeSelectorButtonPosition"),
+                    "welcomeThemeSelectorButtonPosition"),
                 child: interfaceStandards.parentCenter(
                     context, interfaceStandards.themeSelector(context))),
             Positioned(
                 bottom: themes.getPosition(context, true,
-                    "interfaceStandardsLanguageSelectorButtonPosition"),
+                    "welcomeLanguageSelectorButtonPosition"),
                 left: themes.getPosition(context, false,
-                    "interfaceStandardsLanguageSelectorButtonPosition"),
+                    "welcomeLanguageSelectorButtonPosition"),
                 child: interfaceStandards.languageSelector(context)),
           ],
         ),

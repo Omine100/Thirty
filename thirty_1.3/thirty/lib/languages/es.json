@@ -5,7 +5,7 @@
     "inputValidator": "no puede estar vacía",
 
     "welcomeTitle": "BIENVENIDA A TREINTA",
-    "welcomeSignInButton": "INICIAR SESIÓN",
+    "welcomeSignInButton": "¿Tienes una cuenta? ¡Iniciar sesión!",
     "welcomeSignUpButton": "REGÍSTRATE",
 
     "loginSignInTitle": "INICIAR SESIÓN",

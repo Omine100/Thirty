@@ -57,14 +57,11 @@ extension CustomColorScheme on ColorScheme {
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
 
-      case "welcomeSignInButtonColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFB81D1);
-        break;
       case "welcomeSignInButtonTextColor":
-        return isDark ? Color(0xFF000000) : Color(0xFFFFFFFF);
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
         break;
       case "welcomeSignUpButtonColor":
-        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
       case "welcomeLanguageSelectorButtonColor":
         return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
@@ -117,7 +114,8 @@ extension CustomFontSizes on TextTheme {
   double get interfaceStandardsTitleFontSize => 30.0;
   double get interfaceStandardsTextInputFontSize => 22.0;
 
-  double get welcomeSignInSignUpButtonTextFontSize => 22.5;
+  double get welcomeSignInButtonTextFontSize => 15;
+  double get welcomeSignUpButtonTextFontSize => 22.5;
 
   double get loginAlternativeButtonTextFontSize => 15.0;
   double get loginForgotPasswordButtonTextFontSize => 15.0;
@@ -134,7 +132,7 @@ extension CustomFontWeights on Typography {
   FontWeight get interfaceStandardsTitleFontWeight => FontWeight.w600;
   FontWeight get interfaceStandardsTextInputFontWeight => FontWeight.w300;
 
-  FontWeight get welcomeSignInSignUpButtonTextFontWeight => FontWeight.w600;
+  FontWeight get welcomeSignUpButtonTextFontWeight => FontWeight.w600;
 
   FontWeight get loginAlternativeButtonTextFontWeight => FontWeight.w400;
   FontWeight get loginForgotPasswordButtonTextFontWeight => FontWeight.w400;
@@ -169,7 +167,10 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "welcomeProgressContainerDimension":
         return isHeight ? 0.0 : 0.0;
         break;
-      case "welcomeSignInSignUpButtonDimension":
+      case "welcomeSignInButtonDimension":
+        return isHeight ? 0.05: 1.0;
+        break;
+      case "welcomeSignUpButtonDimension":
         return isHeight ? 0.08 : 0.6;
         break;
       case "welcomeErrorMessageDimension":
@@ -202,13 +203,6 @@ extension CustomPositions on MaterialTapTargetSize {
   double position({String selection, bool isTop}) {
     switch (selection) {
       //case 'name': return isTop? 'top' : 'left'; break;
-      case "interfaceStandardsThemeSelectorButtonPosition":
-        return isTop ? 0.59 : 0.38;
-        break;
-      case "interfaceStandardsLanguageSelectorButtonPosition":
-        return isTop ? 0.02 : -0.15;
-        break;
-
       case "welcomeBackgroundLightThemeImagePosition":
         return isTop ? -0.13 : -0.2;
         break;
@@ -219,10 +213,16 @@ extension CustomPositions on MaterialTapTargetSize {
         return isTop ? 0.0875 : null;
         break;
       case "welcomeSignInButtonPosition":
-        return isTop ? 0.67 : null;
+        return isTop ? 0.9275 : null;
         break;
       case "welcomeSignUpButtonPosition":
-        return isTop ? 0.795 : null;
+        return isTop ? 0.75 : null;
+        break;
+      case "welcomeThemeSelectorButtonPosition":
+        return isTop ? 0.59 : 0.38;
+        break;
+      case "welcomeLanguageSelectorButtonPosition":
+        return isTop ? 0.02 : -0.15;
         break;
       case "welcomeProgressPosition":
         return isTop ? 0.8 : null;
