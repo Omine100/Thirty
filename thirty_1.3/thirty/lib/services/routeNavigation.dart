@@ -27,12 +27,12 @@ class RouteNavigation implements BaseRoutes {
     Navigator.pop(context);
   }
 
-  //MECHANICS: Routes to login screen
-  //BOOLEAN INPUT: 'isSignIn' allows for setting up the screen for either signIn
+  // MECHANICS: Routes to login screen
+  // BOOLEAN INPUT: 'isSignIn' allows for setting up the screen for either signIn
   //            or SignUp
-  // Widget RouteLogin(BuildContext context, bool isSignIn) {
-  //   Navigator.push(context, LoginScreen(isSignIn: isSignIn));
-  // }
+  Widget RouteLogin(BuildContext context, bool isSignIn) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(isSignIn: isSignIn,)));
+  }
 
   //MECHANICS: Routes to forgot password screen
   // Widget RouteForgotPassword(BuildContext context) {

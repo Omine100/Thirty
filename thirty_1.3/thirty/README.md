@@ -22,3 +22,7 @@ Key (testing purposes):
     Signature algorithm name: SHA1withRSA
     Subject Public Key Algorithm: 2048-bit RSA key
     Version: 1
+
+Shortcut commands:
+    cmd + d: select the next of the same case and spelling
+    cmd + space 'stful': create stateful widget
