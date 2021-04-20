@@ -40,8 +40,7 @@ class CloudFirestore implements BaseCloud {
   //STRING INPUTS: 'email' and 'password' for user verification
   Future<void> signInEmailAndPassword(String email, String password) async {
     try {
-      await auth.signInWithEmailAndPassword(
-          email: email, password: password);
+      await auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print(
@@ -56,8 +55,7 @@ class CloudFirestore implements BaseCloud {
   //MECHANICS: Signs up user with an email and password
   //STRING INPUTS: 'email' and 'password' for user creation
   Future<void> signUpEmailAndPassword(String email, String password) async {
-    await auth.createUserWithEmailAndPassword(
-        email: email, password: password);
+    await auth.createUserWithEmailAndPassword(email: email, password: password);
   }
 
   //MECHANICS: Signs in user with Google
@@ -67,6 +65,7 @@ class CloudFirestore implements BaseCloud {
         await googleUser.authentication;
     final GoogleAuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+    await auth.signInWithCredential(credential);
   }
 
   //MECHANICS: Signs out user

@@ -63,6 +63,12 @@ extension CustomColorScheme on ColorScheme {
       case "welcomeSignUpButtonColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
+      case "welcomeGoogleSignInDividerColor":
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+        break;
+      case "welcomeGoogleSignInButtonColor":
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+        break;
       case "welcomeLanguageSelectorButtonColor":
         return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
         break;
@@ -173,6 +179,12 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "welcomeSignUpButtonDimension":
         return isHeight ? 0.08 : 0.6;
         break;
+      case "welcomeGoogleSignInDividerDimension":
+        return isHeight ? 0.005 : 0.2;
+        break;
+      case "welcomeGoogleSignInButtonDimension":
+        return isHeight ? 0.05 : null;
+        break;
       case "welcomeErrorMessageDimension":
         return isHeight ? 0.1 : 0.1;
         break;
@@ -216,7 +228,10 @@ extension CustomPositions on MaterialTapTargetSize {
         return isTop ? 0.9275 : null;
         break;
       case "welcomeSignUpButtonPosition":
-        return isTop ? 0.75 : null;
+        return isTop ? 0.7 : null;
+        break;
+      case "welcomeGoogleSignInButtonPosition":
+        return isTop ? 0.8 : null;
         break;
       case "welcomeThemeSelectorButtonPosition":
         return isTop ? 0.57 : 0.38;

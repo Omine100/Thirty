@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       interfaceStandards.showProgress(context);
     });
-    if(form.validate()) {
+    if (form.validate()) {
       form.save();
       try {
         if (isSignIn) {
@@ -58,15 +58,15 @@ class _LoginScreenState extends State<LoginScreen> {
           await cloudFirestore.signUpEmailAndPassword(email, password);
           await cloudFirestore.createNameData(name);
           cloudFirestore.sendEmailVerification();
-          routeNavigation.RouteIntro(context, email, password);
+          // routeNavigation.RouteIntro(context, email, password);
         }
       } catch (e) {
         print("Error: $e");
         setState(() {
-                  form.reset();
-                });
+          form.reset();
+        });
       }
-    })
+    }
   }
 
   //USER INTERFACE: LOGIN SCREEN

@@ -20,7 +20,7 @@ dependencies:
   firebase_core: ^1.0.2
   cloud_firestore: ^1.0.3
   firebase_auth: ^1.0.1
-  google_sign_in: ^4.5.1
+  google_sign_in: ^5.0.2
   provider: ^5.0.0
 
   #User interface
@@ -36,6 +36,7 @@ flutter:
   uses-material-design: true
 
   assets:
+      - lib/assets/googleLogo.png
       - lib/assets/welcomeBackgroundLightThemeImage.png
       - lib/assets/welcomeBackgroundDarkThemeImage.png
       - lib/assets/interfaceStandardsThemeSelectorMoonImage.png
