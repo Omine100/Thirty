@@ -168,7 +168,7 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? 0.0 : 0.0;
         break;
       case "welcomeSignInButtonDimension":
-        return isHeight ? 0.05: 1.0;
+        return isHeight ? 0.05 : 1.0;
         break;
       case "welcomeSignUpButtonDimension":
         return isHeight ? 0.08 : 0.6;
@@ -219,7 +219,7 @@ extension CustomPositions on MaterialTapTargetSize {
         return isTop ? 0.75 : null;
         break;
       case "welcomeThemeSelectorButtonPosition":
-        return isTop ? 0.59 : 0.38;
+        return isTop ? 0.57 : 0.38;
         break;
       case "welcomeLanguageSelectorButtonPosition":
         return isTop ? 0.02 : -0.15;
