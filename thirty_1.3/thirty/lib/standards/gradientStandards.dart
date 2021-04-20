@@ -56,4 +56,14 @@ class Gradients {
         false);
     return linearGradient;
   }
+
+  //USER INTERFACE: Login screen gradient
+  LinearGradient loginScreenGradient(BuildContext context) {
+    LinearGradient linearGradient = gradientStandards.bodyLinearGradient(
+        context,
+        themes.getColor(context, "backgroundGradientTopRightColor"),
+        themes.getColor(context, "backgroundGradientBottomLeftColor"),
+        false);
+    return linearGradient;
+  }
 }

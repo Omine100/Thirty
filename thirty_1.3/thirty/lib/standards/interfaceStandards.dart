@@ -154,7 +154,7 @@ class InterfaceStandards {
   //FUNCTION INPUT: 'onSaved' function for saving the input
   //OUTPUT: Text form field widget customized to inputs
   Widget showTextField(BuildContext context, int keyboardType, bool isVisible,
-      String key, Function onSaved) {
+      String key, Function onSaved, IconButton iconButton) {
     return TextFormField(
       keyboardType:
           keyboardType == 0 ? TextInputType.emailAddress : TextInputType.text,
@@ -171,6 +171,7 @@ class InterfaceStandards {
           color:
               themes.getColor(context, "interfaceStandardsTextInputIconColor"),
         ),
+        suffixIcon: iconButton != null ? iconButton : null,
         hintText: getTranslated(context, key),
         hintStyle: TextStyle(
           color: themes.getColor(context, "interfaceStandardsTextInputColor"),

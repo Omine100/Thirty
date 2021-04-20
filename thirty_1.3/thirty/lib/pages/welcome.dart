@@ -150,7 +150,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     //VARIABLE INITIALIZATION
     isDark = themes.checkDarkTheme(context);
 
-    //USER INTERFACE: WELCOME SCREEN
+    //USER INTERFACE: Welcome screen
     return new Scaffold(
       body: Container(
         height: themes.getDimension(context, true, "welcomeContainerDimension"),

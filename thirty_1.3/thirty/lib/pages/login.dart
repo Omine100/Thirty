@@ -23,6 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   CloudFirestore cloudFirestore = new CloudFirestore();
   Themes themes = new Themes();
   GradientStandards gradientStandards = new GradientStandards();
+  Gradients gradients = new Gradients();
   InterfaceStandards interfaceStandards = new InterfaceStandards();
 
   //VARIABLE INITIALIZATION
@@ -43,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
   //GLOBALKEY<SCAFFOLDSTATE> INPUT: 'scaffold' for the globalKey associated with
   //          the scaffold below
   //OUTPUT: Route navigation to Intro or Home screen
-  void validateAndSubmit() async {
+  void validateAndSubmit(GlobalKey<ScaffoldState> scaffoldKey) async {
     final form = _formKey.currentState;
     setState(() {
       interfaceStandards.showProgress(context);
@@ -69,9 +70,132 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  //USER INTERFACE: Show visibility button
+  //DESCRIPTION: Shows a widget and allows for gesture input to change the value
+  //          of 'isVisible' to it's complement
+  //OUTPUT: Widget and change of state to change 'isVisible' value
+  IconButton showVisibilityButton() {
+    return IconButton(
+      icon: Icon(
+        isVisible ? Icons.visibility : Icons.visibility_off,
+        color: themes.getColor(context, "loginVisibilityButtonColor"),
+      ),
+      onPressed: () {
+        setState(() {
+          isVisible = !isVisible;
+        });
+      },
+    );
+  }
+
+  //USER INTERFACE: Show alternative button
+  //DESCRIPTION: If you accidentally go to the signIn or signUp page, then this
+  //          allows for you to switch between the two without having to go back
+  //          to the welcome.dart page. We can also just change the state here
+  //          instead of having two separate pages for signIn and signUp
+  //OUTPUT: Widget and state change
+  Widget showAlternativeButton() {
+    return new GestureDetector(
+      onTap: () {
+        setState(() {
+          isSignIn = !isSignIn;
+        });
+      },
+      child: interfaceStandards.parentCenter(
+        context,
+        Text(
+          isSignIn
+              ? getTranslated(context, "loginAlternativeSignUp")
+              : getTranslated(context, "loginAlternativeSignIn"),
+          style: TextStyle(
+            color: themes.getColor(context, "loginAlternativeTextColor"),
+            fontSize:
+                Theme.of(context).textTheme.loginAlternativeButtonTextFontSize,
+            fontWeight: Theme.of(context)
+                .typography
+                .loginAlternativeButtonTextFontWeight,
+          ),
+        ),
+      ),
+    );
+  }
+
+  //USER INTERFACE: Show forgot password button
+  //DESCRIPTION: If the user has forgotten their password, they can be taken to
+  //          a different page to input their email and get access to their
+  //          account again. It also makes it to where if we are on the signUp
+  //          page, we do not see this at all
+  //OUTPUT: Widget and state change
+  Widget showForgotPasswordButton() {
+    return new GestureDetector(
+      onTap: () {
+        // routeNavigation.RouteForgotPassword(context);
+      },
+      child: interfaceStandards.parentCenter(
+          context,
+          isSignIn
+              ? Text(
+                  getTranslated(context, "loginForgotPassword"),
+                  style: TextStyle(
+                    color: themes.getColor(
+                        context, "loginForgotPasswordButtonTextColor"),
+                    fontSize: Theme.of(context)
+                        .textTheme
+                        .loginForgotPasswordButtonTextFontSize,
+                    fontWeight: Theme.of(context)
+                        .typography
+                        .loginForgotPasswordButtonTextFontWeight,
+                  ),
+                )
+              : Container()),
+    );
+  }
+
+  //USER INTERFACE: Show progression button
+  //DESCRIPTION: Whether you are on the signIn or signUp state of this page,
+  //          pressing this button will send off you data to the
+  //          validateAndSubmit() and do what it wants with it (nothing illegal
+  //          of course)
+  //OUTPUT: Widget and call to validateAndSubmit()
+  Widget showProgressionButton(GlobalKey<ScaffoldState> scaffoldKey) {
+    return new GestureDetector(
+      onTap: () {
+        validateAndSubmit(scaffoldKey);
+      },
+      child: Container(
+        height: themes.getDimension(
+            context, true, "loginProgressionButtonDimension"),
+        width: themes.getDimension(
+            context, true, "loginProgressionButtonDimension"),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(360.0),
+          color: themes.getColor(context, "loginProgressionButtonColor"),
+        ),
+        child: Icon(
+          Icons.arrow_forward_ios,
+          color: themes.getColor(context, "loginProgressionButtonIconColor"),
+        ),
+      ),
+    );
+  }
+
   //USER INTERFACE: LOGIN SCREEN
   @override
   Widget build(BuildContext context) {
-    return Container();
+    //VARIABLE INITIALIZATION
+    final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+
+    //USER INTERFACE: Login screen
+    return new Scaffold(
+      key: scaffoldKey,
+      body: Container(
+        height: themes.getDimension(context, true, "loginContainerDimension"),
+        decoration:
+            BoxDecoration(gradient: gradients.loginScreenGradient(context)),
+        child: Stack(
+          children: [],
+        ),
+      ),
+    );
   }
 }
