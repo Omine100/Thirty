@@ -193,7 +193,35 @@ class _LoginScreenState extends State<LoginScreen> {
         decoration:
             BoxDecoration(gradient: gradients.loginScreenGradient(context)),
         child: Stack(
-          children: [],
+          children: [
+            Positioned(
+              top: themes.getPosition(context, true, "loginTitlePosition"),
+              child: isSignIn
+                  ? interfaceStandards.showTitle(context, "loginSignInTitle")
+                  : interfaceStandards.showTitle(context, "loginSignUpTitle"),
+            ),
+            SingleChildScrollView(),
+            Positioned(
+              top: themes.getPosition(
+                  context, true, "loginProgressionButtonPosition"),
+              child: interfaceStandards.parentCenter(
+                  context, showProgressionButton(scaffoldKey)),
+            ),
+            Positioned(
+              top: themes.getPosition(
+                  context, true, "loginAlternativeButtonPosition"),
+              child: interfaceStandards.parentCenter(
+                  context, showAlternativeButton()),
+            ),
+            Positioned(
+              top: themes.getPosition(
+                  context, true, "loginForgotPasswordButtonPosition"),
+              left: themes.getPosition(
+                  context, false, "loginForgotPasswordButtonPosition"),
+              child: interfaceStandards.parentCenter(
+                  context, showForgotPasswordButton()),
+            ),
+          ],
         ),
       ),
     );
