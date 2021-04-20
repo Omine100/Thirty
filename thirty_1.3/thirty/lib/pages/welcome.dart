@@ -115,8 +115,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
           GestureDetector(
             onTap: () {
-              cloudFirestore.signInGoogle();
-              routeNavigation.RouteHome(context);
+              cloudFirestore.signInGoogle().then((_newUser) => {
+                    if (_newUser)
+                      {routeNavigation.RouteHome(context)}
+                    else
+                      {
+                        // routeNavigation.RouteIntro();
+                      }
+                  });
             },
             child: Container(
               padding: EdgeInsets.all(7.5),

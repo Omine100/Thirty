@@ -59,13 +59,18 @@ class CloudFirestore implements BaseCloud {
   }
 
   //MECHANICS: Signs in user with Google
-  Future<void> signInGoogle() async {
+  //DESCRIPTION: Creates a user with a Google sign in and then returns whether or
+  //          not the user is new. We can then handle whether or not we go to the
+  //          Intro or Home screen back where we call the method
+  //OUTPUT: 'true' if the user is new
+  Future<bool> signInGoogle() async {
     final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
     final GoogleSignInAuthentication googleAuth =
         await googleUser.authentication;
     final GoogleAuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
-    await auth.signInWithCredential(credential);
+    final UserCredential result = await auth.signInWithCredential(credential);
+    return result.additionalUserInfo.isNewUser;
   }
 
   //MECHANICS: Signs out user
