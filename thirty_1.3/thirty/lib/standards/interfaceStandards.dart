@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/services/routeNavigation.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/languageStandards.dart';
@@ -8,6 +9,7 @@ import 'package:thirty/standards/languageStandards.dart';
 class InterfaceStandards {
   //CLASS INITIALIZATION
   Themes themes = new Themes();
+  CloudFirestore cloudFirestore = new CloudFirestore();
   RouteNavigation routeNavigation = new RouteNavigation();
 
   //USER INTERFACE: Theme selector
@@ -142,6 +144,44 @@ class InterfaceStandards {
                 Theme.of(context).textTheme.interfaceStandardsTitleFontSize,
             fontWeight:
                 Theme.of(context).typography.interfaceStandardsTitleFontWeight),
+      ),
+    );
+  }
+
+  //USER INTERFACE: Show social icon button
+  //DESCRIPTION: Widget for various icons with connection to cloudFirestore
+  //INT INPUT: 'iconCase' - 0 = Google, 1 = Twitter
+  Widget showSocialIconButton(BuildContext context, int iconCase) {
+    //VARIABLE INITIALIZATION
+    bool isNewUser;
+
+    //USER INTERFACE: Show social icon button
+    return new GestureDetector(
+      onTap: () {
+        iconCase == 0
+            ? cloudFirestore.signInGoogle().then((_isNewUser) => isNewUser)
+            : cloudFirestore.signInTwitter().then((_isNewUser) => isNewUser);
+        if (isNewUser) {
+          routeNavigation.RouteHome(context);
+        } else {
+          //routeNavigation.RouteIntro();
+        }
+      },
+      child: Container(
+        padding: EdgeInsets.all(7.5),
+        height: themes.getDimension(
+            context, true, "welcomeSocialSignInButtonDimension"),
+        width: themes.getDimension(
+            context, true, "welcomeSocialSignInButtonDimension"),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(360),
+          color: themes.getColor(context, "welcomeSocialSignInButtonColor"),
+        ),
+        child: Image(
+          image: iconCase == 0
+              ? AssetImage('lib/assets/googleLogo.png')
+              : AssetImage('lib/assets/twitterLogo.png'),
+        ),
       ),
     );
   }

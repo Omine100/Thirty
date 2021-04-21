@@ -121,60 +121,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
           Row(
             children: [
-              GestureDetector(
-                onTap: () {
-                  cloudFirestore.signInGoogle().then((_newUser) => {
-                        if (_newUser)
-                          {routeNavigation.RouteHome(context)}
-                        else
-                          {
-                            // routeNavigation.RouteIntro();
-                          }
-                      });
-                },
-                child: Container(
-                  padding: EdgeInsets.all(7.5),
-                  height: themes.getDimension(
-                      context, true, "welcomeSocialSignInButtonDimension"),
-                  width: themes.getDimension(
-                      context, true, "welcomeSocialSignInButtonDimension"),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(360),
-                    color: themes.getColor(
-                        context, "welcomeSocialSignInButtonColor"),
-                  ),
-                  child: Image(
-                    image: AssetImage('lib/assets/googleLogo.png'),
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  cloudFirestore.signInTwitter().then((_newUser) => {
-                        if (_newUser)
-                          {routeNavigation.RouteHome(context)}
-                        else
-                          {
-                            // routeNavigation.RouteIntro();
-                          }
-                      });
-                },
-                child: Container(
-                  padding: EdgeInsets.all(7.5),
-                  height: themes.getDimension(
-                      context, true, "welcomeSocialSignInButtonDimension"),
-                  width: themes.getDimension(
-                      context, true, "welcomeSocialSignInButtonDimension"),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(360),
-                    color: themes.getColor(
-                        context, "welcomeSocialSignInButtonColor"),
-                  ),
-                  child: Image(
-                    image: AssetImage('lib/assets/twitterLogo.png'),
-                  ),
-                ),
-              ),
+              interfaceStandards.showSocialIconButton(context, 0),
+              Padding(padding: EdgeInsets.only(left: 2.5, right: 2.5)),
+              interfaceStandards.showSocialIconButton(context, 1),
             ],
           ),
         ],
@@ -232,7 +181,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             Positioned(
               top: themes.getPosition(
                   context, true, "welcomeGoogleSignInButtonPosition"),
-              child: showGoogleSignInButtonEnvironment(),
+              child: showSocialSignInButtonEnvironment(),
             ),
             Positioned(
                 top: themes.getPosition(
