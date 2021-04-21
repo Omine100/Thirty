@@ -102,7 +102,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   //DESCRIPTION: Display social sign in buttons and call cloudFirestore.dart
   //          functions when each one is pressed
   //OUTPUT: Widget for divider and Google sign in button
-  //Make interfaceStandards method for socialIcon
+  //Make interfaceStandards method for social icon
   Widget showSocialSignInButtonEnvironment() {
     return interfaceStandards.parentCenter(
       context,
@@ -120,9 +120,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               interfaceStandards.showSocialIconButton(context, 0),
-              Padding(padding: EdgeInsets.only(left: 2.5, right: 2.5)),
+              Padding(padding: EdgeInsets.only(left: 5, right: 5)),
               interfaceStandards.showSocialIconButton(context, 1),
             ],
           ),
@@ -180,7 +181,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 child: showSignUpButton()),
             Positioned(
               top: themes.getPosition(
-                  context, true, "welcomeGoogleSignInButtonPosition"),
+                  context, true, "welcomeSocialSignInButtonPosition"),
               child: showSocialSignInButtonEnvironment(),
             ),
             Positioned(
