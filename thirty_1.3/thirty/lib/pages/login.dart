@@ -95,25 +95,29 @@ class _LoginScreenState extends State<LoginScreen> {
   //          instead of having two separate pages for signIn and signUp
   //OUTPUT: Widget and state change
   Widget showAlternativeButton() {
-    return new GestureDetector(
-      onTap: () {
-        setState(() {
-          isSignIn = !isSignIn;
-        });
-      },
-      child: interfaceStandards.parentCenter(
-        context,
-        Text(
-          isSignIn
-              ? getTranslated(context, "loginAlternativeSignUp")
-              : getTranslated(context, "loginAlternativeSignIn"),
-          style: TextStyle(
-            color: themes.getColor(context, "loginAlternativeTextColor"),
-            fontSize:
-                Theme.of(context).textTheme.loginAlternativeButtonTextFontSize,
-            fontWeight: Theme.of(context)
-                .typography
-                .loginAlternativeButtonTextFontWeight,
+    return interfaceStandards.parentCenter(
+      context,
+      GestureDetector(
+        onTap: () {
+          setState(() {
+            isSignIn = !isSignIn;
+          });
+        },
+        child: interfaceStandards.parentCenter(
+          context,
+          Text(
+            isSignIn
+                ? getTranslated(context, "loginAlternativeSignUp")
+                : getTranslated(context, "loginAlternativeSignIn"),
+            style: TextStyle(
+              color: themes.getColor(context, "loginAlternativeTextColor"),
+              fontSize: Theme.of(context)
+                  .textTheme
+                  .loginAlternativeButtonTextFontSize,
+              fontWeight: Theme.of(context)
+                  .typography
+                  .loginAlternativeButtonTextFontWeight,
+            ),
           ),
         ),
       ),
@@ -127,27 +131,30 @@ class _LoginScreenState extends State<LoginScreen> {
   //          page, we do not see this at all
   //OUTPUT: Widget and state change
   Widget showForgotPasswordButton() {
-    return new GestureDetector(
-      onTap: () {
-        // routeNavigation.RouteForgotPassword(context);
-      },
-      child: interfaceStandards.parentCenter(
-          context,
-          isSignIn
-              ? Text(
-                  getTranslated(context, "loginForgotPassword"),
-                  style: TextStyle(
-                    color: themes.getColor(
-                        context, "loginForgotPasswordButtonTextColor"),
-                    fontSize: Theme.of(context)
-                        .textTheme
-                        .loginForgotPasswordButtonTextFontSize,
-                    fontWeight: Theme.of(context)
-                        .typography
-                        .loginForgotPasswordButtonTextFontWeight,
-                  ),
-                )
-              : Container()),
+    return interfaceStandards.parentCenter(
+      context,
+      GestureDetector(
+        onTap: () {
+          // routeNavigation.RouteForgotPassword(context);
+        },
+        child: interfaceStandards.parentCenter(
+            context,
+            isSignIn
+                ? Text(
+                    getTranslated(context, "loginForgotPassword"),
+                    style: TextStyle(
+                      color: themes.getColor(
+                          context, "loginForgotPasswordButtonTextColor"),
+                      fontSize: Theme.of(context)
+                          .textTheme
+                          .loginForgotPasswordButtonTextFontSize,
+                      fontWeight: Theme.of(context)
+                          .typography
+                          .loginForgotPasswordButtonTextFontWeight,
+                    ),
+                  )
+                : Container()),
+      ),
     );
   }
 
@@ -158,22 +165,25 @@ class _LoginScreenState extends State<LoginScreen> {
   //          of course)
   //OUTPUT: Widget and call to validateAndSubmit()
   Widget showProgressionButton(GlobalKey<ScaffoldState> scaffoldKey) {
-    return new GestureDetector(
-      onTap: () {
-        validateAndSubmit(scaffoldKey);
-      },
-      child: Container(
-        height: themes.getDimension(
-            context, true, "loginProgressionButtonDimension"),
-        width: themes.getDimension(
-            context, true, "loginProgressionButtonDimension"),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(360.0),
-          color: themes.getColor(context, "loginProgressionButtonColor"),
-        ),
-        child: Icon(
-          Icons.arrow_forward_ios,
-          color: themes.getColor(context, "loginProgressionButtonIconColor"),
+    return interfaceStandards.parentCenter(
+      context,
+      GestureDetector(
+        onTap: () {
+          validateAndSubmit(scaffoldKey);
+        },
+        child: Container(
+          height: themes.getDimension(
+              context, true, "loginProgressionButtonDimension"),
+          width: themes.getDimension(
+              context, true, "loginProgressionButtonDimension"),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(360.0),
+            color: themes.getColor(context, "loginProgressionButtonColor"),
+          ),
+          child: Icon(
+            Icons.arrow_forward_ios,
+            color: themes.getColor(context, "loginProgressionButtonIconColor"),
+          ),
         ),
       ),
     );
@@ -204,22 +214,19 @@ class _LoginScreenState extends State<LoginScreen> {
             Positioned(
               top: themes.getPosition(
                   context, true, "loginProgressionButtonPosition"),
-              child: interfaceStandards.parentCenter(
-                  context, showProgressionButton(scaffoldKey)),
+              child: showProgressionButton(scaffoldKey),
             ),
             Positioned(
               top: themes.getPosition(
                   context, true, "loginAlternativeButtonPosition"),
-              child: interfaceStandards.parentCenter(
-                  context, showAlternativeButton()),
+              child: showAlternativeButton(),
             ),
             Positioned(
               top: themes.getPosition(
                   context, true, "loginForgotPasswordButtonPosition"),
               left: themes.getPosition(
                   context, false, "loginForgotPasswordButtonPosition"),
-              child: interfaceStandards.parentCenter(
-                  context, showForgotPasswordButton()),
+              child: showForgotPasswordButton(),
             ),
           ],
         ),

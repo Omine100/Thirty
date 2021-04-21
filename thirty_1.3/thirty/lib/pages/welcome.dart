@@ -63,33 +63,37 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   //DESCRIPTION: Basic widget method for the sign up button
   //OUTPUT: A button formatted properly for signing up
   Widget showSignUpButton() {
-    return new Container(
-      height:
-          themes.getDimension(context, true, "welcomeSignUpButtonDimension"),
-      width:
-          themes.getDimension(context, false, "welcomeSignUpButtonDimension"),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(90.0),
-        color: themes.getColor(context, "welcomeSignUpButtonColor"),
-      ),
-      child: GestureDetector(
-        onTap: () {
-          animationStandards.welcomePageTransition(context, false);
-        },
-        child: interfaceStandards.parentCenter(
-            context,
-            Text(
-              getTranslated(context, "welcomeSignUpButton"),
-              style: TextStyle(
-                foreground: (Paint()
-                  ..shader = gradients.signUpButtonGradient(context)),
-                fontSize:
-                    Theme.of(context).textTheme.welcomeSignUpButtonTextFontSize,
-                fontWeight: Theme.of(context)
-                    .typography
-                    .welcomeSignUpButtonTextFontWeight,
-              ),
-            )),
+    return interfaceStandards.parentCenter(
+      context,
+      Container(
+        height:
+            themes.getDimension(context, true, "welcomeSignUpButtonDimension"),
+        width:
+            themes.getDimension(context, false, "welcomeSignUpButtonDimension"),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(90.0),
+          color: themes.getColor(context, "welcomeSignUpButtonColor"),
+        ),
+        child: GestureDetector(
+          onTap: () {
+            animationStandards.welcomePageTransition(context, false);
+          },
+          child: interfaceStandards.parentCenter(
+              context,
+              Text(
+                getTranslated(context, "welcomeSignUpButton"),
+                style: TextStyle(
+                  foreground: (Paint()
+                    ..shader = gradients.signUpButtonGradient(context)),
+                  fontSize: Theme.of(context)
+                      .textTheme
+                      .welcomeSignUpButtonTextFontSize,
+                  fontWeight: Theme.of(context)
+                      .typography
+                      .welcomeSignUpButtonTextFontWeight,
+                ),
+              )),
+        ),
       ),
     );
   }
@@ -186,14 +190,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
             Positioned(
               top: themes.getPosition(context, true, "welcomeTitlePosition"),
-              child: interfaceStandards.parentCenter(context,
-                  interfaceStandards.showTitle(context, "welcomeTitle")),
+              child: interfaceStandards.showTitle(context, "welcomeTitle"),
             ),
             Positioned(
                 top: themes.getPosition(
                     context, true, "welcomeSignUpButtonPosition"),
-                child: interfaceStandards.parentCenter(
-                    context, showSignUpButton())),
+                child: showSignUpButton()),
             Positioned(
               top: themes.getPosition(
                   context, true, "welcomeGoogleSignInButtonPosition"),
@@ -202,8 +204,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             Positioned(
                 top: themes.getPosition(
                     context, true, "welcomeSignInButtonPosition"),
-                child: interfaceStandards.parentCenter(
-                    context, showSignInButton())),
+                child: showSignInButton()),
             Positioned(
                 top: themes.getPosition(
                     context, true, "welcomeThemeSelectorButtonPosition"),
