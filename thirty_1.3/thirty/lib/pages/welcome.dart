@@ -99,9 +99,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   }
 
   //USER INTERFACE: Show divider and Google sign in button
-  //DESCRIPTION: Display a Google icon and call cloudFirestore.dart function
+  //DESCRIPTION: Display social sign in buttons and call cloudFirestore.dart
+  //          functions when each one is pressed
   //OUTPUT: Widget for divider and Google sign in button
-  Widget showGoogleSignInButtonEnvironment() {
+  //Make interfaceStandards method for socialIcon
+  Widget showSocialSignInButtonEnvironment() {
     return interfaceStandards.parentCenter(
       context,
       Column(
@@ -109,40 +111,71 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           Container(
             padding: EdgeInsets.only(bottom: 10),
             width: themes.getDimension(
-                context, false, "welcomeGoogleSignInDividerDimension"),
+                context, false, "welcomeSocialSignInDividerDimension"),
             child: Divider(
               color:
-                  themes.getColor(context, "welcomeGoogleSignInDividerColor"),
+                  themes.getColor(context, "welcomeSocialSignInDividerColor"),
               height: themes.getDimension(
-                  context, true, "welcomeGoogleSignInDividerDimension"),
+                  context, true, "welcomeSocialSignInDividerDimension"),
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              cloudFirestore.signInGoogle().then((_newUser) => {
-                    if (_newUser)
-                      {routeNavigation.RouteHome(context)}
-                    else
-                      {
-                        // routeNavigation.RouteIntro();
-                      }
-                  });
-            },
-            child: Container(
-              padding: EdgeInsets.all(7.5),
-              height: themes.getDimension(
-                  context, true, "welcomeGoogleSignInButtonDimension"),
-              width: themes.getDimension(
-                  context, true, "welcomeGoogleSignInButtonDimension"),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(360),
-                color:
-                    themes.getColor(context, "welcomeGoogleSignInButtonColor"),
+          Row(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  cloudFirestore.signInGoogle().then((_newUser) => {
+                        if (_newUser)
+                          {routeNavigation.RouteHome(context)}
+                        else
+                          {
+                            // routeNavigation.RouteIntro();
+                          }
+                      });
+                },
+                child: Container(
+                  padding: EdgeInsets.all(7.5),
+                  height: themes.getDimension(
+                      context, true, "welcomeSocialSignInButtonDimension"),
+                  width: themes.getDimension(
+                      context, true, "welcomeSocialSignInButtonDimension"),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(360),
+                    color: themes.getColor(
+                        context, "welcomeSocialSignInButtonColor"),
+                  ),
+                  child: Image(
+                    image: AssetImage('lib/assets/googleLogo.png'),
+                  ),
+                ),
               ),
-              child: Image(
-                image: AssetImage('lib/assets/googleLogo.png'),
+              GestureDetector(
+                onTap: () {
+                  cloudFirestore.signInTwitter().then((_newUser) => {
+                        if (_newUser)
+                          {routeNavigation.RouteHome(context)}
+                        else
+                          {
+                            // routeNavigation.RouteIntro();
+                          }
+                      });
+                },
+                child: Container(
+                  padding: EdgeInsets.all(7.5),
+                  height: themes.getDimension(
+                      context, true, "welcomeSocialSignInButtonDimension"),
+                  width: themes.getDimension(
+                      context, true, "welcomeSocialSignInButtonDimension"),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(360),
+                    color: themes.getColor(
+                        context, "welcomeSocialSignInButtonColor"),
+                  ),
+                  child: Image(
+                    image: AssetImage('lib/assets/twitterLogo.png'),
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),

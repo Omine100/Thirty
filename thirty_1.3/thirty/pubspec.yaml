@@ -21,6 +21,7 @@ dependencies:
   cloud_firestore: ^1.0.3
   firebase_auth: ^1.0.1
   google_sign_in: ^5.0.2
+  flutter_twitter_login: ^1.1.0
   provider: ^5.0.0
 
   #User interface
@@ -36,14 +37,15 @@ flutter:
   uses-material-design: true
 
   assets:
-      - lib/assets/googleLogo.png
-      - lib/assets/welcomeBackgroundLightThemeImage.png
-      - lib/assets/welcomeBackgroundDarkThemeImage.png
-      - lib/assets/interfaceStandardsThemeSelectorMoonImage.png
-      - lib/assets/interfaceStandardsThemeSelectorSunImage.png
-      - lib/assets/introCalendarAnimation.json
-      - lib/assets/introExerciseAnimation.json
-      - lib/assets/introMedalAnimation.json
+      - lib/assets/logos/googleLogo.png
+      - lib/assets/logos/twitterLogo.png
+      - lib/assets/images/welcomeBackgroundLightThemeImage.png
+      - lib/assets/images/welcomeBackgroundDarkThemeImage.png
+      - lib/assets/images/interfaceStandardsThemeSelectorMoonImage.png
+      - lib/assets/images/interfaceStandardsThemeSelectorSunImage.png
+      - lib/assets/animations/introCalendarAnimation.json
+      - lib/assets/animations/introExerciseAnimation.json
+      - lib/assets/animations/introMedalAnimation.json
       - lib/languages/en.json
       - lib/languages/es.json
       - lib/languages/fr.json

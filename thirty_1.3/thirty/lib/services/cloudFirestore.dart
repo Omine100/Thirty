@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 import 'dart:async';
 
 import 'package:thirty/standards/methodStandards.dart';
@@ -11,6 +12,7 @@ abstract class BaseCloud {
   Future<void> signInEmailAndPassword(String email, String password);
   Future<void> signUpEmailAndPassword(String email, String password);
   Future<void> signInGoogle();
+  Future<void> signInTwitter();
   Future<void> signOut();
   Future<String> getCurrentUserId();
   Future<bool> getSignedInStatus();
@@ -67,10 +69,32 @@ class CloudFirestore implements BaseCloud {
     final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
     final GoogleSignInAuthentication googleAuth =
         await googleUser.authentication;
-    final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+    final GoogleAuthCredential googleCredential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
-    final UserCredential result = await auth.signInWithCredential(credential);
-    return result.additionalUserInfo.isNewUser;
+    final UserCredential userCredential =
+        await auth.signInWithCredential(googleCredential);
+    return userCredential.additionalUserInfo.isNewUser;
+  }
+
+  //MECHANICS: Signs in user with Twitter
+  //DESCRIPTION: Takes the user consumerKey and consumerSecret from a developer
+  //          account and allows for the user to sign in and returns whether or
+  //          not the user is new. We can then handle whether or not we go to the
+  //          Intro or Home screen back where we call the method
+  //BEARER TOKEN: AAAAAAAAAAAAAAAAAAAAAAktOwEAAAAAnUDLMWtzIyxZLpHanZZokQruzOc%3
+  //           DKBrBIFVdiw9OvaN5vcAAU4v8jCgO6dOluSp5K7smTXM9RBgMWj
+  //OUTPUT: 'true' if the user is new
+  Future<bool> signInTwitter() async {
+    var twitterLogin = new TwitterLogin(
+      consumerKey: '06tLwhwnkvJeK5smvt9gPOTe5',
+      consumerSecret: 'ob0s5XtYYJTEUX4GptaruP1n5Zvvq2hGyyHDeYkPylDD4RdOAC',
+    );
+    final TwitterLoginResult result = await twitterLogin.authorize();
+    final AuthCredential twitterCredential = TwitterAuthProvider.credential(
+        accessToken: result.session.token, secret: result.session.secret);
+    final UserCredential userCredential =
+        await auth.signInWithCredential(twitterCredential);
+    return userCredential.additionalUserInfo.isNewUser;
   }
 
   //MECHANICS: Signs out user
