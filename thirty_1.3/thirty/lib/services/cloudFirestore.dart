@@ -114,7 +114,7 @@ class CloudFirestore implements BaseCloud {
 
   //MECHANICS: Returns current user Id
   Future<String> getCurrentUserId() async {
-    var userId = await auth.currentUser.uid;
+    var userId = auth.currentUser.uid;
     return userId;
   }
 
@@ -123,15 +123,17 @@ class CloudFirestore implements BaseCloud {
   //          userId to call, so if there is not, no one is signed in
   //OUTPUT: Returns false if the the userId is null, true otherwise
   Future<bool> getSignedInStatus() async {
-    bool status = await auth.currentUser.uid.isNotEmpty;
-    return status;
+    if (auth.currentUser?.uid == null) {
+      return false;
+    }
+    return true;
   }
 
   //MECHANICS: Sends an email verification email
   //DESCRIPTION: Uses authentication created function for sending email
   //          verification to the user
   Future<void> sendEmailVerification() async {
-    var user = await auth.currentUser;
+    var user = auth.currentUser;
     user.sendEmailVerification();
   }
 
@@ -146,7 +148,7 @@ class CloudFirestore implements BaseCloud {
   //DESCRIPTION: Uses authentication created function to check if email is verified
   //OUTPUT: If the email is verified, it returns true, false otherwise
   Future<bool> getEmailVerified() async {
-    var user = await auth.currentUser;
+    var user = auth.currentUser;
     return user.emailVerified;
   }
 
@@ -154,7 +156,7 @@ class CloudFirestore implements BaseCloud {
   //STRING INPUT: 'name' for having a value to save
   //DATA PATH: userId -> name['name']
   Future<void> createNameData(String name) async {
-    var userId = await auth.currentUser.uid;
+    var userId = auth.currentUser.uid;
     await firestore.collection(userId).doc("name").set({"name": name});
   }
 
@@ -164,7 +166,7 @@ class CloudFirestore implements BaseCloud {
   //DATA PATH: userId -> goals -> final -> date['goal', 'date']
   Future<void> createGoalData(String goal) async {
     String date = methodStandards.getCurrentDate();
-    var userId = await auth.currentUser.uid;
+    var userId = auth.currentUser.uid;
     //May change document indicator to "favorite" or something like that
     await firestore
         .collection(userId)
@@ -180,7 +182,7 @@ class CloudFirestore implements BaseCloud {
   //MECHANICS: Returns name data
   //OUTPUT: Reads from firestore and returns string from snapshot or null
   Future<String> getNameData() async {
-    var userId = await auth.currentUser.uid;
+    var userId = auth.currentUser.uid;
     QueryDocumentSnapshot snapshot =
         await firestore.collection(userId).doc("name").snapshots().first;
     if (!snapshot.exists) {
@@ -193,7 +195,7 @@ class CloudFirestore implements BaseCloud {
   //MECHANICS: Returns goal data stream
   //OUTPUT: Reads from firestore and returns snapshots
   Future<Stream<QuerySnapshot>> getGoalDataStream() async {
-    var userId = await auth.currentUser.uid;
+    var userId = auth.currentUser.uid;
     Stream<QuerySnapshot> goalDataStream = firestore
         .collection(userId)
         .doc("goals")
@@ -207,7 +209,7 @@ class CloudFirestore implements BaseCloud {
   //DESCRIPTION: Goes to the specific collection, takes the documentId and use
   //          an authentication created function to delete that specific one
   Future<void> deleteGoalData(DocumentSnapshot doc) async {
-    var userId = await auth.currentUser.uid;
+    var userId = auth.currentUser.uid;
     await firestore
         .collection(userId)
         .doc("goals")
@@ -220,7 +222,7 @@ class CloudFirestore implements BaseCloud {
   //DESCRIPTION: Goes to the specific user data collection and uses an authentication
   //          created function to delete all of the documents
   Future<void> deleteUserData() async {
-    var userId = await auth.currentUser.uid;
+    var userId = auth.currentUser.uid;
     await firestore.collection(userId).get().then((snapshot) {
       for (DocumentSnapshot ds in snapshot.docs) {
         ds.reference.delete();

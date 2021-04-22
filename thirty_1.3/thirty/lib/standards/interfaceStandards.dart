@@ -143,7 +143,7 @@ class InterfaceStandards {
   Widget backButton(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        routeNavigation.RoutePop(context);
+        routeNavigation.routePop(context);
       },
       child: Icon(
         Icons.keyboard_backspace,
@@ -187,7 +187,7 @@ class InterfaceStandards {
             ? cloudFirestore.signInGoogle().then((_isNewUser) => isNewUser)
             : cloudFirestore.signInTwitter().then((_isNewUser) => isNewUser);
         if (isNewUser) {
-          routeNavigation.RouteHome(context);
+          routeNavigation.routeHome(context);
         } else {
           //routeNavigation.RouteIntro();
         }

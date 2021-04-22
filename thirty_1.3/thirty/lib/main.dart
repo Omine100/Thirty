@@ -70,9 +70,7 @@ class _ThirtyState extends State<Thirty> {
   //USER INTERFACE: THIRTY APP
   @override
   Widget build(BuildContext context) {
-    if (locale == null) {
-      interfaceStandards.showWaitingScreen(context);
-    } else {
+    
       return ChangeNotifierProvider(
         create: (_) => ThemeNotifier(),
         child: Consumer<ThemeNotifier>(
@@ -81,7 +79,7 @@ class _ThirtyState extends State<Thirty> {
               title: "Thirty",
               debugShowCheckedModeBanner: false,
               debugShowMaterialGrid: false,
-              home: routeNavigation.NavigateLogin(context, isSignedIn),
+              home: routeNavigation.navigateLogin(context, isSignedIn),
               theme: notifier.darkTheme ? dark : light,
               locale: locale,
               supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],
@@ -102,7 +100,6 @@ class _ThirtyState extends State<Thirty> {
           },
         ),
       );
-    }
-    return null;
+    
   }
 }
