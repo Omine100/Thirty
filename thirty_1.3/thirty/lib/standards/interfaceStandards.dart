@@ -100,6 +100,21 @@ class InterfaceStandards {
     return Scaffold(body: parentCenter(context, CircularProgressIndicator()));
   }
 
+  //USER INTERFACE: Show toast message
+  //BUILDCONTEXT INPUT: 'context' - must be a decendent of scaffold otherwise
+  //                "ScaffoldMessenger.of()" will return null
+  //OUTPUT: Toast message
+  void showToastMessage(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: const Text('snack'),
+      duration: const Duration(seconds: 1),
+      action: SnackBarAction(
+        label: 'ACTION',
+        onPressed: () {},
+      ),
+    ));
+  }
+
   //USER INTERFACE: Parent center
   //WIDGET INPUT: Any widget that you want centered
   //OUTPUT: Widget centered in next parent in the tree

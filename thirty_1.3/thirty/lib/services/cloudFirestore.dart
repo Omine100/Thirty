@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -9,8 +10,10 @@ import 'package:thirty/standards/methodStandards.dart';
 //METHOD DECLARATIONS
 abstract class BaseCloud {
   //METHODS: Account management
-  Future<void> signInEmailAndPassword(String email, String password);
-  Future<void> signUpEmailAndPassword(String email, String password);
+  Future<void> signInEmailAndPassword(
+      BuildContext context, String email, String password);
+  Future<void> signUpEmailAndPassword(
+      BuildContext context, String email, String password);
   Future<void> signInGoogle();
   Future<void> signInTwitter();
   Future<void> signOut();
@@ -39,8 +42,11 @@ class CloudFirestore implements BaseCloud {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   //MECHANICS: Signs in user with an email and password
+  //DESCRIPTION: Signs in and then calls interfaceStandards to display a toast
+  //          message if there is an error
   //STRING INPUTS: 'email' and 'password' for user verification
-  Future<void> signInEmailAndPassword(String email, String password) async {
+  Future<void> signInEmailAndPassword(
+      BuildContext context, String email, String password) async {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
@@ -55,8 +61,11 @@ class CloudFirestore implements BaseCloud {
   }
 
   //MECHANICS: Signs up user with an email and password
+  //DESCRIPTION: Signs in and then calls interfaceStandards to display a toast
+  //          message if there is an error
   //STRING INPUTS: 'email' and 'password' for user creation
-  Future<void> signUpEmailAndPassword(String email, String password) async {
+  Future<void> signUpEmailAndPassword(
+      BuildContext context, String email, String password) async {
     await auth.createUserWithEmailAndPassword(email: email, password: password);
   }
 
@@ -67,10 +76,9 @@ class CloudFirestore implements BaseCloud {
   //OUTPUT: 'true' if the user is new
   Future<bool> signInGoogle() async {
     final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
-    final GoogleSignInAuthentication googleAuth =
-        await googleUser.authentication;
+    final GoogleSignInAuthentication result = await googleUser.authentication;
     final GoogleAuthCredential googleCredential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+        accessToken: result.accessToken, idToken: result.idToken);
     final UserCredential userCredential =
         await auth.signInWithCredential(googleCredential);
     return userCredential.additionalUserInfo.isNewUser;
@@ -92,12 +100,14 @@ class CloudFirestore implements BaseCloud {
     final TwitterLoginResult result = await twitterLogin.authorize();
     if (result.status == TwitterLoginStatus.loggedIn) {
       final AuthCredential twitterCredential = TwitterAuthProvider.credential(
-        accessToken: result.session.token, secret: result.session.secret);
+          accessToken: result.session.token, secret: result.session.secret);
       final UserCredential userCredential =
-        await auth.signInWithCredential(twitterCredential);
+          await auth.signInWithCredential(twitterCredential);
       return userCredential.additionalUserInfo.isNewUser;
+    } else if (result.status == TwitterLoginStatus.cancelledByUser) {
+      return null;
     } else {
-      return null; 
+      return null;
     }
   }
 

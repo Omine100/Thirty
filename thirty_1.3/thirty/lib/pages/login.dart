@@ -41,10 +41,8 @@ class _LoginScreenState extends State<LoginScreen> {
   //MECHANICS: Validate and submit user information
   //DESCRIPTION: Takes the key and gets the values currently associated with it
   //          from here we can validate these values and do stuff with them
-  //GLOBALKEY<SCAFFOLDSTATE> INPUT: 'scaffold' for the globalKey associated with
-  //          the scaffold below
   //OUTPUT: Route navigation to Intro or Home screen
-  void validateAndSubmit(GlobalKey<ScaffoldState> scaffoldKey) async {
+  void validateAndSubmit() async {
     final form = formKey.currentState;
     setState(() {
       interfaceStandards.showProgress(context);
@@ -53,12 +51,10 @@ class _LoginScreenState extends State<LoginScreen> {
       form.save();
       try {
         if (isSignIn) {
-          await cloudFirestore.signInEmailAndPassword(
-              email, password, Scaffold());
+          await cloudFirestore.signInEmailAndPassword(context, email, password);
           routeNavigation.RouteHome(context);
         } else {
-          await cloudFirestore.signUpEmailAndPassword(
-              email, password, scaffoldKey);
+          await cloudFirestore.signUpEmailAndPassword(context, email, password);
           await cloudFirestore.createNameData(name);
           cloudFirestore.sendEmailVerification();
           // routeNavigation.RouteIntro(context, email, password);
@@ -166,12 +162,12 @@ class _LoginScreenState extends State<LoginScreen> {
   //          validateAndSubmit() and do what it wants with it (nothing illegal
   //          of course)
   //OUTPUT: Widget and call to validateAndSubmit()
-  Widget showProgressionButton(GlobalKey<ScaffoldState> scaffoldKey) {
+  Widget showProgressionButton() {
     return interfaceStandards.parentCenter(
       context,
       GestureDetector(
         onTap: () {
-          validateAndSubmit(scaffoldKey);
+          validateAndSubmit();
         },
         child: Container(
           height: themes.getDimension(
@@ -255,7 +251,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Positioned(
               top: themes.getPosition(
                   context, true, "loginProgressionButtonPosition"),
-              child: showProgressionButton(scaffoldKey),
+              child: showProgressionButton(),
             ),
             Positioned(
               top: themes.getPosition(
