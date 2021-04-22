@@ -103,15 +103,19 @@ class InterfaceStandards {
   //USER INTERFACE: Show toast message
   //BUILDCONTEXT INPUT: 'context' - must be a decendent of scaffold otherwise
   //                "ScaffoldMessenger.of()" will return null
+  //STRING INPUT: 'message' - What is to be displayed on the toast message
   //OUTPUT: Toast message
-  void showToastMessage(BuildContext context) {
+  void showToastMessage(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: const Text('snack'),
-      duration: const Duration(seconds: 1),
-      action: SnackBarAction(
-        label: 'ACTION',
-        onPressed: () {},
+      content: Text(
+        message,
+        style: TextStyle(
+            color: themes.getColor(
+                context, "interfaceStandardsToastMessageContentColor")),
       ),
+      duration: const Duration(seconds: 3),
+      backgroundColor: themes.getColor(
+          context, "interfaceStandardsToastMessageBackgroundColor"),
     ));
   }
 

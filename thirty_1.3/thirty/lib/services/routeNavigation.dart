@@ -13,7 +13,7 @@ abstract class BaseRoutes {
   void RoutePop(BuildContext context);
   // Widget RouteLogin(BuildContext context, bool isSignIn);
   // Widget RouteForgotPassword(BuildContext context);
-  // Widget RouteIntro(BuildContext context); //Don't pass email, call Firestore?
+  Widget RouteIntro(BuildContext context);
   Widget RouteHome(BuildContext context);
 
   //METHODS: Route managements
@@ -31,7 +31,12 @@ class RouteNavigation implements BaseRoutes {
   // BOOLEAN INPUT: 'isSignIn' allows for setting up the screen for either signIn
   //            or SignUp
   Widget RouteLogin(BuildContext context, bool isSignIn) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(isSignIn: isSignIn,)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => LoginScreen(
+                  isSignIn: isSignIn,
+                )));
   }
 
   //MECHANICS: Routes to forgot password screen
@@ -40,12 +45,13 @@ class RouteNavigation implements BaseRoutes {
   // }
 
   //MECHANICS: Routes to intro screen
-  // Widget RouteIntro(BuildContext context) {
-  //   while (Navigator.canPop(context)) {
-  //     RoutePop(context);
-  //   }
-  //   Navigator.push(context, IntroScreen());
-  // }
+  Widget RouteIntro(BuildContext context) {
+    while (Navigator.canPop(context)) {
+      RoutePop(context);
+    }
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => IntroScreen()));
+  }
 
   //MECHANICS: Routes to home screen
   Widget RouteHome(BuildContext context) {

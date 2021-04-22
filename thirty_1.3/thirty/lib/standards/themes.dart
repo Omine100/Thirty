@@ -39,6 +39,12 @@ extension CustomColorScheme on ColorScheme {
       case "interfaceStandardsProgressIndicatorColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
+      case "interfaceStandardsToastMessageBackgroundColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
+      case "interfaceStandardsToastMessageContentColor":
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFF000000);
+        break;
       case "interfaceStandardsThemeSelectorColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;

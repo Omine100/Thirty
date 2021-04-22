@@ -14,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Text(
-          "Testing",
+          "Home",
           style: TextStyle(
             color: Colors.red,
             fontSize: 100,
