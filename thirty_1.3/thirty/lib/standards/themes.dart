@@ -193,7 +193,7 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? 1.0 : null;
         break;
       case "loginProgressionButtonDimension":
-        return isHeight ? 0.02 : null;
+        return isHeight ? 0.07 : null;
         break;
       case "forgotPasswordContainerDimension":
         return isHeight ? 1.0 : null;

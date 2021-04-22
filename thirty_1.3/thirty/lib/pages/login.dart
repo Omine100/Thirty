@@ -230,7 +230,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     (value) => name = value, null),)
                           )
                         : Container(),
-                        Padding(
+                    Padding(
                       padding: EdgeInsets.only(
                           left: 50, right: 50, top: isSignIn ? 175 : 35),
                       child: interfaceStandards.parentCenter(
@@ -247,7 +247,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               1,
                               isVisible,
                               "inputPassword",
-                              (value) => password = value, null)),
+                              (value) => password = value, null)),)
                   ],
                 ),
               ),
