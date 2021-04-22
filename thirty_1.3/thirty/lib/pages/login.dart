@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
           await cloudFirestore.signUpEmailAndPassword(context, email, password);
           await cloudFirestore.createNameData(name);
           cloudFirestore.sendEmailVerification();
-          // routeNavigation.RouteIntro(context, email, password);
+          routeNavigation.RouteIntro(context);
         }
       } catch (e) {
         print("Error: $e");

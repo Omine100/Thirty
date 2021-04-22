@@ -123,8 +123,8 @@ class CloudFirestore implements BaseCloud {
   //          userId to call, so if there is not, no one is signed in
   //OUTPUT: Returns false if the the userId is null, true otherwise
   Future<bool> getSignedInStatus() async {
-    var userId = await auth.currentUser.uid;
-    return userId != null ? true : false;
+    bool status = await auth.currentUser.uid.isNotEmpty;
+    return status;
   }
 
   //MECHANICS: Sends an email verification email
