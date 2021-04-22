@@ -123,7 +123,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               interfaceStandards.showSocialIconButton(context, 0),
-              Padding(padding: EdgeInsets.only(left: 5, right: 5)),
+              Padding(padding: EdgeInsets.only(left: 10, right: 10)),
               interfaceStandards.showSocialIconButton(context, 1),
             ],
           ),

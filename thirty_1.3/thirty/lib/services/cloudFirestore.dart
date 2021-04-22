@@ -85,16 +85,20 @@ class CloudFirestore implements BaseCloud {
   //           DKBrBIFVdiw9OvaN5vcAAU4v8jCgO6dOluSp5K7smTXM9RBgMWj
   //OUTPUT: 'true' if the user is new
   Future<bool> signInTwitter() async {
-    var twitterLogin = new TwitterLogin(
+    final TwitterLogin twitterLogin = new TwitterLogin(
       consumerKey: '06tLwhwnkvJeK5smvt9gPOTe5',
       consumerSecret: 'ob0s5XtYYJTEUX4GptaruP1n5Zvvq2hGyyHDeYkPylDD4RdOAC',
     );
     final TwitterLoginResult result = await twitterLogin.authorize();
-    final AuthCredential twitterCredential = TwitterAuthProvider.credential(
+    if (result.status == TwitterLoginStatus.loggedIn) {
+      final AuthCredential twitterCredential = TwitterAuthProvider.credential(
         accessToken: result.session.token, secret: result.session.secret);
-    final UserCredential userCredential =
+      final UserCredential userCredential =
         await auth.signInWithCredential(twitterCredential);
-    return userCredential.additionalUserInfo.isNewUser;
+      return userCredential.additionalUserInfo.isNewUser;
+    } else {
+      return null; 
+    }
   }
 
   //MECHANICS: Signs out user
