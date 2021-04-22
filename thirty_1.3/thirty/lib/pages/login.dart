@@ -244,7 +244,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               isVisible,
                               "inputPassword",
                               (value) => password = value,
-                              null)),
+                              showVisibilityButton())),
                     )
                   ],
                 ),
