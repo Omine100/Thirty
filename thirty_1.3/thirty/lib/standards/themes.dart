@@ -125,6 +125,7 @@ extension CustomFontSizes on TextTheme {
   //double get 'name' => 'fontSizeValue'
   double get interfaceStandardsTitleFontSize => 30.0;
   double get interfaceStandardsTextInputFontSize => 22.0;
+  double get interfaceStandardsToastMessageContentFontSize => 22.0;
 
   double get welcomeSignInButtonTextFontSize => 15;
   double get welcomeSignUpButtonTextFontSize => 22.5;
@@ -143,6 +144,8 @@ extension CustomFontWeights on Typography {
   //FontWeight get 'name' => 'fontWeightValue';
   FontWeight get interfaceStandardsTitleFontWeight => FontWeight.w600;
   FontWeight get interfaceStandardsTextInputFontWeight => FontWeight.w300;
+  FontWeight get interfaceStandardsToastMessageContentFontWeight =>
+      FontWeight.w400;
 
   FontWeight get welcomeSignUpButtonTextFontWeight => FontWeight.w600;
 

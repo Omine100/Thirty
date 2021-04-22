@@ -3,9 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_twitter_login/flutter_twitter_login.dart';
+import 'package:thirty/standards/interfaceStandards.dart';
 import 'dart:async';
 
-import 'package:thirty/standards/interfaceStandards.dart';
 import 'package:thirty/standards/methodStandards.dart';
 
 //METHOD DECLARATIONS
@@ -36,7 +36,6 @@ abstract class BaseCloud {
 
 class CloudFirestore implements BaseCloud {
   //CLASS INITIALIZATION
-  InterfaceStandards interfaceStandards = new InterfaceStandards();
   MethodStandards methodStandards = new MethodStandards();
 
   //VARIABLE INITIALIZATION
@@ -52,7 +51,7 @@ class CloudFirestore implements BaseCloud {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      interfaceStandards.showToastMessage(context, e.toString());
+      InterfaceStandards().showToastMessage(context, e.toString());
     }
   }
 

@@ -111,7 +111,13 @@ class InterfaceStandards {
         message,
         style: TextStyle(
             color: themes.getColor(
-                context, "interfaceStandardsToastMessageContentColor")),
+                context, "interfaceStandardsToastMessageContentColor"),
+            fontSize: Theme.of(context)
+                .textTheme
+                .interfaceStandardsToastMessageContentFontSize,
+            fontWeight: Theme.of(context)
+                .typography
+                .interfaceStandardsToastMessageContentFontWeight),
       ),
       duration: const Duration(seconds: 3),
       backgroundColor: themes.getColor(
