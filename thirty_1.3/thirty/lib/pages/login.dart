@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
   //GLOBALKEY<SCAFFOLDSTATE> INPUT: 'scaffold' for the globalKey associated with
   //          the scaffold below
   //OUTPUT: Route navigation to Intro or Home screen
-  void validateAndSubmit() async {
+  void validateAndSubmit(GlobalKey<ScaffoldState> scaffoldKey) async {
     final form = formKey.currentState;
     setState(() {
       interfaceStandards.showProgress(context);
@@ -53,10 +53,12 @@ class _LoginScreenState extends State<LoginScreen> {
       form.save();
       try {
         if (isSignIn) {
-          await cloudFirestore.signInEmailAndPassword(email, password);
+          await cloudFirestore.signInEmailAndPassword(
+              email, password, Scaffold());
           routeNavigation.RouteHome(context);
         } else {
-          await cloudFirestore.signUpEmailAndPassword(email, password);
+          await cloudFirestore.signUpEmailAndPassword(
+              email, password, scaffoldKey);
           await cloudFirestore.createNameData(name);
           cloudFirestore.sendEmailVerification();
           // routeNavigation.RouteIntro(context, email, password);
@@ -164,12 +166,12 @@ class _LoginScreenState extends State<LoginScreen> {
   //          validateAndSubmit() and do what it wants with it (nothing illegal
   //          of course)
   //OUTPUT: Widget and call to validateAndSubmit()
-  Widget showProgressionButton() {
+  Widget showProgressionButton(GlobalKey<ScaffoldState> scaffoldKey) {
     return interfaceStandards.parentCenter(
       context,
       GestureDetector(
         onTap: () {
-          validateAndSubmit();
+          validateAndSubmit(scaffoldKey);
         },
         child: Container(
           height: themes.getDimension(
@@ -253,7 +255,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Positioned(
               top: themes.getPosition(
                   context, true, "loginProgressionButtonPosition"),
-              child: showProgressionButton(),
+              child: showProgressionButton(scaffoldKey),
             ),
             Positioned(
               top: themes.getPosition(
