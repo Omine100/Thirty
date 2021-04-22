@@ -210,7 +210,48 @@ class _LoginScreenState extends State<LoginScreen> {
                   ? interfaceStandards.showTitle(context, "loginSignInTitle")
                   : interfaceStandards.showTitle(context, "loginSignUpTitle"),
             ),
-            SingleChildScrollView(),
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Form(
+                key: scaffoldKey,
+                child: Column(
+                  children: [
+                    !isSignIn
+                        ? Padding(
+                            padding:
+                                EdgeInsets.only(left: 50, right: 50, top: 175),
+                            child: interfaceStandards.parentCenter(
+                                context,
+                                interfaceStandards.showTextField(
+                                    context,
+                                    1,
+                                    true,
+                                    "inputName",
+                                    (value) => name = value, null),)
+                          )
+                        : Container(),
+                        Padding(
+                      padding: EdgeInsets.only(
+                          left: 50, right: 50, top: isSignIn ? 175 : 35),
+                      child: interfaceStandards.parentCenter(
+                          context,
+                          interfaceStandards.showTextField(context, 1, true,
+                              "inputEmail", (value) => email = value, null)),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 50, right: 50, top: 35),
+                      child: interfaceStandards.parentCenter(
+                          context,
+                          interfaceStandards.showTextField(
+                              context,
+                              1,
+                              isVisible,
+                              "inputPassword",
+                              (value) => password = value, null)),
+                  ],
+                ),
+              ),
+            ),
             Positioned(
               top: themes.getPosition(
                   context, true, "loginProgressionButtonPosition"),

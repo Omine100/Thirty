@@ -117,6 +117,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   themes.getColor(context, "welcomeSocialSignInDividerColor"),
               height: themes.getDimension(
                   context, true, "welcomeSocialSignInDividerDimension"),
+                  thickness: 1.5,
             ),
           ),
           Row(

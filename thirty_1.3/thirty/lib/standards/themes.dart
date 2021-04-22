@@ -180,7 +180,7 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? 0.08 : 0.6;
         break;
       case "welcomeSocialSignInDividerDimension":
-        return isHeight ? 0.005 : 0.2;
+        return isHeight ? 0.01 : 0.2;
         break;
       case "welcomeSocialSignInButtonDimension":
         return isHeight ? 0.05 : null;
