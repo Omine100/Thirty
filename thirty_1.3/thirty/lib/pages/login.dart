@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
   InterfaceStandards interfaceStandards = new InterfaceStandards();
 
   //VARIABLE INITIALIZATION
-  final _formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
   String name, email, password;
   bool isSignIn, isVisible = false;
 
@@ -44,8 +44,8 @@ class _LoginScreenState extends State<LoginScreen> {
   //GLOBALKEY<SCAFFOLDSTATE> INPUT: 'scaffold' for the globalKey associated with
   //          the scaffold below
   //OUTPUT: Route navigation to Intro or Home screen
-  void validateAndSubmit(GlobalKey<ScaffoldState> scaffoldKey) async {
-    final form = _formKey.currentState;
+  void validateAndSubmit() async {
+    final form = formKey.currentState;
     setState(() {
       interfaceStandards.showProgress(context);
     });
@@ -164,12 +164,12 @@ class _LoginScreenState extends State<LoginScreen> {
   //          validateAndSubmit() and do what it wants with it (nothing illegal
   //          of course)
   //OUTPUT: Widget and call to validateAndSubmit()
-  Widget showProgressionButton(GlobalKey<ScaffoldState> scaffoldKey) {
+  Widget showProgressionButton() {
     return interfaceStandards.parentCenter(
       context,
       GestureDetector(
         onTap: () {
-          validateAndSubmit(scaffoldKey);
+          validateAndSubmit();
         },
         child: Container(
           height: themes.getDimension(
@@ -189,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  //USER INTERFACE: LOGIN SCREEN
+  //USER INTERFACE: Login screen
   @override
   Widget build(BuildContext context) {
     //VARIABLE INITIALIZATION
@@ -213,7 +213,7 @@ class _LoginScreenState extends State<LoginScreen> {
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Form(
-                key: scaffoldKey,
+                key: formKey,
                 child: Column(
                   children: [
                     !isSignIn
@@ -221,14 +221,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             padding:
                                 EdgeInsets.only(left: 50, right: 50, top: 175),
                             child: interfaceStandards.parentCenter(
-                                context,
-                                interfaceStandards.showTextField(
-                                    context,
-                                    1,
-                                    true,
-                                    "inputName",
-                                    (value) => name = value, null),)
-                          )
+                              context,
+                              interfaceStandards.showTextField(context, 1, true,
+                                  "inputName", (value) => name = value, null),
+                            ))
                         : Container(),
                     Padding(
                       padding: EdgeInsets.only(
@@ -247,7 +243,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               1,
                               isVisible,
                               "inputPassword",
-                              (value) => password = value, null)),)
+                              (value) => password = value,
+                              null)),
+                    )
                   ],
                 ),
               ),
@@ -255,7 +253,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Positioned(
               top: themes.getPosition(
                   context, true, "loginProgressionButtonPosition"),
-              child: showProgressionButton(scaffoldKey),
+              child: showProgressionButton(),
             ),
             Positioned(
               top: themes.getPosition(

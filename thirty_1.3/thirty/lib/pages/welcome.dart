@@ -117,7 +117,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   themes.getColor(context, "welcomeSocialSignInDividerColor"),
               height: themes.getDimension(
                   context, true, "welcomeSocialSignInDividerDimension"),
-                  thickness: 1.5,
+              thickness: 1.5,
             ),
           ),
           Row(
@@ -133,7 +133,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 
-  //USER INTERFACE: WELCOME SCREEN
+  //USER INTERFACE: Welcome screen
   Widget build(BuildContext context) {
     //VARIABLE INITIALIZATION
     isDark = themes.checkDarkTheme(context);
