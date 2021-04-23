@@ -14,7 +14,7 @@ abstract class BaseCloud {
   Future<void> signInEmailAndPassword(
       BuildContext context, String email, String password);
   Future<void> signUpEmailAndPassword(
-      BuildContext context, String email, String password);
+      BuildContext context, String email, String password, String name);
   Future<void> signInGoogle();
   Future<void> signInTwitter();
   Future<void> signOut();
@@ -57,12 +57,15 @@ class CloudFirestore implements BaseCloud {
 
   //MECHANICS: Signs up user with an email and password
   //DESCRIPTION: Signs in and then calls interfaceStandards to display a toast
-  //          message if there is an error
-  //STRING INPUTS: 'email' and 'password' for user creation
+  //          message if there is an error. We also create the name data here and send the
+  //          email verification off
+  //STRING INPUTS: 'email' and 'password' for user creation, 'name' used for data creation
   Future<void> signUpEmailAndPassword(
-      BuildContext context, String email, String password) async {
+      BuildContext context, String email, String password, String name) async {
     try {
       await auth.createUserWithEmailAndPassword(email: email, password: password);
+      await createNameData(name);
+      sendEmailVerification();
     } on FirebaseAuthException catch (e) {
       InterfaceStandards().showToastMessage(context, e.toString());
     }
@@ -71,7 +74,8 @@ class CloudFirestore implements BaseCloud {
   //MECHANICS: Signs in user with Google
   //DESCRIPTION: Creates a user with a Google sign in and then returns whether or
   //          not the user is new. We can then handle whether or not we go to the
-  //          Intro or Home screen back where we call the method
+  //          Intro or Home screen back where we call the method. We also create
+  //          name data if it is a new user
   //OUTPUT: 'true' if the user is new
   Future<bool> signInGoogle() async {
     final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
@@ -80,6 +84,9 @@ class CloudFirestore implements BaseCloud {
         accessToken: result.accessToken, idToken: result.idToken);
     final UserCredential userCredential =
         await auth.signInWithCredential(googleCredential);
+    if (userCredential.additionalUserInfo.isNewUser) {
+      await createNameData(googleUser.displayName);
+    }
     return userCredential.additionalUserInfo.isNewUser;
   }
 
@@ -102,6 +109,9 @@ class CloudFirestore implements BaseCloud {
           accessToken: result.session.token, secret: result.session.secret);
       final UserCredential userCredential =
           await auth.signInWithCredential(twitterCredential);
+      if (userCredential.additionalUserInfo.isNewUser) {
+        await createNameData(result.session.username);
+      }
       return userCredential.additionalUserInfo.isNewUser;
     } else if (result.status == TwitterLoginStatus.cancelledByUser) {
       return null;
