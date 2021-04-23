@@ -3,11 +3,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_twitter_login/flutter_twitter_login.dart';
-import 'package:thirty/standards/interfaceStandards.dart';
-import 'package:thirty/standards/languageStandards.dart';
 import 'dart:async';
 
 import 'package:thirty/standards/methodStandards.dart';
+import 'package:thirty/standards/interfaceStandards.dart';
+import 'package:thirty/standards/languageStandards.dart';
 
 //METHOD DECLARATIONS
 abstract class BaseCloud {
@@ -69,7 +69,8 @@ class CloudFirestore implements BaseCloud {
         default:
           key = "errorDefault";
       }
-      InterfaceStandards().showToastMessage(context, key);
+      InterfaceStandards()
+          .showToastMessage(context, getTranslated(context, key));
     }
   }
 

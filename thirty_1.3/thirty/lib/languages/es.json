@@ -4,6 +4,15 @@
     "inputPassword": "Contraseña",
     "inputValidator": "no puede estar vacía",
 
+    "errorInvalidPassword": "La contraseña es demasiado débil.",
+    "errorInvalidEmail": "Introduzca un correo electrónico válido.",
+    "errorWrongPassword": "El usuario no existe o la contraseña es incorrecta.",
+    "errorUserNotFound": "El usuario no existe o la contraseña es incorrecta.",
+    "errorUserDisabled": "El usuario ha sido deshabilitado.",
+    "errorEmailAlreadyExists": "Correo electrónico ya está en uso.",
+    "errorInvalidCredential": "Introduzca un correo electrónico válido.",
+    "errorDefault": "Ocurrió un error indefinido.",
+
     "welcomeTitle": "BIENVENIDA A TREINTA",
     "welcomeSignInButton": "¿Tienes una cuenta? ¡Iniciar sesión!",
     "welcomeSignUpButton": "REGÍSTRATE",

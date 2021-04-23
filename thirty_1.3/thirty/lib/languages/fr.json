@@ -4,6 +4,15 @@
     "inputPassword": "Mot de passe",
     "inputValidator": "ne peut pas être vide",
 
+    "errorInvalidPassword": "Le mot de passe est trop faible.",
+    "errorInvalidEmail": "Entrer un email valide.",
+    "errorWrongPassword": "L'utilisateur n'existe pas ou le mot de passe est incorrect.",
+    "errorUserNotFound": "L'utilisateur n'existe pas ou le mot de passe est incorrect.",
+    "errorUserDisabled": "L'utilisateur a été désactivé.",
+    "errorEmailAlreadyExists": "Cet email est déjà utilisé.",
+    "errorInvalidCredential": "Entrer un email valide.",
+    "errorDefault": "Une erreur non définie s'est produite.",
+
     "welcomeTitle": "BIENVENUE À TRENTE",
     "welcomeSignInButton": "Vous avez déjà un compte? S'identifier!",
     "welcomeSignUpButton": "S'INSCRIRE",
