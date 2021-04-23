@@ -61,7 +61,11 @@ class CloudFirestore implements BaseCloud {
   //STRING INPUTS: 'email' and 'password' for user creation
   Future<void> signUpEmailAndPassword(
       BuildContext context, String email, String password) async {
-    await auth.createUserWithEmailAndPassword(email: email, password: password);
+    try {
+      await auth.createUserWithEmailAndPassword(email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      InterfaceStandards().showToastMessage(context, e.toString());
+    }
   }
 
   //MECHANICS: Signs in user with Google
