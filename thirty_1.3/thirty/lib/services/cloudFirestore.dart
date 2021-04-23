@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
+import 'package:thirty/standards/languageStandards.dart';
 import 'dart:async';
 
 import 'package:thirty/standards/methodStandards.dart';
@@ -51,24 +52,24 @@ class CloudFirestore implements BaseCloud {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      String message;
+      String key;
       switch (e.code) {
         case "invalid-email":
-          message = "Please enter a valid email.";
+          key = "errorInvalidEmail";
           break;
         case "wrong-password":
-          message = "User does not exist or password is wrong.";
+          key = "errorWrongPassword";
           break;
         case "user-not-found":
-          message = "User does not exist or password is wrong.";
+          key = "errorUserNotFound";
           break;
         case "user-disabled":
-          message = "User has been disabled.";
+          key = "errorUserDisabled";
           break;
         default:
-          message = "An undefined Error happened.";
+          key = "errorDefault";
       }
-      InterfaceStandards().showToastMessage(context, message);
+      InterfaceStandards().showToastMessage(context, key);
     }
   }
 
@@ -85,24 +86,25 @@ class CloudFirestore implements BaseCloud {
       await createNameData(name);
       sendEmailVerification();
     } on FirebaseAuthException catch (e) {
-      String message;
+      String key;
       switch (e.code) {
         case "invalid-password":
-          message = "Your password is too weak.";
+          key = "errorInvalidPassword";
           break;
         case "invalid-email":
-          message = "Please enter a valid email.";
+          key = "errorInvalidEmail";
           break;
         case "email-already-exists":
-          message = "Email is already in use on different account.";
+          key = "errorEmailAlreadyExists";
           break;
         case "invalid-credential":
-          message = "Please enter a valid email.";
+          key = "errorInvalidEmail";
           break;
         default:
-          message = "An undefined Error happened.";
+          key = "errorDefault";
       }
-      InterfaceStandards().showToastMessage(context, message);
+      InterfaceStandards()
+          .showToastMessage(context, getTranslated(context, key));
     }
   }
 

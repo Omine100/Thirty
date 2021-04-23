@@ -4,6 +4,15 @@
     "inputPassword": "Password",
     "inputValidator": "can't be empty",
 
+    "errorInvalidPassword": "Your password is too weak.",
+    "errorInvalidEmail": "Please enter a valid email.",
+    "errorWrongPassword": "User does not exist or password is wrong.",
+    "errorUserNotFound": "User does not exist or password is wrong.",
+    "errorUserDisabled": "User has been disabled.",
+    "errorEmailAlreadyExists": "Email is already in use on different account.",
+    "errorInvalidCredential": "Please enter a valid email.",
+    "errorDefault": "An undefined Error happened.",
+
     "welcomeTitle": "WELCOME TO THIRTY",
     "welcomeSignInButton": "Already have an account? Sign in!",
     "welcomeSignUpButton": "SIGN UP",

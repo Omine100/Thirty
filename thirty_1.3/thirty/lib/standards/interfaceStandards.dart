@@ -103,7 +103,8 @@ class InterfaceStandards {
   //USER INTERFACE: Show toast message
   //BUILDCONTEXT INPUT: 'context' - must be a decendent of scaffold otherwise
   //                "ScaffoldMessenger.of()" will return null
-  //STRING INPUT: 'message' - What is to be displayed on the toast message
+  //STRING INPUT: 'key' - What is to be displayed on the toast message after
+  //          being translated
   //OUTPUT: Toast message
   void showToastMessage(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
