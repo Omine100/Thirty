@@ -60,6 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
         if (await cloudFirestore.getSignedInStatus() == true) {
           routeNavigation.routeHome(context);
         }
+        form.reset();
       } catch (e) {
         print("Error: $e");
         setState(() {

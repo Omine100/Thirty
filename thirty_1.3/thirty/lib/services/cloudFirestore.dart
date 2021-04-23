@@ -69,8 +69,7 @@ class CloudFirestore implements BaseCloud {
         default:
           key = "errorDefault";
       }
-      InterfaceStandards()
-          .showToastMessage(context, getTranslated(context, key));
+      InterfaceStandards().showToastMessage(context, key);
     }
   }
 
@@ -104,8 +103,7 @@ class CloudFirestore implements BaseCloud {
         default:
           key = "errorDefault";
       }
-      InterfaceStandards()
-          .showToastMessage(context, getTranslated(context, key));
+      InterfaceStandards().showToastMessage(context, key);
     }
   }
 

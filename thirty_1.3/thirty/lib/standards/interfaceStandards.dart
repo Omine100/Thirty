@@ -106,10 +106,10 @@ class InterfaceStandards {
   //STRING INPUT: 'key' - What is to be displayed on the toast message after
   //          being translated
   //OUTPUT: Toast message
-  void showToastMessage(BuildContext context, String message) {
+  void showToastMessage(BuildContext context, String key) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(
-        message,
+        getTranslated(context, key),
         style: TextStyle(
             color: themes.getColor(
                 context, "interfaceStandardsToastMessageContentColor"),
