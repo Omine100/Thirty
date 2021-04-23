@@ -51,7 +51,24 @@ class CloudFirestore implements BaseCloud {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      InterfaceStandards().showToastMessage(context, e.toString());
+      String message;
+      switch (e.code) {
+        case "invalid-email":
+          message = "Please enter a valid email.";
+          break;
+        case "wrong-password":
+          message = "User does not exist or password is wrong.";
+          break;
+        case "user-not-found":
+          message = "User does not exist or password is wrong.";
+          break;
+        case "user-disabled":
+          message = "User has been disabled.";
+          break;
+        default:
+          message = "An undefined Error happened.";
+      }
+      InterfaceStandards().showToastMessage(context, message);
     }
   }
 
@@ -63,11 +80,29 @@ class CloudFirestore implements BaseCloud {
   Future<void> signUpEmailAndPassword(
       BuildContext context, String email, String password, String name) async {
     try {
-      await auth.createUserWithEmailAndPassword(email: email, password: password);
+      await auth.createUserWithEmailAndPassword(
+          email: email, password: password);
       await createNameData(name);
       sendEmailVerification();
     } on FirebaseAuthException catch (e) {
-      InterfaceStandards().showToastMessage(context, e.toString());
+      String message;
+      switch (e.code) {
+        case "invalid-password":
+          message = "Your password is too weak.";
+          break;
+        case "invalid-email":
+          message = "Please enter a valid email.";
+          break;
+        case "email-already-exists":
+          message = "Email is already in use on different account.";
+          break;
+        case "invalid-credential":
+          message = "Please enter a valid email.";
+          break;
+        default:
+          message = "An undefined Error happened.";
+      }
+      InterfaceStandards().showToastMessage(context, message);
     }
   }
 

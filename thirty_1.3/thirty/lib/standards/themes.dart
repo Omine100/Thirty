@@ -125,7 +125,7 @@ extension CustomFontSizes on TextTheme {
   //double get 'name' => 'fontSizeValue'
   double get interfaceStandardsTitleFontSize => 30.0;
   double get interfaceStandardsTextInputFontSize => 22.0;
-  double get interfaceStandardsToastMessageContentFontSize => 22.0;
+  double get interfaceStandardsToastMessageContentFontSize => 18.0;
 
   double get welcomeSignInButtonTextFontSize => 15;
   double get welcomeSignUpButtonTextFontSize => 22.5;

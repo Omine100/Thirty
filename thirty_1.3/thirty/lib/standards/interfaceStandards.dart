@@ -259,7 +259,7 @@ class InterfaceStandards {
       obscureText: !isVisible,
       maxLines: 1,
       validator: (value) => value.isEmpty
-          ? "$key " + getTranslated(context, "inputValidator")
+          ? ("$key " + getTranslated(context, "inputValidator"))
           : null,
       onSaved: onSaved,
     );
