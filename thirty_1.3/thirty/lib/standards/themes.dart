@@ -80,10 +80,10 @@ extension CustomColorScheme on ColorScheme {
         break;
 
       case "loginProgressionButtonColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFB81D1);
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
       case "loginProgressionButtonIconColor":
-        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFAB58);
         break;
       case "loginAlternativeButtonTextColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
@@ -255,7 +255,7 @@ extension CustomPositions on MaterialTapTargetSize {
         break;
 
       case "loginTitlePosition":
-        return isTop ? 0.0876 : null;
+        return isTop ? 0.15 : null;
         break;
       case "loginProgressionButtonPosition":
         return isTop ? 0.75 : null;
@@ -264,7 +264,7 @@ extension CustomPositions on MaterialTapTargetSize {
         return isTop ? 0.9 : null;
         break;
       case "loginForgotPasswordButtonPosition":
-        return isTop ? 0.48 : -0.23;
+        return isTop ? 0.51 : -0.23;
         break;
 
       case "forgotPasswordTitlePosition":

@@ -219,7 +219,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     !isSignIn
                         ? Padding(
                             padding:
-                                EdgeInsets.only(left: 50, right: 50, top: 175),
+                                EdgeInsets.only(left: 50, right: 50, top: 250),
                             child: interfaceStandards.parentCenter(
                               context,
                               interfaceStandards.showTextField(context, 1, true,
@@ -228,7 +228,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         : Container(),
                     Padding(
                       padding: EdgeInsets.only(
-                          left: 50, right: 50, top: isSignIn ? 175 : 35),
+                          left: 50, right: 50, top: isSignIn ? 250 : 35),
                       child: interfaceStandards.parentCenter(
                           context,
                           interfaceStandards.showTextField(context, 1, true,
