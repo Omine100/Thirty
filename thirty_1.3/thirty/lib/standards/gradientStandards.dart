@@ -66,4 +66,14 @@ class Gradients {
         false);
     return linearGradient;
   }
+
+  //USER INTERFACE: Forgot password screen gradient
+  LinearGradient forgotPasswordScreenGradient(BuildContext context) {
+    LinearGradient linearGradient = gradientStandards.bodyLinearGradient(
+        context,
+        themes.getColor(context, "backgroundGradientTopRightColor"),
+        themes.getColor(context, "backgroundGradientBottomLeftColor"),
+        false);
+    return linearGradient;
+  }
 }
