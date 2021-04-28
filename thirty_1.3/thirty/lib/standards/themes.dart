@@ -168,7 +168,7 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? null : 1.0;
         break;
       case "interfaceStandardsCameraButtonDimension":
-        return isHeight ? 0.055 : 0.055;
+        return isHeight ? 0.1 : 0.1;
         break;
       case "interfaceStandardsBackButtonDimension":
         return isHeight ? 0.055 : 0.055;

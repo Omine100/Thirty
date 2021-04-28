@@ -7,7 +7,6 @@ import 'dart:async';
 
 import 'package:thirty/standards/methodStandards.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
-import 'package:thirty/standards/languageStandards.dart';
 
 //METHOD DECLARATIONS
 abstract class BaseCloud {

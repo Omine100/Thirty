@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Stack(
         children: [
           Positioned(
-            top: 100,
+            top: 300,
             child: interfaceStandards.parentCenter(
                 context, interfaceStandards.showImagePicker(context)),
           ),
@@ -42,7 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
               width: size.width,
               height: 80,
               child: Stack(
-                overflow: Overflow.visible,
                 children: [
                   CustomPaint(
                     size: Size(size.width, 80),
