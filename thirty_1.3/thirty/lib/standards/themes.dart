@@ -257,6 +257,9 @@ extension CustomPositions on MaterialTapTargetSize {
       case "loginTitlePosition":
         return isTop ? 0.15 : null;
         break;
+      case "loginBackButtonPosition":
+        return isTop ? 0.06 : 0.06;
+        break;
       case "loginProgressionButtonPosition":
         return isTop ? 0.75 : null;
         break;

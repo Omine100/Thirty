@@ -205,6 +205,11 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Stack(
           children: [
             Positioned(
+              top: themes.getPosition(context, true, "loginBackButtonPosition"),
+              left: themes.getPosition(context, false, "loginBackButtonPosition"),
+              child: interfaceStandards.showBackButton(context),
+            ),
+            Positioned(
               top: themes.getPosition(context, true, "loginTitlePosition"),
               child: isSignIn
                   ? interfaceStandards.showTitle(context, "loginSignInTitle")

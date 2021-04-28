@@ -63,7 +63,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     context, true, "forgotPasswordBackButtonPosition"),
                 left: themes.getPosition(
                     context, false, "forgotPasswordBackButtonPosition"),
-                child: interfaceStandards.backButton(context),
+                child: interfaceStandards.showBackButton(context),
               ),
               Positioned(
                 top: themes.getPosition(

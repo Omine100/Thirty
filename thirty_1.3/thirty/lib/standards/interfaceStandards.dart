@@ -164,9 +164,9 @@ class InterfaceStandards {
     );
   }
 
-  //USER INTERFACE: Back button
+  //USER INTERFACE: Show back button
   //OUTPUT: Calls a function in routeNavigation to pop the route stack once
-  Widget backButton(BuildContext context) {
+  Widget showBackButton(BuildContext context) {
     return GestureDetector(
       onTap: () {
         routeNavigation.routePop(context);
