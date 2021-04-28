@@ -273,6 +273,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
+  picker:
+    dependency: "direct main"
+    description:
+      name: picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.6"
   plugin_platform_interface:
     dependency: transitive
     description:

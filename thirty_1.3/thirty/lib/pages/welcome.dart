@@ -195,13 +195,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 right: themes.getPosition(
                     context, false, "welcomeThemeSelectorButtonPosition"),
                 child: interfaceStandards.parentCenter(
-                    context, interfaceStandards.themeSelector(context))),
+                    context, interfaceStandards.showThemeSelector(context))),
             Positioned(
                 bottom: themes.getPosition(
                     context, true, "welcomeLanguageSelectorButtonPosition"),
                 left: themes.getPosition(
                     context, false, "welcomeLanguageSelectorButtonPosition"),
-                child: interfaceStandards.languageSelector(context)),
+                child: interfaceStandards.showLanguageSelector(context)),
           ],
         ),
       ),

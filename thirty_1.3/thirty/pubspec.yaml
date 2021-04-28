@@ -23,6 +23,7 @@ dependencies:
   google_sign_in: ^5.0.2
   flutter_twitter_login: ^1.1.0
   provider: ^5.0.0
+  picker: ^1.0.6
 
   #User interface
   page_transition: ^1.1.7+3

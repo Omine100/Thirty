@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:picker/picker.dart';
+import 'dart:io';
 
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/services/routeNavigation.dart';
@@ -12,11 +14,11 @@ class InterfaceStandards {
   CloudFirestore cloudFirestore = new CloudFirestore();
   RouteNavigation routeNavigation = new RouteNavigation();
 
-  //USER INTERFACE: Theme selector
+  //USER INTERFACE: Show theme selector
   //DESCRIPTION: Allows the user to switch between 'light' and 'dark' modes
   //OUTPUT: Slider widget selector
   //ON-CHANGED: Notifies ThemeNotifier about the change to the theme
-  Widget themeSelector(BuildContext context) {
+  Widget showThemeSelector(BuildContext context) {
     return Consumer<ThemeNotifier>(
       builder: (context, notifier, child) => SwitchListTile(
         inactiveThumbImage: AssetImage(
@@ -35,10 +37,10 @@ class InterfaceStandards {
     );
   }
 
-  //USER INTERFACE: Language selector
+  //USER INTERFACE: Show language selector
   //OUTPUT: Dropdown widget selector
   //ON-CHANGED: Calls a method in languageStandards to change the language
-  Widget languageSelector(BuildContext context) {
+  Widget showLanguageSelector(BuildContext context) {
     return DropdownButtonHideUnderline(
       child: DropdownButton(
         dropdownColor:
@@ -76,6 +78,29 @@ class InterfaceStandards {
                 )))
             .toList(),
       ),
+    );
+  }
+
+  //USER INTERFACE: Show image picker
+  //DESCRIPTION: Shows an image picker where you can either take a new photo
+  //          or get one from your library. It then sends it to the right place
+  //          based on the functional input
+  //FUNCTION INPUT: 'onDone' function for saving to appropriate spot
+  //OUTPUT: Image saved in correct spot
+  Widget showImagePicker(Function onDone) {
+    //VARIABLE INITIALIZATION
+    File imageFile;
+    var image = Picker.pickImage(
+        source: ImageSource.camera,
+        maxHeight: 480,
+        maxWidth: 640,
+        imageQuality: 75);
+
+    //USER INTERFACE: Show iamge picker
+    return new GestureDetector(
+      onTap: () {
+        imageFile = image;
+      },
     );
   }
 
@@ -190,7 +215,7 @@ class InterfaceStandards {
         if (isNewUser) {
           routeNavigation.routeHome(context);
         } else {
-          //routeNavigation.RouteIntro();
+          routeNavigation.routeIntro(context);
         }
       },
       child: Container(
