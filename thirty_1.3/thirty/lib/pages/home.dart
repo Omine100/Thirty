@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/services/routeNavigation.dart';
+import 'package:thirty/standards/interfaceStandards.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,6 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   //CLASS INITIALIZATION
   CloudFirestore cloudFirestore = new CloudFirestore();
   RouteNavigation routeNavigation = new RouteNavigation();
+  InterfaceStandards interfaceStandards = new InterfaceStandards();
 
   int currentIndex = 0;
 
@@ -28,6 +30,11 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.white.withAlpha(55),
       body: Stack(
         children: [
+          Positioned(
+            top: 100,
+            child: interfaceStandards.parentCenter(
+                context, interfaceStandards.showImagePicker(context)),
+          ),
           Positioned(
             bottom: 0,
             left: 0,
