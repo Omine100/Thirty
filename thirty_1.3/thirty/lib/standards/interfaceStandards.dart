@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:picker/picker.dart';
-import 'dart:io';
 
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/services/routeNavigation.dart';
+import 'package:thirty/services/mediaManagement.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/languageStandards.dart';
 
@@ -13,6 +12,20 @@ class InterfaceStandards {
   Themes themes = new Themes();
   CloudFirestore cloudFirestore = new CloudFirestore();
   RouteNavigation routeNavigation = new RouteNavigation();
+  MediaManagement mediaManagement = new MediaManagement();
+
+  //USER INTERFACE: Parent center
+  //WIDGET INPUT: Any widget that you want centered
+  //OUTPUT: Widget centered in next parent in the tree
+  Widget parentCenter(BuildContext context, Widget widget) {
+    return Container(
+      width: themes.getDimension(
+          context, false, "interfaceStandardsParentCenterContainerDimension"),
+      child: Center(
+        child: widget,
+      ),
+    );
+  }
 
   //USER INTERFACE: Show theme selector
   //DESCRIPTION: Allows the user to switch between 'light' and 'dark' modes
@@ -83,24 +96,21 @@ class InterfaceStandards {
 
   //USER INTERFACE: Show image picker
   //DESCRIPTION: Shows an image picker where you can either take a new photo
-  //          or get one from your library. It then sends it to the right place
-  //          based on the functional input
-  //FUNCTION INPUT: 'onDone' function for saving to appropriate spot
+  //          or get one from your library, calls mediaManagement functions
+  //          for all of this
   //OUTPUT: Image saved in correct spot
-  Widget showImagePicker(Function onDone) {
-    //VARIABLE INITIALIZATION
-    File imageFile;
-    var image = Picker.pickImage(
-        source: ImageSource.camera,
-        maxHeight: 480,
-        maxWidth: 640,
-        imageQuality: 75);
-
+  Widget showImagePicker(BuildContext context) {
     //USER INTERFACE: Show iamge picker
     return new GestureDetector(
       onTap: () {
-        imageFile = image;
+        mediaManagement.callCamera();
       },
+      child: Icon(
+        Icons.camera_alt_outlined,
+        color: themes.getColor(context, "interfaceStandardsCameraButtonColor"),
+        size: themes.getDimension(
+            context, true, "interfaceStandardsCameraButtonDimension"),
+      ),
     );
   }
 
@@ -149,19 +159,6 @@ class InterfaceStandards {
       backgroundColor: themes.getColor(
           context, "interfaceStandardsToastMessageBackgroundColor"),
     ));
-  }
-
-  //USER INTERFACE: Parent center
-  //WIDGET INPUT: Any widget that you want centered
-  //OUTPUT: Widget centered in next parent in the tree
-  Widget parentCenter(BuildContext context, Widget widget) {
-    return Container(
-      width: themes.getDimension(
-          context, false, "interfaceStandardsParentCenterContainerDimension"),
-      child: Center(
-        child: widget,
-      ),
-    );
   }
 
   //USER INTERFACE: Show back button

@@ -24,6 +24,9 @@ extension CustomColorScheme on ColorScheme {
         return isDark ? Color(0xFF1B1B2D) : Color(0xFFFFAB5F);
         break;
 
+      case "interfaceStandardsCameraButtonColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
       case "interfaceStandardsBackButtonColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
@@ -163,6 +166,9 @@ extension CustomDimensions on MaterialTapTargetSize {
       //case 'name': return isHeight ? 'height' : 'width'; break;
       case "interfaceStandardsParentCenterContainerDimension":
         return isHeight ? null : 1.0;
+        break;
+      case "interfaceStandardsCameraButtonDimension":
+        return isHeight ? 0.055 : 0.055;
         break;
       case "interfaceStandardsBackButtonDimension":
         return isHeight ? 0.055 : 0.055;
