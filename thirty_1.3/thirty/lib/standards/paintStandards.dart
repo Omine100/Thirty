@@ -1,6 +1,25 @@
 import 'package:flutter/material.dart';
 
-class BNBCustomPainter extends CustomPainter {
+import 'package:thirty/standards/themes.dart';
+
+class PaintStandards {
+  //CLASS INITIALIZATION
+  Themes themes = new Themes();
+
+  //USER INTERFACE: Home navigation bar paint
+  //OUTPUT: Custom paint for the home.dart navigation bar
+  CustomPaint homeNavigationBarPaint(BuildContext context) {
+    return CustomPaint(
+      size: Size(
+        themes.getDimension(context, false, "homeNavigationBarDimension"),
+        themes.getDimension(context, true, "homeNavigationBarDimension"),
+      ),
+      painter: HomeNavigationPainter(),
+    );
+  }
+}
+
+class HomeNavigationPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = new Paint()

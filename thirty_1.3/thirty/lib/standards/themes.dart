@@ -304,6 +304,9 @@ extension CustomPositions on MaterialTapTargetSize {
       case "homeHelloTitlePosition":
         return isTop ? 0.1 : 0.1;
         break;
+      case "homeNavigationBarPosition":
+        return isTop ? 0 : 0;
+        break;
     }
     return null;
   }
