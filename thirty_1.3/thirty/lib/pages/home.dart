@@ -21,12 +21,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
   //VARIALBE INITILIZATION
   String name;
+  int currentIndex;
 
   //INITIAL STATE
   //DESCRIPTION: Calls cloudFirestore function to set 'name' value
   void initState() {
     super.initState();
     cloudFirestore.getNameData().then((_name) => name = _name);
+  }
+
+  //MECHANICS: Sets current index
+  //DESCRIPTION: Basically, this sets a new state so we can change the color of
+  //          the active icon in the navigation bar
+  //OUTPUT: Change of state to set new currentIndex value
+  setCurrentIndex(index) {
+    setState(() {
+      currentIndex = index;
+    });
   }
 
   //USER INTERFACE: Show navigation bar floating action button
@@ -58,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
               color: currentIndex == 0 ? Colors.orange : Colors.grey.shade400,
             ),
             onPressed: () {
-              setBottomBarIndex(0);
+              setCurrentIndex(0);
             },
             splashColor: Colors.white,
           ),
@@ -68,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: currentIndex == 1 ? Colors.orange : Colors.grey.shade400,
               ),
               onPressed: () {
-                setBottomBarIndex(1);
+                setCurrentIndex(1);
               }),
           Container(
             width: themes.getDimension(
@@ -81,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: currentIndex == 2 ? Colors.orange : Colors.grey.shade400,
               ),
               onPressed: () {
-                setBottomBarIndex(2);
+                setCurrentIndex(2);
               }),
           IconButton(
               icon: Icon(
@@ -89,20 +100,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: currentIndex == 3 ? Colors.orange : Colors.grey.shade400,
               ),
               onPressed: () {
-                setBottomBarIndex(3);
+                setCurrentIndex(3);
               }),
         ],
       ),
     );
-  }
-
-  //Need to just throw this in the onTap => setState((index) => currentIndex = index)
-  int currentIndex = 0;
-
-  setBottomBarIndex(index) {
-    setState(() {
-      currentIndex = index;
-    });
   }
 
   //USER INTERFACE: Home screen
