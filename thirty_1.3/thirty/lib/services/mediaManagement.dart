@@ -1,5 +1,5 @@
-import 'dart:io';
 import 'package:picker/picker.dart';
+import 'dart:io';
 
 import 'package:thirty/services/cloudFirestore.dart';
 
@@ -17,6 +17,10 @@ class MediaManagement {
   //OUTPUT: Calls camera application and then calls cloudFirestore function to save
   //    in the appropriate area
   Future callCamera() async {
-    var image = await Picker.pickImage(source: ImageSource.camera,  maxHeight: 480, maxWidth: 640, imageQuality: 75);
+    var image = await Picker.pickImage(
+        source: ImageSource.camera,
+        maxHeight: 480,
+        maxWidth: 640,
+        imageQuality: 75);
   }
 }
