@@ -15,6 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   RouteNavigation routeNavigation = new RouteNavigation();
   InterfaceStandards interfaceStandards = new InterfaceStandards();
 
+  //Need to just throw this in the onTap => setState((index) => currentIndex = index)
   int currentIndex = 0;
 
   setBottomBarIndex(index) {
@@ -23,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  //USER INTERFACE: Home screen
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
