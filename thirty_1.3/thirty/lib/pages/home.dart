@@ -17,8 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   RouteNavigation routeNavigation = new RouteNavigation();
   InterfaceStandards interfaceStandards = new InterfaceStandards();
   Themes themes = new Themes();
-  PaintStandards paintStandards = new PaintStandards();
-  BNBCustomPainter bnbCustomPainter = new BNBCustomPainter();
+  Paints paints = new Paints();
 
   //VARIALBE INITILIZATION
   String name;
@@ -72,7 +71,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 setBottomBarIndex(1);
               }),
           Container(
-            width: size.width * 0.20,
+            width: themes.getDimension(
+                    context, false, "homeNavigationBarDimension") *
+                0.20,
           ),
           IconButton(
               icon: Icon(
@@ -136,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     context, false, "homeNavigationBarDimension"),
                 child: Stack(
                   children: [
-                    paintStandards.homeNavigationBarPaint(context),
+                    paints.homeNavigationBarPaint(context),
                     showNavigationBarFloatingActionButton(),
                     showNavigationBarIcons(),
                   ],

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:thirty/standards/themes.dart';
 
-class PaintStandards {
+class Paints {
   //CLASS INITIALIZATION
   Themes themes = new Themes();
 
