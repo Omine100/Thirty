@@ -120,6 +120,14 @@ extension CustomColorScheme on ColorScheme {
       case "introInterfaceButtonColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
+
+      case "homeNavigationBarFloatingActionButtonColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFAB58);
+        break;
+      case "homeNavigationBarFloatingActionButtonIconColor":
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+        break;
+
       default:
         return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
         break;
@@ -233,7 +241,13 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? 1 : 1;
         break;
       case "homeNavigationBarDimension":
-        return isHeight ? 0.2 : 1;
+        return isHeight ? 0.1 : 1;
+        break;
+      case "homeNavigationBarFloatingActionButtonDimension":
+        return isHeight ? 0.085 : null;
+        break;
+      case "homeNavigationBarFloatingActionButtonIconDimension":
+        return isHeight ? 0.065 : null;
         break;
     }
     return null;

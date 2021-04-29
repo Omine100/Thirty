@@ -6,7 +6,7 @@ class GradientStandards {
   //CLASS INITIALIZATION
   Themes themes = new Themes();
 
-  //USER INTERFACE:: Text linear gradient
+  //USER INTERFACE: Text linear gradient
   //COLOR INPUTS: 'topLeftColor', 'bottomRightColor'
   //OUTPUT: Linear gradient
   Shader textLinearGradient(

@@ -45,12 +45,25 @@ class _HomeScreenState extends State<HomeScreen> {
   //OUTPUT: Navigation bar floating action button with gesture detector function
   Widget showNavigationBarFloatingActionButton() {
     return new Center(
-      heightFactor: 0.6,
-      child: FloatingActionButton(
-          backgroundColor: Colors.orange,
-          child: Icon(Icons.shopping_basket),
-          onPressed: () {}),
-    );
+        heightFactor: 0.55,
+        child: Container(
+          height: themes.getDimension(
+              context, true, "homeNavigationBarFloatingActionButtonDimension"),
+          width: themes.getDimension(
+              context, true, "homeNavigationBarFloatingActionButtonDimension"),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(360),
+            color: themes.getColor(
+                context, "homeNavigationBarFloatingActionButtonColor"),
+          ),
+          child: Icon(
+            Icons.camera_alt_rounded,
+            color: themes.getColor(
+                context, "homeNavigationBarFloatingActionButtonIconColor"),
+            size: themes.getDimension(context, true,
+                "homeNavigationBarFloatingActionButtonIconDimension"),
+          ),
+        ));
   }
 
   //USER INTERFACE: Show navigation bar icons
@@ -115,13 +128,13 @@ class _HomeScreenState extends State<HomeScreen> {
         height: themes.getDimension(context, true, "homeContainerDimension"),
         child: Stack(
           children: [
-            Positioned(
-              top: themes.getPosition(context, true, "homeHelloTitlePosition"),
-              left:
-                  themes.getPosition(context, false, "homeHelloTitlePosition"),
-              child: interfaceStandards.showHelloTitle(
-                  context, "helloTitle", name),
-            ),
+            // Positioned(
+            //   top: themes.getPosition(context, true, "homeHelloTitlePosition"),
+            //   left:
+            //       themes.getPosition(context, false, "homeHelloTitlePosition"),
+            //   child: interfaceStandards.showHelloTitle(
+            //       context, "helloTitle", name),
+            // ),
             Positioned(
               top: 300,
               child: interfaceStandards.parentCenter(
