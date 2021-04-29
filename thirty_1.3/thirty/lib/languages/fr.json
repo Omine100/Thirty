@@ -13,6 +13,8 @@
     "errorInvalidCredential": "Entrer un email valide.",
     "errorDefault": "Une erreur non définie s'est produite.",
 
+    "helloTitle": "Bonjour ",
+
     "welcomeTitle": "BIENVENUE À TRENTE",
     "welcomeSignInButton": "Vous avez déjà un compte? S'identifier!",
     "welcomeSignUpButton": "S'INSCRIRE",

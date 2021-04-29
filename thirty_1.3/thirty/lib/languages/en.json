@@ -13,6 +13,8 @@
     "errorInvalidCredential": "Please enter a valid email.",
     "errorDefault": "An undefined Error happened.",
 
+    "helloTitle": "Hello, ",
+
     "welcomeTitle": "WELCOME TO THIRTY",
     "welcomeSignInButton": "Already have an account? Sign in!",
     "welcomeSignUpButton": "SIGN UP",

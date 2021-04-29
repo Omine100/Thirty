@@ -39,6 +39,9 @@ extension CustomColorScheme on ColorScheme {
       case "interfaceStandardsTitleTextColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
+      case "interfaceStandardsHelloTitleTextColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
       case "interfaceStandardsProgressIndicatorColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
@@ -127,6 +130,7 @@ extension CustomColorScheme on ColorScheme {
 extension CustomFontSizes on TextTheme {
   //double get 'name' => 'fontSizeValue'
   double get interfaceStandardsTitleFontSize => 30.0;
+  double get interfaceStandardsHelloTitleFontSize => 30.0;
   double get interfaceStandardsTextInputFontSize => 22.0;
   double get interfaceStandardsToastMessageContentFontSize => 18.0;
 
@@ -146,6 +150,7 @@ extension CustomFontSizes on TextTheme {
 extension CustomFontWeights on Typography {
   //FontWeight get 'name' => 'fontWeightValue';
   FontWeight get interfaceStandardsTitleFontWeight => FontWeight.w600;
+  FontWeight get interfaceStandardsHelloTitleFontWeight => FontWeight.w600;
   FontWeight get interfaceStandardsTextInputFontWeight => FontWeight.w300;
   FontWeight get interfaceStandardsToastMessageContentFontWeight =>
       FontWeight.w400;
@@ -223,6 +228,9 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "introInterfaceButtonIconDimension":
         return isHeight ? 0.055 : null;
         break;
+
+      case "homeContainerDimension":
+        return isHeight ? 1 : 1;
     }
     return null;
   }
@@ -287,6 +295,10 @@ extension CustomPositions on MaterialTapTargetSize {
         break;
       case "forgotPasswordSendButtonPosition":
         return isTop ? 0.675 : null;
+        break;
+
+      case "homeHelloTitlePosition":
+        return isTop ? 0.1 : 0.1;
         break;
     }
     return null;

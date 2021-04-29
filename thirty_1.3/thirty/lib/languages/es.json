@@ -13,6 +13,8 @@
     "errorInvalidCredential": "Introduzca un correo electrónico válido.",
     "errorDefault": "Ocurrió un error indefinido.",
 
+    "helloTitle": "Hola, ",
+
     "welcomeTitle": "BIENVENIDA A TREINTA",
     "welcomeSignInButton": "¿Tienes una cuenta? ¡Iniciar sesión!",
     "welcomeSignUpButton": "REGÍSTRATE",
