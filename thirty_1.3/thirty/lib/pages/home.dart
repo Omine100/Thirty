@@ -62,12 +62,19 @@ class _HomeScreenState extends State<HomeScreen> {
               bottom: 0,
               left: 0,
               child: Container(
-                width: size.width,
-                height: 80,
+                height: themes.getDimension(
+                    context, true, "homeNavigationBarDimension"),
+                width: themes.getDimension(
+                    context, false, "homeNavigationBarDimension"),
                 child: Stack(
                   children: [
                     CustomPaint(
-                      size: Size(size.width, 80),
+                      size: Size(
+                        themes.getDimension(
+                            context, false, "homeNavigationBarDimension"),
+                        themes.getDimension(
+                            context, true, "homeNavigationBarDimension"),
+                      ),
                       painter: BNBCustomPainter(),
                     ),
                     Center(

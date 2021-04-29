@@ -231,6 +231,10 @@ extension CustomDimensions on MaterialTapTargetSize {
 
       case "homeContainerDimension":
         return isHeight ? 1 : 1;
+        break;
+      case "homeNavigationBarDimension":
+        return isHeight ? 0.2 : 1;
+        break;
     }
     return null;
   }
