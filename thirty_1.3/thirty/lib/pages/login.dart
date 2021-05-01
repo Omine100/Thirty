@@ -56,10 +56,9 @@ class _LoginScreenState extends State<LoginScreen> {
           await cloudFirestore.signInEmailAndPassword(context, email, password);
         } else {
           await cloudFirestore.signInEmailAndPassword(context, email, password);
-          name = await cloudFirestore.getNameData();
         }
         if (await cloudFirestore.getSignedInStatus() == true) {
-          routeNavigation.routeHome(context, name);
+          routeNavigation.routeHome(context);
         }
         form.reset();
       } catch (e) {

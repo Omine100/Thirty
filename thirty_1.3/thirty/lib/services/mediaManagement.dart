@@ -1,5 +1,4 @@
 import 'package:picker/picker.dart';
-import 'dart:io';
 
 import 'package:thirty/services/cloudFirestore.dart';
 
@@ -22,5 +21,6 @@ class MediaManagement {
         maxHeight: 480,
         maxWidth: 640,
         imageQuality: 75);
+    return image;
   }
 }

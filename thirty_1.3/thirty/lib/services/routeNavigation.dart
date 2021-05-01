@@ -14,10 +14,10 @@ abstract class BaseRoutes {
   Widget routeLogin(BuildContext context, bool isSignIn);
   void routeForgotPassword(BuildContext context);
   void routeIntro(BuildContext context);
-  void routeHome(BuildContext context, String name);
+  void routeHome(BuildContext context);
 
   //METHODS: Route managements
-  Widget navigateLogin(BuildContext context, bool isSignedIn, String name);
+  Widget navigateLogin(BuildContext context, bool isSignedIn);
 }
 
 class RouteNavigation implements BaseRoutes {
@@ -70,31 +70,24 @@ class RouteNavigation implements BaseRoutes {
   }
 
   //MECHANICS: Routes to home screen
-  void routeHome(BuildContext context, String name) {
+  void routeHome(BuildContext context) {
     while (Navigator.canPop(context)) {
       routePop(context);
     }
     routePop(context);
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => HomeScreen(
-                  name: name,
-                )));
+        context, MaterialPageRoute(builder: (context) => HomeScreen()));
   }
 
   //MECHANICS: Navigates to first screen
   //BOOLEAN INPUT: 'isSignedIn' for deciding which screen to display where true
   //            shows HomeScreen and false shows WelcomeScreen
-  //STRING INPUT: 'name' for displaying name
   //OUTPUT: Returns a specific screen depending on the value of 'isSignedIn'
-  Widget navigateLogin(BuildContext context, bool isSignedIn, String name) {
+  Widget navigateLogin(BuildContext context, bool isSignedIn) {
     if (!isSignedIn) {
       return WelcomeScreen();
     } else if (isSignedIn) {
-      return HomeScreen(
-        name: name,
-      );
+      return HomeScreen();
     }
     return Container();
   }

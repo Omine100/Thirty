@@ -78,7 +78,7 @@ class _ThirtyState extends State<Thirty> {
             title: "Thirty",
             debugShowCheckedModeBanner: false,
             debugShowMaterialGrid: false,
-            home: routeNavigation.navigateLogin(context, isSignedIn, "Matthew"),
+            home: routeNavigation.navigateLogin(context, isSignedIn),
             theme: notifier.darkTheme ? dark : light,
             locale: locale,
             supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],
