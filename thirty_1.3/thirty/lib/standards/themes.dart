@@ -40,7 +40,7 @@ extension CustomColorScheme on ColorScheme {
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
       case "interfaceStandardsHelloTitleTextColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFAB58);
         break;
       case "interfaceStandardsProgressIndicatorColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
@@ -56,6 +56,7 @@ extension CustomColorScheme on ColorScheme {
         break;
       case "interfaceStandardsLanguageSelectorColor":
         return isDark ? Color(0xFF102457) : Color(0xFFFFFFFF);
+        break;
       case "interfaceStandardsLanguageSelectorTextColor":
         return isDark ? Color(0xFFFFFFFF) : Color(0xFF000000);
         break;
@@ -121,10 +122,22 @@ extension CustomColorScheme on ColorScheme {
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
 
+      case "homeBackgroundColor":
+        return isDark ? Color(0xFF616161) : Color(0xFFFFFEFE);
+        break;
+      case "homeNavigationBarColor":
+        return isDark ? Color(0xFFFFC48A) : Color(0xFFFFC48A);
+        break;
       case "homeNavigationBarFloatingActionButtonColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFAB58);
         break;
       case "homeNavigationBarFloatingActionButtonIconColor":
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+        break;
+      case "homeNavigationBarSecondaryButtonIconActiveColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        break;
+      case "homeNavigationBarSecondaryButtonIconDeactiveColor":
         return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
         break;
 
@@ -138,7 +151,7 @@ extension CustomColorScheme on ColorScheme {
 extension CustomFontSizes on TextTheme {
   //double get 'name' => 'fontSizeValue'
   double get interfaceStandardsTitleFontSize => 30.0;
-  double get interfaceStandardsHelloTitleFontSize => 30.0;
+  double get interfaceStandardsHelloTitleFontSize => 42.5;
   double get interfaceStandardsTextInputFontSize => 22.0;
   double get interfaceStandardsToastMessageContentFontSize => 18.0;
 
@@ -243,11 +256,17 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "homeNavigationBarDimension":
         return isHeight ? 0.1 : 1;
         break;
+      case "homeNavigationBarContainerDimension":
+        return isHeight ? null : 0.2;
+        break;
       case "homeNavigationBarFloatingActionButtonDimension":
         return isHeight ? 0.085 : null;
         break;
       case "homeNavigationBarFloatingActionButtonIconDimension":
         return isHeight ? 0.065 : null;
+        break;
+      case "homeNavigationBarIconDimension":
+        return isHeight ? 0.040 : null;
         break;
     }
     return null;
@@ -316,7 +335,7 @@ extension CustomPositions on MaterialTapTargetSize {
         break;
 
       case "homeHelloTitlePosition":
-        return isTop ? 0.1 : 0.1;
+        return isTop ? 0.075 : 0.05;
         break;
       case "homeNavigationBarPosition":
         return isTop ? 0 : 0;

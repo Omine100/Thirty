@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/services/routeNavigation.dart';
+import 'package:thirty/services/mediaManagement.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
 import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/paintStandards.dart';
@@ -15,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   //CLASS INITIALIZATION
   CloudFirestore cloudFirestore = new CloudFirestore();
   RouteNavigation routeNavigation = new RouteNavigation();
+  MediaManagement mediaManagement = new MediaManagement();
   InterfaceStandards interfaceStandards = new InterfaceStandards();
   Themes themes = new Themes();
   Paints paints = new Paints();
@@ -56,12 +58,17 @@ class _HomeScreenState extends State<HomeScreen> {
             color: themes.getColor(
                 context, "homeNavigationBarFloatingActionButtonColor"),
           ),
-          child: Icon(
-            Icons.camera_alt_rounded,
-            color: themes.getColor(
-                context, "homeNavigationBarFloatingActionButtonIconColor"),
-            size: themes.getDimension(context, true,
-                "homeNavigationBarFloatingActionButtonIconDimension"),
+          child: GestureDetector(
+            onTap: () {
+              mediaManagement.callCamera();
+            },
+            child: Icon(
+              Icons.camera_alt_rounded,
+              color: themes.getColor(
+                  context, "homeNavigationBarFloatingActionButtonIconColor"),
+              size: themes.getDimension(context, true,
+                  "homeNavigationBarFloatingActionButtonIconDimension"),
+            ),
           ),
         ));
   }
@@ -77,40 +84,63 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           IconButton(
-            icon: Icon(
-              Icons.home,
-              color: currentIndex == 0 ? Colors.orange : Colors.grey.shade400,
-            ),
-            onPressed: () {
-              setCurrentIndex(0);
-            },
-            splashColor: Colors.white,
-          ),
+              padding: EdgeInsets.only(top: 10),
+              icon: Icon(
+                Icons.photo_album_rounded,
+                color: currentIndex == 0
+                    ? themes.getColor(context,
+                        "homeNavigationBarSecondaryButtonIconActiveColor")
+                    : themes.getColor(context,
+                        "homeNavigationBarSecondaryButtonIconDeactiveColor"),
+                size: themes.getDimension(
+                    context, true, "homeNavigationBarIconDimension"),
+              ),
+              onPressed: () {
+                setCurrentIndex(0);
+              }),
           IconButton(
               icon: Icon(
-                Icons.restaurant_menu,
-                color: currentIndex == 1 ? Colors.orange : Colors.grey.shade400,
+                Icons.menu,
+                color: currentIndex == 1
+                    ? themes.getColor(context,
+                        "homeNavigationBarSecondaryButtonIconActiveColor")
+                    : themes.getColor(context,
+                        "homeNavigationBarSecondaryButtonIconDeactiveColor"),
+                size: themes.getDimension(
+                    context, true, "homeNavigationBarIconDimension"),
               ),
               onPressed: () {
                 setCurrentIndex(1);
               }),
           Container(
             width: themes.getDimension(
-                    context, false, "homeNavigationBarDimension") *
-                0.20,
+                context, false, "homeNavigationBarContainerDimension"),
           ),
           IconButton(
               icon: Icon(
                 Icons.bookmark,
-                color: currentIndex == 2 ? Colors.orange : Colors.grey.shade400,
+                color: currentIndex == 2
+                    ? themes.getColor(context,
+                        "homeNavigationBarSecondaryButtonIconActiveColor")
+                    : themes.getColor(context,
+                        "homeNavigationBarSecondaryButtonIconDeactiveColor"),
+                size: themes.getDimension(
+                    context, true, "homeNavigationBarIconDimension"),
               ),
               onPressed: () {
                 setCurrentIndex(2);
               }),
           IconButton(
+              padding: EdgeInsets.only(top: 10),
               icon: Icon(
-                Icons.notifications,
-                color: currentIndex == 3 ? Colors.orange : Colors.grey.shade400,
+                Icons.settings,
+                color: currentIndex == 3
+                    ? themes.getColor(context,
+                        "homeNavigationBarSecondaryButtonIconActiveColor")
+                    : themes.getColor(context,
+                        "homeNavigationBarSecondaryButtonIconDeactiveColor"),
+                size: themes.getDimension(
+                    context, true, "homeNavigationBarIconDimension"),
               ),
               onPressed: () {
                 setCurrentIndex(3);
@@ -125,21 +155,36 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        color: themes.getColor(context, "homeBackgroundColor"),
         height: themes.getDimension(context, true, "homeContainerDimension"),
         child: Stack(
           children: [
-            // Positioned(
-            //   top: themes.getPosition(context, true, "homeHelloTitlePosition"),
-            //   left:
-            //       themes.getPosition(context, false, "homeHelloTitlePosition"),
-            //   child: interfaceStandards.showHelloTitle(
-            //       context, "helloTitle", name),
-            // ),
             Positioned(
-              top: 300,
-              child: interfaceStandards.parentCenter(
-                  context, interfaceStandards.showImagePicker(context)),
+              top: themes.getPosition(context, true, "homeHelloTitlePosition"),
+              left:
+                  themes.getPosition(context, false, "homeHelloTitlePosition"),
+              child: interfaceStandards.showHelloTitle(
+                  context, "helloTitle", name.toString()),
             ),
+            Positioned(
+              top: 100,
+              child: interfaceStandards.parentCenter(
+                  context, interfaceStandards.showThemeSelector(context)),
+            ),
+            Positioned(
+                top: 300,
+                child: GestureDetector(
+                  onTap: () {
+                    cloudFirestore.signOut().then((test) {
+                      routeNavigation.navigateLogin(context, false);
+                    });
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    color: Colors.blue,
+                  ),
+                )),
             Positioned(
               bottom: themes.getPosition(
                   context, true, "homeNavigationBarPosition"),
