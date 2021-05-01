@@ -60,46 +60,44 @@ class _ThirtyState extends State<Thirty> {
   @override
   void didChangeDependencies() {
     getLocale().then((_locale) {
-          setState(() {
-            this.locale = _locale;
-          });
-        });
+      setState(() {
+        this.locale = _locale;
+      });
+    });
     super.didChangeDependencies();
   }
 
   //USER INTERFACE: THIRTY APP
   @override
   Widget build(BuildContext context) {
-    
-      return ChangeNotifierProvider(
-        create: (_) => ThemeNotifier(),
-        child: Consumer<ThemeNotifier>(
-          builder: (context, ThemeNotifier notifier, child) {
-            return MaterialApp(
-              title: "Thirty",
-              debugShowCheckedModeBanner: false,
-              debugShowMaterialGrid: false,
-              home: routeNavigation.navigateLogin(context, isSignedIn),
-              theme: notifier.darkTheme ? dark : light,
-              locale: locale,
-              supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],
-              localizationsDelegates: [
-                AppLocalizations.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-              ],
-              localeResolutionCallback: (locale, supportedLocales) {
-                for (var supportedLocale in supportedLocales) {
-                  if (supportedLocale.languageCode == locale.languageCode) {
-                    return supportedLocale;
-                  }
+    return ChangeNotifierProvider(
+      create: (_) => ThemeNotifier(),
+      child: Consumer<ThemeNotifier>(
+        builder: (context, ThemeNotifier notifier, child) {
+          return MaterialApp(
+            title: "Thirty",
+            debugShowCheckedModeBanner: false,
+            debugShowMaterialGrid: false,
+            home: routeNavigation.navigateLogin(context, isSignedIn, "Matthew"),
+            theme: notifier.darkTheme ? dark : light,
+            locale: locale,
+            supportedLocales: [Locale('en'), Locale('es'), Locale('fr')],
+            localizationsDelegates: [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
+            localeResolutionCallback: (locale, supportedLocales) {
+              for (var supportedLocale in supportedLocales) {
+                if (supportedLocale.languageCode == locale.languageCode) {
+                  return supportedLocale;
                 }
-                return supportedLocales.first;
-              },
-            );
-          },
-        ),
-      );
-    
+              }
+              return supportedLocales.first;
+            },
+          );
+        },
+      ),
+    );
   }
 }

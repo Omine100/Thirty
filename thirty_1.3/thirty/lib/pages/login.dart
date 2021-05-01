@@ -56,9 +56,10 @@ class _LoginScreenState extends State<LoginScreen> {
           await cloudFirestore.signInEmailAndPassword(context, email, password);
         } else {
           await cloudFirestore.signInEmailAndPassword(context, email, password);
+          name = await cloudFirestore.getNameData();
         }
         if (await cloudFirestore.getSignedInStatus() == true) {
-          routeNavigation.routeHome(context);
+          routeNavigation.routeHome(context, name);
         }
         form.reset();
       } catch (e) {
@@ -206,7 +207,8 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Positioned(
               top: themes.getPosition(context, true, "loginBackButtonPosition"),
-              left: themes.getPosition(context, false, "loginBackButtonPosition"),
+              left:
+                  themes.getPosition(context, false, "loginBackButtonPosition"),
               child: interfaceStandards.showBackButton(context),
             ),
             Positioned(

@@ -10,13 +10,14 @@ import 'package:thirty/pages/home.dart';
 abstract class BaseRoutes {
   //METHODS: Routes
   void routePop(BuildContext context);
+  void routeSignOutWelcome(BuildContext context);
   Widget routeLogin(BuildContext context, bool isSignIn);
   void routeForgotPassword(BuildContext context);
   void routeIntro(BuildContext context);
-  void routeHome(BuildContext context);
+  void routeHome(BuildContext context, String name);
 
   //METHODS: Route managements
-  Widget navigateLogin(BuildContext context, bool isSignedIn);
+  Widget navigateLogin(BuildContext context, bool isSignedIn, String name);
 }
 
 class RouteNavigation implements BaseRoutes {
@@ -26,11 +27,21 @@ class RouteNavigation implements BaseRoutes {
     Navigator.pop(context);
   }
 
+  //MECHANICS: Routes to welcome screen after sign out
+  void routeSignOutWelcome(BuildContext context) {
+    while (Navigator.canPop(context)) {
+      routePop(context);
+    }
+    routePop(context);
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => WelcomeScreen()));
+  }
+
   //MECHANICS: Routes to login screen
   //BOOLEAN INPUT: 'isSignIn' allows for setting up the screen for either signIn
   //            or SignUp
-  //OUTPUT: The output is an empty container, but I am just treating this as a 
-  //      null to get rid of some problems with the animationStandards.dart 
+  //OUTPUT: The output is an empty container, but I am just treating this as a
+  //      null to get rid of some problems with the animationStandards.dart
   //      reference method
   Widget routeLogin(BuildContext context, bool isSignIn) {
     Navigator.push(
@@ -39,12 +50,13 @@ class RouteNavigation implements BaseRoutes {
             builder: (context) => LoginScreen(
                   isSignIn: isSignIn,
                 )));
-                return Container();
+    return Container();
   }
 
   //MECHANICS: Routes to forgot password screen
   void routeForgotPassword(BuildContext context) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordScreen()));
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => ForgotPasswordScreen()));
   }
 
   //MECHANICS: Routes to intro screen
@@ -52,25 +64,37 @@ class RouteNavigation implements BaseRoutes {
     while (Navigator.canPop(context)) {
       routePop(context);
     }
+    routePop(context);
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => IntroScreen()));
   }
 
   //MECHANICS: Routes to home screen
-  void routeHome(BuildContext context) {
+  void routeHome(BuildContext context, String name) {
+    while (Navigator.canPop(context)) {
+      routePop(context);
+    }
+    routePop(context);
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        context,
+        MaterialPageRoute(
+            builder: (context) => HomeScreen(
+                  name: name,
+                )));
   }
 
   //MECHANICS: Navigates to first screen
   //BOOLEAN INPUT: 'isSignedIn' for deciding which screen to display where true
   //            shows HomeScreen and false shows WelcomeScreen
+  //STRING INPUT: 'name' for displaying name
   //OUTPUT: Returns a specific screen depending on the value of 'isSignedIn'
-  Widget navigateLogin(BuildContext context, bool isSignedIn) {
+  Widget navigateLogin(BuildContext context, bool isSignedIn, String name) {
     if (!isSignedIn) {
       return WelcomeScreen();
     } else if (isSignedIn) {
-      return HomeScreen();
+      return HomeScreen(
+        name: name,
+      );
     }
     return Container();
   }

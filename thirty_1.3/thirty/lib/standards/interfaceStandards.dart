@@ -230,7 +230,7 @@ class InterfaceStandards {
             ? cloudFirestore.signInGoogle().then((_isNewUser) => isNewUser)
             : cloudFirestore.signInTwitter().then((_isNewUser) => isNewUser);
         if (isNewUser) {
-          routeNavigation.routeHome(context);
+          routeNavigation.routeHome(context, "Matthew");
         } else {
           routeNavigation.routeIntro(context);
         }

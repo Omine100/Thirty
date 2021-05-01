@@ -8,6 +8,11 @@ import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/paintStandards.dart';
 
 class HomeScreen extends StatefulWidget {
+  HomeScreen({Key key, this.name});
+
+  //VARIABLE REFERENCE
+  final String name;
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -176,7 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: GestureDetector(
                   onTap: () {
                     cloudFirestore.signOut().then((test) {
-                      routeNavigation.navigateLogin(context, false);
+                      routeNavigation.routeSignOutWelcome(context);
                     });
                   },
                   child: Container(
