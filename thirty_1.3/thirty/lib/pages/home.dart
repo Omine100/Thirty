@@ -172,10 +172,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   context, "helloTitle", name.toString()),
             ),
             Positioned(
-              top: 100,
-              child: interfaceStandards.parentCenter(
-                  context, interfaceStandards.showThemeSelector(context)),
-            ),
+                top: themes.getPosition(
+                    context, true, "homeThemeSelectorButtonPosition"),
+                right: themes.getPosition(
+                    context, false, "homeThemeSelectorButtonPosition"),
+                child: interfaceStandards.parentCenter(
+                    context, interfaceStandards.showThemeSelector(context))),
             Positioned(
                 top: 300,
                 child: GestureDetector(
@@ -184,10 +186,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       routeNavigation.routeSignOutWelcome(context);
                     });
                   },
-                  child: Container(
-                    height: 50,
-                    width: 50,
-                    color: Colors.blue,
+                  child: interfaceStandards.parentCenter(
+                    context,
+                    Icon(
+                      Icons.exit_to_app_rounded,
+                      size: 65,
+                      color: Colors.orange,
+                    ),
                   ),
                 )),
             Positioned(
