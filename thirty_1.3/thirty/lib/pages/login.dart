@@ -135,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
       context,
       GestureDetector(
         onTap: () {
-          // routeNavigation.RouteForgotPassword(context);
+          routeNavigation.routeForgotPassword(context);
         },
         child: interfaceStandards.parentCenter(
             context,
