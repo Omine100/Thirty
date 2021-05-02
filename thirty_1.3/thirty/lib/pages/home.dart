@@ -8,11 +8,6 @@ import 'package:thirty/standards/themes.dart';
 import 'package:thirty/standards/paintStandards.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key key});
-
-  //VARIABLE REFERENCE
-  // final String name;
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
