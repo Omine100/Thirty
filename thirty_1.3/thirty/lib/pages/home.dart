@@ -29,7 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
   //DESCRIPTION: Calls cloudFirestore function to set 'name' value
   void initState() {
     super.initState();
-    cloudFirestore.getNameData().then((_name) => name = _name);
+    cloudFirestore.getNameData().then((_name) => {
+          setState(() {
+            name = _name;
+          })
+        });
   }
 
   //MECHANICS: Sets current index

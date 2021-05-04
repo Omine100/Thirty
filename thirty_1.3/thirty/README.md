@@ -26,12 +26,3 @@ Key (testing purposes):
 Shortcut commands:
     cmd + d: select the next of the same case and spelling
     cmd + space 'stful': create stateful widget
-
-Notes: Name setup
-main: For home setup
-    - navigateLogin()
-interfaceStandards: After isNewUser for social
-    - routeHome()
-    - routeIntro()
-login: After get signedInStatus
-    - routeHome()

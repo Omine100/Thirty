@@ -232,7 +232,7 @@ class CloudFirestore implements BaseCloud {
   //OUTPUT: Reads from firestore and returns string from snapshot or null
   Future<String> getNameData() async {
     var userId = auth.currentUser.uid;
-    QueryDocumentSnapshot snapshot =
+    DocumentSnapshot snapshot =
         await firestore.collection(userId).doc("name").snapshots().first;
     if (!snapshot.exists) {
       return null;

@@ -169,6 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
       context,
       GestureDetector(
         onTap: () {
+          interfaceStandards.showProgress(context);
           validateAndSubmit();
         },
         child: Container(
@@ -204,12 +205,6 @@ class _LoginScreenState extends State<LoginScreen> {
             BoxDecoration(gradient: gradients.loginScreenGradient(context)),
         child: Stack(
           children: [
-            Positioned(
-              top: themes.getPosition(context, true, "loginBackButtonPosition"),
-              left:
-                  themes.getPosition(context, false, "loginBackButtonPosition"),
-              child: interfaceStandards.showBackButton(context),
-            ),
             Positioned(
               top: themes.getPosition(context, true, "loginTitlePosition"),
               child: isSignIn

@@ -17,6 +17,6 @@ class AnimationStandards {
         curve: Curves.easeInOutCirc,
         type: PageTransitionType.scale,
         alignment: Alignment.bottomCenter,
-        child: routeNavigation.routeLogin(context, isSignIn)); //Need to change to RouteLogin
+        child: routeNavigation.routeLogin(context, isSignIn));
   }
 }
