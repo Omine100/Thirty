@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:picker/picker.dart';
+import 'dart:io';
 
 import 'package:thirty/services/cloudFirestore.dart';
 
@@ -10,6 +12,19 @@ import 'package:thirty/services/cloudFirestore.dart';
 class MediaManagement {
   //CLASS INTIALIZATION
   CloudFirestore cloudFirestore = new CloudFirestore();
+  Picker picker = new Picker();
+
+  //Mechanics: Get image
+  Future getImage(State state) async {
+    final pickedFile = await Picker.pickImage(
+        source: ImageSource.camera,
+        maxHeight: 480,
+        maxWidth: 640,
+        imageQuality: 100);
+    state.setState(() {
+      File _image = File(pickedFile.path);
+    });
+  }
 
   //MECHANICS: Calls camera function
   //DESCRIPTION: Sends function to the UI in interfaceStandards.dart

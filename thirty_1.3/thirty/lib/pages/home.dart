@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           child: GestureDetector(
             onTap: () {
-              mediaManagement.callCamera();
+              mediaManagement.getImage(this);
             },
             child: Icon(
               Icons.camera_alt_rounded,

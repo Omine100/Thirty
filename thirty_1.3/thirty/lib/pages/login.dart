@@ -74,6 +74,8 @@ class _LoginScreenState extends State<LoginScreen> {
   //DESCRIPTION: Shows a widget and allows for gesture input to change the value
   //          of 'isVisible' to it's complement
   //OUTPUT: Widget and change of state to change 'isVisible' value
+  //NOTE: Maybe can move this to interface standards if we can figure out how to
+  //    do the setState from a non-stated class (maybe try 'this')
   IconButton showVisibilityButton() {
     return IconButton(
       icon: Icon(
