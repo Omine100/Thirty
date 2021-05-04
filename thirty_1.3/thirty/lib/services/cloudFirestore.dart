@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 import 'dart:async';
+import 'dart:io';
 
 import 'package:thirty/standards/methodStandards.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
@@ -26,10 +27,10 @@ abstract class BaseCloud {
 
   //METHODS: Data management
   Future<void> createNameData(String name);
-  Future<void> createGoalData(String goal);
+  Future<void> createImageData(File file);
   Future<String> getNameData();
-  Future<Stream<QuerySnapshot>> getGoalDataStream();
-  Future<void> deleteGoalData(DocumentSnapshot doc);
+  Future<Widget> getImageData(String imageURL);
+  Future<void> deleteImageData(DocumentSnapshot doc);
   Future<void> deleteUserData();
   Future<void> deleteUser();
 }
@@ -209,11 +210,11 @@ class CloudFirestore implements BaseCloud {
     await firestore.collection(userId).doc("name").set({"name": name});
   }
 
-  //MECHANICS: Creates goal data
-  //DESCRIPTION: Create goal but save it under a timeStamp from getCurrentDate()
-  //STRING INPUT: 'goal' for having a value to save
+  //MECHANICS: Creates image data
+  //DESCRIPTION: Create image but save it under a timeStamp from getCurrentDate()
+  //FILE INPUT: 'file' for having a value to save
   //DATA PATH: userId -> goals -> final -> date['goal', 'date']
-  Future<void> createGoalData(String goal) async {
+  Future<void> createImageData(File file) async {
     String date = methodStandards.getCurrentDate();
     var userId = auth.currentUser.uid;
     //May change document indicator to "favorite" or something like that

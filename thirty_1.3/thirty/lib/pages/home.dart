@@ -154,6 +154,30 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  //MECHANICS: Create image list
+  //DESCRIPTION: Reads in data from cloudFirestore and populates a list of images
+  //          that can be displayed or manipulated later (The images may be in a
+  //          model that has the date that they were taken as well)
+  //OUTPUT: List of images to be displayed
+  List<Image> createImageList() {}
+
+  //USER INTERFACE: Show image list
+  //DESCRIPTION: Takes in a list of images and displays each one in the a card
+  //          format for the user to see and interact with - when they tap on the
+  //          image, it should display it in fullscreen. If the date for the image
+  //          is in a new month, then we have a card saying the next month (ex:
+  //          "March" - maybe displayed sideways)
+  //OUTPUT: Cards with images and text for new month
+  Widget showImageList() {
+    return Container(
+      height:
+          themes.getDimension(context, true, "homeImageListContainerDimension"),
+      width: themes.getDimension(
+          context, false, "homeImageListContainerDimension"),
+      child: null,
+    );
+  }
+
   //USER INTERFACE: Home screen
   @override
   Widget build(BuildContext context) {
@@ -178,8 +202,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: interfaceStandards.parentCenter(
                     context, interfaceStandards.showThemeSelector(context))),
             Positioned(
-              top: 10,
-              child: Text("Test"),
+              top: 100,
+              child: interfaceStandards.parentCenter(context, showImageList()),
             ),
             Positioned(
                 top: themes.getPosition(
