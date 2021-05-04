@@ -337,6 +337,9 @@ extension CustomPositions on MaterialTapTargetSize {
       case "homeHelloTitlePosition":
         return isTop ? 0.075 : 0.05;
         break;
+      case "homeSignOutButtonPosition":
+        return isTop ? 0.065 : -0.375;
+        break;
       case "homeThemeSelectorButtonPosition":
         return isTop ? 0.15 : 0.38;
         break;

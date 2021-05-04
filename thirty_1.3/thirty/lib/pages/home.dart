@@ -178,7 +178,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: interfaceStandards.parentCenter(
                     context, interfaceStandards.showThemeSelector(context))),
             Positioned(
-                top: 300,
+              top: 10,
+              child: Text("Test"),
+            ),
+            Positioned(
+                top: themes.getPosition(
+                    context, true, "homeSignOutButtonPosition"),
+                right: themes.getPosition(
+                    context, false, "homeSignOutButtonPosition"),
                 child: GestureDetector(
                   onTap: () {
                     cloudFirestore.signOut().then((test) {
