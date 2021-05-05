@@ -44,6 +44,7 @@ class CloudFirestore implements BaseCloud {
   //VARIABLE INITIALIZATION
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  FirebaseStorage firebase = FirebaseStorage.instance;
 
   //MECHANICS: Signs in user with an email and password
   //DESCRIPTION: Signs in and then calls interfaceStandards to display a toast
@@ -222,13 +223,16 @@ class CloudFirestore implements BaseCloud {
   Future<void> createImageData(File image) async {
     //MECHANICS: FIREBASE DATA CREATION
     String imageURL;
-    Reference reference =
-        FirebaseStorage.instance.ref().child("/$image(image.path)");
-    UploadTask uploadTask = reference.putFile(image);
-    await uploadTask.whenComplete(() => {print("UPLOADED")});
-    await reference.getDownloadURL().then((_imageURL) => {
-          imageURL = _imageURL,
-        });
+    try {
+      Reference reference = firebase.ref().child("/$image(image.path)");
+      UploadTask uploadTask = reference.putFile(image);
+      await uploadTask.whenComplete(() => {print("UPLOADED")});
+      await reference.getDownloadURL().then((_imageURL) => {
+            imageURL = _imageURL,
+          });
+    } catch (e) {
+      print(e);
+    }
 
     //MECHANICS: CLOUD FIRESTORE DATA CREATION
     String date = methodStandards.getCurrentDate();
