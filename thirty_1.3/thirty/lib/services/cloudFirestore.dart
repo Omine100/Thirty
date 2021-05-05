@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_twitter_login/flutter_twitter_login.dart';
@@ -30,7 +32,7 @@ abstract class BaseCloud {
   Future<void> createImageData(File file);
   Future<String> getNameData();
   Future<Widget> getImageData(String imageURL);
-  Future<void> deleteImageData(DocumentSnapshot doc);
+  Future<void> deleteImageData(String imageURL);
   Future<void> deleteUserData();
   Future<void> deleteUser();
 }
@@ -254,11 +256,11 @@ class CloudFirestore implements BaseCloud {
     return goalDataStream;
   }
 
-  //MECHANICS: Deletes one goal
-  //DOCUMENT SNAPSHOT INPUT: 'doc' for referencing which document to delete
-  //DESCRIPTION: Goes to the specific collection, takes the documentId and use
-  //          an authentication created function to delete that specific one
-  Future<void> deleteGoalData(DocumentSnapshot doc) async {
+  //MECHANICS: Deletes one image
+  //STRING INPUT: 'imageURL' for referencing which image to delete
+  //DESCRIPTION: Goes to the specific image, takes the URL and uses an
+  //          authentication created function to delete that specific one
+  Future<void> deleteImageData(String imageURL) async {
     var userId = auth.currentUser.uid;
     await firestore
         .collection(userId)
