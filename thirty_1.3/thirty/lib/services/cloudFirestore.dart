@@ -29,7 +29,7 @@ abstract class BaseCloud {
 
   //METHODS: Data management
   Future<void> createNameData(String name);
-  Future<void> createImageData(File file);
+  Future<void> createImageData(File image);
   Future<String> getNameData();
   Future<Widget> getImageData(String imageURL);
   Future<void> deleteImageData(DocumentSnapshot doc, String imageURL);
@@ -216,15 +216,15 @@ class CloudFirestore implements BaseCloud {
   //DESCRIPTION: Create image but save it under a timeStamp from getCurrentDate().
   //          We actually create data in two places, to store the image and then
   //          the imageURL and the date data
-  //FILE INPUT: 'file' for having a value to save
+  //FILE INPUT: 'image' for having a value to save
   //FIREBASE DATA PATH: imageURL
   //FIRESTORE DATA PATH: userId -> images -> complete -> date[imageURL, 'date']
-  Future<void> createImageData(File file) async {
+  Future<void> createImageData(File image) async {
     //MECHANICS: FIREBASE DATA CREATION
     String imageURL;
     Reference reference =
-        FirebaseStorage.instance.ref().child("/$file(file.path)");
-    UploadTask uploadTask = reference.putFile(file);
+        FirebaseStorage.instance.ref().child("/$image(image.path)");
+    UploadTask uploadTask = reference.putFile(image);
     await uploadTask.whenComplete(() => {print("UPLOADED")});
     await reference.getDownloadURL().then((_imageURL) => {
           imageURL = _imageURL,

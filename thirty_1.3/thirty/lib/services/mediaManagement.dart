@@ -22,7 +22,8 @@ class MediaManagement {
         maxWidth: 640,
         imageQuality: 100);
     state.setState(() {
-      File _image = File(pickedFile.path);
+      File image = File(pickedFile.path);
+      cloudFirestore.createImageData(image);
     });
   }
 
