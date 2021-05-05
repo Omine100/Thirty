@@ -32,7 +32,7 @@ abstract class BaseCloud {
   Future<void> createImageData(File file);
   Future<String> getNameData();
   Future<Widget> getImageData(String imageURL);
-  Future<void> deleteImageData(String imageURL);
+  Future<void> deleteImageData(DocumentSnapshot doc, String imageURL);
   Future<void> deleteUserData();
   Future<void> deleteUser();
 }
@@ -213,21 +213,34 @@ class CloudFirestore implements BaseCloud {
   }
 
   //MECHANICS: Creates image data
-  //DESCRIPTION: Create image but save it under a timeStamp from getCurrentDate()
+  //DESCRIPTION: Create image but save it under a timeStamp from getCurrentDate().
+  //          We actually create data in two places, to store the image and then
+  //          the imageURL and the date data
   //FILE INPUT: 'file' for having a value to save
-  //DATA PATH: userId -> goals -> final -> date['goal', 'date']
+  //FIREBASE DATA PATH: imageURL
+  //FIRESTORE DATA PATH: userId -> images -> complete -> date[imageURL, 'date']
   Future<void> createImageData(File file) async {
+    //MECHANICS: FIREBASE DATA CREATION
+    String imageURL;
+    Reference reference =
+        FirebaseStorage.instance.ref().child("/$file(file.path)");
+    UploadTask uploadTask = reference.putFile(file);
+    await uploadTask.whenComplete(() => {print("UPLOADED")});
+    await reference.getDownloadURL().then((_imageURL) => {
+          imageURL = _imageURL,
+        });
+
+    //MECHANICS: CLOUD FIRESTORE DATA CREATION
     String date = methodStandards.getCurrentDate();
     var userId = auth.currentUser.uid;
-    //May change document indicator to "favorite" or something like that
     await firestore
         .collection(userId)
-        .doc("goals")
-        .collection("final")
+        .doc("images")
+        .collection("complete")
         .doc(date)
         .set({
-      "goal": goal,
-      "startDate": date,
+      "imageURL": imageURL,
+      "date": date,
     });
   }
 
@@ -244,28 +257,28 @@ class CloudFirestore implements BaseCloud {
     }
   }
 
-  //MECHANICS: Returns goal data stream
-  //OUTPUT: Reads from firestore and returns snapshots
-  Future<Stream<QuerySnapshot>> getGoalDataStream() async {
-    var userId = auth.currentUser.uid;
-    Stream<QuerySnapshot> goalDataStream = firestore
-        .collection(userId)
-        .doc("goals")
-        .collection("final")
-        .snapshots();
-    return goalDataStream;
+  //MECHANICS: Returns image data
+  //OUTPUT: Reads from firebase and returns image widget
+  Future<Widget> getImageData(String imageURL) async {
+    return Image.network(imageURL);
   }
 
   //MECHANICS: Deletes one image
+  //DOCUMENTSNAPSHOT INPUT: 'doc' For deleting from firestore
   //STRING INPUT: 'imageURL' for referencing which image to delete
   //DESCRIPTION: Goes to the specific image, takes the URL and uses an
   //          authentication created function to delete that specific one
-  Future<void> deleteImageData(String imageURL) async {
-    var userId = auth.currentUser.uid;
+  Future<void> deleteImageData(DocumentSnapshot doc, String imageURL) async {
+    //MECHANICS: Firebase deletion
+    Reference reference = FirebaseStorage.instance.refFromURL(imageURL);
+    reference.delete();
+
+    //MECHANICS: Firestore deletion
+    var userID = auth.currentUser.uid;
     await firestore
-        .collection(userId)
-        .doc("goals")
-        .collection("final")
+        .collection(userID)
+        .doc("images")
+        .collection("complete")
         .doc(doc.id)
         .delete();
   }
