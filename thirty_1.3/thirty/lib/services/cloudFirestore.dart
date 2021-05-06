@@ -224,10 +224,12 @@ class CloudFirestore implements BaseCloud {
     //MECHANICS: FIREBASE DATA CREATION
     String imageURL;
     try {
-      Reference reference = firebase.ref().child("/$image(image.path)");
+      Reference reference = firebase.ref().child("images/$image(image.path)");
       UploadTask uploadTask = reference.putFile(image);
-      await uploadTask.whenComplete(() => {print("UPLOADED")});
-      await reference.getDownloadURL().then((_imageURL) => {
+      TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() {
+        print("UPLOADED");
+      });
+      taskSnapshot.ref.getDownloadURL().then((_imageURL) => {
             imageURL = _imageURL,
           });
     } catch (e) {
