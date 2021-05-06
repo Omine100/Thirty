@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:picker/picker.dart';
+import 'package:path/path.dart' as path;
 import 'dart:io';
 
 import 'package:thirty/services/cloudFirestore.dart';
@@ -14,29 +14,26 @@ class MediaManagement {
   CloudFirestore cloudFirestore = new CloudFirestore();
   Picker picker = new Picker();
 
-  //Mechanics: Get image
-  Future getImage(State state) async {
-    final pickedFile = await Picker.pickImage(
-        source: ImageSource.camera,
+  //MECHANICS: Gets image from camera or from gallery
+  //DESCRIPTION: We can have a button on the home.dart page come up with a dialog
+  //          to choice between 'gallery' or 'camera' and then send it over here.
+  //          Once the image has been chosen, we call a function to upload it to
+  //          the FirebaseStorage
+  //BOOLEAN INPUT: 'isCamera' if true then load camera, else load gallery
+  //OUTPUT: Calls camera or gallery application and then calls cloudFirestore 
+  //    function to save in the appropriate area
+  Future getImage(bool isCamera) async {
+    try {
+      final pickedFile = await Picker.pickImage(
+        source: isCamera ? ImageSource.camera : ImageSource.gallery,
         maxHeight: 480,
         maxWidth: 640,
         imageQuality: 100);
-    state.setState(() {
-      File image = File(pickedFile.path);
-      cloudFirestore.createImageData(image);
-    });
-  }
-
-  //MECHANICS: Calls camera function
-  //DESCRIPTION: Sends function to the UI in interfaceStandards.dart
-  //OUTPUT: Calls camera application and then calls cloudFirestore function to save
-  //    in the appropriate area
-  Future callCamera() async {
-    var image = await Picker.pickImage(
-        source: ImageSource.camera,
-        maxHeight: 480,
-        maxWidth: 640,
-        imageQuality: 75);
-    return image;
+      final String fileName = path.basename(pickedFile.path);
+      File imageFile = File(pickedFile.path);
+      cloudFirestore.createImageData(fileName, imageFile);
+    } catch (e) {
+      print(e);
+    }
   }
 }

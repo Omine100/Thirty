@@ -94,26 +94,6 @@ class InterfaceStandards {
     );
   }
 
-  //USER INTERFACE: Show image picker
-  //DESCRIPTION: Shows an image picker where you can either take a new photo
-  //          or get one from your library, calls mediaManagement functions
-  //          for all of this
-  //OUTPUT: Image saved in correct spot
-  Widget showImagePicker(BuildContext context) {
-    //USER INTERFACE: Show iamge picker
-    return new GestureDetector(
-      onTap: () {
-        mediaManagement.callCamera();
-      },
-      child: Icon(
-        Icons.camera_alt_outlined,
-        color: themes.getColor(context, "interfaceStandardsCameraButtonColor"),
-        size: themes.getDimension(
-            context, true, "interfaceStandardsCameraButtonDimension"),
-      ),
-    );
-  }
-
   //USER INTERFACE: Show progress
   //DESCRIPTION: Shows a typical progress wheel
   //OUTPUT: A progress wheel centered
@@ -264,6 +244,7 @@ class InterfaceStandards {
   Widget showTextField(BuildContext context, int keyboardType, bool isVisible,
       String key, Function onSaved, IconButton iconButton) {
     return TextFormField(
+      autofocus: false,
       keyboardType:
           keyboardType == 0 ? TextInputType.emailAddress : TextInputType.text,
       style: TextStyle(

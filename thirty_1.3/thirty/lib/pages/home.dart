@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           child: GestureDetector(
             onTap: () {
-              mediaManagement.getImage(this);
+              mediaManagement.getImage(true);
             },
             child: Icon(
               Icons.camera_alt_rounded,
@@ -159,7 +159,9 @@ class _HomeScreenState extends State<HomeScreen> {
   //          that can be displayed or manipulated later (The images may be in a
   //          model that has the date that they were taken as well)
   //OUTPUT: List of images to be displayed
-  List<Image> createImageList() {}
+  List<Image> createImageList() {
+    return null;
+  }
 
   //USER INTERFACE: Show image list
   //DESCRIPTION: Takes in a list of images and displays each one in the a card

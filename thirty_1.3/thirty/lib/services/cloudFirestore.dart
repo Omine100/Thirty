@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -29,7 +28,7 @@ abstract class BaseCloud {
 
   //METHODS: Data management
   Future<void> createNameData(String name);
-  Future<void> createImageData(File image);
+  Future<void> createImageData(String fileName, File image);
   Future<String> getNameData();
   Future<Widget> getImageData(String imageURL);
   Future<void> deleteImageData(DocumentSnapshot doc, String imageURL);
@@ -44,7 +43,7 @@ class CloudFirestore implements BaseCloud {
   //VARIABLE INITIALIZATION
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  FirebaseStorage firebase = FirebaseStorage.instance;
+  FirebaseStorage storage = FirebaseStorage.instance;
 
   //MECHANICS: Signs in user with an email and password
   //DESCRIPTION: Signs in and then calls interfaceStandards to display a toast
@@ -217,37 +216,21 @@ class CloudFirestore implements BaseCloud {
   //DESCRIPTION: Create image but save it under a timeStamp from getCurrentDate().
   //          We actually create data in two places, to store the image and then
   //          the imageURL and the date data
-  //FILE INPUT: 'image' for having a value to save
+  //STRING INPUT: 'fileName' for having a value to reference
+  //FILE INPUT: 'imageFile' for having a value to save
   //FIREBASE DATA PATH: imageURL
-  //FIRESTORE DATA PATH: userId -> images -> complete -> date[imageURL, 'date']
-  Future<void> createImageData(File image) async {
-    //MECHANICS: FIREBASE DATA CREATION
-    String imageURL;
+  Future<void> createImageData(String fileName, File imageFile) async {
+    String date = methodStandards.getCurrentDate();
     try {
-      Reference reference = firebase.ref().child("images/$image(image.path)");
-      UploadTask uploadTask = reference.putFile(image);
-      TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() {
-        print("UPLOADED");
-      });
-      taskSnapshot.ref.getDownloadURL().then((_imageURL) => {
-            imageURL = _imageURL,
-          });
-    } catch (e) {
+      await storage.ref(fileName).putFile(
+        imageFile,
+        SettableMetadata(customMetadata: {
+          'date': date
+        })
+      );
+    } on FirebaseException catch (e) {
       print(e);
     }
-
-    //MECHANICS: CLOUD FIRESTORE DATA CREATION
-    String date = methodStandards.getCurrentDate();
-    var userId = auth.currentUser.uid;
-    await firestore
-        .collection(userId)
-        .doc("images")
-        .collection("complete")
-        .doc(date)
-        .set({
-      "imageURL": imageURL,
-      "date": date,
-    });
   }
 
   //MECHANICS: Returns name data
