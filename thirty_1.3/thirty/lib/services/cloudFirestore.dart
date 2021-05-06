@@ -219,7 +219,9 @@ class CloudFirestore implements BaseCloud {
   //STRING INPUT: 'fileName' for having a value to reference
   //FILE INPUT: 'imageFile' for having a value to save
   //FIREBASE DATA PATH: imageURL
+  //FIRESTORE DATA PATH: userId -> images -> complete -> date[imageURL]
   Future<void> createImageData(String fileName, File imageFile) async {
+    //MECHANICS: Firebase creation
     String date = methodStandards.getCurrentDate();
     try {
       await storage.ref(fileName).putFile(
@@ -231,6 +233,11 @@ class CloudFirestore implements BaseCloud {
     } on FirebaseException catch (e) {
       print(e);
     }
+
+    //MECHANICS: Firestore creation
+    var userId = auth.currentUser.uid;
+    await firestore.collection(userId).doc("images").collection("complete")
+      .doc(date).set({"imageURL": fileName});
   }
 
   //MECHANICS: Returns name data
