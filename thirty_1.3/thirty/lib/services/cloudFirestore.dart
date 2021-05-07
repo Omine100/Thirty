@@ -29,8 +29,10 @@ abstract class BaseCloud {
   //METHODS: Data management
   Future<void> createNameData(String name);
   Future<void> createImageData(String fileName, File image);
+  Future<void> createImageURLData(String date, String imageURL);
   Future<String> getNameData();
   Future<Widget> getImageData(String imageURL);
+  Future<List<Image>> getImageStreamData();
   Future<void> deleteImageData(DocumentSnapshot doc, String imageURL);
   Future<void> deleteUserData();
   Future<void> deleteUser();
@@ -221,7 +223,6 @@ class CloudFirestore implements BaseCloud {
   //FIREBASE DATA PATH: imageURL
   //FIRESTORE DATA PATH: userId -> images -> complete -> date[imageURL]
   Future<void> createImageData(String fileName, File imageFile) async {
-    //MECHANICS: Firebase creation
     String date = methodStandards.getCurrentDate();
     try {
       await storage.ref(fileName).putFile(
@@ -230,14 +231,24 @@ class CloudFirestore implements BaseCloud {
           'date': date
         })
       );
+      storage.ref(fileName).getDownloadURL().then((_imageURL) => {
+        createImageURLData(date, _imageURL)
+      });
     } on FirebaseException catch (e) {
       print(e);
     }
+  }
 
-    //MECHANICS: Firestore creation
+  //MECHANICS: Creates imageURL data
+  //DESCRIPTION: Puts the imageURL in the firestore databases, this allows for us
+  //          to access specific imageURLs later on down the line, instead of
+  //          loading every single one
+  //STRING INPUT: 'date' & 'imageURL' for having values to save
+  //FIRESTORE DATA PATH: userId -> images -> complete -> date[imageURL]
+  Future<void> createImageURLData(String date, String imageURL) async {
     var userId = auth.currentUser.uid;
-    await firestore.collection(userId).doc("images").collection("complete")
-      .doc(date).set({"imageURL": fileName});
+    await firestore.collection(userId).doc("images").collection("complete").
+      doc(date).set({"imageURL": imageURL});
   }
 
   //MECHANICS: Returns name data
@@ -257,6 +268,10 @@ class CloudFirestore implements BaseCloud {
   //OUTPUT: Reads from firebase and returns image widget
   Future<Widget> getImageData(String imageURL) async {
     return Image.network(imageURL);
+  }
+
+  Future<List<Image>> getImageStreamData() async {
+    return null;
   }
 
   //MECHANICS: Deletes one image

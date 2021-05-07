@@ -176,7 +176,9 @@ class _HomeScreenState extends State<HomeScreen> {
           themes.getDimension(context, true, "homeImageListContainerDimension"),
       width: themes.getDimension(
           context, false, "homeImageListContainerDimension"),
-      child: null,
+      child: Image(
+        image: cloudFirestore.getImageData(),
+      ),
     );
   }
 
