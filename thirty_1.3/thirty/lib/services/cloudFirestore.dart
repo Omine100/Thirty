@@ -20,8 +20,8 @@ abstract class BaseCloud {
   Future<void> signInGoogle();
   Future<void> signInTwitter();
   Future<void> signOut();
-  Future<String> getCurrentUserId();
   Future<bool> getSignedInStatus();
+  Future<String> getCurrentUserId();
   Future<void> sendEmailVerification();
   Future<void> sendPasswordReset(String email);
   Future<bool> getEmailVerified();
@@ -31,8 +31,8 @@ abstract class BaseCloud {
   Future<void> createImageData(String fileName, File image);
   Future<void> createImageURLData(String date, String imageURL);
   Future<String> getNameData();
-  Future<Widget> getImageData(String imageURL);
-  Future<List<Image>> getImageStreamData();
+  Image getImageData(String imageURL);
+  Future<List<String>> getImageURLStreamData(String userId);
   Future<void> deleteImageData(DocumentSnapshot doc, String imageURL);
   Future<void> deleteUserData();
   Future<void> deleteUser();
@@ -166,12 +166,6 @@ class CloudFirestore implements BaseCloud {
     return auth.signOut();
   }
 
-  //MECHANICS: Returns current user Id
-  Future<String> getCurrentUserId() async {
-    var userId = auth.currentUser.uid;
-    return userId;
-  }
-
   //MECHANICS: Returns signed in status
   //DESCRIPTION: If there is someone signed in, then there should always be an
   //          userId to call, so if there is not, no one is signed in
@@ -181,6 +175,12 @@ class CloudFirestore implements BaseCloud {
       return false;
     }
     return true;
+  }
+
+  //MECHANICS: Returns current user Id
+  Future<String> getCurrentUserId() async {
+    var userId = auth.currentUser.uid;
+    return userId;
   }
 
   //MECHANICS: Sends an email verification email
@@ -266,12 +266,25 @@ class CloudFirestore implements BaseCloud {
 
   //MECHANICS: Returns image data
   //OUTPUT: Reads from firebase and returns image widget
-  Future<Widget> getImageData(String imageURL) async {
+  Image getImageData(String imageURL) {
     return Image.network(imageURL);
   }
 
-  Future<List<Image>> getImageStreamData() async {
-    return null;
+  //MECHANICS: Returns imageURL stream data
+  //DESCRIPTION: Looks at the cloudFirestore data for a specific user and
+  //          then gets all of the imageURLs for that person
+  //STRING INPUT: 'userId' for referencing a specific user, we want to have
+  //          this as an input so that we can access more than one user
+  //OUTPUT: List of strings that are imageURLs
+  Future<List<String>> getImageURLStreamData(String userId) async {
+    final QuerySnapshot querySnapshot = await firestore.collection(userId).doc("images").
+      collection("complete").get();
+    final List<DocumentSnapshot> documentSnapshots = querySnapshot.docs;
+    List<String> imageURLStream;
+    documentSnapshots.forEach((snapshot) {
+      imageURLStream.add(snapshot.get("imageURL"));
+    });
+    return imageURLStream;
   }
 
   //MECHANICS: Deletes one image

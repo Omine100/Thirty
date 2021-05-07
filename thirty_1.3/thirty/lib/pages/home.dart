@@ -180,6 +180,13 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  //USER INTERFACE: Show month card
+  //DESCRIPTION: Takes in the month and year and creates a card for it
+  //OUTPUT: Card with a month and year (sideways)
+  Widget showMonthCard(String month, String year) {
+    return null;
+  }
+
   //USER INTERFACE: Show image card
   //DESCRIPTION: Takes in the information for one image from the list and creates
   //          a card for it to display the information. When you tap on it, it
@@ -202,7 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
           borderRadius: BorderRadius.circular(10),
           color: Colors.blue,
         ),
-        child: Image.network(imageURL)
+        child: cloudFirestore.getImageData(imageURL),
       ),
     );
   }
