@@ -159,6 +159,9 @@ class _HomeScreenState extends State<HomeScreen> {
   //          that can be displayed or manipulated later (The images may be in a
   //          model that has the date that they were taken as well)
   //OUTPUT: List of images to be displayed
+  //NOTE: We may not need this if we are just accessing the imageURLStream from
+  //    cloudFirestore, we may just be able to setup the showImageList with a
+  //    stream builder and throw that in there
   List<Image> createImageList() {
     return null;
   }
