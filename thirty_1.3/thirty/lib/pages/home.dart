@@ -176,8 +176,33 @@ class _HomeScreenState extends State<HomeScreen> {
           themes.getDimension(context, true, "homeImageListContainerDimension"),
       width: themes.getDimension(
           context, false, "homeImageListContainerDimension"),
-      child: Image(
-        image: cloudFirestore.getImageData(),
+      child: Container()
+    );
+  }
+
+  //USER INTERFACE: Show image card
+  //DESCRIPTION: Takes in the information for one image from the list and creates
+  //          a card for it to display the information. When you tap on it, it
+  //          should display full screen, long press should delete it
+  //STRING INPUT: 'imageURL' for having something to reference
+  //OUTPUT: Card with image
+  Widget showImageCard(String imageURL) {
+    return GestureDetector(
+      onTap: () {
+        //Make the image big
+      },
+      onLongPress: () {
+        // cloudFirestore.deleteImageData(doc, imageURL)
+        setState(() {});
+      },
+      child: Container(
+        height: 100,
+        width: 50,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.blue,
+        ),
+        child: Image.network(imageURL)
       ),
     );
   }
