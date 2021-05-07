@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           child: GestureDetector(
             onTap: () {
-              mediaManagement.getImage(true);
+              mediaManagement.getImage(true, this);
             },
             child: Icon(
               Icons.camera_alt_rounded,
@@ -154,18 +154,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  //MECHANICS: Create image list
-  //DESCRIPTION: Reads in data from cloudFirestore and populates a list of images
-  //          that can be displayed or manipulated later (The images may be in a
-  //          model that has the date that they were taken as well)
-  //OUTPUT: List of images to be displayed
-  //NOTE: We may not need this if we are just accessing the imageURLStream from
-  //    cloudFirestore, we may just be able to setup the showImageList with a
-  //    stream builder and throw that in there
-  List<Image> createImageList() {
-    return null;
-  }
-
   //USER INTERFACE: Show image list
   //DESCRIPTION: Takes in a list of images and displays each one in the a card
   //          format for the user to see and interact with - when they tap on the
@@ -179,7 +167,26 @@ class _HomeScreenState extends State<HomeScreen> {
           themes.getDimension(context, true, "homeImageListContainerDimension"),
       width: themes.getDimension(
           context, false, "homeImageListContainerDimension"),
-      child: Container()
+      child: FutureBuilder(
+        future: cloudFirestore.getImageURLStreamData(),
+        builder: (BuildContext context, snapshot) {
+          List<String> imageURLStream = snapshot.data ?? [];
+          if (snapshot.hasData) {
+            interfaceStandards.showProgress(context);
+          } else {
+            //Container with camera later on
+            return Container();
+          }
+          return ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: imageURLStream.length,
+            itemBuilder: (context, index) {
+              String imageURL = imageURLStream[index];
+              return showImageCard(imageURL);
+            },
+          );
+        },
+      ),
     );
   }
 
@@ -197,23 +204,16 @@ class _HomeScreenState extends State<HomeScreen> {
   //STRING INPUT: 'imageURL' for having something to reference
   //OUTPUT: Card with image
   Widget showImageCard(String imageURL) {
-    return GestureDetector(
-      onTap: () {
-        //Make the image big
-      },
-      onLongPress: () {
-        // cloudFirestore.deleteImageData(doc, imageURL)
-        setState(() {});
-      },
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: 100,
-        width: 50,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.blue,
+        width: 200,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.grey,
+          ),
+          child: cloudFirestore.getImageData(imageURL),
         ),
-        child: cloudFirestore.getImageData(imageURL),
-      ),
     );
   }
 
@@ -241,7 +241,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: interfaceStandards.parentCenter(
                     context, interfaceStandards.showThemeSelector(context))),
             Positioned(
-              top: 100,
+              top: 200,
               child: interfaceStandards.parentCenter(context, showImageList()),
             ),
             Positioned(

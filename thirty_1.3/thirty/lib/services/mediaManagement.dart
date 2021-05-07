@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:picker/picker.dart';
 import 'package:path/path.dart' as path;
 import 'dart:io';
@@ -22,7 +23,7 @@ class MediaManagement {
   //BOOLEAN INPUT: 'isCamera' if true then load camera, else load gallery
   //OUTPUT: Calls camera or gallery application and then calls cloudFirestore 
   //    function to save in the appropriate area
-  Future getImage(bool isCamera) async {
+  Future getImage(bool isCamera, State state) async {
     try {
       final pickedFile = await Picker.pickImage(
         source: isCamera ? ImageSource.camera : ImageSource.gallery,
@@ -31,7 +32,9 @@ class MediaManagement {
         imageQuality: 100);
       final String fileName = path.basename(pickedFile.path);
       File imageFile = File(pickedFile.path);
-      cloudFirestore.createImageData(fileName, imageFile);
+      await cloudFirestore.createImageData(fileName, imageFile).then((value) {
+        state.setState(() {});
+      });
     } catch (e) {
       print(e);
     }

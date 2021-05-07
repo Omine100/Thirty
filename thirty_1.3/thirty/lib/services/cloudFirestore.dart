@@ -32,7 +32,7 @@ abstract class BaseCloud {
   Future<void> createImageURLData(String date, String imageURL);
   Future<String> getNameData();
   Image getImageData(String imageURL);
-  Future<List<String>> getImageURLStreamData(String userId);
+  Future<List<String>> getImageURLStreamData();
   Future<void> deleteImageData(DocumentSnapshot doc, String imageURL);
   Future<void> deleteUserData();
   Future<void> deleteUser();
@@ -267,20 +267,19 @@ class CloudFirestore implements BaseCloud {
   //MECHANICS: Returns image data
   //OUTPUT: Reads from firebase and returns image widget
   Image getImageData(String imageURL) {
-    return Image.network(imageURL);
+    return Image.network(imageURL, fit: BoxFit.fitWidth,);
   }
 
   //MECHANICS: Returns imageURL stream data
   //DESCRIPTION: Looks at the cloudFirestore data for a specific user and
   //          then gets all of the imageURLs for that person
-  //STRING INPUT: 'userId' for referencing a specific user, we want to have
-  //          this as an input so that we can access more than one user
   //OUTPUT: List of strings that are imageURLs
-  Future<List<String>> getImageURLStreamData(String userId) async {
+  Future<List<String>> getImageURLStreamData() async {
+    var userId = auth.currentUser.uid;
     final QuerySnapshot querySnapshot = await firestore.collection(userId).doc("images").
       collection("complete").get();
     final List<DocumentSnapshot> documentSnapshots = querySnapshot.docs;
-    List<String> imageURLStream;
+    List<String> imageURLStream = List<String>();
     documentSnapshots.forEach((snapshot) {
       imageURLStream.add(snapshot.get("imageURL"));
     });
