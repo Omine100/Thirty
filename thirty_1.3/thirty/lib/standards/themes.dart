@@ -125,6 +125,9 @@ extension CustomColorScheme on ColorScheme {
       case "homeBackgroundColor":
         return isDark ? Color(0xFF616161) : Color(0xFFFFFEFE);
         break;
+      case "homeSignOutButtonColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFAB58);
+        break;
       case "homeNavigationBarColor":
         return isDark ? Color(0xFFFFC48A) : Color(0xFFFFC48A);
         break;
@@ -256,6 +259,9 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "homeContainerDimension":
         return isHeight ? 1 : 1;
         break;
+      case "homeSignOutButtonDimension":
+        return isHeight ? 0.065 : null;
+        break;
       case "homeNavigationBarDimension":
         return isHeight ? 0.1 : 1;
         break;
@@ -274,8 +280,10 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "homeImageListContainerDimension":
         return isHeight ? 0.5 : 1;
         break;
+
+      default:
+        return null;
     }
-    return null;
   }
 }
 
@@ -344,7 +352,7 @@ extension CustomPositions on MaterialTapTargetSize {
         return isTop ? 0.075 : 0.05;
         break;
       case "homeSignOutButtonPosition":
-        return isTop ? 0.065 : -0.375;
+        return isTop ? 0.07 : -0.375;
         break;
       case "homeThemeSelectorButtonPosition":
         return isTop ? 0.15 : 0.38;
@@ -352,8 +360,13 @@ extension CustomPositions on MaterialTapTargetSize {
       case "homeNavigationBarPosition":
         return isTop ? 0 : 0;
         break;
+      case "homeImageListPosition":
+        return isTop? 0.27 : 0;
+        break;
+      
+      default:
+        return null;
     }
-    return null;
   }
 }
 

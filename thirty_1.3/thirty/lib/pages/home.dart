@@ -266,7 +266,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: interfaceStandards.parentCenter(
                     context, interfaceStandards.showThemeSelector(context))),
             Positioned(
-              top: 200,
+              top: themes.getPosition(context, true, "homeImageListPosition"),
               child: showImageList(),
             ),
             Positioned(
@@ -284,8 +284,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     context,
                     Icon(
                       Icons.exit_to_app_rounded,
-                      size: 65,
-                      color: Colors.orange,
+                      size: themes.getDimension(context, true, "homeSignOutButtonDimension"),
+                      color: themes.getColor(context, "homeSignOutButtonColor")
                     ),
                   ),
                 )),
