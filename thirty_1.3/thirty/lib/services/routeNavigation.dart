@@ -5,6 +5,7 @@ import 'package:thirty/pages/login.dart';
 import 'package:thirty/pages/forgotPassword.dart';
 import 'package:thirty/pages/intro.dart';
 import 'package:thirty/pages/home.dart';
+import 'package:thirty/pages/detail.dart';
 
 //METHOD DECLARATIONS
 abstract class BaseRoutes {
@@ -15,6 +16,7 @@ abstract class BaseRoutes {
   void routeForgotPassword(BuildContext context);
   void routeIntro(BuildContext context);
   void routeHome(BuildContext context);
+  void routeDetail(BuildContext context, String imageURL);
 
   //METHODS: Route managements
   Widget navigateLogin(BuildContext context, bool isSignedIn);
@@ -77,6 +79,12 @@ class RouteNavigation implements BaseRoutes {
     routePop(context);
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => HomeScreen()));
+  }
+
+  //MECHANICS: Routes to detail screen
+  //DESCRIPTION: Routes to a screen with an image on display
+  void routeDetail(BuildContext context, String imageURL) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen(imageURL: imageURL,)));
   }
 
   //MECHANICS: Navigates to first screen

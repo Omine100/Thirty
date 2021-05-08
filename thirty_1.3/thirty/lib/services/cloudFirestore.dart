@@ -7,8 +7,8 @@ import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 import 'dart:async';
 import 'dart:io';
 
-import 'package:thirty/standards/methodStandards.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
+import 'package:thirty/standards/methodStandards.dart';
 
 //METHOD DECLARATIONS
 abstract class BaseCloud {
@@ -283,7 +283,11 @@ class CloudFirestore implements BaseCloud {
     documentSnapshots.forEach((snapshot) {
       imageURLStream.add(snapshot.get("imageURL"));
     });
-    return imageURLStream;
+    List<String> imageURLStreamReversed = List<String>();
+    for (int i = imageURLStream.length - 1; i >= 0; i--) {
+      imageURLStreamReversed.add(imageURLStream.elementAt(i));
+    }
+    return imageURLStreamReversed;
   }
 
   //MECHANICS: Deletes one image

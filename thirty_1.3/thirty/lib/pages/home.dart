@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:scroll_snap_list/scroll_snap_list.dart';
 
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/services/routeNavigation.dart';
 import 'package:thirty/services/mediaManagement.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
 import 'package:thirty/standards/themes.dart';
+import 'package:thirty/standards/methodStandards.dart';
 import 'package:thirty/standards/paintStandards.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,11 +21,12 @@ class _HomeScreenState extends State<HomeScreen> {
   MediaManagement mediaManagement = new MediaManagement();
   InterfaceStandards interfaceStandards = new InterfaceStandards();
   Themes themes = new Themes();
+  MethodStandards methodStandards = new MethodStandards();
   Paints paints = new Paints();
 
   //VARIALBE INITILIZATION
   String name;
-  int currentIndex;
+  int currentIndex, focusedIndex = 0;
 
   //INITIAL STATE
   //DESCRIPTION: Calls cloudFirestore function to set 'name' value
@@ -40,9 +43,19 @@ class _HomeScreenState extends State<HomeScreen> {
   //DESCRIPTION: Basically, this sets a new state so we can change the color of
   //          the active icon in the navigation bar
   //OUTPUT: Change of state to set new currentIndex value
+  //NOTE: 'currentIndex' used to index the navigationBar icon selection
   setCurrentIndex(index) {
     setState(() {
       currentIndex = index;
+    });
+  }
+
+  //MECHANICS: Sets the new state for the item in focus
+  //OUTPUT: Change of state to set new focusedIndex value
+  //NOTE: 'focusedIndex' used to index the current item being shown in the scroll
+  onItemFocus(int index) {
+    setState(() {
+      focusedIndex = index;
     });
   }
 
@@ -177,10 +190,17 @@ class _HomeScreenState extends State<HomeScreen> {
             //Container with camera later on
             return Container();
           }
-          return ListView.builder(
+          return ScrollSnapList(
+            onItemFocus: onItemFocus,
             scrollDirection: Axis.horizontal,
+            itemSize: 275,
+            focusOnItemTap: true,
+            reverse: true,
+            dynamicItemSize: true,
+            dynamicItemOpacity: 0.75,
+            dynamicSizeEquation: methodStandards.getScale(),
             itemCount: imageURLStream.length,
-            itemBuilder: (context, index) {
+            itemBuilder: (context, int index) {
               String imageURL = imageURLStream[index];
               return showImageCard(imageURL);
             },
@@ -204,16 +224,21 @@ class _HomeScreenState extends State<HomeScreen> {
   //STRING INPUT: 'imageURL' for having something to reference
   //OUTPUT: Card with image
   Widget showImageCard(String imageURL) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        width: 200,
+    return GestureDetector(
+      onTap: () {
+        routeNavigation.routeDetail(context, imageURL);
+      },
+      child: Hero(
+        tag: 'imageCard$imageURL',
+        child: Container(
+          width: 275,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(20),
             color: Colors.grey,
           ),
           child: cloudFirestore.getImageData(imageURL),
         ),
+      ),
     );
   }
 
@@ -242,7 +267,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     context, interfaceStandards.showThemeSelector(context))),
             Positioned(
               top: 200,
-              child: interfaceStandards.parentCenter(context, showImageList()),
+              child: showImageList(),
             ),
             Positioned(
                 top: themes.getPosition(

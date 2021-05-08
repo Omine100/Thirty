@@ -141,6 +141,9 @@ extension CustomColorScheme on ColorScheme {
         return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
         break;
 
+      case "detailBackgroundColor":
+        return isDark ? Color(0xFF616161) : Color(0xFFFFFEFE);
+
       default:
         return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
         break;
