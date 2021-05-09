@@ -38,14 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
         });
   }
 
-  //MECHANICS: Returns equation for items in the home page's scroll
-  //DESCRIPTION: This allows for you to change the distance between each card
-  //          which can be altered by changing the point at the end
-  //OUTPUT: Double equation
-  double customEquation(double distance) {
-    return 1 - min(distance.abs() / 500, 0.3);
-  }
-
   //MECHANICS: Sets current index
   //DESCRIPTION: Basically, this sets a new state so we can change the color of
   //          the active icon in the navigation bar
@@ -64,6 +56,14 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       focusedIndex = index;
     });
+  }
+
+  //MECHANICS: Returns equation for items in the home page's scroll
+  //DESCRIPTION: This allows for you to change the distance between each card
+  //          which can be altered by changing the point at the end
+  //OUTPUT: Double equation
+  double customEquation(double distance) {
+    return 1 - min(distance.abs() / 500, 0.3);
   }
 
   //USER INTERFACE: Show navigation bar floating action button
