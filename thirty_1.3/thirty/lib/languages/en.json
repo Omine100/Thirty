@@ -13,6 +13,10 @@
     "errorInvalidCredential": "Please enter a valid email.",
     "errorDefault": "An undefined Error happened.",
 
+    "mediaSelectionTitle": "Where do you want a photo from?",
+    "mediaSelectionGallery": "Gallery",
+    "mediaSelectionCamera": "Camera",
+
     "helloTitle": "Hello, ",
 
     "welcomeTitle": "WELCOME TO THIRTY",

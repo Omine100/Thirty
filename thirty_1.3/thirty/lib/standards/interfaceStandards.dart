@@ -141,6 +141,54 @@ class InterfaceStandards {
     ));
   }
 
+  //USER INTERFACE: Show media selection dialog
+  //DESCRIPTION: Gives the user a choice between camera and gallery for photo
+  //          retrieval and then gives the necessary information to home.dart
+  //OUTPUT: Widget for media selection dialog
+  Future<void> showMediaSelectionDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              title: Text(getTranslated(context, "mediaSelectionTitle")),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: <Widget>[
+                    GestureDetector(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.image,
+                          ),
+                          Text(getTranslated(context, "mediaSelectionGallery")),
+                        ],
+                      ),
+                      onTap: () {
+                        _openGallery(context);
+                      },
+                    ),
+                    Padding(padding: EdgeInsets.all(8.0)),
+                    GestureDetector(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.camera_alt_rounded,
+                          ),
+                          Text(
+                            getTranslated(context, "mediaSelectionCamera"),
+                          ),
+                        ],
+                      ),
+                      onTap: () {
+                        _openCamera(context);
+                      },
+                    )
+                  ],
+                ),
+              ));
+        });
+  }
+
   //USER INTERFACE: Show back button
   //OUTPUT: Calls a function in routeNavigation to pop the route stack once
   Widget showBackButton(BuildContext context) {
