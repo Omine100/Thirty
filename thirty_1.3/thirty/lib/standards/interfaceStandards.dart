@@ -144,8 +144,9 @@ class InterfaceStandards {
   //USER INTERFACE: Show media selection dialog
   //DESCRIPTION: Gives the user a choice between camera and gallery for photo
   //          retrieval and then gives the necessary information to home.dart
+  //STATE INPUT: 'state' for sending over to mediaManagement for setState()
   //OUTPUT: Widget for media selection dialog
-  Future<void> showMediaSelectionDialog(BuildContext context) {
+  Future<void> showMediaSelectionDialog(BuildContext context, State state) {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -156,23 +157,32 @@ class InterfaceStandards {
                   children: <Widget>[
                     GestureDetector(
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
                             Icons.image,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 8),
                           ),
                           Text(getTranslated(context, "mediaSelectionGallery")),
                         ],
                       ),
                       onTap: () {
-                        _openGallery(context);
+                        mediaManagement.getImage(context, false, state);
+                        routeNavigation.routePop(context);
                       },
                     ),
                     Padding(padding: EdgeInsets.all(8.0)),
                     GestureDetector(
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
                             Icons.camera_alt_rounded,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 8),
                           ),
                           Text(
                             getTranslated(context, "mediaSelectionCamera"),
@@ -180,7 +190,8 @@ class InterfaceStandards {
                         ],
                       ),
                       onTap: () {
-                        _openCamera(context);
+                        mediaManagement.getImage(context, true, state);
+                        routeNavigation.routePop(context);
                       },
                     )
                   ],

@@ -13,6 +13,10 @@
     "errorInvalidCredential": "Introduzca un correo electrónico válido.",
     "errorDefault": "Ocurrió un error indefinido.",
 
+    "mediaSelectionTitle": "¿De dónde quieres una foto?",
+    "mediaSelectionGallery": "Galería",
+    "mediaSelectionCamera": "Cámara",
+
     "helloTitle": "Hola, ",
 
     "welcomeTitle": "BIENVENIDA A TREINTA",
