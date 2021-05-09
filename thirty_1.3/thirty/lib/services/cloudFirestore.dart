@@ -225,15 +225,13 @@ class CloudFirestore implements BaseCloud {
   Future<void> createImageData(String fileName, File imageFile) async {
     String date = methodStandards.getCurrentDate();
     try {
-      await storage.ref(fileName).putFile(
-        imageFile,
-        SettableMetadata(customMetadata: {
-          'date': date
-        })
-      );
-      storage.ref(fileName).getDownloadURL().then((_imageURL) => {
-        createImageURLData(date, _imageURL)
-      });
+      await storage
+          .ref(fileName)
+          .putFile(imageFile, SettableMetadata(customMetadata: {'date': date}));
+      storage
+          .ref(fileName)
+          .getDownloadURL()
+          .then((_imageURL) => {createImageURLData(date, _imageURL)});
     } on FirebaseException catch (e) {
       print(e);
     }
@@ -247,8 +245,12 @@ class CloudFirestore implements BaseCloud {
   //FIRESTORE DATA PATH: userId -> images -> complete -> date[imageURL]
   Future<void> createImageURLData(String date, String imageURL) async {
     var userId = auth.currentUser.uid;
-    await firestore.collection(userId).doc("images").collection("complete").
-      doc(date).set({"imageURL": imageURL});
+    await firestore
+        .collection(userId)
+        .doc("images")
+        .collection("complete")
+        .doc(date)
+        .set({"imageURL": imageURL});
   }
 
   //MECHANICS: Returns name data
@@ -267,7 +269,10 @@ class CloudFirestore implements BaseCloud {
   //MECHANICS: Returns image data
   //OUTPUT: Reads from firebase and returns image widget
   Image getImageData(String imageURL) {
-    return Image.network(imageURL, fit: BoxFit.fitWidth,);
+    return Image.network(
+      imageURL,
+      fit: BoxFit.fill,
+    );
   }
 
   //MECHANICS: Returns imageURL stream data
@@ -276,8 +281,11 @@ class CloudFirestore implements BaseCloud {
   //OUTPUT: List of strings that are imageURLs
   Future<List<String>> getImageURLStreamData() async {
     var userId = auth.currentUser.uid;
-    final QuerySnapshot querySnapshot = await firestore.collection(userId).doc("images").
-      collection("complete").get();
+    final QuerySnapshot querySnapshot = await firestore
+        .collection(userId)
+        .doc("images")
+        .collection("complete")
+        .get();
     final List<DocumentSnapshot> documentSnapshots = querySnapshot.docs;
     List<String> imageURLStream = List<String>();
     documentSnapshots.forEach((snapshot) {

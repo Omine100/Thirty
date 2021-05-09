@@ -246,11 +246,10 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Container(
           width:
               themes.getDimension(context, false, "homeImageListCardDimension"),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.grey,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: cloudFirestore.getImageData(imageURL),
           ),
-          child: cloudFirestore.getImageData(imageURL),
         ),
       ),
     );
