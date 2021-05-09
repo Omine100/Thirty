@@ -352,7 +352,7 @@ extension CustomPositions on MaterialTapTargetSize {
         return isTop ? 0 : 0;
         break;
       case "homeImageListPosition":
-        return isTop ? 0.27 : 0;
+        return isTop ? 0.25 : 0;
         break;
 
       default:

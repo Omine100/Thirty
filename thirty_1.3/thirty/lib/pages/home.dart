@@ -274,6 +274,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   context, "helloTitle", name.toString()),
             ),
             Positioned(
+              top: 120,
+              left: 22,
+              child: Text(
+                "Sunday, May 2021",
+                style: TextStyle(
+                    color: Colors.grey.shade600,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w300),
+              ),
+            ),
+            Positioned(
               top: themes.getPosition(context, true, "homeImageListPosition"),
               child: showImageList(),
             ),
