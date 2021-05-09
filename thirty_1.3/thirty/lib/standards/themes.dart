@@ -257,13 +257,13 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? 1 : 1;
         break;
       case "homeNavigationBarDimension":
-        return isHeight ? 0.1 : 1;
+        return isHeight ? 0.09 : 1;
         break;
       case "homeNavigationBarContainerDimension":
         return isHeight ? null : 0.2;
         break;
       case "homeNavigationBarFloatingActionButtonDimension":
-        return isHeight ? 0.085 : null;
+        return isHeight ? 0.08 : null;
         break;
       case "homeNavigationBarFloatingActionButtonIconDimension":
         return isHeight ? 0.065 : null;
@@ -275,7 +275,7 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? 0.55 : 1;
         break;
       case "homeImageListCardDimension":
-        return isHeight ? null : 0.7;
+        return isHeight ? null : 0.75;
         break;
 
       default:

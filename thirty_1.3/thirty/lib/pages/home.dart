@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
   //          which can be altered by changing the point at the end
   //OUTPUT: Double equation
   double customEquation(double distance) {
-    return 1 - min(distance.abs() / 500, 0.3);
+    return 1 - min(distance.abs() / 500, 0.25);
   }
 
   //USER INTERFACE: Show navigation bar floating action button
@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
   //OUTPUT: Navigation bar floating action button with gesture detector function
   Widget showNavigationBarFloatingActionButton() {
     return new Center(
-        heightFactor: 0.55,
+        heightFactor: 0.45,
         child: Container(
           height: themes.getDimension(
               context, true, "homeNavigationBarFloatingActionButtonDimension"),
@@ -212,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
             focusOnItemTap: true,
             reverse: true,
             dynamicItemSize: true,
-            dynamicItemOpacity: 0.75,
+            dynamicItemOpacity: 0.85,
             dynamicSizeEquation: customEquation,
             itemCount: imageURLStream.length,
             itemBuilder: (context, int index) {
@@ -246,6 +246,8 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Hero(
         tag: 'imageCard$imageURL',
         child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(60), color: Colors.white),
           width:
               themes.getDimension(context, false, "homeImageListCardDimension"),
           child: ClipRRect(

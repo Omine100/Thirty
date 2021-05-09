@@ -271,7 +271,7 @@ class CloudFirestore implements BaseCloud {
   Image getImageData(String imageURL) {
     return Image.network(
       imageURL,
-      fit: BoxFit.fill,
+      fit: BoxFit.fitHeight,
     );
   }
 
