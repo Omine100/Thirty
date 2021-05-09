@@ -85,7 +85,6 @@ class _HomeScreenState extends State<HomeScreen> {
           child: GestureDetector(
             onTap: () {
               interfaceStandards.showMediaSelectionDialog(context, this);
-              setState(() {});
             },
             child: Icon(
               Icons.camera_alt_rounded,

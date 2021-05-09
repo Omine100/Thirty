@@ -29,8 +29,6 @@ class MediaManagement {
     try {
       final pickedFile = await Picker.pickImage(
           source: isCamera ? ImageSource.camera : ImageSource.gallery,
-          maxHeight: 480,
-          maxWidth: 640,
           imageQuality: 100);
       final String fileName = path.basename(pickedFile.path);
       File imageFile = File(pickedFile.path);
