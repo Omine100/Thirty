@@ -281,7 +281,7 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? 0.5 : 1;
         break;
       case "homeImageListCardDimension":
-        return isHeight ? null : 0.45;
+        return isHeight ? null : 0.65;
         break;
 
       default:

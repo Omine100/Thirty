@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
+import 'dart:math';
 
 import 'package:thirty/services/cloudFirestore.dart';
 import 'package:thirty/services/routeNavigation.dart';
@@ -38,9 +39,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   //MECHANICS: Returns equation for items in the home page's scroll
+  //DESCRIPTION: This allows for you to change the distance between each card
+  //          which can be altered by changing the point at the end
   //OUTPUT: Double equation
   double customEquation(double distance) {
-    return 1 - (distance / 1000);
+    return 1 - min(distance.abs() / 500, 0.3);
   }
 
   //MECHANICS: Sets current index
