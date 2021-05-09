@@ -40,7 +40,7 @@ extension CustomColorScheme on ColorScheme {
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
       case "interfaceStandardsHelloTitleTextColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFAB58);
+        return isDark ? Color(0xFFFFAB58) : Color(0xFF000000);
         break;
       case "interfaceStandardsProgressIndicatorColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
@@ -123,13 +123,10 @@ extension CustomColorScheme on ColorScheme {
         break;
 
       case "homeBackgroundColor":
-        return isDark ? Color(0xFF616161) : Color(0xFFFFFEFE);
-        break;
-      case "homeSignOutButtonColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFAB58);
+        return isDark ? Color(0xFF606060) : Color(0xFFEEEEEE);
         break;
       case "homeNavigationBarColor":
-        return isDark ? Color(0xFFFFC48A) : Color(0xFFFFC48A);
+        return isDark ? Color(0xFFFFC48A) : Color(0xFFFFFFFF);
         break;
       case "homeNavigationBarFloatingActionButtonColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFAB58);
@@ -138,10 +135,10 @@ extension CustomColorScheme on ColorScheme {
         return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
         break;
       case "homeNavigationBarSecondaryButtonIconActiveColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
+        return isDark ? Color(0xFFFFAB08) : Color(0xFFFFAB58);
         break;
       case "homeNavigationBarSecondaryButtonIconDeactiveColor":
-        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFF000000);
         break;
 
       case "detailBackgroundColor":
@@ -259,9 +256,6 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "homeContainerDimension":
         return isHeight ? 1 : 1;
         break;
-      case "homeSignOutButtonDimension":
-        return isHeight ? 0.065 : null;
-        break;
       case "homeNavigationBarDimension":
         return isHeight ? 0.1 : 1;
         break;
@@ -353,12 +347,6 @@ extension CustomPositions on MaterialTapTargetSize {
 
       case "homeHelloTitlePosition":
         return isTop ? 0.075 : 0.05;
-        break;
-      case "homeSignOutButtonPosition":
-        return isTop ? 0.07 : -0.375;
-        break;
-      case "homeThemeSelectorButtonPosition":
-        return isTop ? 0.15 : 0.38;
         break;
       case "homeNavigationBarPosition":
         return isTop ? 0 : 0;

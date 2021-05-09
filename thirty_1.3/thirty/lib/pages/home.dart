@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
               padding: EdgeInsets.only(top: 10),
               icon: Icon(
-                Icons.photo_album_rounded,
+                Icons.photo_album_outlined,
                 color: currentIndex == 0
                     ? themes.getColor(context,
                         "homeNavigationBarSecondaryButtonIconActiveColor")
@@ -125,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
               }),
           IconButton(
               icon: Icon(
-                Icons.menu,
+                Icons.menu_outlined,
                 color: currentIndex == 1
                     ? themes.getColor(context,
                         "homeNavigationBarSecondaryButtonIconActiveColor")
@@ -143,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           IconButton(
               icon: Icon(
-                Icons.bookmark,
+                Icons.bookmark_border_outlined,
                 color: currentIndex == 2
                     ? themes.getColor(context,
                         "homeNavigationBarSecondaryButtonIconActiveColor")
@@ -158,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
               padding: EdgeInsets.only(top: 10),
               icon: Icon(
-                Icons.settings,
+                Icons.person_outline,
                 color: currentIndex == 3
                     ? themes.getColor(context,
                         "homeNavigationBarSecondaryButtonIconActiveColor")
@@ -168,6 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     context, true, "homeNavigationBarIconDimension"),
               ),
               onPressed: () {
+                routeNavigation.routeSettings(context);
                 setCurrentIndex(3);
               }),
         ],
@@ -248,7 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
           width:
               themes.getDimension(context, false, "homeImageListCardDimension"),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(60),
             child: cloudFirestore.getImageData(imageURL),
           ),
         ),
@@ -273,36 +274,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   context, "helloTitle", name.toString()),
             ),
             Positioned(
-                top: themes.getPosition(
-                    context, true, "homeThemeSelectorButtonPosition"),
-                right: themes.getPosition(
-                    context, false, "homeThemeSelectorButtonPosition"),
-                child: interfaceStandards.parentCenter(
-                    context, interfaceStandards.showThemeSelector(context))),
-            Positioned(
               top: themes.getPosition(context, true, "homeImageListPosition"),
               child: showImageList(),
             ),
-            Positioned(
-                top: themes.getPosition(
-                    context, true, "homeSignOutButtonPosition"),
-                right: themes.getPosition(
-                    context, false, "homeSignOutButtonPosition"),
-                child: GestureDetector(
-                  onTap: () {
-                    cloudFirestore.signOut().then((test) {
-                      routeNavigation.routeSignOutWelcome(context);
-                    });
-                  },
-                  child: interfaceStandards.parentCenter(
-                    context,
-                    Icon(Icons.exit_to_app_rounded,
-                        size: themes.getDimension(
-                            context, true, "homeSignOutButtonDimension"),
-                        color:
-                            themes.getColor(context, "homeSignOutButtonColor")),
-                  ),
-                )),
             Positioned(
               bottom: themes.getPosition(
                   context, true, "homeNavigationBarPosition"),
