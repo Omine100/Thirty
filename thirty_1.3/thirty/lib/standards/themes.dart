@@ -123,10 +123,10 @@ extension CustomColorScheme on ColorScheme {
         break;
 
       case "homeBackgroundColor":
-        return isDark ? Color(0xFF606060) : Color(0xFFEEEEEE);
+        return isDark ? Color(0xFF606060) : Color(0xFFEAEAEA);
         break;
       case "homeNavigationBarColor":
-        return isDark ? Color(0xFFFFC48A) : Color(0xFFFFFFFF);
+        return isDark ? Color(0xFFFFC48A) : Color(0xFFFAFAFA);
         break;
       case "homeNavigationBarFloatingActionButtonColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFAB58);
