@@ -9,9 +9,4 @@ class MethodStandards {
         DateFormat('yyyy-MM-dd-HH:mm:ss').format(DateTime.now());
     return formattedDate;
   }
-
-  //MECHANICS: Returns scale for items in the home page's scroll
-  //OUTPUT: Double equation
-  double Function(double distance) getScale() {
-  }
 }

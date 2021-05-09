@@ -6,7 +6,6 @@ import 'package:thirty/services/routeNavigation.dart';
 import 'package:thirty/services/mediaManagement.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
 import 'package:thirty/standards/themes.dart';
-import 'package:thirty/standards/methodStandards.dart';
 import 'package:thirty/standards/paintStandards.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,7 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
   MediaManagement mediaManagement = new MediaManagement();
   InterfaceStandards interfaceStandards = new InterfaceStandards();
   Themes themes = new Themes();
-  MethodStandards methodStandards = new MethodStandards();
   Paints paints = new Paints();
 
   //VARIALBE INITILIZATION
@@ -37,6 +35,12 @@ class _HomeScreenState extends State<HomeScreen> {
             name = _name;
           })
         });
+  }
+
+  //MECHANICS: Returns equation for items in the home page's scroll
+  //OUTPUT: Double equation
+  double customEquation(double distance) {
+    return 1 - (distance / 1000);
   }
 
   //MECHANICS: Sets current index
@@ -188,17 +192,23 @@ class _HomeScreenState extends State<HomeScreen> {
             interfaceStandards.showProgress(context);
           } else {
             //Container with camera later on
-            return Container();
+            return Container(
+              width: themes.getDimension(
+                  context, false, "homeImageListCardDimension"),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20), color: Colors.grey),
+            );
           }
           return ScrollSnapList(
             onItemFocus: onItemFocus,
             scrollDirection: Axis.horizontal,
-            itemSize: 275,
+            itemSize: themes.getDimension(
+                context, false, "homeImageListCardDimension"),
             focusOnItemTap: true,
             reverse: true,
             dynamicItemSize: true,
             dynamicItemOpacity: 0.75,
-            dynamicSizeEquation: methodStandards.getScale(),
+            dynamicSizeEquation: customEquation,
             itemCount: imageURLStream.length,
             itemBuilder: (context, int index) {
               String imageURL = imageURLStream[index];
@@ -231,7 +241,8 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Hero(
         tag: 'imageCard$imageURL',
         child: Container(
-          width: 275,
+          width:
+              themes.getDimension(context, false, "homeImageListCardDimension"),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.grey,
@@ -282,11 +293,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   child: interfaceStandards.parentCenter(
                     context,
-                    Icon(
-                      Icons.exit_to_app_rounded,
-                      size: themes.getDimension(context, true, "homeSignOutButtonDimension"),
-                      color: themes.getColor(context, "homeSignOutButtonColor")
-                    ),
+                    Icon(Icons.exit_to_app_rounded,
+                        size: themes.getDimension(
+                            context, true, "homeSignOutButtonDimension"),
+                        color:
+                            themes.getColor(context, "homeSignOutButtonColor")),
                   ),
                 )),
             Positioned(

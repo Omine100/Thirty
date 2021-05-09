@@ -280,6 +280,9 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "homeImageListContainerDimension":
         return isHeight ? 0.5 : 1;
         break;
+      case "homeImageListCardDimension":
+        return isHeight ? null : 0.45;
+        break;
 
       default:
         return null;
@@ -361,9 +364,9 @@ extension CustomPositions on MaterialTapTargetSize {
         return isTop ? 0 : 0;
         break;
       case "homeImageListPosition":
-        return isTop? 0.27 : 0;
+        return isTop ? 0.27 : 0;
         break;
-      
+
       default:
         return null;
     }
