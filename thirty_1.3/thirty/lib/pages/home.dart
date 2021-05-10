@@ -31,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
   String name;
   int currentIndex = 0, focusedIndex = 0;
   List<DocumentSnapshot> documentSnapshots = [];
+  List<String> imageURLStream = [];
 
   //INITIAL STATE
   //DESCRIPTION: Calls cloudFirestore function to set 'name' value and documentSnapshot for images
@@ -152,6 +153,9 @@ class _HomeScreenState extends State<HomeScreen> {
           child: GestureDetector(
             onTap: () {
               interfaceStandards.showMediaSelectionDialog(context, this);
+              setState(() {
+                
+              });
             },
             child: Icon(
               Icons.camera_alt_rounded,
@@ -258,7 +262,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: FutureBuilder(
         future: cloudFirestore.getImageURLStreamData(),
         builder: (BuildContext context, snapshot) {
-          List<String> imageURLStream = snapshot.data ?? [];
+          imageURLStream = snapshot.data ?? [];
           if (snapshot.hasData) {
             interfaceStandards.showProgress(context);
           } else {
