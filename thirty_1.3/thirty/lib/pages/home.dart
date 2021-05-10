@@ -310,15 +310,16 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Hero(
         tag: 'imageCard$imageURL',
         child: Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(60),
-              color: themes.getColor(context, "homeImageListCardColor")),
           width:
               themes.getDimension(context, false, "homeImageListCardDimension"),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(60),
-            child: cloudFirestore.getImageData(imageURL),
-          ),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+              color: themes.getColor(context, "homeImageListCardColor"),
+              image: DecorationImage(
+                  image: NetworkImage(
+                    imageURL,
+                  ),
+                  fit: BoxFit.cover)),
         ),
       ),
     );
