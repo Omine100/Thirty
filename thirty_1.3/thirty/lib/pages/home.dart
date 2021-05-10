@@ -150,7 +150,6 @@ class _HomeScreenState extends State<HomeScreen> {
           child: GestureDetector(
             onTap: () {
               interfaceStandards.showMediaSelectionDialog(context, this);
-              setState(() {});
             },
             child: Icon(
               Icons.camera_alt_rounded,
@@ -312,7 +311,8 @@ class _HomeScreenState extends State<HomeScreen> {
         tag: 'imageCard$imageURL',
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(60), color: Colors.white),
+              borderRadius: BorderRadius.circular(60),
+              color: themes.getColor(context, "homeImageListCardColor")),
           width:
               themes.getDimension(context, false, "homeImageListCardDimension"),
           child: ClipRRect(

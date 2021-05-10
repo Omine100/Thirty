@@ -149,6 +149,9 @@ extension CustomColorScheme on ColorScheme {
       case "homeNavigationBarSecondaryButtonIconDeactiveColor":
         return isDark ? Color(0xFFFFFFFF) : Color(0xFF000000);
         break;
+      case "homeImageListCardColor":
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+        break;
 
       case "detailBackgroundColor":
         return isDark ? Color(0xFF616161) : Color(0xFFFFFEFE);
