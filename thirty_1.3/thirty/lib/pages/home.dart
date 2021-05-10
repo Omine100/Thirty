@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   //VARIALBE INITILIZATION
   String name;
-  int currentIndex, focusedIndex = 0;
+  int currentIndex = 0, focusedIndex = 0;
 
   //INITIAL STATE
   //DESCRIPTION: Calls cloudFirestore function to set 'name' value
