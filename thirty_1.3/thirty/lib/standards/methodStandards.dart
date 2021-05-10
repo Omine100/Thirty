@@ -66,35 +66,63 @@ class MethodStandards {
   //MECHANICS: Returns current month
   //DESCRIPTION: Gets the current month in number format and then converts into a
   //          string for use
+  //INTEGER INPUT: 'time' to be converted
   //OUTPUT: String of today's month
-  String getCurrentMonth(BuildContext context) {
-    int currentMonth = DateTime.now().month;
+  String getCurrentMonth(BuildContext context, int time) {
+    int currentMonth = time;
     switch (currentMonth) {
       case (1):
+        return getTranslated(context, "currentMonth1");
+        break;
+      case (01):
         return getTranslated(context, "currentMonth1");
         break;
       case (2):
         return getTranslated(context, "currentMonth2");
         break;
+      case (02):
+        return getTranslated(context, "currentMonth2");
+        break;
       case (3):
+        return getTranslated(context, "currentMonth3");
+        break;
+      case (03):
         return getTranslated(context, "currentMonth3");
         break;
       case (4):
         return getTranslated(context, "currentMonth4");
         break;
+      case (04):
+        return getTranslated(context, "currentMonth4");
+        break;
       case (5):
+        return getTranslated(context, "currentMonth5");
+        break;
+      case (05):
         return getTranslated(context, "currentMonth5");
         break;
       case (6):
         return getTranslated(context, "currentMonth6");
         break;
+      case (06):
+        return getTranslated(context, "currentMonth6");
+        break;
       case (7):
+        return getTranslated(context, "currentMonth7");
+        break;
+      case (07):
         return getTranslated(context, "currentMonth7");
         break;
       case (8):
         return getTranslated(context, "currentMonth8");
         break;
+      case (08):
+        return getTranslated(context, "currentMonth8");
+        break;
       case (9):
+        return getTranslated(context, "currentMonth9");
+        break;
+      case (09):
         return getTranslated(context, "currentMonth9");
         break;
       case (10):

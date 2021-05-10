@@ -119,20 +119,17 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  //USER INTERFACE: Show time title
-  //DESCRIPTION: Shows a title for the time on the home page
-  //OUTPUT: Text displayed in a general way for the application
-  Widget showTimeTitle() {
+  //USER INTERFACE: Show subtitle
+  //DESCRIPTION: Shows a subtitle
+  //OUTPUT: Widget for subtitle
+  Widget showSubtitle() {
     return Text(
-      methodStandards.getCurrentWeekday(context) +
-          ", " +
-          methodStandards.getCurrentMonth(context) +
-          " " +
-          methodStandards.getCurrentDay(),
+      "\'THIRTY\' Photos",
       style: TextStyle(
-          color: themes.getColor(context, "homeTimeTitleTextColor"),
-          fontSize: Theme.of(context).textTheme.homeTimeTitleFontSize,
-          fontWeight: Theme.of(context).typography.homeTimeTitleFontWeight),
+          color: themes.getColor(context, "homeSubtitleTextColor"),
+          fontSize: Theme.of(context).textTheme.homeSubtitleFontSize,
+          fontWeight: Theme.of(context).typography.homeSubtitleFontWeight,
+          fontStyle: FontStyle.italic),
     );
   }
 
@@ -288,13 +285,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  //USER INTERFACE: Show month card
-  //DESCRIPTION: Takes in the month and year and creates a card for it
-  //OUTPUT: Card with a month and year (sideways)
-  Widget showMonthCard(String month, String year) {
-    return null;
-  }
-
   //USER INTERFACE: Show image card
   //DESCRIPTION: Takes in the information for one image from the list and creates
   //          a card for it to display the information. When you tap on it, it
@@ -302,6 +292,9 @@ class _HomeScreenState extends State<HomeScreen> {
   //STRING INPUT: 'imageURL' for having something to reference
   //OUTPUT: Card with image
   Widget showImageCard(String imageURL, DocumentSnapshot documentSnapshot) {
+    String date = documentSnapshot.id.toString();
+    int monthNumber = int.parse(date.substring(5, 7));
+    String month = methodStandards.getCurrentMonth(context, monthNumber);
     return GestureDetector(
       onTap: () {
         routeNavigation.routeDetail(context, imageURL);
@@ -330,10 +323,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: themes.getDimension(context, false, "homeImageListCardDimension"),
                   child: Center(
                     child: Text(
-                      "May 10, '21",
+                      month + " " + date.substring(8, 10) + ", '" + date.substring(2, 4),
                       style: TextStyle(
                         fontSize: 25,
                         color: Colors.white,
+                        fontStyle: FontStyle.italic
                       ),
                     ),
                   ),
@@ -361,10 +355,10 @@ class _HomeScreenState extends State<HomeScreen> {
               child: showHelloTitle(),
             ),
             Positioned(
-                top: themes.getPosition(context, true, "homeTimeTitlePosition"),
+                top: themes.getPosition(context, true, "homeSubtitlePosition"),
                 left:
-                    themes.getPosition(context, false, "homeTimeTitlePosition"),
-                child: showTimeTitle()),
+                    themes.getPosition(context, false, "homeSubtitlePosition"),
+                child: showSubtitle()),
             Positioned(
               top: themes.getPosition(
                   context, true, "homeTitleBodyDividerPosition"),

@@ -128,7 +128,7 @@ extension CustomColorScheme on ColorScheme {
       case "homeHelloTitleUnderlineColor":
         return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFAB58);
         break;
-      case "homeTimeTitleTextColor":
+      case "homeSubtitleTextColor":
         return isDark ? Color(0xFFFFFFFF) : Color(0xFF7E7E7E);
         break;
       case "homeTitleBodyDividerColor":
@@ -182,7 +182,7 @@ extension CustomFontSizes on TextTheme {
   double get introDescriptionFontSize => 20.0;
 
   double get homeHelloTitleFontSize => 42.5;
-  double get homeTimeTitleFontSize => 25;
+  double get homeSubtitleFontSize => 25;
 }
 
 extension CustomFontWeights on Typography {
@@ -202,7 +202,7 @@ extension CustomFontWeights on Typography {
   FontWeight get introDescriptionFontWeight => FontWeight.w300;
 
   FontWeight get homeHelloTitleFontWeight => FontWeight.w600;
-  FontWeight get homeTimeTitleFontWeight => FontWeight.w300;
+  FontWeight get homeSubtitleFontWeight => FontWeight.w300;
 }
 
 extension CustomDimensions on MaterialTapTargetSize {
@@ -367,7 +367,7 @@ extension CustomPositions on MaterialTapTargetSize {
       case "homeHelloTitlePosition":
         return isTop ? 0.075 : 0.05;
         break;
-      case "homeTimeTitlePosition":
+      case "homeSubtitlePosition":
         return isTop ? 0.145 : 0.05;
         break;
       case "homeTitleBodyDividerPosition":
