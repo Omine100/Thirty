@@ -4,12 +4,6 @@ import 'package:path/path.dart' as path;
 import 'dart:io';
 
 import 'package:thirty/services/cloudFirestore.dart';
-import 'package:thirty/services/routeNavigation.dart';
-
-//Need to add camera support
-//Need to add when you click on an image
-//Need to add gallery support
-//Need to add when you click on a video
 
 class MediaManagement {
   //CLASS INTIALIZATION

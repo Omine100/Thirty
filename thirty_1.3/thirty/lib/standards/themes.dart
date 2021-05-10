@@ -123,7 +123,7 @@ extension CustomColorScheme on ColorScheme {
         return isDark ? Color(0xFF121212) : Color(0xFFEAEAEA);
         break;
       case "homeHelloTitleTextColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFF000000);
+        return isDark ? Color(0xFF52607B) : Color(0xFF000000);
         break;
       case "homeHelloTitleUnderlineColor":
         return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFAB58);
@@ -138,7 +138,7 @@ extension CustomColorScheme on ColorScheme {
         return isDark ? Color(0xFF102449) : Color(0xFFFAFAFA);
         break;
       case "homeNavigationBarFloatingActionButtonColor":
-        return isDark ? Color(0xFF3F4F6D) : Color(0xFFFFAB58);
+        return isDark ? Color(0xFF52607B) : Color(0xFFFFAB58);
         break;
       case "homeNavigationBarFloatingActionButtonIconColor":
         return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
