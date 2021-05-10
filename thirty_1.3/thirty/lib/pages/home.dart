@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 import 'dart:math';
 
@@ -29,9 +30,10 @@ class _HomeScreenState extends State<HomeScreen> {
   //VARIALBE INITILIZATION
   String name;
   int currentIndex = 0, focusedIndex = 0;
+  List<DocumentSnapshot> documentSnapshots = [];
 
   //INITIAL STATE
-  //DESCRIPTION: Calls cloudFirestore function to set 'name' value
+  //DESCRIPTION: Calls cloudFirestore function to set 'name' value and documentSnapshot for images
   void initState() {
     super.initState();
     cloudFirestore.getNameData().then((_name) => {
@@ -39,6 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
             name = _name;
           })
         });
+    cloudFirestore.getImageDocuments().then((_documentSnapshots) => {
+      documentSnapshots = _documentSnapshots
+    });
   }
 
   //MECHANICS: Sets current index
@@ -260,13 +265,6 @@ class _HomeScreenState extends State<HomeScreen> {
           if (snapshot.hasData) {
             interfaceStandards.showProgress(context);
           } else {
-            //Container with camera later on
-            return Container(
-              width: themes.getDimension(
-                  context, false, "homeImageListCardDimension"),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20), color: Colors.grey),
-            );
           }
           return ScrollSnapList(
             onItemFocus: onItemFocus,
@@ -281,7 +279,8 @@ class _HomeScreenState extends State<HomeScreen> {
             itemCount: imageURLStream.length,
             itemBuilder: (context, int index) {
               String imageURL = imageURLStream[index];
-              return showImageCard(imageURL);
+              DocumentSnapshot documentSnapshot = documentSnapshots[index];
+              return showImageCard(imageURL, documentSnapshot);
             },
           );
         },
@@ -302,25 +301,46 @@ class _HomeScreenState extends State<HomeScreen> {
   //          should display full screen, long press should delete it
   //STRING INPUT: 'imageURL' for having something to reference
   //OUTPUT: Card with image
-  Widget showImageCard(String imageURL) {
+  Widget showImageCard(String imageURL, DocumentSnapshot documentSnapshot) {
     return GestureDetector(
       onTap: () {
         routeNavigation.routeDetail(context, imageURL);
       },
       child: Hero(
         tag: 'imageCard$imageURL',
-        child: Container(
-          width:
-              themes.getDimension(context, false, "homeImageListCardDimension"),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50.0),
-              color: themes.getColor(context, "homeImageListCardColor"),
-              image: DecorationImage(
-                  image: NetworkImage(
-                    imageURL,
+        child: Stack(
+            children: [
+              Container(
+                width:
+                  themes.getDimension(context, false, "homeImageListCardDimension"),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50.0),
+                  color: themes.getColor(context, "homeImageListCardColor"),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      imageURL,
+                    ),
+                    fit: BoxFit.cover
+                  )
+                ),
+              ),
+              Positioned(
+                bottom: 20,
+                child: Container(
+                  width: themes.getDimension(context, false, "homeImageListCardDimension"),
+                  child: Center(
+                    child: Text(
+                      "May 10, '21",
+                      style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
-                  fit: BoxFit.cover)),
-        ),
+                )
+              )
+            ],
+          ),
       ),
     );
   }

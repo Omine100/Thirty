@@ -31,7 +31,7 @@ abstract class BaseCloud {
   Future<void> createImageData(String fileName, File image);
   Future<void> createImageURLData(String date, String imageURL);
   Future<String> getNameData();
-  Image getImageData(String imageURL);
+  Future<List<DocumentSnapshot>> getImageDocuments();
   Future<List<String>> getImageURLStreamData();
   Future<void> deleteImageData(DocumentSnapshot doc, String imageURL);
   Future<void> deleteUserData();
@@ -266,13 +266,21 @@ class CloudFirestore implements BaseCloud {
     }
   }
 
-  //MECHANICS: Returns image data
-  //OUTPUT: Reads from firebase and returns image widget
-  Image getImageData(String imageURL) {
-    return Image.network(
-      imageURL,
-      fit: BoxFit.cover,
-    );
+  //MECHANICS: Returns image document snapshots
+  //OUTPUT: Reads from firebase and returns image data document snapshots
+  Future<List<DocumentSnapshot>> getImageDocuments() async {
+    var userId = auth.currentUser.uid;
+    final QuerySnapshot querySnapshot = await firestore
+        .collection(userId)
+        .doc("images")
+        .collection("complete")
+        .get();
+    final List<DocumentSnapshot> documentSnapshots = querySnapshot.docs;
+    List<DocumentSnapshot> documentSnapshotsReversed = [];
+    for (int i = documentSnapshots.length - 1; i >= 0; i--) {
+      documentSnapshotsReversed.add(documentSnapshots.elementAt(i));
+    }
+    return documentSnapshotsReversed;
   }
 
   //MECHANICS: Returns imageURL stream data
@@ -287,11 +295,11 @@ class CloudFirestore implements BaseCloud {
         .collection("complete")
         .get();
     final List<DocumentSnapshot> documentSnapshots = querySnapshot.docs;
-    List<String> imageURLStream = List<String>();
+    List<String> imageURLStream = [];
     documentSnapshots.forEach((snapshot) {
       imageURLStream.add(snapshot.get("imageURL"));
     });
-    List<String> imageURLStreamReversed = List<String>();
+    List<String> imageURLStreamReversed = [];
     for (int i = imageURLStream.length - 1; i >= 0; i--) {
       imageURLStreamReversed.add(imageURLStream.elementAt(i));
     }
