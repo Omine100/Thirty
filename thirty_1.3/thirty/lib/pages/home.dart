@@ -72,6 +72,12 @@ class _HomeScreenState extends State<HomeScreen> {
   //USER INTERFACE: Show hello title
   //DESCRIPTION: Shows a title for the home page
   //OUTPUT: Text displayed in a general way for the application
+  //NOTE: I have rich text here for an underline feature on the name. Right now
+  //    I have this commented out because I think I may like the divider idea
+  //    more. To get it back, uncomment those lines in this method and maybe
+  //    comment out the divider in the build method or delete them entirely
+  //    (making sure to get rid of the themes variables for either one we do not
+  //    end up going with).
   Widget showHelloTitle() {
     return RichText(
       text: TextSpan(
@@ -97,11 +103,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       offset: Offset(0, -5))
                 ],
                 color: Colors.transparent,
-                decoration: TextDecoration.underline,
-                decorationColor:
-                    themes.getColor(context, "homeHelloTitleUnderlineColor"),
-                decorationThickness: 1.5,
-                decorationStyle: TextDecorationStyle.solid,
+                // decoration: TextDecoration.underline,
+                // decorationColor:
+                //     themes.getColor(context, "homeHelloTitleUnderlineColor"),
+                // decorationThickness: 1.5,
+                // decorationStyle: TextDecorationStyle.solid,
               )),
         ],
       ),
@@ -338,6 +344,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 left:
                     themes.getPosition(context, false, "homeTimeTitlePosition"),
                 child: showTimeTitle()),
+            Positioned(
+              top: themes.getPosition(
+                  context, true, "homeTitleBodyDividerPosition"),
+              child: interfaceStandards.parentCenter(
+                  context,
+                  Container(
+                    width: themes.getDimension(
+                        context, false, "homeTitleBodyDividerDimension"),
+                    child: Divider(
+                      color:
+                          themes.getColor(context, "homeTitleBodyDividerColor"),
+                      thickness: 2,
+                    ),
+                  )),
+            ),
             Positioned(
               top: themes.getPosition(context, true, "homeImageListPosition"),
               child: showImageList(),

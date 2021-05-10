@@ -131,6 +131,9 @@ extension CustomColorScheme on ColorScheme {
       case "homeTimeTitleTextColor":
         return isDark ? Color(0xFFFFFFFF) : Color(0xFF7E7E7E);
         break;
+      case "homeTitleBodyDividerColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFAB58);
+        break;
       case "homeNavigationBarColor":
         return isDark ? Color(0xFFFFC48A) : Color(0xFFFAFAFA);
         break;
@@ -266,6 +269,9 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "homeContainerDimension":
         return isHeight ? 1 : 1;
         break;
+      case "homeTitleBodyDividerDimension":
+        return isHeight ? null : 0.5;
+        break;
       case "homeNavigationBarDimension":
         return isHeight ? 0.09 : 1;
         break;
@@ -360,6 +366,9 @@ extension CustomPositions on MaterialTapTargetSize {
         break;
       case "homeTimeTitlePosition":
         return isTop ? 0.145 : 0.05;
+        break;
+      case "homeTitleBodyDividerPosition":
+        return isTop ? 0.205 : null;
         break;
       case "homeNavigationBarPosition":
         return isTop ? 0 : 0;
