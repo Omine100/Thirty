@@ -120,7 +120,7 @@ extension CustomColorScheme on ColorScheme {
         break;
 
       case "homeBackgroundColor":
-        return isDark ? Color(0xFF606060) : Color(0xFFEAEAEA);
+        return isDark ? Color(0xFF121212) : Color(0xFFEAEAEA);
         break;
       case "homeHelloTitleTextColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFF000000);
@@ -135,10 +135,10 @@ extension CustomColorScheme on ColorScheme {
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFAB58);
         break;
       case "homeNavigationBarColor":
-        return isDark ? Color(0xFFFFC48A) : Color(0xFFFAFAFA);
+        return isDark ? Color(0xFF102449) : Color(0xFFFAFAFA);
         break;
       case "homeNavigationBarFloatingActionButtonColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFFFFAB58);
+        return isDark ? Color(0xFF3F4F6D) : Color(0xFFFFAB58);
         break;
       case "homeNavigationBarFloatingActionButtonIconColor":
         return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
@@ -377,7 +377,7 @@ extension CustomPositions on MaterialTapTargetSize {
         return isTop ? 0 : 0;
         break;
       case "homeImageListPosition":
-        return isTop ? 0.25 : 0;
+        return isTop ? 0.275 : 0;
         break;
 
       default:
