@@ -235,26 +235,6 @@ class InterfaceStandards {
     );
   }
 
-  //USER INTERFACE: Show hello title
-  //DESCRIPTION: Shows a title for the home page
-  //POSITION: Can be found by looking at "homeHelloTitlePosition"
-  //STRING INPUT: 'key' used to get the text and its correct translation
-  //          'name' used for displaying the name
-  //OUTPUT: Text displayed in a general way for the application
-  Widget showHelloTitle(BuildContext context, String key, String name) {
-    return Text(
-      getTranslated(context, key) + name,
-      style: TextStyle(
-        color:
-            themes.getColor(context, "interfaceStandardsHelloTitleTextColor"),
-        fontSize:
-            Theme.of(context).textTheme.interfaceStandardsHelloTitleFontSize,
-        fontWeight:
-            Theme.of(context).typography.interfaceStandardsHelloTitleFontWeight,
-      ),
-    );
-  }
-
   //USER INTERFACE: Show social icon button
   //DESCRIPTION: Widget for various icons with connection to cloudFirestore
   //INT INPUT: 'iconCase' - 0 = Google, 1 = Twitter

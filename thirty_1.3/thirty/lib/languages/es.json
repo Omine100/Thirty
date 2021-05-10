@@ -19,6 +19,27 @@
 
     "helloTitle": "Hola, ",
 
+    "currentDay1": "Monday",
+    "currentDay2": "Tuesday",
+    "currentDay3": "Wednesday",
+    "currentDay4": "Thursday",
+    "currentDay5": "Friday",
+    "currentDay6": "Saturday",
+    "currentDay7": "Sunday",
+
+    "currentMonth1": "January",
+    "currentMonth2": "February",
+    "currentMonth3": "March",
+    "currentMonth4": "April",
+    "currentMonth5": "May",
+    "currentMonth6": "June",
+    "currentMonth7": "July",
+    "currentMonth8": "August",
+    "currentMonth9": "September",
+    "currentMonth10": "October",
+    "currentMonth11": "November",
+    "currentMonth12": "December",
+
     "welcomeTitle": "BIENVENIDA A TREINTA",
     "welcomeSignInButton": "¿Tienes una cuenta? ¡Iniciar sesión!",
     "welcomeSignUpButton": "REGÍSTRATE",

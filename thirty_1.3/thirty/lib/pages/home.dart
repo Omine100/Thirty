@@ -7,6 +7,8 @@ import 'package:thirty/services/routeNavigation.dart';
 import 'package:thirty/services/mediaManagement.dart';
 import 'package:thirty/standards/interfaceStandards.dart';
 import 'package:thirty/standards/themes.dart';
+import 'package:thirty/standards/languageStandards.dart';
+import 'package:thirty/standards/methodStandards.dart';
 import 'package:thirty/standards/paintStandards.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   MediaManagement mediaManagement = new MediaManagement();
   InterfaceStandards interfaceStandards = new InterfaceStandards();
   Themes themes = new Themes();
+  MethodStandards methodStandards = new MethodStandards();
   Paints paints = new Paints();
 
   //VARIALBE INITILIZATION
@@ -66,6 +69,37 @@ class _HomeScreenState extends State<HomeScreen> {
     return 1 - min(distance.abs() / 500, 0.25);
   }
 
+  //USER INTERFACE: Show hello title
+  //DESCRIPTION: Shows a title for the home page
+  //OUTPUT: Text displayed in a general way for the application
+  Widget showHelloTitle() {
+    return Text(
+      getTranslated(context, "helloTitle") + name,
+      style: TextStyle(
+        color: themes.getColor(context, "homeHelloTitleTextColor"),
+        fontSize: Theme.of(context).textTheme.homeHelloTitleFontSize,
+        fontWeight: Theme.of(context).typography.homeHelloTitleFontWeight,
+      ),
+    );
+  }
+
+  //USER INTERFACE: Show time title
+  //DESCRIPTION: Shows a title for the time on the home page
+  //OUTPUT: Text displayed in a general way for the application
+  Widget showTimeTitle() {
+    return Text(
+      methodStandards.getCurrentWeekday(context) +
+          ", " +
+          methodStandards.getCurrentMonth(context) +
+          " " +
+          methodStandards.getCurrentDay(),
+      style: TextStyle(
+          color: themes.getColor(context, "homeTimeTitleTextColor"),
+          fontSize: Theme.of(context).textTheme.homeTimeTitleFontSize,
+          fontWeight: Theme.of(context).typography.homeTimeTitleFontWeight),
+    );
+  }
+
   //USER INTERFACE: Show navigation bar floating action button
   //DESCRIPTION: Shows icon and loads camera function on tap
   //OUTPUT: Navigation bar floating action button with gesture detector function
@@ -85,6 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: GestureDetector(
             onTap: () {
               interfaceStandards.showMediaSelectionDialog(context, this);
+              setState(() {});
             },
             child: Icon(
               Icons.camera_alt_rounded,
@@ -271,20 +306,13 @@ class _HomeScreenState extends State<HomeScreen> {
               top: themes.getPosition(context, true, "homeHelloTitlePosition"),
               left:
                   themes.getPosition(context, false, "homeHelloTitlePosition"),
-              child: interfaceStandards.showHelloTitle(
-                  context, "helloTitle", name.toString()),
+              child: showHelloTitle(),
             ),
             Positioned(
-              top: 120,
-              left: 22,
-              child: Text(
-                "Sunday, May 2021",
-                style: TextStyle(
-                    color: Colors.grey.shade600,
-                    fontSize: 25,
-                    fontWeight: FontWeight.w300),
-              ),
-            ),
+                top: themes.getPosition(context, true, "homeTimeTitlePosition"),
+                left:
+                    themes.getPosition(context, false, "homeTimeTitlePosition"),
+                child: showTimeTitle()),
             Positioned(
               top: themes.getPosition(context, true, "homeImageListPosition"),
               child: showImageList(),

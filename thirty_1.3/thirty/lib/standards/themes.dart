@@ -39,9 +39,6 @@ extension CustomColorScheme on ColorScheme {
       case "interfaceStandardsTitleTextColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
-      case "interfaceStandardsHelloTitleTextColor":
-        return isDark ? Color(0xFFFFAB58) : Color(0xFF000000);
-        break;
       case "interfaceStandardsProgressIndicatorColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
@@ -125,6 +122,12 @@ extension CustomColorScheme on ColorScheme {
       case "homeBackgroundColor":
         return isDark ? Color(0xFF606060) : Color(0xFFEAEAEA);
         break;
+      case "homeHelloTitleTextColor":
+        return isDark ? Color(0xFFFFAB58) : Color(0xFF000000);
+        break;
+      case "homeTimeTitleTextColor":
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFF9E9E9E);
+        break;
       case "homeNavigationBarColor":
         return isDark ? Color(0xFFFFC48A) : Color(0xFFFAFAFA);
         break;
@@ -154,7 +157,6 @@ extension CustomColorScheme on ColorScheme {
 extension CustomFontSizes on TextTheme {
   //double get 'name' => 'fontSizeValue'
   double get interfaceStandardsTitleFontSize => 30.0;
-  double get interfaceStandardsHelloTitleFontSize => 42.5;
   double get interfaceStandardsTextInputFontSize => 22.0;
   double get interfaceStandardsToastMessageContentFontSize => 18.0;
 
@@ -169,12 +171,14 @@ extension CustomFontSizes on TextTheme {
 
   double get introTitleFontSize => 30.0;
   double get introDescriptionFontSize => 20.0;
+
+  double get homeHelloTitleFontSize => 42.5;
+  double get homeTimeTitleFontSize => 25;
 }
 
 extension CustomFontWeights on Typography {
   //FontWeight get 'name' => 'fontWeightValue';
   FontWeight get interfaceStandardsTitleFontWeight => FontWeight.w600;
-  FontWeight get interfaceStandardsHelloTitleFontWeight => FontWeight.w600;
   FontWeight get interfaceStandardsTextInputFontWeight => FontWeight.w300;
   FontWeight get interfaceStandardsToastMessageContentFontWeight =>
       FontWeight.w400;
@@ -187,6 +191,9 @@ extension CustomFontWeights on Typography {
 
   FontWeight get introTitleFontWeight => FontWeight.w600;
   FontWeight get introDescriptionFontWeight => FontWeight.w300;
+
+  FontWeight get homeHelloTitleFontWeight => FontWeight.w600;
+  FontWeight get homeTimeTitleFontWeight => FontWeight.w300;
 }
 
 extension CustomDimensions on MaterialTapTargetSize {
@@ -347,6 +354,9 @@ extension CustomPositions on MaterialTapTargetSize {
 
       case "homeHelloTitlePosition":
         return isTop ? 0.075 : 0.05;
+        break;
+      case "homeTimeTitlePosition":
+        return isTop ? 0.145 : 0.05;
         break;
       case "homeNavigationBarPosition":
         return isTop ? 0 : 0;

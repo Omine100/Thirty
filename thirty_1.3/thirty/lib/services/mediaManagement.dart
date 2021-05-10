@@ -32,9 +32,7 @@ class MediaManagement {
           imageQuality: 100);
       final String fileName = path.basename(pickedFile.path);
       File imageFile = File(pickedFile.path);
-      await cloudFirestore.createImageData(fileName, imageFile).then((value) {
-        state.setState(() {});
-      });
+      await cloudFirestore.createImageData(fileName, imageFile);
     } catch (e) {
       print(e);
     }
