@@ -125,8 +125,11 @@ extension CustomColorScheme on ColorScheme {
       case "homeHelloTitleTextColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFF000000);
         break;
+      case "homeHelloTitleUnderlineColor":
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFAB58);
+        break;
       case "homeTimeTitleTextColor":
-        return isDark ? Color(0xFFFFFFFF) : Color(0xFF9E9E9E);
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFF7E7E7E);
         break;
       case "homeNavigationBarColor":
         return isDark ? Color(0xFFFFC48A) : Color(0xFFFAFAFA);
