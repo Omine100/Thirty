@@ -133,6 +133,18 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  //USER INTERFACE: Show settings dropdown
+  //DESCRIPTION: Shows a dropdown with 'signOut', 'themeSelector', and 'delete'
+  //          each with the appropriate gestureDetector actions
+  //OUTPUT: Widget for settings dropdown
+  Widget showSettingsDropDown() {
+    return new Icon(
+      Icons.more_vert,
+      color: Colors.black,
+      size: 45,
+    );
+  }
+
   //USER INTERFACE: Show navigation bar floating action button
   //DESCRIPTION: Shows icon and loads camera function on tap
   //OUTPUT: Navigation bar floating action button with gesture detector function
@@ -210,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           IconButton(
               icon: Icon(
-                Icons.bookmark_border_outlined,
+                Icons.calendar_today_outlined,
                 color: currentIndex == 2
                     ? themes.getColor(context,
                         "homeNavigationBarSecondaryButtonIconActiveColor")
@@ -225,7 +237,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
               padding: EdgeInsets.only(top: 10),
               icon: Icon(
-                Icons.person_outline,
+                Icons.bookmark_border_outlined,
                 color: currentIndex == 3
                     ? themes.getColor(context,
                         "homeNavigationBarSecondaryButtonIconActiveColor")
@@ -365,6 +377,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 left:
                     themes.getPosition(context, false, "homeSubtitlePosition"),
                 child: showSubtitle()),
+            Positioned(
+              top: 65,
+              right: 20,
+              child: showSettingsDropDown(),
+            ),
             Positioned(
               top: themes.getPosition(
                   context, true, "homeTitleBodyDividerPosition"),
