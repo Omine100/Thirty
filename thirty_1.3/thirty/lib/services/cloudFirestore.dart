@@ -32,7 +32,6 @@ abstract class BaseCloud {
   Future<void> createImageURLData(String date, String imageURL);
   Future<String> getNameData();
   Future<List<DocumentSnapshot>> getImageDocuments();
-  Future<List<String>> getImageURLStreamData();
   Future<void> deleteImageData(DocumentSnapshot doc, String imageURL);
   Future<void> deleteUserData();
   Future<void> deleteUser();
@@ -281,29 +280,6 @@ class CloudFirestore implements BaseCloud {
       documentSnapshotsReversed.add(documentSnapshots.elementAt(i));
     }
     return documentSnapshotsReversed;
-  }
-
-  //MECHANICS: Returns imageURL stream data
-  //DESCRIPTION: Looks at the cloudFirestore data for a specific user and
-  //          then gets all of the imageURLs for that person
-  //OUTPUT: List of strings that are imageURLs
-  Future<List<String>> getImageURLStreamData() async {
-    var userId = auth.currentUser.uid;
-    final QuerySnapshot querySnapshot = await firestore
-        .collection(userId)
-        .doc("images")
-        .collection("complete")
-        .get();
-    final List<DocumentSnapshot> documentSnapshots = querySnapshot.docs;
-    List<String> imageURLStream = [];
-    documentSnapshots.forEach((snapshot) {
-      imageURLStream.add(snapshot.get("imageURL"));
-    });
-    List<String> imageURLStreamReversed = [];
-    for (int i = imageURLStream.length - 1; i >= 0; i--) {
-      imageURLStreamReversed.add(imageURLStream.elementAt(i));
-    }
-    return imageURLStreamReversed;
   }
 
   //MECHANICS: Deletes one image

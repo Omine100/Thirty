@@ -31,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
   String name;
   int currentIndex = 0, focusedIndex = 0;
   List<DocumentSnapshot> documentSnapshots = [];
-  List<String> imageURLStream = [];
 
   //INITIAL STATE
   //DESCRIPTION: Calls cloudFirestore function to set 'name' value and documentSnapshot for images
@@ -42,9 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
             name = _name;
           })
         });
-    cloudFirestore.getImageDocuments().then((_documentSnapshots) => {
-      documentSnapshots = _documentSnapshots
-    });
+    cloudFirestore
+        .getImageDocuments()
+        .then((_documentSnapshots) => {documentSnapshots = _documentSnapshots});
   }
 
   //MECHANICS: Sets current index
@@ -153,9 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: GestureDetector(
             onTap: () {
               interfaceStandards.showMediaSelectionDialog(context, this);
-              setState(() {
-                
-              });
+              setState(() {});
             },
             child: Icon(
               Icons.camera_alt_rounded,
@@ -260,12 +257,13 @@ class _HomeScreenState extends State<HomeScreen> {
       width: themes.getDimension(
           context, false, "homeImageListContainerDimension"),
       child: FutureBuilder(
-        future: cloudFirestore.getImageURLStreamData(),
+        future: cloudFirestore.getImageDocuments(),
         builder: (BuildContext context, snapshot) {
-          imageURLStream = snapshot.data ?? [];
+          documentSnapshots = snapshot.data ?? [];
           if (snapshot.hasData) {
             interfaceStandards.showProgress(context);
           } else {
+            //Empty container widget
           }
           return ScrollSnapList(
             onItemFocus: onItemFocus,
@@ -277,11 +275,10 @@ class _HomeScreenState extends State<HomeScreen> {
             dynamicItemSize: true,
             dynamicItemOpacity: 0.85,
             dynamicSizeEquation: customEquation,
-            itemCount: imageURLStream.length,
+            itemCount: documentSnapshots.length,
             itemBuilder: (context, int index) {
-              String imageURL = imageURLStream[index];
               DocumentSnapshot documentSnapshot = documentSnapshots[index];
-              return showImageCard(imageURL, documentSnapshot);
+              return showImageCard(documentSnapshot);
             },
           );
         },
@@ -293,12 +290,16 @@ class _HomeScreenState extends State<HomeScreen> {
   //DESCRIPTION: Takes in the information for one image from the list and creates
   //          a card for it to display the information. When you tap on it, it
   //          should display full screen, long press should delete it
-  //STRING INPUT: 'imageURL' for having something to reference
+  //DOCUMENTSNAPSHOT INPUT: 'documentSnapshot' for having something to reference
   //OUTPUT: Card with image
-  Widget showImageCard(String imageURL, DocumentSnapshot documentSnapshot) {
+  Widget showImageCard(DocumentSnapshot documentSnapshot) {
+    //VARIBLE INITIALIZATION
     String date = documentSnapshot.id.toString();
     int monthNumber = int.parse(date.substring(5, 7));
     String month = methodStandards.getCurrentMonth(context, monthNumber);
+    String imageURL = documentSnapshot.get("imageURL");
+
+    //USER INTERFACE: Show image card
     return GestureDetector(
       onTap: () {
         routeNavigation.routeDetail(context, imageURL);
@@ -306,39 +307,40 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Hero(
         tag: 'imageCard$imageURL',
         child: Stack(
-            children: [
-              Container(
-                width:
-                  themes.getDimension(context, false, "homeImageListCardDimension"),
-                decoration: BoxDecoration(
+          children: [
+            Container(
+              width: themes.getDimension(
+                  context, false, "homeImageListCardDimension"),
+              decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50.0),
                   color: themes.getColor(context, "homeImageListCardColor"),
                   image: DecorationImage(
-                    image: NetworkImage(
-                      imageURL,
-                    ),
-                    fit: BoxFit.cover
-                  )
-                ),
-              ),
-              Positioned(
+                      image: NetworkImage(
+                        imageURL,
+                      ),
+                      fit: BoxFit.cover)),
+            ),
+            Positioned(
                 bottom: 20,
                 child: Container(
-                  width: themes.getDimension(context, false, "homeImageListCardDimension"),
+                  width: themes.getDimension(
+                      context, false, "homeImageListCardDimension"),
                   child: Center(
                     child: Text(
-                      month + " " + date.substring(8, 10) + ", '" + date.substring(2, 4),
+                      month +
+                          " " +
+                          date.substring(8, 10) +
+                          ", '" +
+                          date.substring(2, 4),
                       style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontStyle: FontStyle.italic
-                      ),
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontStyle: FontStyle.italic),
                     ),
                   ),
-                )
-              )
-            ],
-          ),
+                ))
+          ],
+        ),
       ),
     );
   }
