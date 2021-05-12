@@ -36,21 +36,17 @@ class _DetailScreenState extends State<DetailScreen> {
     return GestureDetector(
       child: Scaffold(
         backgroundColor: themes.getColor(context, "detailBackgroundColor"),
-        body: Center(
-          child: Hero(
-              tag: 'imageCard$imageURL',
-              child: Stack(
-                children: [
-                  Image.network(widget.imageURL),
-                  Positioned(
-                    bottom: themes.getPosition(
-                        context, true, "detailShareButtonPosition"),
-                    child: Center(
-                        child: interfaceStandards.showShareButton(
-                            context, imageURL)),
-                  ),
-                ],
-              )),
+        body: Hero(
+          tag: 'imageCard$imageURL',
+          child: Stack(children: [
+            Center(child: Image.network(widget.imageURL)),
+            Positioned(
+              bottom: themes.getPosition(
+                  context, true, "detailShareButtonPosition"),
+              child: interfaceStandards.parentCenter(context,
+                  interfaceStandards.showShareButton(context, imageURL)),
+            ),
+          ]),
         ),
       ),
       onTap: () {

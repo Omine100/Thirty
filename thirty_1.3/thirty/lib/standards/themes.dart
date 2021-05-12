@@ -37,7 +37,7 @@ extension CustomColorScheme on ColorScheme {
         return isDark ? Color(0xFFFFAB5F) : Color(0xFF000000);
         break;
       case "interfaceStandardsShareButtonIconColor":
-        return isDark ? Color(0xFF000000) : Color(0xFFFFFFFF);
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFF000000);
         break;
       case "interfaceStandardsTitleTextColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
