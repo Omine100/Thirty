@@ -141,11 +141,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return new DropdownButtonHideUnderline(
         child: DropdownButton(
       dropdownColor: themes.getColor(context, "homeSettingsDropdownColor"),
-      icon: Icon(
-        Icons.more_vert,
-        color: themes.getColor(context, "homeSettingsDropdownIconColor"),
-        size: 45,
-      ),
+      icon: Icon(Icons.more_vert,
+          color: themes.getColor(context, "homeSettingsDropdownIconColor"),
+          size: themes.getDimension(
+              context, true, "homeSettingsDropdownIconDimension")),
       onChanged: (_) {},
       items: [
         DropdownMenuItem(
@@ -156,19 +155,32 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: interfaceStandards.showThemeSelector(context)),
             )),
         DropdownMenuItem(
-            onTap: () {},
+            onTap: () {
+              cloudFirestore.signOut().then((next) {
+                routeNavigation.routeSignOutWelcome(context);
+              });
+            },
             child: Center(
               child: Text(
-                "Sign Out",
-                style: TextStyle(color: Colors.black),
+                getTranslated(context, "homeSettingsDropdownSignOut"),
+                style: TextStyle(
+                  color: themes.getColor(
+                      context, "homeSettingsDropdownSignOutTextColor"),
+                ),
               ),
             )),
         DropdownMenuItem(
-            onTap: () {},
+            onTap: () {
+              cloudFirestore.deleteUser().then(
+                  (next) => {routeNavigation.routeSignOutWelcome(context)});
+            },
             child: Center(
               child: Text(
-                "DELETE ACCOUNT",
-                style: TextStyle(color: Colors.red),
+                getTranslated(context, "homeSettingsDropdownDeleteAccount"),
+                style: TextStyle(
+                  color: themes.getColor(
+                      context, "homeSettingsDropdownDeleteAccountTextColor"),
+                ),
               ),
             )),
       ],
@@ -277,7 +289,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     context, true, "homeNavigationBarIconDimension"),
               ),
               onPressed: () {
-                routeNavigation.routeSettings(context);
                 setCurrentIndex(3);
               }),
         ],
@@ -408,8 +419,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     themes.getPosition(context, false, "homeSubtitlePosition"),
                 child: showSubtitle()),
             Positioned(
-              top: 65,
-              right: 20,
+              top: themes.getPosition(
+                  context, true, "homeSettingsDropdownPosition"),
+              right: themes.getPosition(
+                  context, false, "homeSettingsDropdownPosition"),
               child: showSettingsDropdown(),
             ),
             Positioned(

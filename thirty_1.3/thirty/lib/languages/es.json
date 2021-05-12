@@ -58,5 +58,8 @@
     "introMedalTitle": "COMPLETION",
     "introExerciseDescription": "asocdao",
     "introCalendarDescription": "asdfcawoj",
-    "introMedalDescription": "ascojwocao" 
+    "introMedalDescription": "ascojwocao",
+
+    "homeSettingsDropdownSignOut": "Desconectar",
+    "homeSettingsDropdownDeleteAccount": "BORRAR CUENTA"
 }

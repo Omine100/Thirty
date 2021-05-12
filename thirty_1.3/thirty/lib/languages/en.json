@@ -58,5 +58,8 @@
     "introMedalTitle": "COMPLETION",
     "introExerciseDescription": "Maintaining goals is hard, so we are trying to make it easier.",
     "introCalendarDescription": "Going cold turkey is never easy, so small increments work best!",
-    "introMedalDescription": "Plus you get cool medals for sticking with your goals!!!" 
+    "introMedalDescription": "Plus you get cool medals for sticking with your goals!!!",
+
+    "homeSettingsDropdownSignOut": "Sign Out",
+    "homeSettingsDropdownDeleteAccount": "DELETE ACCOUNT"
 }

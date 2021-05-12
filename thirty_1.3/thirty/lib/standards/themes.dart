@@ -137,6 +137,12 @@ extension CustomColorScheme on ColorScheme {
       case "homeSettingsDropdownIconColor":
         return isDark ? Color(0xFFFFFFFF) : Color(0xFF000000);
         break;
+      case "homeSettingsDropdownSignOutTextColor":
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFF000000);
+        break;
+      case "homeSettingsDropdownDeleteAccountTextColor":
+        return isDark ? Color(0xFFF44336) : Color(0xFFF44336);
+        break;
       case "homeTitleBodyDividerColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFAB58);
         break;
@@ -158,6 +164,10 @@ extension CustomColorScheme on ColorScheme {
 
       case "detailBackgroundColor":
         return isDark ? Color(0xFF616161) : Color(0xFFFFFEFE);
+        break;
+      case "detailShareButtonIconColor":
+        return isDark ? Color(0xFF000000) : Color(0xFFFFFFFF);
+        break;
 
       default:
         return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
@@ -278,6 +288,9 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "homeTitleBodyDividerDimension":
         return isHeight ? null : 0.5;
         break;
+      case "homeSettingsDropdownIconDimension":
+        return isHeight ? 0.065 : null;
+        break;
       case "homeNavigationBarDimension":
         return isHeight ? 0.09 : 1;
         break;
@@ -298,6 +311,10 @@ extension CustomDimensions on MaterialTapTargetSize {
         break;
       case "homeImageListCardDimension":
         return isHeight ? null : 0.75;
+        break;
+
+      case "detailShareButtonIconDimension":
+        return isHeight ? 0.065 : null;
         break;
 
       default:
@@ -373,6 +390,9 @@ extension CustomPositions on MaterialTapTargetSize {
       case "homeSubtitlePosition":
         return isTop ? 0.145 : 0.05;
         break;
+      case "homeSettingsDropdownPosition":
+        return isTop ? 0.1 : 0.05;
+        break;
       case "homeTitleBodyDividerPosition":
         return isTop ? 0.205 : null;
         break;
@@ -381,6 +401,10 @@ extension CustomPositions on MaterialTapTargetSize {
         break;
       case "homeImageListPosition":
         return isTop ? 0.275 : 0;
+        break;
+
+      case "detailShareButtonPosition":
+        return isTop ? 0.05 : null;
         break;
 
       default:
