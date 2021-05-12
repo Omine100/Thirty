@@ -297,11 +297,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   //USER INTERFACE: Show image container
-  //DESCRIPTION: Takes in a list of images and displays each one in the a card
-  //          format for the user to see and interact with - when they tap on the
-  //          image, it should display it in fullscreen. If the date for the image
-  //          is in a new month, then we have a card saying the next month (ex:
-  //          "March" - maybe displayed sideways)
+  //DESCRIPTION: Takes in a list of images and makes a decision. If the current
+  //          index is '0' then we call the showImageList() function, otherwise
+  //          we call the showImageGrid() function
   //OUTPUT: Cards with images and text for new month
   Widget showImageContainer() {
     return Container(
