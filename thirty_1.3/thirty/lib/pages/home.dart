@@ -342,7 +342,7 @@ class _HomeScreenState extends State<HomeScreen> {
       itemCount: documentSnapshots.length,
       itemBuilder: (context, int index) {
         DocumentSnapshot documentSnapshot = documentSnapshots[index];
-        return showImageCard(documentSnapshot);
+        return showImageCard(documentSnapshot, true);
       },
     );
   }
@@ -365,7 +365,7 @@ class _HomeScreenState extends State<HomeScreen> {
   //          should display full screen, long press should delete it
   //DOCUMENTSNAPSHOT INPUT: 'documentSnapshot' for having something to reference
   //OUTPUT: Card with image
-  Widget showImageCard(DocumentSnapshot documentSnapshot) {
+  Widget showImageCard(DocumentSnapshot documentSnapshot, bool isList) {
     //VARIBLE INITIALIZATION
     String date = documentSnapshot.id.toString();
     int monthNumber = int.parse(date.substring(5, 7));
@@ -404,12 +404,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: themes.getDimension(
                       context, false, "homeImageListCardDimension"),
                   child: Center(
-                    child: Text(
+                    child: Text(isList ?
                       month +
                           " " +
                           date.substring(8, 10) +
                           ", '" +
-                          date.substring(2, 4),
+                          date.substring(2, 4) : date.substring(8, 10),
                       style: TextStyle(
                           fontSize: 25,
                           color: Colors.white,
