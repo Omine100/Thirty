@@ -246,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
               }),
           IconButton(
               icon: Icon(
-                Icons.menu_outlined,
+                Icons.grid_view,
                 color: currentIndex == 1
                     ? themes.getColor(context,
                         "homeNavigationBarSecondaryButtonIconActiveColor")
@@ -296,19 +296,19 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  //USER INTERFACE: Show image list
+  //USER INTERFACE: Show image container
   //DESCRIPTION: Takes in a list of images and displays each one in the a card
   //          format for the user to see and interact with - when they tap on the
   //          image, it should display it in fullscreen. If the date for the image
   //          is in a new month, then we have a card saying the next month (ex:
   //          "March" - maybe displayed sideways)
   //OUTPUT: Cards with images and text for new month
-  Widget showImageList() {
+  Widget showImageContainer() {
     return Container(
       height:
-          themes.getDimension(context, true, "homeImageListContainerDimension"),
+          themes.getDimension(context, true, "homeImageContainerDimension"),
       width: themes.getDimension(
-          context, false, "homeImageListContainerDimension"),
+          context, false, "homeImageContainerDimension"),
       child: FutureBuilder(
         future: cloudFirestore.getImageDocuments(),
         builder: (BuildContext context, snapshot) {
@@ -318,25 +318,45 @@ class _HomeScreenState extends State<HomeScreen> {
           } else {
             //Empty container widget
           }
-          return ScrollSnapList(
-            onItemFocus: onItemFocus,
-            scrollDirection: Axis.horizontal,
-            itemSize: themes.getDimension(
-                context, false, "homeImageListCardDimension"),
-            focusOnItemTap: true,
-            reverse: true,
-            dynamicItemSize: true,
-            dynamicItemOpacity: 0.85,
-            dynamicSizeEquation: customEquation,
-            itemCount: documentSnapshots.length,
-            itemBuilder: (context, int index) {
-              DocumentSnapshot documentSnapshot = documentSnapshots[index];
-              return showImageCard(documentSnapshot);
-            },
-          );
+          return currentIndex == 0 ? showImageList(snapshot) : showImageGrid();
         },
       ),
     );
+  }
+
+  //USER INTERFACE: Show image list
+  //DESCRIPTION: Takes in a list of images and displays each one in a card in
+  //          a list view for the user
+  //OUTPUT: Cards with images and text for new month in a list format
+  Widget showImageList(AsyncSnapshot<dynamic> snapshot) {
+    return ScrollSnapList(
+      onItemFocus: onItemFocus,
+      scrollDirection: Axis.horizontal,
+      itemSize: themes.getDimension(
+        context, false, "homeImageListCardDimension"),
+      focusOnItemTap: true,
+      reverse: true,
+      dynamicItemSize: true,
+      dynamicItemOpacity: 0.85,
+      dynamicSizeEquation: customEquation,
+      itemCount: documentSnapshots.length,
+      itemBuilder: (context, int index) {
+        DocumentSnapshot documentSnapshot = documentSnapshots[index];
+        return showImageCard(documentSnapshot);
+      },
+    );
+  }
+
+  //USER INTERFACE: Show image card
+  //DESCRIPTION: Takes in a list of images and displays each one in a card in
+  //          a grid view for the user
+  //OUTPUT: Cards with images and text for new month in a grid format
+  Widget showImageGrid() {
+    return interfaceStandards.parentCenter(context, Container(
+      height: 100,
+      width: 100,
+      color: Colors.black,
+    ));
   }
 
   //USER INTERFACE: Show image card
@@ -447,7 +467,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Positioned(
               top: themes.getPosition(context, true, "homeImageListPosition"),
-              child: showImageList(),
+              child: showImageContainer(),
             ),
             Positioned(
               bottom: themes.getPosition(

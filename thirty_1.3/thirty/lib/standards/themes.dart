@@ -310,7 +310,7 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "homeNavigationBarIconDimension":
         return isHeight ? 0.040 : null;
         break;
-      case "homeImageListContainerDimension":
+      case "homeImageContainerDimension":
         return isHeight ? 0.55 : 1;
         break;
       case "homeImageListCardDimension":
