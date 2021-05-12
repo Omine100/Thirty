@@ -345,7 +345,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  //USER INTERFACE: Show image card
+  //USER INTERFACE: Show image grid
   //DESCRIPTION: Takes in a list of images and displays each one in a card in
   //          a grid view for the user
   //OUTPUT: Cards with images and text for new month in a grid format
