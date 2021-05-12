@@ -25,6 +25,12 @@ dependencies:
   google_sign_in: ^5.0.2
   flutter_twitter_login: ^1.1.0
   provider: ^5.0.0
+  path_provider: ^2.0.1
+  http: ^0.13.3
+  share:
+    git:
+      url: git://github.com/himanshusharma89/plugins.git
+      path: packages/share
   picker: ^1.0.6
 
   #User interface

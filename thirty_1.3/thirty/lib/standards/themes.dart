@@ -36,6 +36,9 @@ extension CustomColorScheme on ColorScheme {
       case "interfaceStandardsToastTextColor":
         return isDark ? Color(0xFFFFAB5F) : Color(0xFF000000);
         break;
+      case "interfaceStandardsShareButtonIconColor":
+        return isDark ? Color(0xFF000000) : Color(0xFFFFFFFF);
+        break;
       case "interfaceStandardsTitleTextColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
         break;
@@ -165,9 +168,6 @@ extension CustomColorScheme on ColorScheme {
       case "detailBackgroundColor":
         return isDark ? Color(0xFF616161) : Color(0xFFFFFEFE);
         break;
-      case "detailShareButtonIconColor":
-        return isDark ? Color(0xFF000000) : Color(0xFFFFFFFF);
-        break;
 
       default:
         return isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
@@ -228,6 +228,10 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "interfaceStandardsCameraButtonDimension":
         return isHeight ? 0.1 : 0.1;
         break;
+      case "interfaceStandardsShareButtonIconDimension":
+        return isHeight ? 0.065 : null;
+        break;
+
       case "interfaceStandardsBackButtonDimension":
         return isHeight ? 0.055 : 0.055;
         break;
@@ -311,10 +315,6 @@ extension CustomDimensions on MaterialTapTargetSize {
         break;
       case "homeImageListCardDimension":
         return isHeight ? null : 0.75;
-        break;
-
-      case "detailShareButtonIconDimension":
-        return isHeight ? 0.065 : null;
         break;
 
       default:

@@ -201,6 +201,26 @@ class InterfaceStandards {
         });
   }
 
+  //USER INTERFACE: Show share button
+  //DESCRIPTION: Shows a button and then tap, takes the imageURL and allows for
+  //          the user to share it via a function call
+  //STRING INPUT: 'imageURL' for image to share
+  //OUTPUT: Widget and share function call
+  Widget showShareButton(BuildContext context, String imageURL) {
+    return new GestureDetector(
+      onTap: () {
+        mediaManagement.saveAndShare(imageURL);
+      },
+      child: Icon(
+        Icons.share_outlined,
+        size: themes.getDimension(
+            context, true, "interfaceStandardsShareButtonIconDimension"),
+        color:
+            themes.getColor(context, "interfaceStandardsShareButtonIconColor"),
+      ),
+    );
+  }
+
   //USER INTERFACE: Show back button
   //OUTPUT: Calls a function in routeNavigation to pop the route stack once
   Widget showBackButton(BuildContext context) {

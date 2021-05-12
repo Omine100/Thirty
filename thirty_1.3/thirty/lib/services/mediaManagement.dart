@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:picker/picker.dart';
 import 'package:path/path.dart' as path;
+import 'package:http/http.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share/share.dart';
 import 'dart:io';
 
 import 'package:thirty/services/cloudFirestore.dart';
@@ -30,6 +33,22 @@ class MediaManagement {
       state.setState(() {});
     } catch (e) {
       print(e);
+    }
+  }
+
+  //MECHANICS: Save and share image
+  //DESCRIPTION: Takes imageURL, saves it, and then allows for the user to share
+  //          it with some preset information
+  //OUTPUT: Image share
+  Future<Null> saveAndShare(String imageURL) async {
+    if (Platform.isAndroid) {
+      var url = imageURL;
+      var response = await get(Uri.parse(imageURL));
+      final documentDirectory = (await getExternalStorageDirectory()).path;
+      File imageFile = new File('$documentDirectory/flutter.png');
+      imageFile.writeAsBytesSync(response.bodyBytes);
+      Share.shareFile(imageFile,
+          subject: "Thought you might like!", text: "What do you think?");
     }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:thirty/services/routeNavigation.dart';
+import 'package:thirty/standards/interfaceStandards.dart';
 import 'package:thirty/standards/themes.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -16,6 +17,7 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   //CLASS INITIALIZATION
   RouteNavigation routeNavigation = new RouteNavigation();
+  InterfaceStandards interfaceStandards = new InterfaceStandards();
   Themes themes = new Themes();
 
   //VARIABLE INITIALIZATION
@@ -26,22 +28,6 @@ class _DetailScreenState extends State<DetailScreen> {
   void initState() {
     super.initState();
     imageURL = widget.imageURL;
-  }
-
-  //USER INTERFACE: Show share button
-  //DESCRIPTION: Shows a button and then tap, takes the imageURL and allows for
-  //          the user to share it
-  //OUTPUT: Widget and share function
-  Widget showShareButton() {
-    return new GestureDetector(
-      onTap: () {},
-      child: Icon(
-        Icons.share_outlined,
-        size: themes.getDimension(
-            context, true, "detailShareButtonIconDimension"),
-        color: themes.getColor(context, "detailShareButtonIconColor"),
-      ),
-    );
   }
 
   //USER INTERFACE: Detail screen
@@ -59,7 +45,9 @@ class _DetailScreenState extends State<DetailScreen> {
                   Positioned(
                     bottom: themes.getPosition(
                         context, true, "detailShareButtonPosition"),
-                    child: Center(child: showShareButton()),
+                    child: Center(
+                        child: interfaceStandards.showShareButton(
+                            context, imageURL)),
                   ),
                 ],
               )),
