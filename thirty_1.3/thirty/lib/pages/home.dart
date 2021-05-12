@@ -137,12 +137,29 @@ class _HomeScreenState extends State<HomeScreen> {
   //DESCRIPTION: Shows a dropdown with 'signOut', 'themeSelector', and 'delete'
   //          each with the appropriate gestureDetector actions
   //OUTPUT: Widget for settings dropdown
-  Widget showSettingsDropDown() {
-    return new Icon(
-      Icons.more_vert,
-      color: Colors.black,
-      size: 45,
-    );
+  Widget showSettingsDropdown() {
+    return new DropdownButtonHideUnderline(
+        child: DropdownButton(
+      dropdownColor: themes.getColor(context, "homeSettingsDropdownColor"),
+      icon: Icon(
+        Icons.more_vert,
+        color: Colors.black,
+        size: 45,
+      ),
+      items: [
+        DropdownMenuItem(
+            onTap: () {},
+            child: interfaceStandards.parentCenter(
+                context, interfaceStandards.showThemeSelector(context))),
+        DropdownMenuItem(
+            onTap: () {},
+            child: interfaceStandards.parentCenter(context, Text("Sign Out"))),
+        DropdownMenuItem(
+            onTap: () {},
+            child: interfaceStandards.parentCenter(
+                context, Text("Delete Account"))),
+      ],
+    ));
   }
 
   //USER INTERFACE: Show navigation bar floating action button
@@ -380,7 +397,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Positioned(
               top: 65,
               right: 20,
-              child: showSettingsDropDown(),
+              child: showSettingsDropdown(),
             ),
             Positioned(
               top: themes.getPosition(
