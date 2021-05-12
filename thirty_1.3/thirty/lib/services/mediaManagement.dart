@@ -42,7 +42,6 @@ class MediaManagement {
   //OUTPUT: Image share
   Future<Null> saveAndShare(String imageURL) async {
     if (Platform.isAndroid) {
-      var url = imageURL;
       var response = await get(Uri.parse(imageURL));
       final documentDirectory = (await getExternalStorageDirectory()).path;
       File imageFile = new File('$documentDirectory/flutter.png');

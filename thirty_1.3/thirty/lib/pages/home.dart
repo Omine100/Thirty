@@ -357,6 +357,11 @@ class _HomeScreenState extends State<HomeScreen> {
       onTap: () {
         routeNavigation.routeDetail(context, imageURL);
       },
+      onLongPress: () {
+        setState(() {
+          cloudFirestore.deleteImageData(documentSnapshot, imageURL);
+        });
+      },
       child: Hero(
         tag: 'imageCard$imageURL',
         child: Stack(

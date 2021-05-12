@@ -293,7 +293,7 @@ extension CustomDimensions on MaterialTapTargetSize {
         return isHeight ? null : 0.5;
         break;
       case "homeSettingsDropdownIconDimension":
-        return isHeight ? 0.065 : null;
+        return isHeight ? 0.055 : null;
         break;
       case "homeNavigationBarDimension":
         return isHeight ? 0.09 : 1;
@@ -391,7 +391,7 @@ extension CustomPositions on MaterialTapTargetSize {
         return isTop ? 0.145 : 0.05;
         break;
       case "homeSettingsDropdownPosition":
-        return isTop ? 0.1 : 0.05;
+        return isTop ? 0.065 : 0.03;
         break;
       case "homeTitleBodyDividerPosition":
         return isTop ? 0.205 : null;
