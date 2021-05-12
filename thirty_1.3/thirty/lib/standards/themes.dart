@@ -131,6 +131,12 @@ extension CustomColorScheme on ColorScheme {
       case "homeSubtitleTextColor":
         return isDark ? Color(0xFFFFFFFF) : Color(0xFF7E7E7E);
         break;
+      case "homeSettingsDropdownColor":
+        return isDark ? Color(0xFF222222) : Color(0xFFBBBBBB);
+        break;
+      case "homeSettingsDropdownIconColor":
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFF000000);
+        break;
       case "homeTitleBodyDividerColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFAB58);
         break;

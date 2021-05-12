@@ -143,21 +143,34 @@ class _HomeScreenState extends State<HomeScreen> {
       dropdownColor: themes.getColor(context, "homeSettingsDropdownColor"),
       icon: Icon(
         Icons.more_vert,
-        color: Colors.black,
+        color: themes.getColor(context, "homeSettingsDropdownIconColor"),
         size: 45,
       ),
+      onChanged: (_) {},
       items: [
         DropdownMenuItem(
             onTap: () {},
-            child: interfaceStandards.parentCenter(
-                context, interfaceStandards.showThemeSelector(context))),
+            child: Center(
+              child: Container(
+                  width: 100,
+                  child: interfaceStandards.showThemeSelector(context)),
+            )),
         DropdownMenuItem(
             onTap: () {},
-            child: interfaceStandards.parentCenter(context, Text("Sign Out"))),
+            child: Center(
+              child: Text(
+                "Sign Out",
+                style: TextStyle(color: Colors.black),
+              ),
+            )),
         DropdownMenuItem(
             onTap: () {},
-            child: interfaceStandards.parentCenter(
-                context, Text("Delete Account"))),
+            child: Center(
+              child: Text(
+                "DELETE ACCOUNT",
+                style: TextStyle(color: Colors.red),
+              ),
+            )),
       ],
     ));
   }

@@ -44,6 +44,7 @@ class InterfaceStandards {
             themes.getColor(context, "interfaceStandardsThemeSelectorColor"),
         onChanged: (val) {
           notifier.toggleTheme();
+          routeNavigation.routePop(context);
         },
         value: notifier.darkTheme,
       ),
