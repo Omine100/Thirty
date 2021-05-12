@@ -37,7 +37,7 @@ extension CustomColorScheme on ColorScheme {
         return isDark ? Color(0xFFFFAB5F) : Color(0xFF000000);
         break;
       case "interfaceStandardsShareButtonIconColor":
-        return isDark ? Color(0xFFFFFFFF) : Color(0xFF000000);
+        return isDark ? Color(0xFFFFFFFF) : Color(0xFFBDBDBD);
         break;
       case "interfaceStandardsTitleTextColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);
@@ -404,7 +404,7 @@ extension CustomPositions on MaterialTapTargetSize {
         break;
 
       case "detailShareButtonPosition":
-        return isTop ? 0.05 : null;
+        return isTop ? 0.03 : null;
         break;
 
       default:

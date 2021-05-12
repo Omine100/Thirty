@@ -207,14 +207,14 @@ class InterfaceStandards {
   //STRING INPUT: 'imageURL' for image to share
   //OUTPUT: Widget and share function call
   Widget showShareButton(BuildContext context, String imageURL) {
-    return new GestureDetector(
-      onTap: () {
+    return new IconButton(
+      onPressed: () {
         mediaManagement.saveAndShare(imageURL);
       },
-      child: Icon(
+      iconSize: themes.getDimension(
+          context, true, "interfaceStandardsShareButtonIconDimension"),
+      icon: Icon(
         Icons.share_outlined,
-        size: themes.getDimension(
-            context, true, "interfaceStandardsShareButtonIconDimension"),
         color:
             themes.getColor(context, "interfaceStandardsShareButtonIconColor"),
       ),
