@@ -194,8 +194,8 @@ extension CustomFontSizes on TextTheme {
   double get introTitleFontSize => 30.0;
   double get introDescriptionFontSize => 20.0;
 
-  double get homeHelloTitleFontSize => 42.5;
-  double get homeSubtitleFontSize => 25;
+  double get homeHelloTitleFontSize => 40;
+  double get homeSubtitleFontSize => 27.5;
 }
 
 extension CustomFontWeights on Typography {
@@ -394,7 +394,7 @@ extension CustomPositions on MaterialTapTargetSize {
         return isTop ? 0.065 : 0.03;
         break;
       case "homeTitleBodyDividerPosition":
-        return isTop ? 0.205 : null;
+        return isTop ? 0.21 : null;
         break;
       case "homeNavigationBarPosition":
         return isTop ? 0 : 0;

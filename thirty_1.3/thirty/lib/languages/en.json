@@ -17,9 +17,9 @@
     "mediaSelectionGallery": "Gallery",
     "mediaSelectionCamera": "Camera",
 
-    "goodMorning": "Good Morning, ",
-    "goodAfternoon": "Good Afternoon, ",
-    "goodEvening": "Good Evening, ",
+    "goodMorning": "Good Morning",
+    "goodAfternoon": "Good Afternoon",
+    "goodEvening": "Good Evening",
 
     "currentDay1": "Monday",
     "currentDay2": "Tuesday",

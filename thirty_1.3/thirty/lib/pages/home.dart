@@ -78,36 +78,16 @@ class _HomeScreenState extends State<HomeScreen> {
   //DESCRIPTION: Shows a title for the home page
   //OUTPUT: Text displayed in a general way for the application
   Widget showHelloTitle() {
-    return RichText(
-      text: TextSpan(
-        text: methodStandards.getCurrentTimeSegment() == 0
-            ? getTranslated(context, "goodMorning")
-            : (methodStandards.getCurrentTimeSegment() == 1
-                ? getTranslated(context, "goodAfternoon")
-                : getTranslated(context, "goodEvening")),
-        style: TextStyle(
-          shadows: [
-            Shadow(
-                color: themes.getColor(context, "homeHelloTitleTextColor"),
-                offset: Offset(0, -5))
-          ],
-          color: Colors.transparent,
-          fontSize: Theme.of(context).textTheme.homeHelloTitleFontSize,
-          fontWeight: Theme.of(context).typography.homeHelloTitleFontWeight,
-        ),
-        children: <TextSpan>[
-          TextSpan(
-              text: name,
-              style: TextStyle(
-                shadows: [
-                  Shadow(
-                      color:
-                          themes.getColor(context, "homeHelloTitleTextColor"),
-                      offset: Offset(0, -5))
-                ],
-                color: Colors.transparent,
-              )),
-        ],
+    return Text(
+      methodStandards.getCurrentTimeSegment() == 0
+          ? getTranslated(context, "goodMorning")
+          : (methodStandards.getCurrentTimeSegment() == 1
+              ? getTranslated(context, "goodAfternoon")
+              : getTranslated(context, "goodEvening")),
+      style: TextStyle(
+        color: themes.getColor(context, "homeHelloTitleTextColor"),
+        fontSize: Theme.of(context).textTheme.homeHelloTitleFontSize,
+        fontWeight: Theme.of(context).typography.homeHelloTitleFontWeight,
       ),
     );
   }
