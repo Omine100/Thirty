@@ -77,16 +77,14 @@ class _HomeScreenState extends State<HomeScreen> {
   //USER INTERFACE: Show hello title
   //DESCRIPTION: Shows a title for the home page
   //OUTPUT: Text displayed in a general way for the application
-  //NOTE: I have rich text here for an underline feature on the name. Right now
-  //    I have this commented out because I think I may like the divider idea
-  //    more. To get it back, uncomment those lines in this method and maybe
-  //    comment out the divider in the build method or delete them entirely
-  //    (making sure to get rid of the themes variables for either one we do not
-  //    end up going with).
   Widget showHelloTitle() {
     return RichText(
       text: TextSpan(
-        text: getTranslated(context, "helloTitle"),
+        text: methodStandards.getCurrentTimeSegment() == 0
+            ? getTranslated(context, "goodMorning")
+            : (methodStandards.getCurrentTimeSegment() == 1
+                ? getTranslated(context, "goodAfternoon")
+                : getTranslated(context, "goodEvening")),
         style: TextStyle(
           shadows: [
             Shadow(
@@ -108,11 +106,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       offset: Offset(0, -5))
                 ],
                 color: Colors.transparent,
-                // decoration: TextDecoration.underline,
-                // decorationColor:
-                //     themes.getColor(context, "homeHelloTitleUnderlineColor"),
-                // decorationThickness: 1.5,
-                // decorationStyle: TextDecorationStyle.solid,
               )),
         ],
       ),
@@ -124,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
   //OUTPUT: Widget for subtitle
   Widget showSubtitle() {
     return Text(
-      "\'THIRTY\' Photos",
+      name,
       style: TextStyle(
           color: themes.getColor(context, "homeSubtitleTextColor"),
           fontSize: Theme.of(context).textTheme.homeSubtitleFontSize,
@@ -303,10 +296,8 @@ class _HomeScreenState extends State<HomeScreen> {
   //OUTPUT: Cards with images and text for new month
   Widget showImageContainer() {
     return Container(
-      height:
-          themes.getDimension(context, true, "homeImageContainerDimension"),
-      width: themes.getDimension(
-          context, false, "homeImageContainerDimension"),
+      height: themes.getDimension(context, true, "homeImageContainerDimension"),
+      width: themes.getDimension(context, false, "homeImageContainerDimension"),
       child: FutureBuilder(
         future: cloudFirestore.getImageDocuments(),
         builder: (BuildContext context, snapshot) {
@@ -330,8 +321,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return ScrollSnapList(
       onItemFocus: onItemFocus,
       scrollDirection: Axis.horizontal,
-      itemSize: themes.getDimension(
-        context, false, "homeImageListCardDimension"),
+      itemSize:
+          themes.getDimension(context, false, "homeImageListCardDimension"),
       focusOnItemTap: true,
       reverse: true,
       dynamicItemSize: true,
@@ -350,11 +341,13 @@ class _HomeScreenState extends State<HomeScreen> {
   //          a grid view for the user
   //OUTPUT: Cards with images and text for new month in a grid format
   Widget showImageGrid() {
-    return interfaceStandards.parentCenter(context, Container(
-      height: 100,
-      width: 100,
-      color: Colors.black,
-    ));
+    return interfaceStandards.parentCenter(
+        context,
+        Container(
+          height: 100,
+          width: 100,
+          color: Colors.black,
+        ));
   }
 
   //USER INTERFACE: Show image card
@@ -402,12 +395,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: themes.getDimension(
                       context, false, "homeImageListCardDimension"),
                   child: Center(
-                    child: Text(isList ?
-                      month +
-                          " " +
-                          date.substring(8, 10) +
-                          ", '" +
-                          date.substring(2, 4) : date.substring(8, 10),
+                    child: Text(
+                      isList
+                          ? month +
+                              " " +
+                              date.substring(8, 10) +
+                              ", '" +
+                              date.substring(2, 4)
+                          : date.substring(8, 10),
                       style: TextStyle(
                           fontSize: 25,
                           color: Colors.white,

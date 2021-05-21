@@ -15,6 +15,21 @@ class MethodStandards {
     return formattedDate;
   }
 
+  //MECHANICS: Returns current time segment
+  //DESCRIPTION: This is used for the 'goodMorning' etc. segments. Basically, if
+  //          it's between like 6AM-Noon we return 0, between Noon-5PM 1, else 2
+  //OUTPUT: Integer for current time segment
+  int getCurrentTimeSegment() {
+    int currentTime = DateTime.now().hour;
+    if (currentTime > 6 && currentTime < 12) {
+      return 0;
+    } else if (currentTime > 12 && currentTime < 15) {
+      return 1;
+    } else {
+      return 2;
+    }
+  }
+
   //MECHANICS: Returns current day
   //OUTPUT: String of current day
   String getCurrentDay() {

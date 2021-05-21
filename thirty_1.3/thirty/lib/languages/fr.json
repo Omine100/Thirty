@@ -17,7 +17,9 @@
     "mediaSelectionGallery": "Galerie",
     "mediaSelectionCamera": "Caméra",
 
-    "helloTitle": "Bonjour ",
+    "goodMorning": "Bonjour, ",
+    "goodAfternoon": "Bonne après-midi, ",
+    "goodEvening": "Bonne soirée, ",
 
     "currentDay1": "Lundi",
     "currentDay2": "Mardi",
