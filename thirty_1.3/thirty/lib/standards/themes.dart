@@ -289,6 +289,9 @@ extension CustomDimensions on MaterialTapTargetSize {
       case "homeContainerDimension":
         return isHeight ? 1 : 1;
         break;
+      case "homeSubtitleDimension":
+        return isHeight ? null : 0.7;
+        break;
       case "homeTitleBodyDividerDimension":
         return isHeight ? null : 0.5;
         break;

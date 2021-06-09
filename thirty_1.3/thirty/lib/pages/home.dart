@@ -96,13 +96,17 @@ class _HomeScreenState extends State<HomeScreen> {
   //DESCRIPTION: Shows a subtitle
   //OUTPUT: Widget for subtitle
   Widget showSubtitle() {
-    return Text(
-      name,
-      style: TextStyle(
-          color: themes.getColor(context, "homeSubtitleTextColor"),
-          fontSize: Theme.of(context).textTheme.homeSubtitleFontSize,
-          fontWeight: Theme.of(context).typography.homeSubtitleFontWeight,
-          fontStyle: FontStyle.italic),
+    return Container(
+      width: themes.getDimension(context, false, "homeSubtitleDimension"),
+      child: Text(
+        name,
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(
+            color: themes.getColor(context, "homeSubtitleTextColor"),
+            fontSize: Theme.of(context).textTheme.homeSubtitleFontSize,
+            fontWeight: Theme.of(context).typography.homeSubtitleFontWeight,
+            fontStyle: FontStyle.italic),
+      ),
     );
   }
 
