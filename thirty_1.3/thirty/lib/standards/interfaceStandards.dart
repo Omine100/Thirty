@@ -207,16 +207,19 @@ class InterfaceStandards {
   //STRING INPUT: 'imageURL' for image to share
   //OUTPUT: Widget and share function call
   Widget showShareButton(BuildContext context, String imageURL) {
-    return new IconButton(
-      onPressed: () {
-        mediaManagement.saveAndShare(imageURL);
-      },
-      iconSize: themes.getDimension(
-          context, true, "interfaceStandardsShareButtonIconDimension"),
-      icon: Icon(
-        Icons.share_outlined,
-        color:
-            themes.getColor(context, "interfaceStandardsShareButtonIconColor"),
+    return new Material(
+      color: themes.getColor(context, "materialTransparentColor"),
+      child: IconButton(
+        onPressed: () {
+          mediaManagement.saveAndShare(imageURL);
+        },
+        iconSize: themes.getDimension(
+            context, true, "interfaceStandardsShareButtonIconDimension"),
+        icon: Icon(
+          Icons.share_outlined,
+          color: themes.getColor(
+              context, "interfaceStandardsShareButtonIconColor"),
+        ),
       ),
     );
   }

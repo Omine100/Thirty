@@ -23,6 +23,9 @@ extension CustomColorScheme on ColorScheme {
       case "backgroundGradientBottomLeftColor":
         return isDark ? Color(0xFF1B1B2D) : Color(0xFFFFAB5F);
         break;
+      case "materialTransparentColor":
+        return isDark ? Color(0x00FFFFFF) : Color(0x00FFFFFF);
+        break;
 
       case "interfaceStandardsCameraButtonColor":
         return isDark ? Color(0xFFFFAB58) : Color(0xFFFFFFFF);

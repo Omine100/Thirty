@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Paints paints = new Paints();
 
   //VARIALBE INITILIZATION
-  String name;
+  String name = "";
   int currentIndex = 0, focusedIndex = 0;
   List<DocumentSnapshot> documentSnapshots = [];
 
@@ -375,22 +375,25 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Positioned(
                 bottom: 20,
-                child: Container(
-                  width: themes.getDimension(
-                      context, false, "homeImageListCardDimension"),
-                  child: Center(
-                    child: Text(
-                      isList
-                          ? month +
-                              " " +
-                              date.substring(8, 10) +
-                              ", '" +
-                              date.substring(2, 4)
-                          : date.substring(8, 10),
-                      style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.white,
-                          fontStyle: FontStyle.italic),
+                child: Material(
+                  color: themes.getColor(context, "materialTransparentColor"),
+                  child: Container(
+                    width: themes.getDimension(
+                        context, false, "homeImageListCardDimension"),
+                    child: Center(
+                      child: Text(
+                        isList
+                            ? month +
+                                " " +
+                                date.substring(8, 10) +
+                                ", '" +
+                                date.substring(2, 4)
+                            : date.substring(8, 10),
+                        style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.white,
+                            fontStyle: FontStyle.italic),
+                      ),
                     ),
                   ),
                 ))
