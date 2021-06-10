@@ -31,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
   String name = "";
   int currentIndex = 0, focusedIndex = 0;
   List<DocumentSnapshot> documentSnapshots = [];
+  bool isFutureUpdated = false;
 
   //INITIAL STATE
   //DESCRIPTION: Calls cloudFirestore function to set 'name' value and documentSnapshot for images
@@ -330,9 +331,11 @@ class _HomeScreenState extends State<HomeScreen> {
         context,
         GridView.builder(
             gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
             itemCount: documentSnapshots.length,
-            padding: EdgeInsets.all(5.0),
+            padding: EdgeInsets.only(left: 20.0, right: 50),
+            scrollDirection: Axis.horizontal,
+            reverse: true,
             itemBuilder: (context, int index) {
               DocumentSnapshot documentSnapshot = documentSnapshots[index];
               return showImageCard(documentSnapshot, false);
@@ -365,14 +368,14 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Hero(
         tag: 'imageCard$imageURL',
         child: Padding(
-          padding: EdgeInsets.all(isList ? 0 : 5),
+          padding: EdgeInsets.all(isList ? 0 : 2),
           child: Stack(
             children: [
               Container(
                 width: themes.getDimension(
                     context, false, "homeImageListCardDimension"),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50.0),
+                    borderRadius: BorderRadius.circular(isList ? 50.0 : 12.5),
                     color: themes.getColor(context, "homeImageListCardColor"),
                     image: DecorationImage(
                         image: NetworkImage(
@@ -455,7 +458,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Positioned(
               top: themes.getPosition(context, true, "homeImageListPosition"),
-              child: currentIndex <= 1 ? showImageContainer()
+              child: currentIndex <= 1
+                  ? showImageContainer()
+                  : Container(), //This is where we will put the future tab content
             ),
             Positioned(
               bottom: themes.getPosition(
