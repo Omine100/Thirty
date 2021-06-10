@@ -289,9 +289,10 @@ class _HomeScreenState extends State<HomeScreen> {
           if (snapshot.hasData) {
             interfaceStandards.showProgress(context);
           } else {
-            //Empty container widget
+            return interfaceStandards.showProgress(context);
+            //EMPTY CONTAINER
           }
-          return currentIndex == 0 ? showImageList(snapshot) : showImageGrid();
+          return currentIndex == 0 ? showImageList() : showImageGrid();
         },
       ),
     );
@@ -301,7 +302,7 @@ class _HomeScreenState extends State<HomeScreen> {
   //DESCRIPTION: Takes in a list of images and displays each one in a card in
   //          a list view for the user
   //OUTPUT: Cards with images and text for new month in a list format
-  Widget showImageList(AsyncSnapshot<dynamic> snapshot) {
+  Widget showImageList() {
     return ScrollSnapList(
       onItemFocus: onItemFocus,
       scrollDirection: Axis.horizontal,
@@ -327,11 +328,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget showImageGrid() {
     return interfaceStandards.parentCenter(
         context,
-        Container(
-          height: 100,
-          width: 100,
-          color: Colors.black,
-        ));
+        GridView.builder(
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            itemCount: documentSnapshots.length,
+            padding: EdgeInsets.all(5.0),
+            itemBuilder: (context, int index) {
+              DocumentSnapshot documentSnapshot = documentSnapshots[index];
+              return showImageCard(documentSnapshot, false);
+            }));
   }
 
   //USER INTERFACE: Show image card
@@ -359,45 +364,48 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Hero(
         tag: 'imageCard$imageURL',
-        child: Stack(
-          children: [
-            Container(
-              width: themes.getDimension(
-                  context, false, "homeImageListCardDimension"),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50.0),
-                  color: themes.getColor(context, "homeImageListCardColor"),
-                  image: DecorationImage(
-                      image: NetworkImage(
-                        imageURL,
-                      ),
-                      fit: BoxFit.cover)),
-            ),
-            Positioned(
-                bottom: 20,
-                child: Material(
-                  color: themes.getColor(context, "materialTransparentColor"),
-                  child: Container(
-                    width: themes.getDimension(
-                        context, false, "homeImageListCardDimension"),
-                    child: Center(
-                      child: Text(
-                        isList
-                            ? month +
-                                " " +
-                                date.substring(8, 10) +
-                                ", '" +
-                                date.substring(2, 4)
-                            : date.substring(8, 10),
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.white,
-                            fontStyle: FontStyle.italic),
+        child: Padding(
+          padding: EdgeInsets.all(isList ? 0 : 5),
+          child: Stack(
+            children: [
+              Container(
+                width: themes.getDimension(
+                    context, false, "homeImageListCardDimension"),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50.0),
+                    color: themes.getColor(context, "homeImageListCardColor"),
+                    image: DecorationImage(
+                        image: NetworkImage(
+                          imageURL,
+                        ),
+                        fit: BoxFit.cover)),
+              ),
+              Positioned(
+                  bottom: 20,
+                  child: Material(
+                    color: themes.getColor(context, "materialTransparentColor"),
+                    child: Container(
+                      width: themes.getDimension(
+                          context, false, "homeImageListCardDimension"),
+                      child: Center(
+                        child: Text(
+                          isList
+                              ? month +
+                                  " " +
+                                  date.substring(8, 10) +
+                                  ", '" +
+                                  date.substring(2, 4)
+                              : date.substring(8, 10),
+                          style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.white,
+                              fontStyle: FontStyle.italic),
+                        ),
                       ),
                     ),
-                  ),
-                ))
-          ],
+                  ))
+            ],
+          ),
         ),
       ),
     );
