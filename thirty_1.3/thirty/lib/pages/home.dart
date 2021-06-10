@@ -455,7 +455,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Positioned(
               top: themes.getPosition(context, true, "homeImageListPosition"),
-              child: showImageContainer(),
+              child: currentIndex <= 1 ? showImageContainer()
             ),
             Positioned(
               bottom: themes.getPosition(
